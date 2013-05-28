@@ -13,3 +13,6 @@
     - junk data in DB to test app drawing  
     - networking code on iPad also  
 
+Current Plan:  
+Postgres DB as provided by CSG + PHP server {self-hosted -> intergration with DoC will come later if required}  
+
