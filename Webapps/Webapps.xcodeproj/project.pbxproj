@@ -126,7 +126,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Richard Jones";
+				ORGANIZATIONNAME = "Team Awesome";
 			};
 			buildConfigurationList = 79BEAD221754FCAC0056DFBD /* Build configuration list for PBXProject "Webapps" */;
 			compatibilityVersion = "Xcode 3.2";
