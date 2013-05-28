@@ -1,5 +1,4 @@
-
-#  | WebApps 2013 |
+# WebApps 2013
 
   
 ## TODO
