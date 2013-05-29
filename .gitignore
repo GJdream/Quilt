@@ -18,4 +18,4 @@ DerivedData/
 .svn
 .DS_Store
 Webapps/Webapps.xcodeproj/project.xcworkspace/
-*.~
+*~
