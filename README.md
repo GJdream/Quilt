@@ -19,4 +19,12 @@
 Current Plan:  
 Postgres DB as provided by CSG + PHP server  
 {self-hosted -> intergration with DoC will come later if required}  
+  
+  
+## Database Notes
+
+ - Storage of User information
+ - Height and Width of each bookmark panel
+ - Bookmark URLs
+ - Associated tags
 
