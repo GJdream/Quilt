@@ -11,7 +11,6 @@
 
  - every request from app needs ID in it  
     - hash request with hash of user password
-      - NOTE: DB is currently successfully registering current user_name column as PRIMARY KEY
 
  - Client-side code:  
     - junk data in DB to test app drawing  
