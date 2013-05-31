@@ -1,42 +1,54 @@
 #!/usr/bin/php
+
 <html>
-<head/>
-<body>
-<?php
+  <body>
 
-$db     = pg_connect("host=db.doc.ic.ac.uk port=5432 dbname=g1227105_u user=g1227105_u password=4TVIDKYHVZ");
+    <?php
 
-if($_SERVER[REQUEST_METHOD] === "POST")
-{
-    if($_POST["action"] === "new_account")
-    {
-        if($_POST["user_name"] && $_POST["password"])
-            $query  = "INSERT INTO \"Users\" (user_name, password) VALUES ('$_POST[username]', '$_POST[password]')";
-    }
-    else if($_POST["action"] === "new_bookmark")
-    {
-        $query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width, tags) VALUES ('$_POST[owner]', '$_POST[url]', '$_POST[p_height]', '$_POST[p_width]', ARRAY['" . implode($_POST[tags], "','") . "'])";
-        echo $query;
-        $result = pg_query($db, $query);
-        echo $result;
-    }
-}
+      global $db;
 
-if(false)
-{
+      require_once('connect.php');
+      require('validation.php');
+      require('register.php');
+      require('login.php');
+      require('bookmark.php');
+      require('registered_only.php');
 
-$query  = "INSERT INTO \"Users\" (user_name) VALUES ('$_POST[username]')";
-$result = pg_query($db, $query);
-$query  = "SELECT * FROM \"Users\"";
-$result = pg_query($db, $query);
+      if(function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc())
+        {
+          function undo_magic_quotes_gpc($arr)
+            {
+              foreach($arr as &$value)
+                {
+                  if(is_array($value))
+                    {
+                      undo_magic_quotes_gpc($value);
+                    }
+                  else
+                    {
+                      $value = stripslashes($value);
+                    }
+                }
+            }
 
-while($row    = pg_fetch_array($result))
-{
-    echo $row[0] . "<br />";
-}
-}
+          undo_magic_quotes_gpc($_POST);
+          undo_magic_quotes_gpc($_GET);
+          undo_magic_quotes_gpc($_COOKIE);
+        }
 
-?>
+      if($_SERVER[REQUEST_METHOD] === "POST")
+        {
+          if($_POST['action'] === "new_account")
+            register();
+          if($_POST['action'] === "new_bookmark")
+            createBookmark();
+          if($_POST['action'] === "attempt_login")
+            attemptUserLogin();
+          if($_POST['action'] === "checker")
+            checker();
+        }
 
-</body>
+    ?>
+
+  </body>
 </html>
