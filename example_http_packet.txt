@@ -1,0 +1,6 @@
+POST /~rj1411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 29
+
+user_name="r"&password="test"
