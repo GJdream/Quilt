@@ -6,17 +6,19 @@
 
 $db     = pg_connect("host=db.doc.ic.ac.uk port=5432 dbname=g1227105_u user=g1227105_u password=4TVIDKYHVZ");
 
-echo $_SERVER[REQUEST_METHOD];
-echo "<br/>";
 if($_SERVER[REQUEST_METHOD] === "POST")
 {
-    echo "HERE";
-    if($_POST["user_name"] || $_POST["password"])
+    if($_POST["action"] === "new_account")
     {
-        echo $_POST['user_name'];
-        echo "<br/>";
-        echo $_POST['password'];
-        echo "<br/>";
+        if($_POST["user_name"] && $_POST["password"])
+            $query  = "INSERT INTO \"Users\" (user_name, password) VALUES ('$_POST[username]', '$_POST[password]')";
+    }
+    else if($_POST["action"] === "new_bookmark")
+    {
+        $query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width, tags) VALUES ('$_POST[owner]', '$_POST[url]', '$_POST[p_height]', '$_POST[p_width]', ARRAY['" . implode($_POST[tags], "','") . "'])";
+        echo $query;
+        $result = pg_query($db, $query);
+        echo $result;
     }
 }
 

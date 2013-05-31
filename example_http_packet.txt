@@ -1,6 +1,6 @@
 POST /~rj1411/listen.php HTTP/1.1
 Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
-Content-length: 29
+Content-length: 111           
 
-user_name="r"&password="test"
+action=new_bookmark&owner=RJ&url=www.google.com&p_height=1&p_width=1&tags[0]=search&tags[1]=engine&tags[2]=test
