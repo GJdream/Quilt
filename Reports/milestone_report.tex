@@ -12,29 +12,36 @@
 
 \section{Abstract}
 
-This report will outline the basic ideas behind our social information sharing application, as of yet unnamed. Specifically, the idea of the application will be to improve the way in which users share websites of interest with one other; it will improve the fluidity of bookmarking websites and enable users to share websites in bunches rather than individually. Following this will be a short description of the languages involves, the platform the application will use and the rough structure and work division of the group. This structure will be outlined very generally as the work environment is expected to be fluid around the tasks initially decided upon.
+This report will outline the basic ideas behind our social information sharing application, as of yet unnamed. Specifically, the idea of the application will be to improve the way in which users share websites of interest with one other; it will improve the fluidity of bookmarking websites and enable users to share websites in bunches rather than individually. Following this will be a short description of the languages involved, the platform the application will use and the rough structure and work division of the group. This structure will be outlined very generally as the work environment is expected to be fluid around the tasks initially decided upon.
 
 \section{The Application}
 
-The application we propose to produce is a social application to improve sharing information over the internet, specially through 'bookmarking'. Currently the most used method of sharing websites of interest is to use a medium such as Facebook chat to paste a collection of links to various websites. The issue that arises from this is, for activities such as group work, it is not uncommon for websites of interest to be lost or forgotten about. It is also messy to store this collection of links and there is often little to no way of making notes surrounding the urls provided to remind the users why the website held initial interest. This application seeks to streamline this process. By enabling the ability to 'tag' provided urls the user can collect a large selection of websites onto one page and then send this collection of data to other users (this concept will be touch upon again later in the user interaction section of this report). The application will be initial an iPad/iPhone application, though the plan will be to bring the application to browsers should there be time to do so. Alongside the browser application we hope to code a browser 'plug-in' that will allow the user to bookmark a website-of-interest within our application without ever surfing away from the website-of-interest. This will then not interrupt the fluidity of internet browsing and make the use of the application more natural and appealing.
+The application we propose to produce is a social application to improve sharing information over the internet, specially through 'bookmarking'. Currently the most used method of sharing websites of interest is to use a medium such as Facebook chat to paste a collection of links to various websites. The issue that arises from this is, for activities such as group work, it is not uncommon for websites of interest to be lost or forgotten about. It is also messy to store this collection of links and there is often little to no way of making notes surrounding the URLs provided to remind the users why the website held initial interest. This application seeks to streamline this process, as well as redefine the standards for sharing. 
+
+By enabling the ability to 'tag' provided URLs the user can collect a large selection of websites onto one page and then send this collection of data to other users (this concept will be touch upon again later in the user interaction section of this report). The information will also be presented as picture thumbnails and small notes about the content instead of simply a click-able URL. This way users will have a rough idea about the subject matter of the website before even seeing the site and so will be able to manage their time viewing the websites more effectively. 
+
+The application will initially be an iPad/iPhone application, though the plan will be to bring the application to browsers should there be time to do so. Alongside the browser application we hope to code a browser 'plug-in' that will allow the user to bookmark a website-of-interest within our application without ever surfing away from the website-of-interest. This will then not interrupt the fluidity of internet browsing and make the use of the application more natural and appealing.
 
 \section{Language Implementation}
 
 As the application will be initially an iPad/iPhone application it will be written in objective-C. Objective-C is a strong language and enables the ability to have methods coded entirely in C and C++ as well, so the application will be able to make the most of the advantages of all three languages. Given the current system of use is iOS6 it will also benefit from such features as ARC for memory management. 
 
-% Done from memory currently, I'm going to check myself on ARC regards spelling and overall benefits.
-
-% Why are we starting in iPad and not on browser? - Ease of portability? Is coding this kind of app simply more interesting to us?
-% When we do go to browser, what language will we use then?
+From a user perspective, the application will be much nicer to use within iPad, given it's portable nature and intuitive sharing mechanisms. If the application is ported to browser the languages used will include HTML, CSS, Javascript (if necessary) and most likely PHP for server-side coding, as this is the service most easily accessible.
 
 \section{User Interactions}
 
-The application will feature a log-in system which will be the main way that the user can keep track of their personal tags. Within the database of our application we expect to retain the details of all the posts the user has made, including information such as the url itself, associated tags and any notes the user has written to compliment it. Interactions between users will be the ability to share various tags with other users within the system; to make full use of this we hope to also implement a chat system such that they could converse within the application about the sites in question and not require another system alongside this by which to converse. Should a browser version be implemented the idea would be that a user could share the url to the tag page in question. Here a hope would be to have implemented various privacy settings such that if the user shared the data with someone who did not hold an account they would still be able to see the page, or they would be able to set certain tags such that only specific users were allowed to view them (for example, a private page that only those invited could see). Related to this privacy setting, the user will be able to invite people to submit websites to their tag such that, within a group setting, the group can all contribute to the same page and not be forced to have a page each, as this would somewhat repeat the initial problem with multiple links. Following this, another useful interactive feature will be the ability to 'follow' certain tags.
+The application will feature a log-in system which will be the main way that the user can keep track of their personal tags. Within the database of our application we expect to retain the details of all the posts the user has made, including information such as the url itself, associated tags and any notes the user has written to compliment it. Interactions between users will be the ability to share various tags with other users within the system; to make full use of this we hope to also implement a chat system such that they could converse within the application about the sites in question and not require another system alongside this by which to converse. 
+
+Should a browser version be implemented the idea would be that a user could share the url to the tag page in question. Here a hope would be to have implemented various privacy settings such that if the user shared the data with someone who did not hold an account they would still be able to see the page, or they would be able to set certain tags such that only specific users were allowed to view them (for example, a private page that only those invited could see). Related to this privacy setting, the user will be able to invite people to submit websites to their tag such that, within a group setting, the group can all contribute to the same page and not be forced to have a page each, as this would somewhat repeat the initial problem with multiple links. Following this, another useful interactive feature will be the ability to 'follow' certain tags.
 
 \section{Group Structure}
 
-% We need to talk about this more.
-% Richard has volunteered to be lead debugger alongside some other coding tasks.
-% What other concrete areas can we all be working on such that we don't have any issues with people loitering around because they don't know what things need work?
+The rough split of the group work will be as follows:
+
+Database Set-up/Server-Side Code: Eleanor Vincent \\
+Internal state: Richard Jones \\
+Networking: Anna Thomas \\
+UI - layout: Briony Goldsack \\
+
 
 \end{document}
