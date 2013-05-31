@@ -16,6 +16,18 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    /*    SideBarViewController* sidebarVC = [[SideBarViewController alloc] init];
+        
+        BookmarkViewController* bookmarkVC = [[BookmarkViewController alloc] init];
+        
+        UISplitViewController* splitVC = [[UISplitViewController alloc] init];
+        
+        splitVC.viewControllers = [NSArray arrayWithObjects:sidebarVC, bookmarkVC, nil];
+        
+        window.rootViewController = splitVC;*/
+
     return YES;
 }
 
