@@ -11,6 +11,7 @@
 		795288C817591B7200158F8E /* UIBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C717591B7200158F8E /* UIBookmarkView.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288CE175933A000158F8E /* UIBookmarkViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CD175933A000158F8E /* UIBookmarkViewLayout.m */; };
+		795288D1175A7EAD00158F8E /* Bookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D0175A7EAD00158F8E /* Bookmark.m */; };
 		79BEAD2B1754FCAC0056DFBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2A1754FCAC0056DFBD /* UIKit.framework */; };
 		79BEAD2D1754FCAC0056DFBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2C1754FCAC0056DFBD /* Foundation.framework */; };
 		79BEAD2F1754FCAC0056DFBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2E1754FCAC0056DFBD /* CoreGraphics.framework */; };
@@ -31,6 +32,8 @@
 		795288CA1759276600158F8E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		795288CC175933A000158F8E /* UIBookmarkViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmarkViewLayout.h; sourceTree = "<group>"; };
 		795288CD175933A000158F8E /* UIBookmarkViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmarkViewLayout.m; sourceTree = "<group>"; };
+		795288CF175A7EAD00158F8E /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmark.h; sourceTree = "<group>"; };
+		795288D0175A7EAD00158F8E /* Bookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bookmark.m; sourceTree = "<group>"; };
 		79BEAD271754FCAC0056DFBD /* Webapps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Webapps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79BEAD2A1754FCAC0056DFBD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79BEAD2C1754FCAC0056DFBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +99,8 @@
 				795288CD175933A000158F8E /* UIBookmarkViewLayout.m */,
 				795288C91759276600158F8E /* Account.h */,
 				795288CA1759276600158F8E /* Account.m */,
+				795288CF175A7EAD00158F8E /* Bookmark.h */,
+				795288D0175A7EAD00158F8E /* Bookmark.m */,
 				795288C617591B7200158F8E /* UIBookmarkView.h */,
 				795288C717591B7200158F8E /* UIBookmarkView.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
@@ -190,6 +195,7 @@
 				795288C817591B7200158F8E /* UIBookmarkView.m in Sources */,
 				795288CB1759276600158F8E /* Account.m in Sources */,
 				795288CE175933A000158F8E /* UIBookmarkViewLayout.m in Sources */,
+				795288D1175A7EAD00158F8E /* Bookmark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

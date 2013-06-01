@@ -19,5 +19,4 @@
 -(Account*)initWithUserName:(NSString*)iUName Password:(NSString*)initPWord;
 -(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
 
-
 @end

@@ -31,14 +31,13 @@
     }
 }
 
-// Dictionaries are a bad choice; we need many-to-many, not many-to-one mappings.
--(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height
+-(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
     Bookmark *newBookmark = [[Bookmark alloc] initWithURL:url Tags:tags Width:width Height:height];
     for (NSString *tag in tags) {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)
-            bookmarkSet = [[NSSet alloc] initWithObjects:newBookmark, nil];
+            bookmarkSet = [[NSMutableSet alloc] initWithObjects:newBookmark, nil];
         else
             [bookmarkSet addObject:newBookmark];
     }
