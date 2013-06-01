@@ -33,6 +33,14 @@ action=attempt_login&username=hasher&password=test
 POST /~ev411/listen.php HTTP/1.1
 Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
-Content-length: 15      
+Content-length: 35      
 
-action=checker
+action=logout_user&username=hasher
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 32
+
+action=checking&username=hasher
