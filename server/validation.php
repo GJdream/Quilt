@@ -10,7 +10,7 @@
 
   function isLoggedIn()
     {
-      echo 'logged checking';
+      echo 'checking log status';
 
       if(isset($_SESSION['active']) && $_SESSION['active'])
         return true;

@@ -7,6 +7,7 @@
       if(!isLoggedIn())
         {
           echo 'You should log in to view this section.';
+          // redirect
         }
     }
 

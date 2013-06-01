@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UIBookmark.h"
 
 @implementation AppDelegate
 
@@ -27,6 +28,11 @@
         splitVC.viewControllers = [NSArray arrayWithObjects:sidebarVC, bookmarkVC, nil];
         
         window.rootViewController = splitVC;*/
+    
+    UIViewController *vc = [[UIViewController alloc] init];
+    _window.rootViewController = vc;
+    
+    vc.view = [[UIBookmark alloc] initWithFrame:[[UIScreen mainScreen] bounds]Height:1 Width:1 URL:@"www.google.com"];
 
     return YES;
 }
