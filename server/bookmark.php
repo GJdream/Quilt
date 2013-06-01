@@ -38,4 +38,4 @@
       $result = pg_query($db, $query);
     }
 
-?>
+
