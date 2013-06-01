@@ -9,4 +9,4 @@
 
     $db = pg_connect("host=$host port=$port dbname=$dbname user=$username password=$password");
 
-?>
+

@@ -27,10 +27,10 @@
         {
           // the user is a duplicate
           // redirect back to register screen with suitable information
-          echo 'ERROR';
+          echo "ERROR";
         }
 
       // insert successful
     }
 
-?>
+

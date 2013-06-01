@@ -1,4 +1,12 @@
 #!/usr/bin/php
+<?php 
+  ob_start(); 
+  session_start();
+    // the session must be initialized before any headers are set {ie; before anything is outputted}
+    // this way each user has a session which can then be validated to keep the system secure
+    // ob_start() clears the output from #!/usr/bin/php 
+    // which would set a header otherwise, which has been making session_start() unuseable
+?>
 
 <html>
   <body>
@@ -38,14 +46,18 @@
 
       if($_SERVER[REQUEST_METHOD] === "POST")
         {
+          echo $_POST['action'];
+
           if($_POST['action'] === "new_account")
             register();
           if($_POST['action'] === "new_bookmark")
             createBookmark();
           if($_POST['action'] === "attempt_login")
             attemptUserLogin();
-          if($_POST['action'] === "checker")
-            checker();
+          if($_POST['action'] === "checking")
+              checker();
+          if($_POST['action'] === "logout_user")
+            logoutUser();
         }
 
     ?>

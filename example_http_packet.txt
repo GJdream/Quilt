@@ -3,4 +3,44 @@ Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
 Content-length: 114           
 
-action=new_bookmark&owner=RJ&url=www.google.com&p_height=1&p_width=1&tags[0]=search&tags[1]=engine&tags[2]=test
+action=new_bookmark&owner=RJ&url=www.amazon.co.uk&p_height=1&p_width=1&tags[0]=search&tags[1]=engine&tags[2]=test
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 114           
+
+action=new_bookmark&owner=RJ&url=www.amazon.co.uk&p_height=1&p_width=1&tags[0]=search&tags[1]=engine&tags[2]=test
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 49      
+
+action=new_account&username=hasher&password=test
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 51      
+
+action=attempt_login&username=hasher&password=test
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 35      
+
+action=logout_user&username=hasher
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 32
+
+action=checking&username=hasher

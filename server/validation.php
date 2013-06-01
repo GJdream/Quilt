@@ -10,12 +10,17 @@
 
   function isLoggedIn()
     {
-      echo 'logged checking';
+      echo "checking log status\n";
 
       if(isset($_SESSION['active']) && $_SESSION['active'])
-        return true;
+        {
+          echo $_SESSION['user_id'];
+          echo " You are logged in\n";
+          return true;
+        }
 
+      echo "You are not logged in\n";
       return false;
     }
 
-?>
+

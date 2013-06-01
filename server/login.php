@@ -8,11 +8,9 @@
       $submittedUsername = $_POST['username'];
       $submittedPassword = sha1($_POST['password']);
         // md5 and sha1 are not good hash functions to use
-        // see register for full comment
+        // see 'register.php' for full comment
 
         // hashing will likely be pulled into a common function somewhere
-
-      echo $submittedPassword;
 
       $query  = "SELECT * FROM \"Users\"" . 
                 "WHERE user_name = '$submittedUsername' " .
@@ -26,6 +24,25 @@
 
       // user may login -> setup their session
       validateUser();
+
+      // to be safe, check login was completed successfully
+      return isLoggedIn();
     }
 
-?>
+  function logoutUser()
+    {
+      global $db;
+
+      // unnecessary to double check the user in question has an active session
+      // given the login validations the assumption is their session is genuine by this point
+
+      $_SESSION['active']  = false;
+      unset($_SESSION['user_id']);
+
+      session_unset();
+      session_destroy();
+
+      // redirect to a home location
+    }
+
+
