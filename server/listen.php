@@ -44,8 +44,6 @@
           undo_magic_quotes_gpc($_COOKIE);
         }
 
-        isLoggedIn();
-
       if($_SERVER[REQUEST_METHOD] === "POST")
         {
           echo $_POST['action'];
