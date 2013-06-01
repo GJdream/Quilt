@@ -27,12 +27,12 @@ Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
 Content-length: 51      
 
-action=attempt_login&username=hasher&password=tester
+action=attempt_login&username=hasher&password=test
 
 
 POST /~ev411/listen.php HTTP/1.1
 Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
-Content-length: 51      
+Content-length: 15      
 
 action=checker
