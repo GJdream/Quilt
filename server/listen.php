@@ -57,10 +57,7 @@
           if($_POST['action'] === "attempt_login")
             attemptUserLogin();
           if($_POST['action'] === "checking")
-            {
-              echo "listen side checker\n";
               checker();
-            }
           if($_POST['action'] === "logout_user")
             logoutUser();
         }
