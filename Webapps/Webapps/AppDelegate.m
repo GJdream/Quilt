@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIBookmark.h"
+#import "NetworkClient.h"
 
 @implementation AppDelegate
 
@@ -33,6 +34,11 @@
     _window.rootViewController = vc;
     
     vc.view = [[UIBookmark alloc] initWithFrame:[[UIScreen mainScreen] bounds]Height:1 Width:1 URL:@"www.google.com"];
+    
+    [NetworkClient setupURL];
+    [NetworkClient loginUser:@"hasher" Password:@"test"];
+    
+    NSLog(@"Called loginUser");
 
     return YES;
 }

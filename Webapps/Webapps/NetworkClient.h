@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Bookmark.h"
+#import "Account.h"
 
-@interface NetworkClient : NSObject
+@interface NetworkClient : NSObject <NSURLConnectionDelegate>
+
++(void)setupURL;
++(void)getNewBookmarks;
++(void)createAccount:(Account*)account;
++(void)createBookmark:(Bookmark*)bookmark;
++(void)shareTag:(NSString*)tag With:(NSSet*)users;
++(void)deleteBookmark:(Bookmark*)bookmark;
++(void)loginUser:(NSString*)uname Password:(NSString*)pass;
 
 @end
