@@ -10,9 +10,8 @@
 #import "Bookmark.h"
 #import "Account.h"
 
-@interface NetworkClient : NSObject <NSURLConnectionDelegate>
+@interface NetworkClient : NSObject
 
-+(void)setupURL;
 +(void)getNewBookmarks;
 +(void)createAccount:(Account*)account;
 +(void)createBookmark:(Bookmark*)bookmark;

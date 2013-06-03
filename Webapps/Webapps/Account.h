@@ -11,12 +11,14 @@
 @interface Account : NSObject
 
 @property (readonly) NSString *username;
-@property (readonly) NSString *passwordhash;
+@property (readonly) NSString *password;
 @property (readonly) NSDictionary *tagToBookmark;
 @property (readonly) NSDictionary *urlToBookmark;
 
 
--(Account*)initWithUserName:(NSString*)iUName Password:(NSString*)initPWord;
+-(Account*)initWithUserName:(NSString*)initUsername PasswordHash:(NSString*)initPassword;
 -(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
++(Account*)current;
++(void)setCurrent:(Account*)newCurrent;
 
 @end

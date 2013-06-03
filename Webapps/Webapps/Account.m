@@ -11,7 +11,7 @@
 
 @interface Account ()
     @property (readwrite) NSString *username;
-    @property (readwrite) NSString *passwordhash;
+    @property (readwrite) NSString *password;
     @property (readwrite) NSDictionary *tagToBookmark;
     @property (readwrite) NSDictionary *urlToBookmark;
 @end
@@ -19,16 +19,34 @@
 
 @implementation Account
 
--(Account*)initWithUserName:(NSString*)initUsername PasswordHash:(NSString*)initPasswordHash
+Account *currentAccount;
+
++(void)setCurrent:(Account*)newCurrent
+{
+    currentAccount = newCurrent;
+}
+
++(Account*)current
+{
+    if(!currentAccount)
+        NSLog(@"Error: Trying to execute action when no account is logged in!");
+    
+    return currentAccount;
+}
+
+-(Account*)initWithUserName:(NSString*)initUsername PasswordHash:(NSString*)initPassword
 {
     self = [super init];
+    
     if(self)
     {
         self.username = initUsername;
-        self.passwordhash = initPasswordHash;
+        self.password = initPassword;
         self.tagToBookmark = [[NSDictionary alloc] init];
         self.urlToBookmark = [[NSDictionary alloc] init];
     }
+    
+    return self;
 }
 
 -(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height

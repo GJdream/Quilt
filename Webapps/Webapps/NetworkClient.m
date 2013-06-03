@@ -7,6 +7,7 @@
 //
 
 #import "NetworkClient.h"
+#import "NetworkDelegate.h"
 
 NSString *session_id;
 
@@ -15,13 +16,8 @@ NSString *session_id;
 @end
 
 @implementation NetworkClient
-NSMutableData *responseData;
 NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
-
-+(void)setupURL
-{
-    NSLog(@"%@", url);
-}
+NSString *loginCookie;
 
 +(NSMutableURLRequest*)createRequest
 {
@@ -46,10 +42,23 @@ NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
     [loginRequest setHTTPMethod:@"POST"];
     NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@",uname,pass];
     [loginRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
-    NSURLConnection *connection = [[NSURLConnection alloc] init];
-    (void)[connection initWithRequest:loginRequest delegate:[[NetworkClient alloc] init]];
-    NSLog(@"initWithRequest done");
-    NSLog(@"%@", [[loginRequest URL] absoluteString ]);
+    //NSURLConnection *connection = [[NSURLConnection alloc] init];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:loginRequest queue: queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+        loginCookie = [fields valueForKey:@"Set-Cookie"];
+        
+        /*if ([data length] > 0 && error == nil)
+            [delegate receivedData:data];
+        else if ([data length] == 0 && error == nil)
+            [delegate emptyReply];*/
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
 }
 
 +(void)createAccount:(Account*)account
@@ -59,7 +68,28 @@ NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 
 +(void)createBookmark:(Bookmark*)bookmark
 {
+    NSLog(@"createBookmark");
+    NSMutableURLRequest *bookmarkRequest = [NetworkClient createRequest];
+    [bookmarkRequest setHTTPMethod:@"POST"];
+    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&height=1&width=1", [[Account current] username], [bookmark url]];
+    [bookmarkRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
+    [bookmarkRequest setValue:loginCookie forHTTPHeaderField:@"Cookie"];
+    //NSURLConnection *connection = [[NSURLConnection alloc] init];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
+    [NSURLConnection sendAsynchronousRequest:bookmarkRequest queue: queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+         //[(NSHTTPURLResponse *)response allHeaderFields];
+         /*if ([data length] > 0 && error == nil)
+          [delegate receivedData:data];
+          else if ([data length] == 0 && error == nil)
+          [delegate emptyReply];*/
+         if (error != nil)
+             NSLog(@"Connection failed! Error - %@ %@",
+                   [error localizedDescription],
+                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+     }];
 }
 
 +(void)shareTag:(NSString*)tag With:(NSSet*)users
@@ -70,37 +100,6 @@ NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 +(void)deleteBookmark:(Bookmark*)bookmark
 {
     
-}
-
-#pragma mark NSURLConnection Delegate Methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    // A response has been received, this is where we initialize the instance var you created
-    // so that we can append data to it in the didReceiveData method
-    // Furthermore, this method is called each time there is a redirect so reinitializing it
-    // also serves to clear it
-    
-    responseData = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to the instance variable you declared
-    [responseData appendData:data];
-}
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
-    // Return nil to indicate not necessary to store a cached response for this connection
-    return nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", response);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Error! %@ %ld", [error domain], (long)[error code]);
 }
 
 @end

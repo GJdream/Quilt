@@ -20,5 +20,7 @@
         self.width = width;
         self.height = height;
     }
+    
+    return self;
 }
 @end
