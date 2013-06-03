@@ -71,7 +71,7 @@ NSString *loginCookie;
     NSLog(@"createBookmark");
     NSMutableURLRequest *bookmarkRequest = [NetworkClient createRequest];
     [bookmarkRequest setHTTPMethod:@"POST"];
-    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&height=1&width=1", [[Account current] username], [bookmark url]];
+    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=1&p_width=1", [[Account current] username], [bookmark url]];
     [bookmarkRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
     [bookmarkRequest setValue:loginCookie forHTTPHeaderField:@"Cookie"];
     //NSURLConnection *connection = [[NSURLConnection alloc] init];

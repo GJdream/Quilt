@@ -10,17 +10,33 @@
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
 
-      // building array of tags
-      $tags   = implode("','", $_POST[tags]);
-      $tagarr = "ARRAY['" . $tags . "']";
+      //$query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width, tags) " .
+      //          "VALUES ('$owner', '$link', '$pheight', '$pwidth', ARRAY['$tags'])";
 
-      $query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width, tags) " .
-                "VALUES ('$owner', '$link', '$pheight', '$pwidth', ARRAY['$tags'])";
+      $query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width) " .
+                "VALUES ('$owner', '$link', '$pheight', '$pwidth') RETURNING post_id";
       echo $query;
 
       $result = pg_query($db, $query);
       echo $result;
+      
+      $post_id = pg_fetch_result($result, 0);
+      
+      if($_POST[tags])
+	  {
+      	// building array of tags
+      	$tags   = implode("','", $_POST[tags]);
+      	$tagarr = "ARRAY['" . $tags . "']";
+
+      	foreach($tags as $tag)
+      	{
+			$query   = "INSERT INTO \"Tags\" (post_id, tag) VALUES ('$post_id', '$tag')";
+			$result = pg_query($db, $query);
+			echo $result;
+      	}
+	  }
     }
+    
 
   function resizeBookmark()
     {
