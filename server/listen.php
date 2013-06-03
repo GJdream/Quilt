@@ -40,8 +40,6 @@
 
   if($_SERVER[REQUEST_METHOD] === "POST")
     {
-      echo $_POST['action'];
-
       if($_POST['action'] === "new_account")
         register();
       if($_POST['action'] === "new_bookmark")
@@ -52,4 +50,10 @@
           checker();
       if($_POST['action'] === "logout_user")
         logoutUser();
+    }
+
+  if($_SERVER[REQUEST_METHOD] === "GET")
+    {
+      $queryString = $_SERVER['QUERY_STRING'];
+      echo $queryString;
     }
