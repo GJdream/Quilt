@@ -1,4 +1,3 @@
-
 <?php
   
   function validateUser()
@@ -22,5 +21,4 @@
       echo "You are not logged in\n";
       return false;
     }
-
-
+?>

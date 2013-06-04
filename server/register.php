@@ -1,4 +1,3 @@
-
 <?php
   
   function register()
@@ -32,5 +31,4 @@
 
       // insert successful
     }
-
-
+?>

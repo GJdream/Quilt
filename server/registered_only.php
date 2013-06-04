@@ -1,4 +1,3 @@
-
 <?php
   
   function checker()
@@ -14,5 +13,4 @@
 
       echo "You are still logged in\n";
     }
-
-
+?>

@@ -42,13 +42,13 @@
     {
       if($_POST['action'] === "new_account")
         register();
-      if($_POST['action'] === "new_bookmark")
+      else if($_POST['action'] === "new_bookmark")
         createBookmark();
-      if($_POST['action'] === "attempt_login")
+      else if($_POST['action'] === "attempt_login")
         attemptUserLogin();
-      if($_POST['action'] === "checking")
-          checker();
-      if($_POST['action'] === "logout_user")
+      else if($_POST['action'] === "checking")
+        checker();
+      else if($_POST['action'] === "logout_user")
         logoutUser();
     }
 
@@ -56,4 +56,12 @@
     {
       $queryString = $_SERVER['QUERY_STRING'];
       echo $queryString;
+      
+      if($_GET['action'] === "bookmarks")
+      {
+      	// Return JSON representation of bookmarks
+      	// This allows us to use pre-existing iOS libraries to parse it
+      	// This is good because I'm lazy
+      }
     }
+?>

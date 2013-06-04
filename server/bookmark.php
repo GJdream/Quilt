@@ -1,4 +1,3 @@
-
 <?php
 
   function createBookmark()
@@ -53,5 +52,4 @@
                 "WHERE owner = '$owner' AND post_id = '$postid'";
       $result = pg_query($db, $query);
     }
-
-
+?>
