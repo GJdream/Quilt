@@ -29,5 +29,22 @@ Postgres DB as provided by CSG + PHP server
  - Storage of User information
  - Height and Width of each bookmark panel
  - Bookmark URLs
- - Associated tags
+ - Associated tags  
 
+Since we are unaware how many tags people want to associate/how many people will be in a group we have split the tables. There is a seperate table for tags which has two columns. Each row has the post_id that this particular tag belongs to. When querying for tags all responces can be collated with a JOIN.
+
+
+## Meetings Schedule
+
+ - Past Meetings  
+    - Tuesday 21st May  
+    - Friday 24th May  
+    - Monday 27th May  
+    - Wednesday 29th May  
+    - Thursday 30th May  
+   
+ - Next Meetings  
+    - Tuesday 4th June  
+    - Friday 7th June  
+    - Monday 10th June  
+    - Wednesday 12th June  
