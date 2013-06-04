@@ -7,6 +7,7 @@
 //
 
 #import "Account.h"
+#import "NetworkClient.h"
 #import "Bookmark.h"
 
 @interface Account ()
@@ -34,7 +35,7 @@ Account *currentAccount;
     return currentAccount;
 }
 
--(Account*)initWithUserName:(NSString*)initUsername PasswordHash:(NSString*)initPassword
+-(Account*)initWithUserName:(NSString*)initUsername Password:(NSString*)initPassword
 {
     self = [super init];
     
@@ -59,6 +60,13 @@ Account *currentAccount;
         else
             [bookmarkSet addObject:newBookmark];
     }
+}
+
++(void)loginUser:(NSString*)username Password:(NSString*)password
+{
+    Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
+    currentAccount = newAccount;
+    [NetworkClient loginUser:username Password:password];
 }
 
 @end

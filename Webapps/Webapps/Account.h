@@ -16,9 +16,10 @@
 @property (readonly) NSDictionary *urlToBookmark;
 
 
--(Account*)initWithUserName:(NSString*)initUsername PasswordHash:(NSString*)initPassword;
+-(Account*)initWithUserName:(NSString*)initUsername Password:(NSString*)initPassword;
 -(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
 +(Account*)current;
 +(void)setCurrent:(Account*)newCurrent;
++(void)loginUser:(NSString*)username Password:(NSString*)password;
 
 @end

@@ -18,6 +18,7 @@ NSString *session_id;
 @implementation NetworkClient
 NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
+NSUInteger lastUpdatedTime = 0;
 
 +(NSMutableURLRequest*)createRequest
 {
@@ -31,29 +32,39 @@ NSString *loginCookie;
     return retRequest;
 }
 
++(NSMutableURLRequest*)createPOSTRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
+{
+    NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [retRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+
+    if(session_id)
+    {
+        [retRequest setValue:session_id forHTTPHeaderField:@"Cookie"];
+    }
+    
+    [retRequest setHTTPMethod:@"POST"];
+    [retRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:retRequest queue: queue completionHandler:handler];
+    
+    return retRequest;
+}
+
 +(void)getNewBookmarks
 {
     
 }
 
-+(void)loginUser:(NSString*)uname Password:(NSString*)pass
++(void)loginUser:(Account*)account
 {
-    NSMutableURLRequest *loginRequest = [NetworkClient createRequest];
-    [loginRequest setHTTPMethod:@"POST"];
-    NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@",uname,pass];
-    [loginRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
-    //NSURLConnection *connection = [[NSURLConnection alloc] init];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:loginRequest queue: queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    NSString *params = [NSString stringWithFormat:@"action=new_user&username=%@&password=%@", [account username], [account password]];
+    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+ 
+    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {
         NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
         loginCookie = [fields valueForKey:@"Set-Cookie"];
-        
-        /*if ([data length] > 0 && error == nil)
-            [delegate receivedData:data];
-        else if ([data length] == 0 && error == nil)
-            [delegate emptyReply];*/
+
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],
@@ -63,33 +74,32 @@ NSString *loginCookie;
 
 +(void)createAccount:(Account*)account
 {
+    NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
+    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
+    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
 }
 
 +(void)createBookmark:(Bookmark*)bookmark
 {
-    NSLog(@"createBookmark");
-    NSMutableURLRequest *bookmarkRequest = [NetworkClient createRequest];
-    [bookmarkRequest setHTTPMethod:@"POST"];
-    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=1&p_width=1", [[Account current] username], [bookmark url]];
-    [bookmarkRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
-    [bookmarkRequest setValue:loginCookie forHTTPHeaderField:@"Cookie"];
-    //NSURLConnection *connection = [[NSURLConnection alloc] init];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    [NSURLConnection sendAsynchronousRequest:bookmarkRequest queue: queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-         //[(NSHTTPURLResponse *)response allHeaderFields];
-         /*if ([data length] > 0 && error == nil)
-          [delegate receivedData:data];
-          else if ([data length] == 0 && error == nil)
-          [delegate emptyReply];*/
-         if (error != nil)
-             NSLog(@"Connection failed! Error - %@ %@",
-                   [error localizedDescription],
-                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-     }];
+    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=%ld&p_width=%ld", [[Account current] username], [bookmark url], (long)[bookmark height], (long)[bookmark width]];
+    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+               loginCookie = [fields valueForKey:@"Set-Cookie"];
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
 }
 
 +(void)shareTag:(NSString*)tag With:(NSSet*)users

@@ -21,5 +21,4 @@
       echo "You are not logged in\n";
       return false;
     }
-
 ?>
