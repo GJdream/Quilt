@@ -19,6 +19,7 @@
       if(pg_num_rows($result) < 1)
         {
           // this user does not exist -> reattempt login
+          return to_json(false);
         }
 
       // user may login -> setup their session
@@ -42,5 +43,6 @@
       session_destroy();
 
       // redirect to a home location
+      return to_json(true);
     }
 ?>

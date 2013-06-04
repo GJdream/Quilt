@@ -15,10 +15,10 @@
         {
           echo $_SESSION['user_id'];
           echo " You are logged in\n";
-          return true;
+          return to_json(true);
         }
 
       echo "You are not logged in\n";
-      return false;
+      return to_json(false);
     }
 ?>
