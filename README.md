@@ -24,7 +24,6 @@ Postgres DB as provided by CSG + PHP server
 
 
 ###### Functions to implement:
-
  - remove bookmarks
  - update bookmarks
  - create group
