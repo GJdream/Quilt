@@ -47,7 +47,7 @@
       if($_POST['action'] === "attempt_login")
         attemptUserLogin();
       if($_POST['action'] === "checking")
-          checker();
+        checker();
       if($_POST['action'] === "logout_user")
         logoutUser();
     }
@@ -57,3 +57,5 @@
       $queryString = $_SERVER['QUERY_STRING'];
       echo $queryString;
     }
+
+?>

@@ -1,4 +1,3 @@
-
 <?php
 
   function attemptUserLogin()
@@ -45,4 +44,4 @@
       // redirect to a home location
     }
 
-
+?>

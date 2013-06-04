@@ -1,4 +1,3 @@
-
 <?php
   
   function validateUser()
@@ -23,4 +22,4 @@
       return false;
     }
 
-
+?>

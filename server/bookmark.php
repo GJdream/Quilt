@@ -1,4 +1,3 @@
-
 <?php
 
   function createBookmark()
@@ -54,4 +53,4 @@
       $result = pg_query($db, $query);
     }
 
-
+?>
