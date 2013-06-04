@@ -16,7 +16,14 @@
     - junk data in DB to test app drawing  
     - networking code on iPad also  
 
-Functions to implement:
+#### Current Plan:  
+Postgres DB as provided by CSG + PHP server  
+{self-hosted -> intergration with DoC will come later if required}  
+
+
+
+
+###### Functions to implement:
 
  - remove bookmarks
  - update bookmarks
@@ -31,10 +38,7 @@ Functions to implement:
  - remove friends
  - {if you think of more, feel free to add to this list}
   
-#### Current Plan:  
-Postgres DB as provided by CSG + PHP server  
-{self-hosted -> intergration with DoC will come later if required}  
-  
+
   
   
 ## Database Notes
