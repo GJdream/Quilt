@@ -48,10 +48,10 @@
         if([[txtUsername text] isEqualToString:@""] || [[txtPassword text] isEqualToString:@""] ) {
             [self alertStatus:@"Please enter both Username and Password" :@"Login Failed!"];
         } else {
-            NSString *post =[[NSString alloc] initWithFormat:@"username=%@&password=%@",[txtUsername text],[txtPassword text]];
+            NSString *post =[[NSString alloc] initWithFormat:@"action=attempt_login&username=%@&password=%@",[txtUsername text],[txtPassword text]];
             NSLog(@"PostData: %@",post);
             
-            NSURL *url=[NSURL URLWithString:@"Users/bkg11/Desktop/login.php"];
+            NSURL *url=[NSURL URLWithString:@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php"];
             
             NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             
@@ -72,6 +72,7 @@
             NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             
             NSLog(@"Response code: %d", [response statusCode]);
+            NSLog(@"Response: %@", [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding]);
             if ([response statusCode] >=200 && [response statusCode] <300)
             {
                 NSString *responseData = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
@@ -94,7 +95,10 @@
                 }
                 
             } else {
-                if (error) NSLog(@"Error: %@", error);
+                if (error)
+                    NSLog(@"Connection failed! Error - %@ %@",
+                                 [error localizedDescription],
+                                 [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
                 [self alertStatus:@"Connection Failed" :@"Login Failed!"];
             }
         }

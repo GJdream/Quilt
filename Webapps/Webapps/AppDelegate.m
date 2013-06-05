@@ -14,10 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];*/
     
     
     /*    SideBarViewController* sidebarVC = [[SideBarViewController alloc] init];
@@ -30,7 +30,7 @@
         
         window.rootViewController = splitVC;*/
     
-    UIViewController *vc = [[UIViewController alloc] init];
+    /*UIViewController *vc = [[UIViewController alloc] init];
     _window.rootViewController = vc;
     
     vc.view = [[UIBookmark alloc] initWithFrame:[[UIScreen mainScreen] bounds]Height:1 Width:1 URL:@"www.google.com"];
@@ -38,7 +38,7 @@
     Account *loginAccount = [[Account alloc] initWithUserName:@"hasher" Password:@"test"];
     [NetworkClient loginUser:loginAccount];
     [Account setCurrent:loginAccount];
-    [NetworkClient createBookmark:[[Bookmark alloc] initWithURL:@"www.google.com" Tags:[[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"test", nil] Width:1 Height:1]];
+    [NetworkClient createBookmark:[[Bookmark alloc] initWithURL:@"www.google.com" Tags:[[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"test", nil] Width:1 Height:1]];*/
 
     return YES;
 }

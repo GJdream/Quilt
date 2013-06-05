@@ -64,6 +64,7 @@ Account *currentAccount;
 
 +(void)loginUser:(NSString*)username Password:(NSString*)password
 {
+    NSLog(@"loginUser: %@, %@", username, password);
     Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
     currentAccount = newAccount;
     [NetworkClient loginUser:newAccount];

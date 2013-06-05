@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
+		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288C817591B7200158F8E /* UIBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C717591B7200158F8E /* UIBookmarkView.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
@@ -26,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C617591B7200158F8E /* UIBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmarkView.h; sourceTree = "<group>"; };
@@ -99,6 +104,8 @@
 		79BEAD301754FCAC0056DFBD /* Webapps */ = {
 			isa = PBXGroup;
 			children = (
+				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
+				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
 				795288CC175933A000158F8E /* UIBookmarkViewLayout.h */,
@@ -107,6 +114,7 @@
 				795288CA1759276600158F8E /* Account.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
+				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
 				795288D7175CEB3B00158F8E /* NetworkDelegate.h */,
 				795288D8175CEB3B00158F8E /* NetworkDelegate.m */,
 				795288CF175A7EAD00158F8E /* Bookmark.h */,
@@ -189,6 +197,7 @@
 				79BEAD3D1754FCAC0056DFBD /* Default.png in Resources */,
 				79BEAD3F1754FCAC0056DFBD /* Default@2x.png in Resources */,
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
+				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +217,7 @@
 				795288D1175A7EAD00158F8E /* Bookmark.m in Sources */,
 				795288D4175AB33D00158F8E /* NetworkClient.m in Sources */,
 				795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */,
+				6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
