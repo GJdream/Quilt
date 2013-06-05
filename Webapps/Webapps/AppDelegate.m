@@ -35,8 +35,9 @@
     
     vc.view = [[UIBookmark alloc] initWithFrame:[[UIScreen mainScreen] bounds]Height:1 Width:1 URL:@"www.google.com"];
     
-    [NetworkClient loginUser:@"hasher" Password:@"test"];
-    [Account setCurrent:[[Account alloc] initWithUserName:@"hasher" PasswordHash:@"test"]];
+    Account *loginAccount = [[Account alloc] initWithUserName:@"hasher" Password:@"test"];
+    [NetworkClient loginUser:loginAccount];
+    [Account setCurrent:loginAccount];
     [NetworkClient createBookmark:[[Bookmark alloc] initWithURL:@"www.google.com" Tags:[[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"test", nil] Width:1 Height:1]];
 
     return YES;

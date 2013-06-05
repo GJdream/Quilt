@@ -66,7 +66,7 @@ Account *currentAccount;
 {
     Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
     currentAccount = newAccount;
-    [NetworkClient loginUser:username Password:password];
+    [NetworkClient loginUser:newAccount];
 }
 
 @end

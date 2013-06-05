@@ -17,6 +17,6 @@
 +(void)createBookmark:(Bookmark*)bookmark;
 +(void)shareTag:(NSString*)tag With:(NSSet*)users;
 +(void)deleteBookmark:(Bookmark*)bookmark;
-+(void)loginUser:(NSString*)uname Password:(NSString*)pass;
++(void)loginUser:(Account*)loginAccount;
 
 @end

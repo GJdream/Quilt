@@ -64,6 +64,8 @@ NSUInteger lastUpdatedTime = 0;
     {
         NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
         loginCookie = [fields valueForKey:@"Set-Cookie"];
+        
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
