@@ -71,9 +71,6 @@
 
   if($_SERVER[REQUEST_METHOD] === "GET")
     {
-      $queryString = $_SERVER['QUERY_STRING'];
-      echo $queryString;
-      
       // Return JSON representation of queries
       // This allows us to use pre-existing iOS libraries to parse it
       // This is good because I'm lazy

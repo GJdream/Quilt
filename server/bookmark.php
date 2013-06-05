@@ -54,8 +54,7 @@
       //   - Bookmarks
       //   - Bookmark_Visibility
       //   - Tags
-echo $owner_id . "\n";
-echo $post_id . "\n";
+
       $query  = "DELETE FROM \"Bookmarks\" " .
                 "WHERE owner_id = '$owner_id' AND post_id = '$post_id'";
       $result = pg_query($db, $query);
@@ -88,6 +87,21 @@ echo $post_id . "\n";
   function getBookmarks()
     {
       global $db;
+
+      $owner = $_GET[username];
+
+      // discover user's id
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$owner'";
+      $result   = pg_query($db, $query);
+      $owner_id = pg_fetch_result($result, 0);
+
+      $query  = "SELECT * FROM \"Bookmarks\" " .
+                "WHERE owner_id = '$owner_id'";
+      $result = pg_query($db, $query);
+      $bookmarks = pg_fetch_all($result);
+
+      return $bookmarks;
     }
 
   // tag functionality is implemented here because 
@@ -121,5 +135,14 @@ echo $post_id . "\n";
   function getTags()
     {
       global $db;
+
+      $post_id = $_GET[post_id];
+
+      $query  = "SELECT * FROM \"Tags\" " .
+                "WHERE post_id = '$post_id'";
+      $result = pg_query($db, $query);
+      $tags   = pg_fetch_all($result);
+
+      return $tags;
     }
 ?>

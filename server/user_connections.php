@@ -23,6 +23,26 @@
       $result = pg_query($db, $query);
     }
 
+  function getFriends()
+    {
+      global $db;
+
+      $owner = $_GET[username];
+
+      // discover user's id
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$owner'";
+      $result   = pg_query($db, $query);
+      $owner_id = pg_fetch_result($result, 0);
+
+      $query   = "SELECT * FROM \"Friends\" " .
+                 "WHERE owner_id = '$owner_id'";
+      $result  = pg_query($db, $query);
+      $friends = pg_fetch_all($result);
+
+      return $friends;
+    }
+
   function createGroup()
     {
       global $db;
@@ -80,13 +100,17 @@
       $result = pg_query($db, $query);      
     }
 
-  function getFriends()
-    {
-      global $db;
-    }
-
   function getGroupMembers()
     {
       global $db;
+
+      $group_id = $_GET[group_id];
+
+      $query   = "SELECT * FROM \"Group_Members\" " .
+                 "WHERE group_id = '$group_id'";
+      $result  = pg_query($db, $query);
+      $members = pg_fetch_all($result);
+
+      return $members;
     }
 ?>

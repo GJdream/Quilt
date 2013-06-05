@@ -56,4 +56,14 @@ action: remove_group
 
 ###### GET
 
+action: get_bookmarks  
+ -username  
 
+action: get_tags  
+ -post_id  
+
+action: get_friends  
+ -username  
+
+action: get_group  
+ -group_id  
