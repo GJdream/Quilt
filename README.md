@@ -19,7 +19,7 @@
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
 {self-hosted -> intergration with DoC will come later if required}  
-
+Output queries in JSON {<- Need to adapt code to this still}
 
 
 

@@ -27,8 +27,10 @@
           // the user is a duplicate
           // redirect back to register screen with suitable information
           echo "ERROR";
+          return to_json(false);
         }
 
       // insert successful
+      return to_json(true);
     }
 ?>
