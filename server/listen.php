@@ -9,10 +9,11 @@
 
   global $db;
 
-  require_once('connect.php');
+  require_once('db_connect.php');
   require('validation.php');
   require('register.php');
   require('login.php');
+  require('user_connections.php')
   require('bookmark.php');
   require('registered_only.php');
 
@@ -62,6 +63,8 @@
         destroyFriend();
       else if($_POST['action'] === "new_group")
         createGroup();
+      else if($_POST['action'] === "add_group_member")
+        addGroupMember($_POST[group_id]);
       else if($_POST['action'] === "remove_group")
         destroyGroup();
     }

@@ -79,14 +79,25 @@
   // tag functionality is implemented here because 
   // it is so closely linked with bookmarks
 
+  // will this be called on a per tag basis or always on arrays of tags?
   function createTag()
     {
+      $postid = $_POST[post_id];
+      $tag    = $_post[tag];
 
+      $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
+                "VALUES ('$postid', '$tag')";
+      $result = pg_query($db, $result);
     }
 
   function destroyTag()
     {
+      $postid = $_POST[post_id];
+      $tag    = $_post[tag];
 
+      $query  = "DELETE FROM \"Tags\" " .
+                "WHERE post_id = '$post_id' AND tag = '$tag'";
+      $result = pg_query($db, $query);
     }
 
   function getTags()

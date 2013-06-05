@@ -3,8 +3,8 @@
 
   function attemptUserLogin()
     {
-      $submittedUsername = $_POST['username'];
-      $submittedPassword = sha1($_POST['password']);
+      $submittedUsername = $_POST[username];
+      $submittedPassword = sha1($_POST[password]);
         // md5 and sha1 are not good hash functions to use
         // see 'register.php' for full comment
 
@@ -33,8 +33,8 @@
       // unnecessary to double check the user in question has an active session
       // given the login validations the assumption is their session is genuine by this point
 
-      $_SESSION['active']  = false;
-      unset($_SESSION['user_id']);
+      $_SESSION[active]  = false;
+      unset($_SESSION[user_id]);
 
       session_unset();
       session_destroy();
