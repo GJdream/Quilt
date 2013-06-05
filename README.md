@@ -14,7 +14,12 @@
 
  - Client-side code: {In Progress}  
     - junk data in DB to test app drawing  
-    - networking code on iPad also  
+    - networking code on iPad also
+
+ - GUI: {In Progress} (Now in separate branch)
+    - Login screen (Briony) {Working}
+    - Bookmarks view (Anna)
+    - Navigation view: not started yet
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
@@ -58,9 +63,9 @@ Since we are unaware how many tags people want to associate/how many people will
     - Monday 27th May  
     - Wednesday 29th May  
     - Thursday 30th May  
-   
- - Next Meetings  
-    - Tuesday 4th June  
+    - Tuesday 4th June 
+    
+ - Next Meetings
     - Friday 7th June  
     - Monday 10th June  
     - Wednesday 12th June  
