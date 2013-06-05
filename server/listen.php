@@ -56,6 +56,10 @@
         createTag();
       else if($_POST['action'] === "remove_tag")  
         destroyTag();
+      else if($_POST['action'] === "new_friend")
+        createFriend();
+      else if($_POST['action'] === "remove_friend")
+        destroyFriend();
       else if($_POST['action'] === "new_group")
         createGroup();
       else if($_POST['action'] === "remove_group")
@@ -71,11 +75,12 @@
       // This allows us to use pre-existing iOS libraries to parse it
       // This is good because I'm lazy
       if($_GET['action'] === "get_bookmarks")
-
+        getBookmarks();
       else if($_GET['action'] === "get_tags")
-
+        getTags();
       else if($_GET['action'] === "get_friends")
-
+        getFriends();
       else if($_GET['action'] === "get_group")
+        getGroupMembers();
     }
 ?>

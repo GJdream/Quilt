@@ -34,6 +34,28 @@
         }
     }
     
+  function removeBookmark()
+    {
+      $postid = $_POST[post_id];
+      $owner  = $_POST[owner];
+
+      // must remove all referrences to given post from the following tables:
+      //   - Bookmarks
+      //   - Bookmark_Visibility
+      //   - Tags
+
+      $query  = "DELETE FROM \"Bookmarks\"" .
+                "WHERE owner_id = '$owner' AND post_id = '$post_id'";
+      $result = pg_query($db, $query);
+
+      $query  = "DELETE FROM \"Bookmark_Visibility\"" .
+                "WHERE post_id = '$post_id'";
+      $result = pg_query($db, $query);
+
+      $query  = "DELETE FROM \"Tags\"" .
+                "WHERE post_id = '$post_id'";
+      $result = pg_query($db, $query);
+    }
 
   function resizeBookmark()
     {
@@ -47,5 +69,28 @@
                 "SET p_height = 'pheight', p_width = 'pwidth' " .
                 "WHERE owner = '$owner' AND post_id = '$postid'";
       $result = pg_query($db, $query);
+    }
+
+  function getBookmarks()
+    {
+
+    }
+
+  // tag functionality is implemented here because 
+  // it is so closely linked with bookmarks
+
+  function createTag()
+    {
+
+    }
+
+  function destroyTag()
+    {
+
+    }
+
+  function getTags()
+    {
+
     }
 ?>
