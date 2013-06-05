@@ -1,6 +1,4 @@
 <?php
-  global $db;
-
   function checker()
     {
       if(!isLoggedIn())

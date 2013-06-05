@@ -1,8 +1,8 @@
 <?php
-  global $db;
-
   function register()
     {
+      global $db;
+
       $username = $_POST[username];
       $password = sha1($_POST[password]);
         // md5 and sha1 are not good hash functions to use {md5 moreso}
@@ -17,7 +17,7 @@
                 "VALUES ('$username', '$password')"; 
       pg_send_query($db, $query); 
       $result = pg_get_result($db); 
-      
+
       // pg_send_query and pg_get_result stop the warning 
       // generated from adding a duplicate key being thrown as output to the form
       // the following if statement allows us to deal with the result as we wish
@@ -33,19 +33,24 @@
 
   function unregister()
     {
+      global $db;
+
       $username = $_POST[username];
       $password = sha1($_POST[password]);
         // ask the user for their password as insurance that they do want to unregister
 
+      // pull the user_id for later deletion use
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$username'";
+      $result   = pg_query($db, $query);
+      $id_value = pg_fetch_result($result,0);
+
       // if they are unregistering we want to remove all instances of them
       // from the rest of the database because it makes no sense to referrence
       // a user that no longer exists
-      $query   = "DELETE FROM \"Users\"" .
-                 "WHERE user_name = '$username' AND password = '$password'" . 
-                 "RETURNING user_id";
+      $query   = "DELETE FROM \"Users\" " .
+                 "WHERE user_name = '$username' AND password = '$password'";
       $result  = pg_query($db, $query);
-      echo $result;
-      $user_id = pg_fetch_result($result, 0);
 
       $grpmem_tbl = "\"Group_Members\"";
       $friend_tbl = "\"Friends\"";
@@ -53,9 +58,9 @@
 
       // run logout to clear session data before deleting information?
 
-      if(removeUserFrom($grpmem_tbl, $user_id) 
-         && removeUserFrom($friend_tbl, $user_id)
-         && removeUserFrom($bmarks_tbl, $user_id))
+      if(removeUserFrom($grpmem_tbl, $id_value) &&
+         removeUserFrom($friend_tbl, $id_value) &&
+         removeUserFrom($bmarks_tbl, $id_value))
         {
           // if everything worked, goodbye {and thanks for all the fish}
           return true;
@@ -71,25 +76,25 @@
 
   function removeUserFrom($table, $user_id)
     {
+      global $db;
+
       if($table === "\"Group_Members\"")
         {
-          // aliasing the correct column for use with common code at end of function
-          $query  = "SELECT group_id AS user_id " .
-                    "FROM $table";
+          echo $user_id;
+
+          // delete user lines in table
+          $query  = "DELETE FROM $table" .
+                    "WHERE member_id = '$user_id'";
           $result = pg_query($db, $query);
         }
       else if($table === "\"Friends\"")
         {
           // Friends has a user_id column and a friend_id column
-          // we can't alias friend_id to user_id as the column exists already
-          // here is the deletion case for friend_id
+          // we require to delete the user from other member's friends lists
+          // as well as the users own list
           $query  = "DELETE FROM $table" .
-                    "WHERE friend_id = '$user_id'";
+                    "WHERE friend_id = '$user_id' OR user_id = '$user_id'";
           $result = pg_query($db, $query);
-
-          // the user_id deletion for Friends will occur correctly
-          // using the common code at the end of the function since
-          // the column exists as required
         }
       else if($table === "\"Bookmarks\"")
         {
@@ -97,10 +102,9 @@
           // this will require us to remove those entries from the Bookmark_Visibility table
           // and remove all associated tags for that post from the Tags table
           // as such, we must build an array of the post_ids affected by this
-          $query   = "SELECT post_id FROM $table" .
-                     "WHERE owner_id = '$user_id'";
-          $result  = pg_query($db, $query);
-
+          $query    = "SELECT post_id FROM $table" .
+                      "WHERE owner_id = '$user_id'";
+          $result   = pg_query($db, $query);
           $post_ids = pg_fetch_array($result);
 
           // deleting post data
@@ -115,15 +119,11 @@
               $result = pg_query($db, $query);
             }
 
-          // here is the column alias for the common query deletion below
-          $query   = "SELECT owner_id AS user_id " .
-                     "FROM $table";
-          $result  = pg_query($db, $query);
+          // delete user lines in table
+          $query  = "DELETE FROM $table" .
+                    "WHERE owner_id = '$user_id'";
+          $result = pg_query($db, $query);
         }
-
-      $query  = "DELETE FROM $table" .
-                "WHERE user_id = '$user_id'";
-      $result = pg_query($db, $query); 
 
       // work out better test for success
       // may require a common function for testing result success

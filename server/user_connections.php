@@ -1,33 +1,37 @@
 <?php
-  global $db;
-
   function createFriend()
     {
-      $userid   = $_POST[user_id];
-      $friendid = $_post[friend_id];
+      global $db;
+
+      $user_id   = $_POST[user_id];
+      $friend_id = $_post[friend_id];
 
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
-                "VALUES ('$userid', '$friendid')";
+                "VALUES ('$user_id', '$friend_id')";
       $result = pg_query($db, $result);
     }
 
   function destroyFriend()
     {
-      $userid   = $_POST[user_id];
-      $friendid = $_post[friend_id];
+      global $db;
+
+      $user_id   = $_POST[user_id];
+      $friend_id = $_post[friend_id];
 
       $query  = "DELETE FROM \"Friends\" " .
-                "WHERE user_id = '$userid' AND friend_id = '$friendid'";
+                "WHERE user_id = '$user_id' AND friend_id = '$friend_id'";
       $result = pg_query($db, $query);
     }
 
   function createGroup()
     {
-      $owner    = $_POST[owner];
-      $ownerid  = $_POST[owner_id];
+      global $db;
+
+      $owner    = $_POST[username];
+      $owner_id  = $_POST[user_id];
 
       $query    = "INSERT INTO \"Groups\" (group_owner, group_owner_id) " .
-                  "VALUES ('$owner', '$ownerid') " .
+                  "VALUES ('$owner', '$owner_id') " .
                   "RETURNING group_id";
       $result   = pg_query($db, $result);
       $group_id = pg_fetch_result($result, 0);
@@ -42,6 +46,8 @@
   // members being added to the group at once
   function addGroupMember($group_id)
     {
+      global $db;
+
       // building array of members
       $members   = implode("','", $_POST[members]);
       $memberarr = "ARRAY['" . $members . "']"; // not used?
@@ -57,6 +63,8 @@
 
   function destroyGroup()
     {
+      global $db;
+
       $groupid = $_POST[group_id];
 
       // must delete group listing from the following tables:
@@ -74,11 +82,11 @@
 
   function getFriends()
     {
-
+      global $db;
     }
 
   function getGroupMembers()
     {
-
+      global $db;
     }
 ?>

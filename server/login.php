@@ -1,8 +1,8 @@
 <?php
-  global $db;
-
   function attemptUserLogin()
     {
+      global $db;
+
       $submittedUsername = $_POST[username];
       $submittedPassword = sha1($_POST[password]);
         // md5 and sha1 are not good hash functions to use
@@ -30,6 +30,8 @@
 
   function logoutUser()
     {
+      global $db;
+
       // unnecessary to double check the user in question has an active session
       // given the login validations the assumption is their session is genuine by this point
 

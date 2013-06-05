@@ -1,21 +1,24 @@
 <?php
-  global $db;
-
   function createBookmark()
     {
-      $owner   = $_POST[owner];
+      global $db;
+
+      $owner   = $_POST[username];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
 
-      $query  = "INSERT INTO \"Bookmarks\" (owner, url, p_height, p_width) " .
-                "VALUES ('$owner', '$link', '$pheight', '$pwidth') " .
-                "RETURNING post_id";
-      echo $query;
+      // discover user's id
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$owner'";
+      $result   = pg_query($db, $query);
+      $owner_id = pg_fetch_result($result, 0);
 
-      $result = pg_query($db, $query);
-      echo $result;
-      
+      // inserting bookmark
+      $query   = "INSERT INTO \"Bookmarks\" (owner_id, url, p_height, p_width) " .
+                 "VALUES ('$owner_id', '$link', '$pheight', '$pwidth') " .
+                 "RETURNING post_id";
+      $result  = pg_query($db, $query);     
       $post_id = pg_fetch_result($result, 0);
       
       if($_POST[tags])
@@ -34,33 +37,44 @@
         }
     }
     
-  function removeBookmark()
+  function destroyBookmark()
     {
-      $postid = $_POST[post_id];
-      $owner  = $_POST[owner];
+      global $db;
+
+      $post_id = $_POST[post_id];
+      $owner   = $_POST[username];
+
+      // discover user's id
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$owner'";
+      $result   = pg_query($db, $query);
+      $owner_id = pg_fetch_result($result, 0);
 
       // must remove all referrences to given post from the following tables:
       //   - Bookmarks
       //   - Bookmark_Visibility
       //   - Tags
-
-      $query  = "DELETE FROM \"Bookmarks\"" .
-                "WHERE owner_id = '$owner' AND post_id = '$post_id'";
+echo $owner_id . "\n";
+echo $post_id . "\n";
+      $query  = "DELETE FROM \"Bookmarks\" " .
+                "WHERE owner_id = '$owner_id' AND post_id = '$post_id'";
       $result = pg_query($db, $query);
 
-      $query  = "DELETE FROM \"Bookmark_Visibility\"" .
+      $query  = "DELETE FROM \"Bookmark_Visibility\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
 
-      $query  = "DELETE FROM \"Tags\"" .
+      $query  = "DELETE FROM \"Tags\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
     }
 
   function resizeBookmark()
     {
+      global $db;
+
       $postid  = $_POST[post_id];
-      $owner   = $_POST[owner];
+      $owner   = $_POST[username];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
@@ -73,7 +87,7 @@
 
   function getBookmarks()
     {
-
+      global $db;
     }
 
   // tag functionality is implemented here because 
@@ -82,17 +96,21 @@
   // will this be called on a per tag basis or always on arrays of tags?
   function createTag()
     {
-      $postid = $_POST[post_id];
+      global $db;
+
+      $post_id = $_POST[post_id];
       $tag    = $_post[tag];
 
       $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
-                "VALUES ('$postid', '$tag')";
+                "VALUES ('$post_id', '$tag')";
       $result = pg_query($db, $result);
     }
 
   function destroyTag()
     {
-      $postid = $_POST[post_id];
+      global $db;
+
+      $post_id = $_POST[post_id];
       $tag    = $_post[tag];
 
       $query  = "DELETE FROM \"Tags\" " .
@@ -102,6 +120,6 @@
 
   function getTags()
     {
-
+      global $db;
     }
 ?>

@@ -17,7 +17,7 @@ action: attempt_login
 action: logout_user  
 
 action: new_bookmark  
- -owner  
+ -username  
  -url  
  -p_height  
  -p_width  
@@ -25,7 +25,7 @@ action: new_bookmark
 
 action: remove_bookmark  
  -post_id  
- -owner  
+ -username  
 
 action: new_tag  
  -post_id  
@@ -44,8 +44,7 @@ action: remove_friend
  -friend_id  
 
 action: new_group  
- -owner  
- -owner_id  
+ -username  
 
 action: add_group_member  
  -group_id  

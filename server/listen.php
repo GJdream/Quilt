@@ -13,7 +13,7 @@
   require('validation.php');
   require('register.php');
   require('login.php');
-  require('user_connections.php')
+  require('user_connections.php');
   require('bookmark.php');
   require('registered_only.php');
 

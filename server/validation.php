@@ -1,6 +1,4 @@
-<?php
-  global $db;
-  
+<?php  
   function validateUser()
     {
       session_regenerate_id();
