@@ -57,7 +57,7 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)loginUser:(Account*)account
 {
-    NSString *params = [NSString stringWithFormat:@"action=new_user&username=%@&password=%@", [account username], [account password]];
+    NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
  
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -76,7 +76,7 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)createAccount:(Account*)account
 {
-    NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
+    NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -94,8 +94,7 @@ NSUInteger lastUpdatedTime = 0;
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
-               NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
-               loginCookie = [fields valueForKey:@"Set-Cookie"];
+               NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                
                if (error != nil)
                    NSLog(@"Connection failed! Error - %@ %@",

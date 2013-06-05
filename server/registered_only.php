@@ -8,10 +8,9 @@
         {
           echo "You should log in to view this section\n";
           // redirect
-          return to_json(false);
+          return;
         }
 
       echo "You are still logged in\n";
-      return to_json(true);
     }
 ?>

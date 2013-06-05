@@ -19,14 +19,14 @@
       if(pg_num_rows($result) < 1)
         {
           // this user does not exist -> reattempt login
-          return to_json(false);
         }
 
       // user may login -> setup their session
       validateUser();
 
       // to be safe, check login was completed successfully
-      return isLoggedIn();
+      $loggedin = isLoggedIn();
+      return $loggedin;
     }
 
   function logoutUser()
@@ -43,6 +43,5 @@
       session_destroy();
 
       // redirect to a home location
-      return to_json(true);
     }
 ?>
