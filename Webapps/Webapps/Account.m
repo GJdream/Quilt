@@ -41,10 +41,10 @@ Account *currentAccount;
     
     if(self)
     {
-        self.username = initUsername;
-        self.password = initPassword;
-        self.tagToBookmark = [[NSDictionary alloc] init];
-        self.urlToBookmark = [[NSDictionary alloc] init];
+        _username = initUsername;
+        _password = initPassword;
+        _tagToBookmark = [[NSDictionary alloc] init];
+        _urlToBookmark = [[NSDictionary alloc] init];
     }
     
     return self;
@@ -52,7 +52,7 @@ Account *currentAccount;
 
 -(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
-    Bookmark *newBookmark = [[Bookmark alloc] initWithURL:url Tags:tags Width:width Height:height];
+    Bookmark *newBookmark = [[Bookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height];
     for (NSString *tag in tags) {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)

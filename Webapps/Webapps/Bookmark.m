@@ -10,17 +10,17 @@
 
 @implementation Bookmark
 
--(Bookmark*)initWithURL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
+-(Bookmark*)initWithTitle:(NSString *)title URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
     self = [super init];
-    if(self)
+    if (self)
     {
-        self.url = url;
-        self.tags = tags;
-        self.width = width;
-        self.height = height;
+        _title = title;
+        _url = url;
+        _tags = tags;
+        _width = width;
+        _height = height;
     }
-    
     return self;
 }
 @end

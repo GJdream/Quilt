@@ -10,11 +10,12 @@
 
 @interface Bookmark : NSObject
 
+@property NSString *title;
 @property NSString *url;
 @property NSMutableArray *tags;
 @property NSInteger width;
 @property NSInteger height;
 
--(Bookmark*)initWithURL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
+-(Bookmark*)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
 
 @end
