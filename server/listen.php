@@ -38,22 +38,28 @@
       undo_magic_quotes_gpc($_COOKIE);
     }
 
-  echo "in listen.php\n";
   if($_SERVER[REQUEST_METHOD] === "POST")
     {
       if($_POST['action'] === "new_account")
         register();
-      else if($_POST['action'] === "new_bookmark")
-        createBookmark();
+      else if($_POST['action'] === "remove_account")
+        unregister();
       else if($_POST['action'] === "attempt_login")
-      {
-      	echo "attempt_login\n";
         attemptUserLogin();
-      }
-      else if($_POST['action'] === "checking")
-        checker();
       else if($_POST['action'] === "logout_user")
         logoutUser();
+      else if($_POST['action'] === "new_bookmark")
+        createBookmark();
+      else if($_POST['action'] === "remove_bookmark")
+        
+      else if($_POST['action'] === "new_tag")
+
+      else if($_POST['action'] === "remove_tag")  
+
+      else if($_POST['action'] === "new_group")
+
+      else if($_POST['action'] === "remove_group")
+        
     }
 
   if($_SERVER[REQUEST_METHOD] === "GET")
@@ -61,11 +67,15 @@
       $queryString = $_SERVER['QUERY_STRING'];
       echo $queryString;
       
-      if($_GET['action'] === "bookmarks")
-      {
-      	// Return JSON representation of bookmarks
-      	// This allows us to use pre-existing iOS libraries to parse it
-      	// This is good because I'm lazy
-      }
+      // Return JSON representation of queries
+      // This allows us to use pre-existing iOS libraries to parse it
+      // This is good because I'm lazy
+      if($_GET['action'] === "get_bookmarks")
+
+      else if($_GET['action'] === "get_tags")
+
+      else if($_GET['action'] === "get_friends")
+
+      else if($_GET['action'] === "get_group")
     }
 ?>
