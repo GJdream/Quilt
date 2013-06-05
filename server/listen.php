@@ -51,15 +51,15 @@
       else if($_POST['action'] === "new_bookmark")
         createBookmark();
       else if($_POST['action'] === "remove_bookmark")
-        
+        destroyBookmark();
       else if($_POST['action'] === "new_tag")
-
+        createTag();
       else if($_POST['action'] === "remove_tag")  
-
+        destroyTag();
       else if($_POST['action'] === "new_group")
-
+        createGroup();
       else if($_POST['action'] === "remove_group")
-        
+        destroyGroup();
     }
 
   if($_SERVER[REQUEST_METHOD] === "GET")

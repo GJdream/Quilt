@@ -1,9 +1,8 @@
 <?php
+  global $db;
 
   function createBookmark()
     {
-      global $db;
-
       $owner   = $_POST[owner];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
@@ -38,8 +37,6 @@
 
   function resizeBookmark()
     {
-      global $db;
-
       $postid  = $_POST[post_id];
       $owner   = $_POST[owner];
       $link    = $_POST[url];

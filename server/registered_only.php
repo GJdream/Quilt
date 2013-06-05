@@ -1,9 +1,8 @@
 <?php
-  
+  global $db;
+
   function checker()
     {
-      global $db;
-
       if(!isLoggedIn())
         {
           echo "You should log in to view this section\n";
