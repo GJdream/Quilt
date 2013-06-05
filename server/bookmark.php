@@ -101,7 +101,7 @@
       $result = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
 
-      return $bookmarks;
+      return json_encode($bookmarks);
     }
 
   // tag functionality is implemented here because 
@@ -143,6 +143,6 @@
       $result = pg_query($db, $query);
       $tags   = pg_fetch_all($result);
 
-      return $tags;
+      return json_encode($tags);
     }
 ?>

@@ -75,12 +75,12 @@
       // This allows us to use pre-existing iOS libraries to parse it
       // This is good because I'm lazy
       if($_GET['action'] === "get_bookmarks")
-        getBookmarks();
+        return getBookmarks();
       else if($_GET['action'] === "get_tags")
-        getTags();
+        return getTags();
       else if($_GET['action'] === "get_friends")
-        getFriends();
+        return getFriends();
       else if($_GET['action'] === "get_group")
-        getGroupMembers();
+        return getGroupMembers();
     }
 ?>

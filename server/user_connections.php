@@ -40,7 +40,7 @@
       $result  = pg_query($db, $query);
       $friends = pg_fetch_all($result);
 
-      return $friends;
+      return json_encode($friends);
     }
 
   function createGroup()
@@ -111,6 +111,6 @@
       $result  = pg_query($db, $query);
       $members = pg_fetch_all($result);
 
-      return $members;
+      return json_encode($members);
     }
 ?>
