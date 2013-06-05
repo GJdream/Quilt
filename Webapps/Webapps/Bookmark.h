@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Team Awesome. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface Bookmark : NSObject
+@interface Bookmark : UICollectionViewCell
 
 @property NSString *title;
 @property NSString *url;
@@ -16,6 +16,6 @@
 @property NSInteger width;
 @property NSInteger height;
 
--(Bookmark*)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
+-(Bookmark *)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
 
 @end

@@ -10,28 +10,18 @@
 
 @implementation UIBookmark
 
-- (id)initWithFrame:(CGRect)frame Height:(NSInteger)initHeight Width:(NSInteger)initWidth URL:(NSString*)initURL
+- (UIBookmark *)initWithTitle:(UILabel *)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.height = initHeight;
-        self.width = initWidth;
-        self.URL = initURL;
-        
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:frame];
-        textLabel.text = initURL;
-        [self addSubview:textLabel];
+    self = [super init];
+    if (self)
+    {
+        _label = label;
+        _url = url;
+        _tags = tags;
+        _width = width;
+        _height = height;
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end
+

@@ -50,6 +50,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginClicked:" destination="ifq-ry-ZU0" eventType="touchUpInside" id="PKe-GY-Akv"/>
+                                    <segue destination="fX2-UC-hl8" kind="modal" id="Myq-UH-eBC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,6 +72,7 @@
                             <action selector="backgroundClick:" destination="ifq-ry-ZU0" eventType="touchUpInside" id="HOZ-2A-kh6"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="wql-d2-eou"/>
                     <connections>
                         <outlet property="txtPassword" destination="BlK-xO-3Qo" id="cBt-VA-Xhl"/>
                         <outlet property="txtUsername" destination="aQ6-cb-Cqy" id="TNI-r0-Dhz"/>
@@ -80,8 +82,48 @@
             </objects>
             <point key="canvasLocation" x="-487" y="-390"/>
         </scene>
+        <!--Bookmark View Controller - Bookmarks-->
+        <scene sceneID="Z9K-vc-dYU">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="fX2-UC-hl8" customClass="BookmarkViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="8s0-OJ-7je">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mKh-AP-86t">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookmarkCell" id="zX5-d9-jpk" customClass="UIBookmark">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="customSize" width="200" height="200"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fX2-UC-hl8" id="8Dd-Mg-cls"/>
+                            <outlet property="delegate" destination="fX2-UC-hl8" id="Yai-6P-3qN"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="TmH-sn-WmV"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZH-zp-la6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="-390"/>
+        </scene>
     </scenes>
     <classes>
+        <class className="BookmarkViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
+        </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
@@ -93,6 +135,21 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIBookmark" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -10,7 +10,7 @@
 
 @implementation Bookmark
 
--(Bookmark*)initWithTitle:(NSString *)title URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
+-(Bookmark *)initWithTitle:(NSString *)title URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
     self = [super init];
     if (self)
@@ -23,5 +23,4 @@
     }
     return self;
 }
-
 @end

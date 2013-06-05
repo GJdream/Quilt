@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIBookmark : UIControl
-    @property NSInteger height;
-    @property NSInteger width;
-    @property NSString *URL;
+@interface UIBookmark : UICollectionViewCell
 
-- (id)initWithFrame:(CGRect)frame Height:(NSInteger)initHeight Width:(NSInteger)initWidth URL:(NSString*)initURL;
+@property UILabel *label;
+@property NSString *url;
+@property NSMutableArray *tags;
+@property NSInteger width;
+@property NSInteger height;
+
+-(UIBookmark *)initWithTitle:(UILabel *)label URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
+
 @end

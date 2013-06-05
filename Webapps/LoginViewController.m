@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "NetworkClient.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
