@@ -20,6 +20,8 @@
     NSMutableArray *bookmarks = [[NSMutableArray alloc] init];
     self.bookmarksArray = bookmarks;
     NSMutableArray *defaultTags = [[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"test", nil];
+/*    UILabel *label = [[UILabel alloc] init];
+    label.text = @"Google";*/
     UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:@"Google" URL:@"www.google.com" Tags:defaultTags Width:1 Height:1];
     [self addBookmark:bookmark];
 }

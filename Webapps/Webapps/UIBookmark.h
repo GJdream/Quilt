@@ -10,12 +10,13 @@
 
 @interface UIBookmark : UICollectionViewCell
 
-@property UILabel *label;
+@property (strong, nonatomic) IBOutlet UILabel *label;
+//@property UILabel *label;
 @property NSString *url;
 @property NSMutableArray *tags;
 @property NSInteger width;
 @property NSInteger height;
 
--(UIBookmark *)initWithTitle:(UILabel *)label URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
+-(UIBookmark *)initWithTitle:(NSString *)label URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height;
 
 @end

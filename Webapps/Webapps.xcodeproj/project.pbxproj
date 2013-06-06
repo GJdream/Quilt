@@ -13,9 +13,7 @@
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
-		795288C817591B7200158F8E /* UIBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C717591B7200158F8E /* UIBookmarkView.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
-		795288CE175933A000158F8E /* UIBookmarkViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CD175933A000158F8E /* UIBookmarkViewLayout.m */; };
 		795288D1175A7EAD00158F8E /* Bookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D0175A7EAD00158F8E /* Bookmark.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
 		795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D8175CEB3B00158F8E /* NetworkDelegate.m */; };
@@ -43,12 +41,8 @@
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
-		795288C617591B7200158F8E /* UIBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmarkView.h; sourceTree = "<group>"; };
-		795288C717591B7200158F8E /* UIBookmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmarkView.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		795288CA1759276600158F8E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		795288CC175933A000158F8E /* UIBookmarkViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmarkViewLayout.h; sourceTree = "<group>"; };
-		795288CD175933A000158F8E /* UIBookmarkViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmarkViewLayout.m; sourceTree = "<group>"; };
 		795288CF175A7EAD00158F8E /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmark.h; sourceTree = "<group>"; };
 		795288D0175A7EAD00158F8E /* Bookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bookmark.m; sourceTree = "<group>"; };
 		795288D2175AB33C00158F8E /* NetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClient.h; sourceTree = "<group>"; };
@@ -139,10 +133,6 @@
 				795288D8175CEB3B00158F8E /* NetworkDelegate.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
-				795288C617591B7200158F8E /* UIBookmarkView.h */,
-				795288C717591B7200158F8E /* UIBookmarkView.m */,
-				795288CC175933A000158F8E /* UIBookmarkViewLayout.h */,
-				795288CD175933A000158F8E /* UIBookmarkViewLayout.m */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 			);
 			path = Webapps;
@@ -231,9 +221,7 @@
 				79BEAD371754FCAC0056DFBD /* main.m in Sources */,
 				79BEAD3B1754FCAC0056DFBD /* AppDelegate.m in Sources */,
 				795288C517590D3500158F8E /* UIBookmark.m in Sources */,
-				795288C817591B7200158F8E /* UIBookmarkView.m in Sources */,
 				795288CB1759276600158F8E /* Account.m in Sources */,
-				795288CE175933A000158F8E /* UIBookmarkViewLayout.m in Sources */,
 				795288D1175A7EAD00158F8E /* Bookmark.m in Sources */,
 				795288D4175AB33D00158F8E /* NetworkClient.m in Sources */,
 				795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */,
