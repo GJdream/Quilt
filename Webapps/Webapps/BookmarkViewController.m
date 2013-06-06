@@ -8,6 +8,7 @@
 
 #import "BookmarkViewController.h"
 #import "BookmarkDataController.h"
+#import "WebViewController.h"
 
 @implementation BookmarkViewController
 
@@ -50,6 +51,22 @@
     cell.label.text = bookmarkAtIndex.label.text;
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIBookmark *bookmark = [self.dataController bookmarkInListAtIndex:indexPath.row];
+    NSString *url = bookmark.url;
+    [self performSegueWithIdentifier:@"webSegue" sender:url];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"webSegue"])
+    {
+        WebViewController *bookmarkViewController = segue.destinationViewController;
+        bookmarkViewController.url = sender;
+    }
 }
 
 @end
