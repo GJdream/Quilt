@@ -6,36 +6,29 @@
  - Set-up Database {Complete}  
  - Server side code to get commands from network to serve DB  
     - Link DB with PHP {Complete}
-    - Need to be able to listen on network and return requested data {In Progress}  
-      - Fill DB with junk data for testing throughout  
+    - Need to be able to listen on network and return requested data {Possible, being worked with}  
 
  - every request from app needs ID in it  
     - hash request with hash of user password  
 
  - Client-side code: {In Progress}  
     - junk data in DB to test app drawing  
-    - networking code on iPad also  
+    - networking code on iPad also
+
+ - GUI: {In Progress} (Now in separate branch)
+    - Login screen (Briony) {Working}
+    - Bookmarks view (Anna)
+    - Navigation view: not started yet
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
 {self-hosted -> intergration with DoC will come later if required}  
-Output queries in JSON {<- Need to adapt code to this still}
+Output queries in JSON {In Progress - Eleanor}
 
 
 
 ###### Functions to implement:
- - remove bookmarks
- - update bookmarks
- - create group
- - get all bookmarks
- - get all tags {from specific user}
- - share tags
- - remove account
- - remove groups
- - edit groups
- - add friends
- - remove friends
- - {if you think of more, feel free to add to this list}
+All functions aside from get requests are currently implemented. Once this is done application functionality will be pulled out to a seperate .md file for ease of reading.
   
 
   
@@ -58,9 +51,9 @@ Since we are unaware how many tags people want to associate/how many people will
     - Monday 27th May  
     - Wednesday 29th May  
     - Thursday 30th May  
-   
- - Next Meetings  
-    - Tuesday 4th June  
+    - Tuesday 4th June 
+    
+ - Next Meetings
     - Friday 7th June  
     - Monday 10th June  
     - Wednesday 12th June  
