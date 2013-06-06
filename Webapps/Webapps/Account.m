@@ -8,7 +8,6 @@
 
 #import "Account.h"
 #import "NetworkClient.h"
-#import "Bookmark.h"
 
 @interface Account ()
     @property (readwrite) NSString *username;
@@ -52,7 +51,7 @@ Account *currentAccount;
 
 -(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
-    Bookmark *newBookmark = [[Bookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height];
+    UIBookmark *newBookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height];
     for (NSString *tag in tags) {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)

@@ -11,29 +11,32 @@
 
 NSString *session_id;
 
-@interface NetworkClient ()
-+(NSMutableURLRequest*)createRequest;
-@end
-
 @implementation NetworkClient
 NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
 
-+(NSMutableURLRequest*)createRequest
++(NSMutableURLRequest*)createGETRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
-    NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", url, params]]];
     [retRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     if(session_id)
     {
         [retRequest setValue:session_id forHTTPHeaderField:@"Cookie"];
     }
     
+    [retRequest setHTTPMethod:@"GET"];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:retRequest queue: queue completionHandler:handler];
+    
     return retRequest;
 }
 
 +(NSMutableURLRequest*)createPOSTRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
+    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [retRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 
@@ -52,13 +55,21 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)getNewBookmarks
 {
-    
+    NSString *params = @"action=get_bookmarks";
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
 }
 
 +(void)loginUser:(Account*)account
 {
     NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
-    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
  
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {
@@ -71,6 +82,9 @@ NSUInteger lastUpdatedTime = 0;
                        ^(void){
                            [NetworkController loginComplete:data];
                        });
+        
+        NSLog(@"%@", @"Getting bookmarks");
+        [NetworkClient getNewBookmarks];
 
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
@@ -93,7 +107,7 @@ NSUInteger lastUpdatedTime = 0;
            }];
 }
 
-+(void)createBookmark:(Bookmark*)bookmark
++(void)createBookmark:(UIBookmark*)bookmark
 {
     NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=%ld&p_width=%ld", [[Account current] username], [bookmark url], (long)[bookmark height], (long)[bookmark width]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
@@ -113,7 +127,7 @@ NSUInteger lastUpdatedTime = 0;
     
 }
 
-+(void)deleteBookmark:(Bookmark*)bookmark
++(void)deleteBookmark:(UIBookmark*)bookmark
 {
     
 }
