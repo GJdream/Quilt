@@ -1,5 +1,5 @@
 <?php  
-  function validateUser()
+  function validateUser($username)
     {
       session_regenerate_id();
       $_SESSION[active]  = true;

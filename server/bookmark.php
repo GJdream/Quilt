@@ -4,7 +4,7 @@
       global $json_return;
       global $db;
 
-      $owner   = $_POST[username];
+      $owner   = $_SESSION[user_id];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
@@ -47,7 +47,7 @@
       $success = true;
 
       $post_id = $_POST[post_id];
-      $owner   = $_POST[username];
+      $owner   = $_SESSION[user_id];
 
 
       // discover user's id
@@ -90,7 +90,7 @@
       global $db;
 
       $postid  = $_POST[post_id];
-      $owner   = $_POST[username];
+      $owner   = $_SESSION[user_id];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
@@ -106,7 +106,7 @@
       global $db;
       global $json_return;
 
-      $owner = $_GET[username];
+      $owner = $_SESSION[user_id];
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
@@ -119,7 +119,8 @@
       $result = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
 
-      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
+      if($bookmarks)
+	      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
     }
 
   // tag functionality is implemented here because 
@@ -131,7 +132,7 @@
       global $db;
 
       $post_id = $_POST[post_id];
-      $tag    = $_post[tag];
+      $tag    = $_POST[tag];
 
       $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
                 "VALUES ('$post_id', '$tag')";
@@ -143,7 +144,7 @@
       global $db;
 
       $post_id = $_POST[post_id];
-      $tag    = $_post[tag];
+      $tag    = $_POST[tag];
 
       $query  = "DELETE FROM \"Tags\" " .
                 "WHERE post_id = '$post_id' AND tag = '$tag'";

@@ -24,7 +24,7 @@
       {
     	  $result_array = pg_fetch_row($result, 0);
 	      if($result_array[0] === $submittedPassword)
-    	  	validateUser();
+    	  	validateUser($submittedUsername);
 	      else
       		$json_return = array_merge($json_return, array("password_correct" => false));
       }

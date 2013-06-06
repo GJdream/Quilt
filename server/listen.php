@@ -70,7 +70,6 @@
       else if($_POST['action'] === "remove_group")
         destroyGroup();
     }
-
   else if($_SERVER[REQUEST_METHOD] === "GET")
     {
       // Return JSON representation of queries
