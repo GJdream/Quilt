@@ -2,25 +2,31 @@
 POST /~ev411/listen.php HTTP/1.1
 Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
-Content-length: 49      
-
-action=new_account&username=hasher&password=test
-
-
-POST /~ev411/listen.php HTTP/1.1
-Host: www.doc.ic.ac.uk
-Content-Type: application/x-www-form-urlencoded
 Content-length: 51      
 
-action=attempt_login&username=hasher&password=test
+action=new_account&username=Jason&password=testing
 
 
 POST /~ev411/listen.php HTTP/1.1
 Host: www.doc.ic.ac.uk
 Content-Type: application/x-www-form-urlencoded
-Content-length: 32
+Content-length: 54      
 
-action=checking&username=hasher
+action=remove_account&username=Jason&password=testing
+
+
+POST /~ev411/listen.php HTTP/1.1
+Host: www.doc.ic.ac.uk
+Content-Type: application/x-www-form-urlencoded
+Content-length: 50
+
+action=remove_bookmark&username=dillan&post_id=13
+
+
+
+
+
+
 
 
 GET /~ev411/listen.php?username=hasher HTTP/1.1

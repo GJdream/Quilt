@@ -8,11 +8,14 @@
     // which would set a header otherwise, which has been making session_start() unuseable
 
   global $db;
+  global $json_return;
+  $json_return = array();
 
-  require_once('connect.php');
+  require_once('db_connect.php');
   require('validation.php');
   require('register.php');
   require('login.php');
+  require('user_connections.php');
   require('bookmark.php');
   require('registered_only.php');
 
@@ -38,34 +41,49 @@
       undo_magic_quotes_gpc($_COOKIE);
     }
 
-  echo "in listen.php\n";
   if($_SERVER[REQUEST_METHOD] === "POST")
     {
       if($_POST['action'] === "new_account")
         register();
-      else if($_POST['action'] === "new_bookmark")
-        createBookmark();
+      else if($_POST['action'] === "remove_account")
+        unregister();
       else if($_POST['action'] === "attempt_login")
-      {
-      	echo "attempt_login\n";
         attemptUserLogin();
-      }
-      else if($_POST['action'] === "checking")
-        checker();
       else if($_POST['action'] === "logout_user")
         logoutUser();
+      else if($_POST['action'] === "new_bookmark")
+        createBookmark();
+      else if($_POST['action'] === "remove_bookmark")
+        destroyBookmark();
+      else if($_POST['action'] === "new_tag")
+        createTag();
+      else if($_POST['action'] === "remove_tag")  
+        destroyTag();
+      else if($_POST['action'] === "new_friend")
+        createFriend();
+      else if($_POST['action'] === "remove_friend")
+        destroyFriend();
+      else if($_POST['action'] === "new_group")
+        createGroup();
+      else if($_POST['action'] === "add_group_member")
+        addGroupMember($_POST[group_id]);
+      else if($_POST['action'] === "remove_group")
+        destroyGroup();
     }
-
-  if($_SERVER[REQUEST_METHOD] === "GET")
+  else if($_SERVER[REQUEST_METHOD] === "GET")
     {
-      $queryString = $_SERVER['QUERY_STRING'];
-      echo $queryString;
-      
-      if($_GET['action'] === "bookmarks")
-      {
-      	// Return JSON representation of bookmarks
-      	// This allows us to use pre-existing iOS libraries to parse it
-      	// This is good because I'm lazy
-      }
+      // Return JSON representation of queries
+      // This allows us to use pre-existing iOS libraries to parse it
+      // This is good because I'm lazy
+      if($_GET['action'] === "get_bookmarks")
+        getBookmarks();
+      else if($_GET['action'] === "get_tags")
+        getTags();
+      else if($_GET['action'] === "get_friends")
+        getFriends();
+      else if($_GET['action'] === "get_group")
+        getGroupMembers();
     }
+  
+  echo json_encode($json_return);
 ?>

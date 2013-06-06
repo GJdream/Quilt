@@ -1,25 +1,20 @@
-<?php
-  
-  function validateUser()
+<?php  
+  function validateUser($username)
     {
       session_regenerate_id();
-      $_SESSION['active']  = true;
-      $_SESSION['user_id'] = $username;
-      echo "validating log status";
+      $_SESSION[active]  = true;
+      $_SESSION[user_id] = $username;
+      //echo "validating log status";
     }
 
   function isLoggedIn()
     {
-      echo "checking log status";
+      global $json_return;
+        
+      $loginStatus = isset($_SESSION[active]) && $_SESSION[active];
 
-      if(isset($_SESSION['active']) && $_SESSION['active'])
-        {
-          echo $_SESSION['user_id'];
-          echo " You are logged in";
-          return true;
-        }
-
-      echo "You are not logged in";
-      return false;
+      //echo "You are not logged in";
+	  $json_return = array_merge($json_return, array("login" => $loginStatus));
+      return $loginStatus;
     }
 ?>
