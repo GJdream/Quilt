@@ -7,6 +7,7 @@
 //
 
 #import "NetworkController.h"
+#import "LoginViewController.h"
 #import "AppDelegate.h"
 
 @implementation NetworkController
@@ -14,7 +15,7 @@
 +(void)loginComplete:(NSData*)data
 {
     AppDelegate *d = [[UIApplication sharedApplication] delegate];
-    UIViewController *currentVC = d.window.rootViewController;
+    LoginViewController *currentVC = (LoginViewController*)d.window.rootViewController;
     
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -24,6 +25,8 @@
     else //if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
     {
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+        
+        currentVC.loginButton.enabled = NO;
     }
 }
 
