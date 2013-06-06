@@ -64,8 +64,9 @@
 {
     if ([segue.identifier isEqualToString:@"webSegue"])
     {
-        WebViewController *bookmarkViewController = segue.destinationViewController;
-        bookmarkViewController.url = sender;
+        WebViewController *webViewController = segue.destinationViewController;
+        webViewController.url = sender;
+        webViewController.dataController = self.dataController;
     }
 }
 

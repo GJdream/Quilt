@@ -7,7 +7,7 @@
 //
 
 #import "WebViewController.h"
-
+#import "AddBookmarkViewController.h"
 #import "UIBookmark.h"
 
 @interface WebViewController ()
@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *fullURL = @"http://google.com";
+    NSString *fullURL = self.url;
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [_viewWeb loadRequest:requestObj];
@@ -39,6 +39,30 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)done:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"ReturnInput"])
+    {
+        AddBookmarkViewController *addController = [segue sourceViewController];
+        if (addController.bookmark)
+        {
+            [self.dataController addBookmark:addController.bookmark];
+            // Call function to reload bookmarkDataController
+            //[[self.dataController bookmarksArray] reloadData];
+        }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"CancelInput"])
+    {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 @end

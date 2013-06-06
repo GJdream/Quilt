@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookmarkDataController.h"
 
 @interface WebViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;
 @property (strong, nonatomic) NSString *url;
+@property (strong, nonatomic) BookmarkDataController *dataController;
+
+- (IBAction)done:(UIStoryboardSegue *)segue;
+- (IBAction)cancel:(UIStoryboardSegue *)segue;
 
 @end

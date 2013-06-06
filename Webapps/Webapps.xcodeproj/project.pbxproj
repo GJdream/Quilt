@@ -16,6 +16,7 @@
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
 		795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D8175CEB3B00158F8E /* NetworkDelegate.m */; };
+		79B9314917612E8C006911AF /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9314817612E8C006911AF /* AddBookmarkViewController.m */; };
 		79BEAD2B1754FCAC0056DFBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2A1754FCAC0056DFBD /* UIKit.framework */; };
 		79BEAD2D1754FCAC0056DFBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2C1754FCAC0056DFBD /* Foundation.framework */; };
 		79BEAD2F1754FCAC0056DFBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2E1754FCAC0056DFBD /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 		795288D3175AB33D00158F8E /* NetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClient.m; sourceTree = "<group>"; };
 		795288D7175CEB3B00158F8E /* NetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDelegate.h; sourceTree = "<group>"; };
 		795288D8175CEB3B00158F8E /* NetworkDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDelegate.m; sourceTree = "<group>"; };
+		79B9314717612E8C006911AF /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
+		79B9314817612E8C006911AF /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
 		79BEAD271754FCAC0056DFBD /* Webapps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Webapps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79BEAD2A1754FCAC0056DFBD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79BEAD2C1754FCAC0056DFBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,8 @@
 			children = (
 				795288C91759276600158F8E /* Account.h */,
 				795288CA1759276600158F8E /* Account.m */,
+				79B9314717612E8C006911AF /* AddBookmarkViewController.h */,
+				79B9314817612E8C006911AF /* AddBookmarkViewController.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
 				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
@@ -118,8 +123,6 @@
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
-				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
-				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
@@ -128,6 +131,8 @@
 				795288D8175CEB3B00158F8E /* NetworkDelegate.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
+				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
+				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 			);
 			path = Webapps;
@@ -224,6 +229,7 @@
 				2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */,
 				79EC4ABF1760AAE300D6F757 /* NetworkController.m in Sources */,
 				2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */,
+				79B9314917612E8C006911AF /* AddBookmarkViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
