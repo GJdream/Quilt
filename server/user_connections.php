@@ -9,6 +9,8 @@
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$user_id', '$friend_id')";
       $result = pg_query($db, $result);
+      
+      echo json_encode($result);
     }
 
   function destroyFriend()
@@ -21,6 +23,8 @@
       $query  = "DELETE FROM \"Friends\" " .
                 "WHERE user_id = '$user_id' AND friend_id = '$friend_id'";
       $result = pg_query($db, $query);
+      
+      echo json_encode($result);
     }
 
   function getFriends()
@@ -40,7 +44,7 @@
       $result  = pg_query($db, $query);
       $friends = pg_fetch_all($result);
 
-      return json_encode($friends);
+      echo json_encode($friends);
     }
 
   function createGroup()
@@ -58,8 +62,12 @@
 
       if($_POST[members])
         {
-          addGroupMember($group_id);
+          if(!addGroupMember($group_id))
+          	echo json_encode(false);
+          	return;
         }
+      
+      echo json_encode($result);
     }
 
   // this implementation assumes that there will usually be multiple
@@ -77,7 +85,12 @@
           $query  = "INSERT INTO \"Group_Members\" (group_id, member_id) " .
                     "VALUES ('$group_id', '$member')";
           $result = pg_query($db, $query);
-          echo $result;
+          //echo $result;
+          if(!$result)
+          {
+          	echo json_encode(false);
+          	return;
+          }
         }
     }
 
@@ -97,7 +110,9 @@
 
       $query  = "DELETE FROM \"Group_Members\" " .
                 "WHERE group_id = '$groupid'";
-      $result = pg_query($db, $query);      
+      $result = pg_query($db, $query);   
+      
+      echo json_encode($result);   
     }
 
   function getGroupMembers()
@@ -111,6 +126,6 @@
       $result  = pg_query($db, $query);
       $members = pg_fetch_all($result);
 
-      return json_encode($members);
+      echo json_encode($members);
     }
 ?>

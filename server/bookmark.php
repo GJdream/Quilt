@@ -1,6 +1,7 @@
 <?php
   function createBookmark()
     {
+      global $json_return;
       global $db;
 
       $owner   = $_POST[username];
@@ -32,17 +33,22 @@
               $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
                         "VALUES ('$post_id', '$tag')";
               $result = pg_query($db, $query);
-              echo $result;
             }
         }
+        
+        $json_return = array_merge($json_return, array("create_bookmark" => true));
     }
     
   function destroyBookmark()
     {
       global $db;
+      global $json_return;
+      
+      $success = true;
 
       $post_id = $_POST[post_id];
       $owner   = $_POST[username];
+
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
@@ -58,14 +64,25 @@
       $query  = "DELETE FROM \"Bookmarks\" " .
                 "WHERE owner_id = '$owner_id' AND post_id = '$post_id'";
       $result = pg_query($db, $query);
+      
+      if(!result)
+      	$success = false;
 
       $query  = "DELETE FROM \"Bookmark_Visibility\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
-
+      
+      if(!result)
+      	$success = false;
+      
       $query  = "DELETE FROM \"Tags\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
+      
+      if(!result)
+      	$success = false;
+      
+      $json_return = array_merge($json_return, array("delete_bookmark" => success));
     }
 
   function resizeBookmark()
@@ -87,6 +104,7 @@
   function getBookmarks()
     {
       global $db;
+      global $json_return;
 
       $owner = $_GET[username];
 
@@ -101,7 +119,7 @@
       $result = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
 
-      return json_encode($bookmarks);
+      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
     }
 
   // tag functionality is implemented here because 
@@ -135,6 +153,7 @@
   function getTags()
     {
       global $db;
+      global $json_return;
 
       $post_id = $_GET[post_id];
 
@@ -143,6 +162,6 @@
       $result = pg_query($db, $query);
       $tags   = pg_fetch_all($result);
 
-      return json_encode($tags);
+      $json_return = array_merge($json_return, array("tags" => $tags));
     }
 ?>

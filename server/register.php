@@ -25,10 +25,10 @@
         {
           // the user is a duplicate
           // redirect back to register screen with suitable information
-          echo "ERROR";
+          echo json_encode(false);
         }
 
-      // insert successful
+      echo json_encode(true);
     }
 
   function unregister()
@@ -58,15 +58,13 @@
 
       // run logout to clear session data before deleting information?
 
-      if(removeUserFrom($grpmem_tbl, $id_value) &&
+      $success = (removeUserFrom($grpmem_tbl, $id_value) &&
          removeUserFrom($friend_tbl, $id_value) &&
-         removeUserFrom($bmarks_tbl, $id_value))
-        {
-          // if everything worked, goodbye {and thanks for all the fish}
-          return true;
-        }
-
-      return false;
+         removeUserFrom($bmarks_tbl, $id_value));
+         
+      // if everything worked, goodbye {and thanks for all the fish}
+      echo json_encode($success);
+      return $success;
 
       // have not decided how to deal with group ownership yet
       // the other members in the group might not want to lose group

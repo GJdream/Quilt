@@ -8,6 +8,8 @@
     // which would set a header otherwise, which has been making session_start() unuseable
 
   global $db;
+  global $json_return;
+  $json_return = array();
 
   require_once('db_connect.php');
   require('validation.php');
@@ -69,18 +71,20 @@
         destroyGroup();
     }
 
-  if($_SERVER[REQUEST_METHOD] === "GET")
+  else if($_SERVER[REQUEST_METHOD] === "GET")
     {
       // Return JSON representation of queries
       // This allows us to use pre-existing iOS libraries to parse it
       // This is good because I'm lazy
       if($_GET['action'] === "get_bookmarks")
-        return getBookmarks();
+        getBookmarks();
       else if($_GET['action'] === "get_tags")
-        return getTags();
+        getTags();
       else if($_GET['action'] === "get_friends")
-        return getFriends();
+        getFriends();
       else if($_GET['action'] === "get_group")
-        return getGroupMembers();
+        getGroupMembers();
     }
+  
+  echo json_encode($json_return);
 ?>

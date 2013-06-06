@@ -1,6 +1,7 @@
 <?php
   function attemptUserLogin()
     {
+      global $json_return;
       global $db;
 
       $submittedUsername = $_POST[username];
@@ -10,18 +11,23 @@
 
         // hashing will likely be pulled into a common function somewhere
 
-      $query  = "SELECT * FROM \"Users\"" . 
-                "WHERE user_name = '$submittedUsername' " .
-                "AND password = '$submittedPassword'";
+      $query  = "SELECT password FROM \"Users\"" . 
+                "WHERE user_name = '$submittedUsername'";
+//                "AND password = '$submittedPassword'";
       $result = pg_query($db, $query);
 
-      if(pg_num_rows($result) < 1)
-        {
-          // this user does not exist -> reattempt login
-        }
+      $user_exists = (pg_num_rows($result) == 1);
 
-      // user may login -> setup their session
-      validateUser();
+      if(!$user_exists)
+      	$json_return = array_merge($json_return, array("user_exists" => $user_exists));
+      else
+      {
+    	  $result_array = pg_fetch_row($result, 0);
+	      if($result_array[0] === $submittedPassword)
+    	  	validateUser();
+	      else
+      		$json_return = array_merge($json_return, array("password_correct" => false));
+      }
 
       // to be safe, check login was completed successfully
       $loggedin = isLoggedIn();
@@ -40,6 +46,8 @@
 
       session_unset();
       session_destroy();
+      
+      echo json_encode(array("logout" => true));
 
       // redirect to a home location
     }
