@@ -44,11 +44,6 @@
     static NSString *CellID = @"BookmarkCell";
     
     UIBookmark *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
-    /*UILabel *label = (UILabel *)[cell viewWithTag:100];
-    
-    UIBookmark *bookmarkAtIndex = [self.dataController bookmarkInListAtIndex:indexPath.row];
-    [label setText:bookmarkAtIndex.label.text];
-    [label setText:bookmarkAtIndex.url];*/
     
     UIBookmark *bookmarkAtIndex = [self.dataController bookmarkInListAtIndex:indexPath.row];
     

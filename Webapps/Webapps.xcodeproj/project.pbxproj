@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */; };
-		2E38EFEB175F661100A41D05 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38EFEA175F661100A41D05 /* NavigationController.m */; };
 		2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
-		795288D1175A7EAD00158F8E /* Bookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D0175A7EAD00158F8E /* Bookmark.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
 		795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D8175CEB3B00158F8E /* NetworkDelegate.m */; };
 		79BEAD2B1754FCAC0056DFBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2A1754FCAC0056DFBD /* UIKit.framework */; };
@@ -32,8 +30,6 @@
 /* Begin PBXFileReference section */
 		2E0F9E6617608B6A00B4305C /* BookmarkDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkDataController.h; sourceTree = "<group>"; };
 		2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkDataController.m; sourceTree = "<group>"; };
-		2E38EFE9175F661100A41D05 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		2E38EFEA175F661100A41D05 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewController.h; sourceTree = "<group>"; };
 		2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewController.m; sourceTree = "<group>"; };
 		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -43,8 +39,6 @@
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		795288CA1759276600158F8E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		795288CF175A7EAD00158F8E /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmark.h; sourceTree = "<group>"; };
-		795288D0175A7EAD00158F8E /* Bookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bookmark.m; sourceTree = "<group>"; };
 		795288D2175AB33C00158F8E /* NetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClient.h; sourceTree = "<group>"; };
 		795288D3175AB33D00158F8E /* NetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClient.m; sourceTree = "<group>"; };
 		795288D7175CEB3B00158F8E /* NetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDelegate.h; sourceTree = "<group>"; };
@@ -114,8 +108,6 @@
 				795288CA1759276600158F8E /* Account.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
-				795288CF175A7EAD00158F8E /* Bookmark.h */,
-				795288D0175A7EAD00158F8E /* Bookmark.m */,
 				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
 				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
 				2E0F9E6617608B6A00B4305C /* BookmarkDataController.h */,
@@ -123,8 +115,6 @@
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
-				2E38EFE9175F661100A41D05 /* NavigationController.h */,
-				2E38EFEA175F661100A41D05 /* NavigationController.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
@@ -222,11 +212,9 @@
 				79BEAD3B1754FCAC0056DFBD /* AppDelegate.m in Sources */,
 				795288C517590D3500158F8E /* UIBookmark.m in Sources */,
 				795288CB1759276600158F8E /* Account.m in Sources */,
-				795288D1175A7EAD00158F8E /* Bookmark.m in Sources */,
 				795288D4175AB33D00158F8E /* NetworkClient.m in Sources */,
 				795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */,
 				6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */,
-				2E38EFEB175F661100A41D05 /* NavigationController.m in Sources */,
 				2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */,
 				2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */,
 				79EC4ABF1760AAE300D6F757 /* NetworkController.m in Sources */,

@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Bookmark.h"
 #import "Account.h"
+#import "UIBookmark.h"
 
 @interface NetworkClient : NSObject
 
 +(void)getNewBookmarks;
 +(void)createAccount:(Account*)account;
-+(void)createBookmark:(Bookmark*)bookmark;
++(void)createBookmark:(UIBookmark*)bookmark;
 +(void)shareTag:(NSString*)tag With:(NSSet*)users;
-+(void)deleteBookmark:(Bookmark*)bookmark;
++(void)deleteBookmark:(UIBookmark*)bookmark;
 +(void)loginUser:(Account*)loginAccount;
 
 @end
