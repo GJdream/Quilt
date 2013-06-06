@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginViewController.h"
+#import "BookmarkDataController.h"
 
 @interface NetworkController : NSObject
 
-+(void)loginComplete:(NSData*)data;
++(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC;
++(void)gotBookmarks:(NSData*)data DataController:(BookmarkDataController*)bookmarkDC;
 
 @end

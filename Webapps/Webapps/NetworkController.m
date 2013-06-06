@@ -7,27 +7,49 @@
 //
 
 #import "NetworkController.h"
-#import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "UIBookmark.h"
 
 @implementation NetworkController
 
-+(void)loginComplete:(NSData*)data
++(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC
 {
-    AppDelegate *d = [[UIApplication sharedApplication] delegate];
-    LoginViewController *currentVC = (LoginViewController*)d.window.rootViewController;
-    
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     if(success)
-        [currentVC performSegueWithIdentifier:@"loginSegue" sender:nil];
+        [loginVC performSegueWithIdentifier:@"loginSegue" sender:nil];
     else //if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
     {
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
         
-        currentVC.loginButton.enabled = NO;
+        loginVC.loginButton.enabled = YES;
     }
+}
+
++(void)gotBookmarks:(NSData*)data DataController:(BookmarkDataController*)bookmarkDC
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSArray *bookmarksArray = (NSArray*)[json objectForKey:@"bookmarks"];
+    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
+    
+    for(NSDictionary *bookmarkDict in bookmarksArray)
+    {
+        NSString *url = (NSString*)[bookmarkDict objectForKey:@"url"];
+        NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
+        NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
+        
+        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:[[NSMutableArray alloc] init] Width:p_width Height:p_height];
+        [bookmarkDC addBookmark:bookmark];
+        
+        /*  For a more robust thing, maybe have addObject return the index path so that we can be sure we're displaying the right thing? */
+        NSIndexPath *p = [NSIndexPath indexPathForRow:([bookmarkDC countOfBookmarks] - 1) inSection:0];
+        [indexPathArray addObject:p];
+    }
+    
+    [bookmarkDC.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)indexPathArray];
 }
 
 @end

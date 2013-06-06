@@ -15,7 +15,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.dataController = [[BookmarkDataController alloc] init];
+    self.dataController = [[BookmarkDataController alloc] initWithViewController:self];
 }
 
 - (void)viewDidLoad
