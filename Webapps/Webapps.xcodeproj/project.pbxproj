@@ -28,6 +28,7 @@
 		79BEAD3D1754FCAC0056DFBD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 79BEAD3C1754FCAC0056DFBD /* Default.png */; };
 		79BEAD3F1754FCAC0056DFBD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79BEAD3E1754FCAC0056DFBD /* Default@2x.png */; };
 		79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79BEAD401754FCAC0056DFBD /* Default-568h@2x.png */; };
+		79EC4ABF1760AAE300D6F757 /* NetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EC4ABE1760AAE300D6F757 /* NetworkController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,8 @@
 		79BEAD3C1754FCAC0056DFBD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		79BEAD3E1754FCAC0056DFBD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		79BEAD401754FCAC0056DFBD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		79EC4ABD1760AAE300D6F757 /* NetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkController.h; sourceTree = "<group>"; };
+		79EC4ABE1760AAE300D6F757 /* NetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				2E38EFEA175F661100A41D05 /* NavigationController.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
+				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
+				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
 				795288D7175CEB3B00158F8E /* NetworkDelegate.h */,
 				795288D8175CEB3B00158F8E /* NetworkDelegate.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
@@ -236,6 +241,7 @@
 				2E38EFEB175F661100A41D05 /* NavigationController.m in Sources */,
 				2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */,
 				2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */,
+				79EC4ABF1760AAE300D6F757 /* NetworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

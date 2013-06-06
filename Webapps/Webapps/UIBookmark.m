@@ -10,12 +10,13 @@
 
 @implementation UIBookmark
 
-- (UIBookmark *)initWithTitle:(UILabel *)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
+- (UIBookmark *)initWithTitle:(NSString*)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
     self = [super init];
     if (self)
     {
-        _label = label;
+        _label = [[UILabel alloc] init];
+        _label.text = label;
         _url = url;
         _tags = tags;
         _width = width;

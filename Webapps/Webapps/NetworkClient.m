@@ -7,7 +7,7 @@
 //
 
 #import "NetworkClient.h"
-#import "NetworkDelegate.h"
+#import "NetworkController.h"
 
 NSString *session_id;
 
@@ -66,6 +66,11 @@ NSUInteger lastUpdatedTime = 0;
         loginCookie = [fields valueForKey:@"Set-Cookie"];
         
         NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [NetworkController loginComplete:data];
+                       });
 
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",

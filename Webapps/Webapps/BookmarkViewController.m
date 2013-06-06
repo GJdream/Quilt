@@ -47,7 +47,7 @@
     UILabel *label = (UILabel *)[cell viewWithTag:100];
     
     UIBookmark *bookmarkAtIndex = [self.dataController bookmarkInListAtIndex:indexPath.row];
-    [label setText:bookmarkAtIndex.label];
+    [label setText:bookmarkAtIndex.label.text];
     [label setText:bookmarkAtIndex.url];
     
     return cell;
