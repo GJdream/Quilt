@@ -21,8 +21,10 @@
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     if(success)
         [currentVC performSegueWithIdentifier:@"loginSegue" sender:nil];
-/*    if(!exists)
-        return;*/
+    else if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
+    {
+        
+    }
 }
 
 @end
