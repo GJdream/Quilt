@@ -21,9 +21,9 @@
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     if(success)
         [currentVC performSegueWithIdentifier:@"loginSegue" sender:nil];
-    else if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
+    else //if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
     {
-        
+        [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
     }
 }
 
