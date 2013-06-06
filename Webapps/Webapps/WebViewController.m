@@ -9,6 +9,7 @@
 #import "WebViewController.h"
 #import "AddBookmarkViewController.h"
 #import "UIBookmark.h"
+#import "NetworkClient.h"
 
 @interface WebViewController ()
 
@@ -51,7 +52,9 @@
         {
             [self.dataController addBookmark:addController.bookmark];
             // Call function to reload bookmarkDataController
-            //[[self.dataController bookmarksArray] reloadData];
+            [self.dataController updateOnBookmarkInsertion];
+            [NetworkClient createBookmark:addController.bookmark];
+            
         }
         [self dismissViewControllerAnimated:YES completion:NULL];
     }

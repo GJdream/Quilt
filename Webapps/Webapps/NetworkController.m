@@ -33,7 +33,6 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSArray *bookmarksArray = (NSArray*)[json objectForKey:@"bookmarks"];
-    NSMutableArray *indexPathArray = [[NSMutableArray alloc] init];
     
     for(NSDictionary *bookmarkDict in bookmarksArray)
     {
@@ -43,13 +42,9 @@
         
         UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:[[NSMutableArray alloc] init] Width:p_width Height:p_height];
         [bookmarkDC addBookmark:bookmark];
-        
-        /*  For a more robust thing, maybe have addObject return the index path so that we can be sure we're displaying the right thing? */
-        NSIndexPath *p = [NSIndexPath indexPathForRow:([bookmarkDC countOfBookmarks] - 1) inSection:0];
-        [indexPathArray addObject:p];
     }
     
-    [bookmarkDC.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)indexPathArray];
+    [bookmarkDC updateOnBookmarkInsertion];
 }
 
 @end
