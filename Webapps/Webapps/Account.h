@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginViewController.h"
 
 @interface Account : NSObject
 
@@ -20,6 +21,6 @@
 //-(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
 +(Account*)current;
 +(void)setCurrent:(Account*)newCurrent;
-+(void)loginUser:(NSString*)username Password:(NSString*)password;
++(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc;
 
 @end

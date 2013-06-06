@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "UIBookmark.h"
-
-@class UIBookmark;
+#import "BookmarkViewController.h"
 
 @interface BookmarkDataController : NSObject
 
 @property (nonatomic, copy) NSMutableArray *bookmarksArray;
+@property BookmarkViewController *bookmarkVC;
 
+- (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (NSUInteger)countOfBookmarks;
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
 - (void)addBookmark:(UIBookmark *)bookmark;

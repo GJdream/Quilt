@@ -53,13 +53,18 @@ NSUInteger lastUpdatedTime = 0;
     return retRequest;
 }
 
-+(void)getNewBookmarks
++(void)getNewBookmarks:(BookmarkDataController*)bookmarkDC
 {
     NSString *params = @"action=get_bookmarks";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-
+               
+               dispatch_async(dispatch_get_main_queue(),
+                            ^(void){
+                                    [NetworkController gotBookmarks:data DataController:bookmarkDC];
+                                });
+               
                if (error != nil)
                    NSLog(@"Connection failed! Error - %@ %@",
                          [error localizedDescription],
@@ -67,7 +72,7 @@ NSUInteger lastUpdatedTime = 0;
            }];
 }
 
-+(void)loginUser:(Account*)account
++(void)loginUser:(Account*)account LoginView:(LoginViewController*)lvc
 {
     NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
  
@@ -80,11 +85,8 @@ NSUInteger lastUpdatedTime = 0;
         
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
-                           [NetworkController loginComplete:data];
+                           [NetworkController loginComplete:data LoginView:lvc];
                        });
-        
-        NSLog(@"%@", @"Getting bookmarks");
-        [NetworkClient getNewBookmarks];
 
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",

@@ -42,7 +42,7 @@
 
 - (IBAction)loginClicked:(id)sender {
     self.loginButton.enabled = NO;
-    [Account loginUser:txtUsername.text Password:txtPassword.text];
+    [Account loginUser:txtUsername.text Password:txtPassword.text LoginView:self];
 }
 
 - (IBAction)backgroundClick:(id)sender {

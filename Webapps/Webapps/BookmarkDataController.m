@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Team Awesome. All rights
 
 #import "BookmarkDataController.h"
+#import "NetworkClient.h"
 
 @interface BookmarkDataController ()
 
@@ -50,8 +51,22 @@
 {
     if (self = [super init])
     {
-        [self initDefaultBookmarks];
+        _bookmarksArray = [[NSMutableArray alloc] init];
+        //[self initDefaultBookmarks];
+        [NetworkClient getNewBookmarks:self];
     }
+    return self;
+}
+
+- (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC
+{
+    if(self = [super init])
+    {
+        _bookmarksArray = [[NSMutableArray alloc] init];
+        self.bookmarkVC = bookmarkVC;
+        [NetworkClient getNewBookmarks:self];
+    }
+    
     return self;
 }
 
