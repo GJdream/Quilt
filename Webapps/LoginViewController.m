@@ -41,6 +41,7 @@
 }
 
 - (IBAction)loginClicked:(id)sender {
+    _loginButton.enabled = NO;
     [Account loginUser:txtUsername.text Password:txtPassword.text];
 }
 
