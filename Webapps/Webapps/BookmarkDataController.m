@@ -19,8 +19,22 @@
 {
     NSMutableArray *bookmarks = [[NSMutableArray alloc] init];
     self.bookmarksArray = bookmarks;
-    NSMutableArray *defaultTags = [[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"test", nil];
+    NSMutableArray *defaultTags = [[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"google", @"test", nil];
+/*    UILabel *label = [[UILabel alloc] init];
+    label.text = @"Google";*/
     UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:@"Google" URL:@"www.google.com" Tags:defaultTags Width:1 Height:1];
+    [self addBookmark:bookmark];
+    defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"friends", @"facebook", @"test", nil];
+    bookmark = [[UIBookmark alloc] initWithTitle:@"Facebook" URL:@"www.facebook.com" Tags:defaultTags Width:1 Height:1];
+    [self addBookmark:bookmark];
+    defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"cats", @"youtube", @"videos", @"test", nil];
+    bookmark = [[UIBookmark alloc] initWithTitle:@"Youtube" URL:@"www.youtube.come" Tags:defaultTags Width:1 Height:1];
+    [self addBookmark:bookmark];
+    //defaultTags = [[NSMutableArray alloc] initWithObjects:@"socialnetworks", @"friends", "@twitter", @"test", nil];
+    bookmark = [[UIBookmark alloc] initWithTitle:@"Twitter" URL:@"www.twitter.com" Tags:defaultTags Width:1 Height:1];
+    [self addBookmark:bookmark];
+    //defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"friends", @"tumblr", @"test", nil];
+    bookmark = [[UIBookmark alloc] initWithTitle:@"Tumblr" URL:@"www.tumblr.com" Tags:defaultTags Width:1 Height:1];
     [self addBookmark:bookmark];
 }
 
