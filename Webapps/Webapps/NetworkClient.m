@@ -112,6 +112,12 @@ NSUInteger lastUpdatedTime = 0;
 +(void)createBookmark:(UIBookmark*)bookmark
 {
     NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=%ld&p_width=%ld", [[Account current] username], [bookmark url], (long)[bookmark height], (long)[bookmark width]];
+    
+    for(NSUInteger i = 0; i < [bookmark.tags count]; ++i)
+    {
+        params = [NSString stringWithFormat:@"%@&tags[%d]=%@", params, i, bookmark.tags[i]];
+    }
+    
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {

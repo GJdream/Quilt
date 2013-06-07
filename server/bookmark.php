@@ -8,6 +8,7 @@
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
+      $title  = $_POST[title];
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
@@ -16,8 +17,8 @@
       $owner_id = pg_fetch_result($result, 0);
 
       // inserting bookmark
-      $query   = "INSERT INTO \"Bookmarks\" (owner_id, url, p_height, p_width) " .
-                 "VALUES ('$owner_id', '$link', '$pheight', '$pwidth') " .
+      $query   = "INSERT INTO \"Bookmarks\" (owner_id, url, p_height, p_width, title) " .
+                 "VALUES ('$owner_id', '$link', '$pheight', '$pwidth', '$title') " .
                  "RETURNING post_id";
       $result  = pg_query($db, $query);     
       $post_id = pg_fetch_result($result, 0);
@@ -120,7 +121,20 @@
       $bookmarks = pg_fetch_all($result);
 
       if($bookmarks)
+      {
 	      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
+	      
+	      $query =	"SELECT * FROM \"Tags\" " .
+	      			"JOIN \"Bookmarks\" " .
+	      			"ON \"Tags\".post_id=\"Bookmarks\".post_id";
+	      $result = pg_query($db, $query);
+	      $tags = pg_fetch_all($result);
+	      
+	      if($tags)
+	      {
+	      	$json_return = array_merge($json_return, array("tags" => $tags));
+	      }
+      }
     }
 
   // tag functionality is implemented here because 
