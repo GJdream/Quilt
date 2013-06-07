@@ -19,5 +19,6 @@
 - (NSUInteger)countOfBookmarks;
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
 - (void)addBookmark:(UIBookmark *)bookmark;
+- (void)updateOnBookmarkInsertion;
 
 @end

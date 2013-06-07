@@ -9,6 +9,7 @@
 #import "NetworkClient.h"
 
 @interface BookmarkDataController ()
+@property NSMutableArray *updatedBookmarks;
 
 - (void)initDefaultBookmarks;
 
@@ -63,6 +64,7 @@
     if(self = [super init])
     {
         _bookmarksArray = [[NSMutableArray alloc] init];
+        _updatedBookmarks = [[NSMutableArray alloc] init];
         self.bookmarkVC = bookmarkVC;
         [NetworkClient getNewBookmarks:self];
     }
@@ -83,6 +85,15 @@
 - (void)addBookmark:(UIBookmark *)bookmark
 {
     [self.bookmarksArray addObject:bookmark];
+    NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.updatedBookmarks addObject:indexPath];
+}
+
+- (void)updateOnBookmarkInsertion
+{
+    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
+    [self.updatedBookmarks removeAllObjects];
 }
 
 @end
