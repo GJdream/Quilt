@@ -160,7 +160,7 @@
         <scene sceneID="EBp-7Y-u6G">
             <objects>
                 <tableViewController id="YF0-55-1ip" customClass="AddBookmarkViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lhY-eM-UJB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lhY-eM-UJB">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,6 +175,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" text="Bookmark Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IQ-bk-6fW">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="114" type="user" id="wKN-fU-1h3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +187,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="5uj-3T-KjL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="YF0-55-1ip" id="pav-Q1-TBO"/>
                                                     </connections>
@@ -194,7 +197,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="PVY-mJ-afb" firstAttribute="centerY" secondItem="fpa-6q-Pdf" secondAttribute="centerY" type="default" id="3zo-eO-aA1"/>
-                                            <constraint firstItem="PVY-mJ-afb" firstAttribute="leading" secondItem="3IQ-bk-6fW" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="a2c-o3-TeG"/>
+                                            <constraint firstItem="PVY-mJ-afb" firstAttribute="leading" secondItem="3IQ-bk-6fW" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="JZp-Tg-15a"/>
                                             <constraint firstItem="3IQ-bk-6fW" firstAttribute="top" secondItem="fpa-6q-Pdf" secondAttribute="top" constant="11" id="djh-V7-ymg"/>
                                             <constraint firstItem="3IQ-bk-6fW" firstAttribute="leading" secondItem="fpa-6q-Pdf" secondAttribute="leading" constant="20" type="user" id="dtM-TP-aI9"/>
                                             <constraint firstAttribute="trailing" secondItem="PVY-mJ-afb" secondAttribute="trailing" constant="20" type="user" id="xdP-bE-hCA"/>
@@ -217,7 +220,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="2tE-cs-LqG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="YF0-55-1ip" id="ITu-3z-o0q"/>
                                                     </connections>
@@ -247,11 +250,10 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4TB-uD-hd9">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="678" id="ASa-yO-Mm9"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" type="user" id="jTP-5z-rhy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="YF0-55-1ip" id="ExG-0p-xOA"/>
                                                     </connections>
@@ -260,10 +262,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="4TB-uD-hd9" firstAttribute="leading" secondItem="eDc-Ri-gwZ" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="8kE-nW-fjn"/>
+                                            <constraint firstAttribute="trailing" secondItem="4TB-uD-hd9" secondAttribute="trailing" constant="20" type="default" id="2mq-TQ-Pdf"/>
                                             <constraint firstItem="eDc-Ri-gwZ" firstAttribute="top" secondItem="dzi-Hf-RIh" secondAttribute="top" constant="11" id="8pG-4O-inP"/>
                                             <constraint firstItem="4TB-uD-hd9" firstAttribute="centerY" secondItem="dzi-Hf-RIh" secondAttribute="centerY" type="default" id="Hgu-u1-Qkb"/>
                                             <constraint firstItem="eDc-Ri-gwZ" firstAttribute="leading" secondItem="dzi-Hf-RIh" secondAttribute="leading" constant="20" type="user" id="RFc-ck-FuL"/>
+                                            <constraint firstItem="4TB-uD-hd9" firstAttribute="leading" secondItem="eDc-Ri-gwZ" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="xdV-rx-kSo"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -277,12 +280,12 @@
                     <navigationItem key="navigationItem" title="Add Bookmark" id="Z94-9k-QUK">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RIR-Xr-2bF">
                             <connections>
-                                <segue destination="wbb-u0-VqZ" kind="unwind" identifier="CancelInput" unwindAction="cancel:" id="1zB-Bm-MrR"/>
+                                <segue destination="wbb-u0-VqZ" kind="unwind" identifier="CancelInput" unwindAction="cancel:" id="FfV-FB-gdV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="6UE-Bj-fxF">
                             <connections>
-                                <segue destination="wbb-u0-VqZ" kind="unwind" identifier="ReturnInput" unwindAction="done:" id="Gh2-Mk-IKH"/>
+                                <segue destination="wbb-u0-VqZ" kind="unwind" identifier="ReturnInput" unwindAction="done:" id="RW8-Oq-mRg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -295,7 +298,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLk-Al-3ge" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wbb-u0-VqZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3227" y="-390"/>
+            <point key="canvasLocation" x="2537" y="-378"/>
         </scene>
         <!--Web View Controller - Webpage-->
         <scene sceneID="uAv-ZL-lR9">
@@ -312,16 +315,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="XWu-AH-QGP"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="cTm-Bu-NV5"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="cqO-nX-FAx"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="dV1-1B-5Ql"/>
+                            <constraint firstItem="hFh-u2-crN" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="7CR-Ei-TTx"/>
+                            <constraint firstItem="hFh-u2-crN" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="hfj-FX-0hC"/>
+                            <constraint firstItem="hFh-u2-crN" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="kvk-gW-uY4"/>
+                            <constraint firstItem="hFh-u2-crN" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="tuw-Bj-fJ2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Webpage" id="McD-Wq-ghX">
                         <barButtonItem key="rightBarButtonItem" title="Add bookmark" id="m8v-bc-vcp">
                             <connections>
-                                <segue destination="9q4-cA-4Aj" kind="modal" id="BJh-Jo-DSG"/>
+                                <segue destination="YF0-55-1ip" kind="push" identifier="AddBookmarkSegue" id="WCu-f6-tkZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -331,85 +334,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yaa-Ha-01N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1413" y="-390"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GdJ-cL-V4h">
-            <objects>
-                <navigationController id="9q4-cA-4Aj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z1o-Bf-lCM">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="YF0-55-1ip" kind="relationship" relationship="rootViewController" id="BWA-sM-AgA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6g8-Dz-gHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2321" y="-390"/>
+            <point key="canvasLocation" x="1399" y="-390"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddBookmarkViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tagsInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titleInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="urlInput" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="BookmarkViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundClick:"/>
-                <relationship kind="action" name="loginClicked:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UIBookmark" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="WebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="viewWeb" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

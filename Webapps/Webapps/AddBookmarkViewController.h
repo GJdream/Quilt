@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *tagsInput;
 
 @property (strong, nonatomic) UIBookmark *bookmark;
+@property (strong, nonatomic) NSString *url;
 
 @end

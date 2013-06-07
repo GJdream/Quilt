@@ -56,7 +56,9 @@
             [NetworkClient createBookmark:addController.bookmark];
             
         }
-        [self dismissViewControllerAnimated:YES completion:NULL];
+//        [self dismissViewControllerAnimated:YES completion:NULL];
+        UINavigationController *navController = self.navigationController;
+        [navController popViewControllerAnimated:YES];
     }
 }
 
@@ -64,7 +66,18 @@
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
-        [self dismissViewControllerAnimated:YES completion:NULL];
+        UINavigationController *navController = self.navigationController;
+        [navController popViewControllerAnimated:YES];
+        //[self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddBookmarkSegue"])
+    {
+        AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
+        addBookmarkViewController.url = self.url;
     }
 }
 
