@@ -37,7 +37,7 @@
             }
         }
         
-        $json_return = array_merge($json_return, array("create_bookmark" => true));
+        $json_return = array_merge($json_return, array("create_bookmark" => true, "b_id" => $post_id));
     }
     
   function destroyBookmark()
@@ -173,13 +173,13 @@
       global $db;
       global $json_return;
 
-      $query  = "SELECT * FROM \"Tags\" " .
+      $query  = "SELECT tag FROM \"Tags\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
-      $tags   = pg_fetch_all($result);
+      $tags   = pg_fetch_all_columns($result);
 
 	  if($tags)
-	      $json_return = array_merge($json_return, array("tags" => array($post_id, $tags)));
+	      $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
 
   function getTags()
@@ -189,12 +189,12 @@
 
       $post_id = $_GET[post_id];
 
-      $query  = "SELECT * FROM \"Tags\" " .
+      $query  = "SELECT tag FROM \"Tags\" " .
                 "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
-      $tags   = pg_fetch_all($result);
+      $tags   = pg_fetch_all_columns($result);
 
 	  if($tags)
-	      $json_return = array_merge($json_return, array("tags" => array($post_id, $tags)));
+	      $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
 ?>

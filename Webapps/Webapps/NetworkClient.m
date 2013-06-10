@@ -57,9 +57,7 @@ NSUInteger lastUpdatedTime = 0;
 {
     NSString *params = @"action=get_bookmarks";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-           {
-               NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-               
+           {   
                dispatch_async(dispatch_get_main_queue(),
                             ^(void){
                                     [NetworkController gotBookmarks:data DataController:bookmarkDC];
@@ -80,8 +78,6 @@ NSUInteger lastUpdatedTime = 0;
     {
         NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
         loginCookie = [fields valueForKey:@"Set-Cookie"];
-        
-        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
@@ -121,8 +117,6 @@ NSUInteger lastUpdatedTime = 0;
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
-               NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-               
                if (error != nil)
                    NSLog(@"Connection failed! Error - %@ %@",
                          [error localizedDescription],

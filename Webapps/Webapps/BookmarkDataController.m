@@ -11,8 +11,6 @@
 @interface BookmarkDataController ()
 @property NSMutableArray *updatedBookmarks;
 
-- (void)initDefaultBookmarks;
-
 @end
 
 @implementation BookmarkDataController
@@ -65,7 +63,6 @@
         _updatedBookmarks = [[NSMutableArray alloc] init];
         self.bookmarkVC = bookmarkVC;
         [NetworkClient getNewBookmarks:self];
-        NSLog(@"Here");
     }
     
     return self;
