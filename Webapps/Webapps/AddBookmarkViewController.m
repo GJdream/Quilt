@@ -61,8 +61,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
@@ -76,6 +74,6 @@
             self.bookmark = bookmark;
         }
     }
-}*/
+}
 
 @end

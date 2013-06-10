@@ -11,7 +11,6 @@
 @interface UIBookmark : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
-//@property UILabel *label;
 @property NSString *url;
 @property NSMutableArray *tags;
 @property NSInteger width;
