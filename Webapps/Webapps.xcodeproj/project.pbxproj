@@ -18,7 +18,6 @@
 		791052021765F77600CC4555 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791052011765F77600CC4555 /* QuartzCore.framework */; };
 		791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052041765FD9F00CC4555 /* ViewDeckController.m */; };
 		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
-		7910520C176627B400CC4555 /* seathing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7910520B176627B400CC4555 /* seathing.jpg */; };
 		7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910520E17662A4A00CC4555 /* NavigationBarView.m */; };
 		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
@@ -57,7 +56,6 @@
 		791052031765FD9F00CC4555 /* ViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeckController.h; sourceTree = "<group>"; };
 		791052041765FD9F00CC4555 /* ViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDeckController.m; sourceTree = "<group>"; };
 		791052091766251300CC4555 /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
-		7910520B176627B400CC4555 /* seathing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seathing.jpg; sourceTree = "<group>"; };
 		7910520D17662A4A00CC4555 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		7910520E17662A4A00CC4555 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		79105213176651A900CC4555 /* NDTrie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTrie.h; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
 				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
 				7910520A1766251300CC4555 /* navBarTexture.png in Resources */,
-				7910520C176627B400CC4555 /* seathing.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

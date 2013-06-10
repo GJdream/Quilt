@@ -10,6 +10,7 @@
 #import "AddBookmarkViewController.h"
 #import "UIBookmark.h"
 #import "NetworkClient.h"
+#import "ViewDeckController.h"
 
 @interface WebViewController ()
 
@@ -29,6 +30,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        //AddBookmarkViewController *addBookmarkVC = [[AddBookmarkViewController alloc] init];
+        //IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:self topViewController:addBookmarkVC];
+        
     }
     return self;
 }
@@ -66,8 +70,10 @@
             
         }
 //        [self dismissViewControllerAnimated:YES completion:NULL];
-        UINavigationController *navController = self.navigationController;
-        [navController popViewControllerAnimated:YES];
+        /*UINavigationController *navController = self.navigationController;
+        [navController popViewControllerAnimated:YES];*/
+        [self.viewDeckController closeTopViewAnimated:YES];
+        self.viewDeckController.topController = nil;
     }
 }
 
@@ -78,9 +84,23 @@
         UINavigationController *navController = self.navigationController;
         [navController popViewControllerAnimated:YES];
         //[self dismissViewControllerAnimated:YES completion:NULL];
+        [self.viewDeckController closeTopViewAnimated:YES];
+        self.viewDeckController.topController = nil;
     }
 }
+- (IBAction)addBookmarkClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    AddBookmarkViewController *addBookmarkViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
+    addBookmarkViewController.url = self.url;
+    IIViewDeckController *vdc = self.viewDeckController;
+    [addBookmarkViewController removeFromParentViewController];
+    [vdc addChildViewController:addBookmarkViewController];
+    vdc.topSize = 500;
+    vdc.topController = addBookmarkViewController;
+    [vdc openTopViewAnimated:YES];
+}
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddBookmarkSegue"])
@@ -89,5 +109,5 @@
         addBookmarkViewController.url = self.url;
     }
 }
-
+*/
 @end

@@ -15,6 +15,15 @@
 
 @implementation AddBookmarkViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ((textField == self.titleInput) || (textField == self.urlInput) || (textField == self.tagsInput))
@@ -52,6 +61,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
@@ -65,6 +76,6 @@
             self.bookmark = bookmark;
         }
     }
-}
+}*/
 
 @end
