@@ -9,6 +9,7 @@
 #import "BookmarkViewController.h"
 #import "BookmarkDataController.h"
 #import "WebViewController.h"
+#import "ViewDeckController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation BookmarkViewController

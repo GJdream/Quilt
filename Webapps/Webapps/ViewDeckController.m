@@ -13,6 +13,34 @@
 @end
 
 @implementation ViewDeckController
+/*
+@synthesize navController = _navController;
+@synthesize bookmarkView = _bookmarkView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Override point for customization after appliaction launch
+    //UIViewController *viewController = [[viewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    //self.navController = [[UINavigationController alloc] initWithRootViewController:<#(UIViewController *)#>]
+}
+*/
 
 - (id)init
 {

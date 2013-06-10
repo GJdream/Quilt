@@ -7,7 +7,11 @@
 //
 
 #import "IIViewDeckController.h"
+#import <UIKit/UIKit.h>
 
 @interface ViewDeckController : IIViewDeckController
+
+@property (nonatomic, retain) UINavigationController *navController;
+@property (nonatomic, retain) IBOutlet UIView *bookmarkView;
 
 @end
