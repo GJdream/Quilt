@@ -30,6 +30,7 @@
 
 +(void)gotBookmarks:(NSData*)data DataController:(BookmarkDataController*)bookmarkDC
 {
+    NSLog([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
@@ -40,8 +41,9 @@
         NSString *url = (NSString*)[bookmarkDict objectForKey:@"url"];
         NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
         NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
+        uint64_t b_id = [(NSNumber*)[bookmarkDict valueForKey:@"post_id"] longLongValue];
         
-        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:[[NSMutableArray alloc] init] Width:p_width Height:p_height];
+        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:[[NSMutableArray alloc] init] Width:p_width Height:p_height ID:b_id];
         [bookmarkDC addBookmark:bookmark];
     }
     

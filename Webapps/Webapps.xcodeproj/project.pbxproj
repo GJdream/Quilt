@@ -20,6 +20,7 @@
 		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
 		7910520C176627B400CC4555 /* seathing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7910520B176627B400CC4555 /* seathing.jpg */; };
 		7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910520E17662A4A00CC4555 /* NavigationBarView.m */; };
+		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
@@ -59,6 +60,8 @@
 		7910520B176627B400CC4555 /* seathing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seathing.jpg; sourceTree = "<group>"; };
 		7910520D17662A4A00CC4555 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		7910520E17662A4A00CC4555 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
+		79105213176651A900CC4555 /* NDTrie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTrie.h; sourceTree = "<group>"; };
+		79105214176651A900CC4555 /* NDTrie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDTrie.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -165,11 +168,13 @@
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
 				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
-				7910520B176627B400CC4555 /* seathing.jpg */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
 				791052091766251300CC4555 /* navBarTexture.png */,
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
+				79105213176651A900CC4555 /* NDTrie.h */,
+				79105214176651A900CC4555 /* NDTrie.m */,
+				7910520B176627B400CC4555 /* seathing.jpg */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 			);
@@ -274,6 +279,7 @@
 				791052001765F55200CC4555 /* IIWrapController.m in Sources */,
 				791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */,
 				7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */,
+				79105215176651A900CC4555 /* NDTrie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

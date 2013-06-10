@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "UIBookmark.h"
 #import "BookmarkViewController.h"
+#import "NDTrie.h"
 
 @interface BookmarkDataController : NSObject
 
 @property (nonatomic, copy) NSMutableArray *bookmarksArray;
 @property BookmarkViewController *bookmarkVC;
+@property NSMutableOrderedSet *mostUsedTags;
+@property NDTrie *tagTrie;
 
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (NSUInteger)countOfBookmarks;

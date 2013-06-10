@@ -124,7 +124,7 @@
       {
 	      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
 	      
-	      $query =	"SELECT * FROM \"Tags\" " .
+	      /*$query =	"SELECT * FROM \"Tags\" " .
 	      			"JOIN \"Bookmarks\" " .
 	      			"ON \"Tags\".post_id=\"Bookmarks\".post_id";
 	      $result = pg_query($db, $query);
@@ -133,7 +133,10 @@
 	      if($tags)
 	      {
 	      	$json_return = array_merge($json_return, array("tags" => $tags));
-	      }
+	      }*/
+	      
+	      foreach($bookmarks as $bm)
+	      	getTagsForID($bm["post_id"]);
       }
     }
 
@@ -165,6 +168,20 @@
       $result = pg_query($db, $query);
     }
 
+  function getTagsForID($post_id)
+    {
+      global $db;
+      global $json_return;
+
+      $query  = "SELECT * FROM \"Tags\" " .
+                "WHERE post_id = '$post_id'";
+      $result = pg_query($db, $query);
+      $tags   = pg_fetch_all($result);
+
+	  if($tags)
+	      $json_return = array_merge($json_return, array("tags" => array($post_id, $tags)));
+    }
+
   function getTags()
     {
       global $db;
@@ -177,6 +194,7 @@
       $result = pg_query($db, $query);
       $tags   = pg_fetch_all($result);
 
-      $json_return = array_merge($json_return, array("tags" => $tags));
+	  if($tags)
+	      $json_return = array_merge($json_return, array("tags" => array($post_id, $tags)));
     }
 ?>

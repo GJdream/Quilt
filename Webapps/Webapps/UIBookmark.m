@@ -10,7 +10,7 @@
 
 @implementation UIBookmark
 
-- (UIBookmark *)initWithTitle:(NSString*)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
+- (UIBookmark *)initWithTitle:(NSString*)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id
 {
     self = [super init];
     if (self)
@@ -21,6 +21,7 @@
         _tags = tags;
         _width = width;
         _height = height;
+        _b_id = id;
     }
     return self;
 }

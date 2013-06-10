@@ -21,6 +21,15 @@
 
 Account *currentAccount;
 
++(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc
+{
+    NSLog(@"loginUser: %@, %@", username, password);
+    Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
+    currentAccount = newAccount;
+    [NetworkClient loginUser:newAccount LoginView:lvc];
+    
+}
+
 +(void)setCurrent:(Account*)newCurrent
 {
     currentAccount = newCurrent;
@@ -51,7 +60,7 @@ Account *currentAccount;
 
 -(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
 {
-    UIBookmark *newBookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height];
+    UIBookmark *newBookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height ID:-1];
     for (NSString *tag in tags) {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)
@@ -59,14 +68,6 @@ Account *currentAccount;
         else
             [bookmarkSet addObject:newBookmark];
     }
-}
-
-+(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc
-{
-    NSLog(@"loginUser: %@, %@", username, password);
-    Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
-    currentAccount = newAccount;
-    [NetworkClient loginUser:newAccount LoginView:lvc];
 }
 
 @end
