@@ -16,7 +16,9 @@
 
 @end
 
-@implementation WebViewController
+@implementation WebViewController {
+    UIPopoverController *addBookmarkPopover;
+}
 
 @synthesize viewWeb;
 
@@ -30,9 +32,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //AddBookmarkViewController *addBookmarkVC = [[AddBookmarkViewController alloc] init];
-        //IIViewDeckController *deckController = [[IIViewDeckController alloc] initWithCenterViewController:self topViewController:addBookmarkVC];
-        
     }
     return self;
 }
@@ -69,11 +68,7 @@
             [NetworkClient createBookmark:addController.bookmark];
             
         }
-//        [self dismissViewControllerAnimated:YES completion:NULL];
-        /*UINavigationController *navController = self.navigationController;
-        [navController popViewControllerAnimated:YES];*/
-        [self.viewDeckController closeTopViewAnimated:YES];
-        self.viewDeckController.topController = nil;
+        [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
 
@@ -81,11 +76,7 @@
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
-        UINavigationController *navController = self.navigationController;
-        [navController popViewControllerAnimated:YES];
-        //[self dismissViewControllerAnimated:YES completion:NULL];
-        [self.viewDeckController closeTopViewAnimated:YES];
-        self.viewDeckController.topController = nil;
+        [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
 - (IBAction)addBookmarkClick:(id)sender {
@@ -100,14 +91,15 @@
     [vdc openTopViewAnimated:YES];
 }
 
-/*
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddBookmarkSegue"])
+    if ([segue.identifier isEqualToString:@"addBookmarkSegue"])
     {
         AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
         addBookmarkViewController.url = self.url;
+        addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
 }
-*/
+
 @end
