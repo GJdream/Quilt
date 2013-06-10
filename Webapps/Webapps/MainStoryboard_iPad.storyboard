@@ -312,9 +312,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLk-Al-3ge" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wbb-u0-VqZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="-378"/>
+            <point key="canvasLocation" x="2239" y="-390"/>
         </scene>
-        <!--Web View Controller - Webpage-->
+        <!--Web View Controller-->
         <scene sceneID="uAv-ZL-lR9">
             <objects>
                 <viewController id="EX0-HF-PZB" customClass="WebViewController" sceneMemberID="viewController">
@@ -322,20 +322,30 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFh-u2-crN">
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0r-aG-1vy">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="7CR-Ei-TTx"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="hfj-FX-0hC"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="kvk-gW-uY4"/>
-                            <constraint firstItem="hFh-u2-crN" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="tuw-Bj-fJ2"/>
+                            <constraint firstItem="P0r-aG-1vy" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="YrV-S4-yKR"/>
+                            <constraint firstItem="P0r-aG-1vy" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="gig-iF-xAl"/>
+                            <constraint firstItem="P0r-aG-1vy" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="kHq-XA-JRY"/>
+                            <constraint firstItem="P0r-aG-1vy" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="n9a-13-krW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Webpage" id="McD-Wq-ghX">
+                    <navigationItem key="navigationItem" id="McD-Wq-ghX">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&lt;Enter URL>" minimumFontSize="17" id="Tre-Rs-Y4d">
+                            <rect key="frame" x="7" y="7" width="641" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="search" destination="EX0-HF-PZB" eventType="editingDidEndOnExit" id="QDU-am-rPB"/>
+                            </connections>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" title="Add bookmark" id="m8v-bc-vcp">
                             <connections>
                                 <segue destination="YF0-55-1ip" kind="push" identifier="AddBookmarkSegue" id="WCu-f6-tkZ"/>
@@ -343,12 +353,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="viewWeb" destination="hFh-u2-crN" id="ZLW-au-IuG"/>
+                        <outlet property="searchBar" destination="Tre-Rs-Y4d" id="ZA8-69-jXD"/>
+                        <outlet property="viewWeb" destination="P0r-aG-1vy" id="ADP-bu-2Jb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yaa-Ha-01N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1399" y="-390"/>
+            <point key="canvasLocation" x="1396" y="-390"/>
         </scene>
     </scenes>
     <classes>
