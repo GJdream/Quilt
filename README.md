@@ -23,7 +23,7 @@
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
 {self-hosted -> intergration with DoC will come later if required}  
-Output queries in JSON {In Progress - Eleanor}
+Output queries in JSON {Working - has been merged into master by Richard}
 
 
 
@@ -53,7 +53,6 @@ Since we are unaware how many tags people want to associate/how many people will
     - Thursday 30th May  
     - Tuesday 4th June 
     
- - Next Meetings
-    - Friday 7th June  
+ - Next Meetings  
     - Monday 10th June  
     - Wednesday 12th June  
