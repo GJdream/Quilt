@@ -12,10 +12,14 @@
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
+		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
+		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
+		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
+		791052021765F77600CC4555 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791052011765F77600CC4555 /* QuartzCore.framework */; };
+		791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052041765FD9F00CC4555 /* ViewDeckController.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
-		795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D8175CEB3B00158F8E /* NetworkDelegate.m */; };
 		79B9314917612E8C006911AF /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B9314817612E8C006911AF /* AddBookmarkViewController.m */; };
 		79BEAD2B1754FCAC0056DFBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2A1754FCAC0056DFBD /* UIKit.framework */; };
 		79BEAD2D1754FCAC0056DFBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79BEAD2C1754FCAC0056DFBD /* Foundation.framework */; };
@@ -39,14 +43,21 @@
 		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		791051FA1765F55200CC4555 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		791051FB1765F55200CC4555 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		791051FC1765F55200CC4555 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		791051FD1765F55200CC4555 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		791052011765F77600CC4555 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		791052031765FD9F00CC4555 /* ViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeckController.h; sourceTree = "<group>"; };
+		791052041765FD9F00CC4555 /* ViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDeckController.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		795288CA1759276600158F8E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		795288D2175AB33C00158F8E /* NetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClient.h; sourceTree = "<group>"; };
 		795288D3175AB33D00158F8E /* NetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClient.m; sourceTree = "<group>"; };
-		795288D7175CEB3B00158F8E /* NetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDelegate.h; sourceTree = "<group>"; };
-		795288D8175CEB3B00158F8E /* NetworkDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDelegate.m; sourceTree = "<group>"; };
 		79B9314717612E8C006911AF /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
 		79B9314817612E8C006911AF /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
 		79BEAD271754FCAC0056DFBD /* Webapps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Webapps.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791052021765F77600CC4555 /* QuartzCore.framework in Frameworks */,
 				79BEAD2B1754FCAC0056DFBD /* UIKit.framework in Frameworks */,
 				79BEAD2D1754FCAC0056DFBD /* Foundation.framework in Frameworks */,
 				79BEAD2F1754FCAC0056DFBD /* CoreGraphics.framework in Frameworks */,
@@ -80,9 +92,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		791051F71765F55200CC4555 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				791051F81765F55200CC4555 /* IISideController.h */,
+				791051F91765F55200CC4555 /* IISideController.m */,
+				791051FA1765F55200CC4555 /* IIViewDeckController.h */,
+				791051FB1765F55200CC4555 /* IIViewDeckController.m */,
+				791051FC1765F55200CC4555 /* IIWrapController.h */,
+				791051FD1765F55200CC4555 /* IIWrapController.m */,
+			);
+			path = ViewDeck;
+			sourceTree = "<group>";
+		};
 		79BEAD1E1754FCAC0056DFBD = {
 			isa = PBXGroup;
 			children = (
+				791052011765F77600CC4555 /* QuartzCore.framework */,
 				79BEAD301754FCAC0056DFBD /* Webapps */,
 				79BEAD291754FCAC0056DFBD /* Frameworks */,
 				79BEAD281754FCAC0056DFBD /* Products */,
@@ -116,6 +142,8 @@
 				79B9314817612E8C006911AF /* AddBookmarkViewController.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
+				791052031765FD9F00CC4555 /* ViewDeckController.h */,
+				791052041765FD9F00CC4555 /* ViewDeckController.m */,
 				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
 				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
 				2E0F9E6617608B6A00B4305C /* BookmarkDataController.h */,
@@ -127,12 +155,11 @@
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
 				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
-				795288D7175CEB3B00158F8E /* NetworkDelegate.h */,
-				795288D8175CEB3B00158F8E /* NetworkDelegate.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
+				791051F71765F55200CC4555 /* ViewDeck */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 			);
 			path = Webapps;
@@ -223,13 +250,16 @@
 				795288C517590D3500158F8E /* UIBookmark.m in Sources */,
 				795288CB1759276600158F8E /* Account.m in Sources */,
 				795288D4175AB33D00158F8E /* NetworkClient.m in Sources */,
-				795288D9175CEB3C00158F8E /* NetworkDelegate.m in Sources */,
 				6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */,
 				2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */,
 				2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */,
 				79EC4ABF1760AAE300D6F757 /* NetworkController.m in Sources */,
 				2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */,
 				79B9314917612E8C006911AF /* AddBookmarkViewController.m in Sources */,
+				791051FE1765F55200CC4555 /* IISideController.m in Sources */,
+				791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */,
+				791052001765F55200CC4555 /* IIWrapController.m in Sources */,
+				791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

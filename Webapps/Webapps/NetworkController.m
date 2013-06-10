@@ -9,6 +9,7 @@
 #import "NetworkController.h"
 #import "AppDelegate.h"
 #import "UIBookmark.h"
+#import "IIViewDeckController.h"
 
 @implementation NetworkController
 
@@ -19,7 +20,7 @@
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     if(success)
         [loginVC performSegueWithIdentifier:@"loginSegue" sender:nil];
-    else //if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
+    else
     {
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
         
