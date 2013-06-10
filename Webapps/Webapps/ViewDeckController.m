@@ -30,6 +30,9 @@
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         self.navigationControllerBehavior = IIViewDeckNavigationControllerContained;
         self.centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainNavController"];
+        self.leftController = [mainStoryboard instantiateViewControllerWithIdentifier:@"sidebarViewController"];
+        self.leftSize = 500.0f;
+        self.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     }
     return self;
 }

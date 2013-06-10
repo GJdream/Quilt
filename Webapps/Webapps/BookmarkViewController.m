@@ -14,20 +14,6 @@
 @implementation BookmarkViewController
 
 - (IBAction)menuButtonClicked:(id)sender {
-    UINavigationController *navController = self.navigationController;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        UIView *view = navController.view;
-        //Drop shadow (to simulate the nav view lifting up off the menu for sliding?)
-        view.layer.masksToBounds = NO;
-        view.layer.cornerRadius = 8; // if you like rounded corners
-        view.layer.shadowOffset = CGSizeMake(-15, 20);
-        view.layer.shadowRadius = 5;
-        view.layer.shadowOpacity = 0.5;
-        CGRect frame = view.frame;
-        frame.origin = CGPointMake(frame.origin.x + 100, frame.origin.y);
-        navController.view.frame = frame;
-    }];
 }
 
 - (void)awakeFromNib
