@@ -17,6 +17,13 @@
 
 @implementation WebViewController
 
+@synthesize viewWeb;
+
+- (IBAction)search {
+    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [searchBar text]]]];
+    self.url = [searchBar text];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,7 +40,9 @@
     NSString *fullURL = self.url;
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [_viewWeb loadRequest:requestObj];
+    [viewWeb loadRequest:requestObj];
+    viewWeb.scalesPageToFit = YES;
+    searchBar.text = fullURL;
 }
 
 - (void)didReceiveMemoryWarning

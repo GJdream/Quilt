@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BookmarkDataController.h"
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController {
+    IBOutlet UIWebView *viewWeb;
+    IBOutlet UITextField *searchBar;
+}
 
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;
 @property (strong, nonatomic) NSString *url;
@@ -17,5 +20,6 @@
 
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
+- (IBAction)search;
 
 @end
