@@ -14,6 +14,7 @@
 @interface BookmarkDataController : NSObject
 
 @property (nonatomic, copy) NSMutableArray *bookmarksArray;
+@property (nonatomic, copy) NSMutableArray *bookmarkDisplayArray;
 @property BookmarkViewController *bookmarkVC;
 @property NSMutableOrderedSet *mostUsedTags;
 @property NDMutableTrie *tagTrie;
@@ -23,5 +24,6 @@
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
 - (void)addBookmark:(UIBookmark *)bookmark;
 - (void)updateOnBookmarkInsertion;
+- (void)showTag:(NSString*)tag;
 
 @end

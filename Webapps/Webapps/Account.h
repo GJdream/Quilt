@@ -13,8 +13,6 @@
 
 @property (readonly) NSString *username;
 @property (readonly) NSString *password;
-@property (readonly) NSDictionary *tagToBookmark;
-@property (readonly) NSDictionary *urlToBookmark;
 
 -(Account*)initWithUserName:(NSString*)initUsername Password:(NSString*)initPassword;
 //-(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;

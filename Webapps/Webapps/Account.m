@@ -49,8 +49,6 @@ Account *currentAccount;
     {
         _username = initUsername;
         _password = initPassword;
-        _tagToBookmark = [[NSDictionary alloc] init];
-        _urlToBookmark = [[NSDictionary alloc] init];
     }
     
     return self;
