@@ -18,7 +18,7 @@
 		791052021765F77600CC4555 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791052011765F77600CC4555 /* QuartzCore.framework */; };
 		791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052041765FD9F00CC4555 /* ViewDeckController.m */; };
 		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
-		7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910520E17662A4A00CC4555 /* NavigationBarView.m */; };
+		7910520F17662A4A00CC4555 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910520E17662A4A00CC4555 /* NavigationBarViewController.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
@@ -55,8 +55,8 @@
 		791052031765FD9F00CC4555 /* ViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeckController.h; sourceTree = "<group>"; };
 		791052041765FD9F00CC4555 /* ViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDeckController.m; sourceTree = "<group>"; };
 		791052091766251300CC4555 /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
-		7910520D17662A4A00CC4555 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
-		7910520E17662A4A00CC4555 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
+		7910520D17662A4A00CC4555 /* NavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarViewController.h; sourceTree = "<group>"; };
+		7910520E17662A4A00CC4555 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -156,8 +156,8 @@
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
-				7910520D17662A4A00CC4555 /* NavigationBarView.h */,
-				7910520E17662A4A00CC4555 /* NavigationBarView.m */,
+				7910520D17662A4A00CC4555 /* NavigationBarViewController.h */,
+				7910520E17662A4A00CC4555 /* NavigationBarViewController.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
@@ -269,7 +269,7 @@
 				791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */,
 				791052001765F55200CC4555 /* IIWrapController.m in Sources */,
 				791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */,
-				7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */,
+				7910520F17662A4A00CC4555 /* NavigationBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
