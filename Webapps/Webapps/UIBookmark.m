@@ -7,6 +7,7 @@
 //
 
 #import "UIBookmark.h"
+#import <QuartzCore/CALayer.h>
 
 @implementation UIBookmark
 

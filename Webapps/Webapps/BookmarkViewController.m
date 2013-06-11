@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
 }
+- (IBAction)sidebarOpenClick:(id)sender {
+    [self.viewDeckController openLeftViewAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,6 +58,12 @@
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
     cell.label.text = bookmarkAtIndex.label.text;
+    
+    [cell.layer setMasksToBounds:YES];
+    [cell.layer setCornerRadius:15];
+    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.layer.shouldRasterize = YES;
+    cell.layer.opaque = YES;
     
     return cell;
 }

@@ -128,6 +128,29 @@ static BookmarkViewController *staticVC = nil;
         f();
 }
 
+- (void)showAll
+{
+    NSUInteger prevCount = self.bookmarkDisplayArray.count;
+    [self.updatedBookmarks removeAllObjects];
+    for (NSUInteger i = 0; i < prevCount; ++i) {
+        [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    self.bookmarkDisplayArray = nil;
+    
+    [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:self.updatedBookmarks];
+    
+    [self.updatedBookmarks removeAllObjects];
+    
+    self.bookmarkDisplayArray = self.bookmarksArray;
+    
+    for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {
+        [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
+}
+
 - (void)showTag:(NSString*)tag
 {
     NSUInteger prevCount = self.bookmarkDisplayArray.count;
