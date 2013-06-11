@@ -15,10 +15,14 @@
     - junk data in DB to test app drawing  
     - networking code on iPad also
 
- - GUI: {In Progress} (Now in separate branch)
+ - GUI: {In Progress} (Merged back to Master)
     - Login screen (Briony) {Working}
-    - Bookmarks view (Anna)
-    - Navigation view: not started yet
+    - Web view (Anna) {Complete}
+    - Add bookmark popup {Almost complete}
+        - Need to disable add bookmark button when clicked
+    - Bookmark view {In progress}
+    - Navigation view {In progress}
+        - Table view implemented
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
