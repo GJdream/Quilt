@@ -9,6 +9,7 @@
 #import "NetworkController.h"
 #import "AppDelegate.h"
 #import "UIBookmark.h"
+#import "IIViewDeckController.h"
 
 @implementation NetworkController
 
@@ -19,7 +20,7 @@
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     if(success)
         [loginVC performSegueWithIdentifier:@"loginSegue" sender:nil];
-    else //if(![(NSNumber*)[json valueForKey:@"user_exists"] boolValue])
+    else
     {
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
         
@@ -33,14 +34,17 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSArray *bookmarksArray = (NSArray*)[json objectForKey:@"bookmarks"];
+    NSDictionary *tagsDict = (NSDictionary*)[json objectForKey:@"tags"];
     
     for(NSDictionary *bookmarkDict in bookmarksArray)
     {
         NSString *url = (NSString*)[bookmarkDict objectForKey:@"url"];
         NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
         NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
-        
-        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:[[NSMutableArray alloc] init] Width:p_width Height:p_height];
+        uint64_t b_id = [(NSNumber*)[bookmarkDict valueForKey:@"post_id"] longLongValue];
+        NSMutableArray *tags = (NSMutableArray*)[tagsDict objectForKey:[[NSString alloc] initWithFormat:@"%lld", b_id]];
+
+        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:p_width Height:p_height ID:b_id];
         [bookmarkDC addBookmark:bookmark];
     }
     

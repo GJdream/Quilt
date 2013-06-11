@@ -9,8 +9,13 @@
 #import "BookmarkViewController.h"
 #import "BookmarkDataController.h"
 #import "WebViewController.h"
+#import "ViewDeckController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation BookmarkViewController
+
+- (IBAction)menuButtonClicked:(id)sender {
+}
 
 - (void)awakeFromNib
 {
@@ -21,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning

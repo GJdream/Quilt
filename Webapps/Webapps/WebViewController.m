@@ -10,12 +10,22 @@
 #import "AddBookmarkViewController.h"
 #import "UIBookmark.h"
 #import "NetworkClient.h"
+#import "ViewDeckController.h"
 
 @interface WebViewController ()
 
 @end
 
-@implementation WebViewController
+@implementation WebViewController {
+    UIPopoverController *addBookmarkPopover;
+}
+
+@synthesize viewWeb;
+
+- (IBAction)search {
+    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [searchBar text]]]];
+    self.url = [searchBar text];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +43,9 @@
     NSString *fullURL = self.url;
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [_viewWeb loadRequest:requestObj];
+    [viewWeb loadRequest:requestObj];
+    viewWeb.scalesPageToFit = YES;
+    searchBar.text = fullURL;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,9 +68,7 @@
             [NetworkClient createBookmark:addController.bookmark];
             
         }
-//        [self dismissViewControllerAnimated:YES completion:NULL];
-        UINavigationController *navController = self.navigationController;
-        [navController popViewControllerAnimated:YES];
+        [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
 
@@ -66,18 +76,29 @@
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
-        UINavigationController *navController = self.navigationController;
-        [navController popViewControllerAnimated:YES];
-        //[self dismissViewControllerAnimated:YES completion:NULL];
+        [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
+- (IBAction)addBookmarkClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    AddBookmarkViewController *addBookmarkViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
+    addBookmarkViewController.url = self.url;
+    IIViewDeckController *vdc = self.viewDeckController;
+    [addBookmarkViewController removeFromParentViewController];
+    [vdc addChildViewController:addBookmarkViewController];
+    vdc.topSize = 500;
+    vdc.topController = addBookmarkViewController;
+    [vdc openTopViewAnimated:YES];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddBookmarkSegue"])
+    if ([segue.identifier isEqualToString:@"addBookmarkSegue"])
     {
         AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
         addBookmarkViewController.url = self.url;
+        addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
 }
 

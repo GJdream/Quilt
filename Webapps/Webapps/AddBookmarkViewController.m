@@ -15,6 +15,15 @@
 
 @implementation AddBookmarkViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if ((textField == self.titleInput) || (textField == self.urlInput) || (textField == self.tagsInput))
@@ -61,7 +70,7 @@
             NSMutableArray *tags = [[NSMutableArray alloc] init];
             NSCharacterSet *chars = [NSCharacterSet characterSetWithCharactersInString:@", "];
             [tags addObjectsFromArray:([self.tagsInput.text componentsSeparatedByCharactersInSet:chars])];
-            UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:self.titleInput.text URL:self.urlInput.text Tags:tags Width:1 Height:1];
+            UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:self.titleInput.text URL:self.urlInput.text Tags:tags Width:1 Height:1 ID:-1];
             self.bookmark = bookmark;
         }
     }

@@ -15,15 +15,19 @@
     - junk data in DB to test app drawing  
     - networking code on iPad also
 
- - GUI: {In Progress} (Now in separate branch)
+ - GUI: {In Progress} (Merged back to Master)
     - Login screen (Briony) {Working}
-    - Bookmarks view (Anna)
-    - Navigation view: not started yet
+    - Web view (Anna) {Complete}
+    - Add bookmark popup {Almost complete}
+        - Need to disable add bookmark button when clicked
+    - Bookmark view {In progress}
+    - Navigation view {In progress}
+        - Table view implemented
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
 {self-hosted -> intergration with DoC will come later if required}  
-Output queries in JSON {In Progress - Eleanor}
+Output queries in JSON {Working - has been merged into master by Richard}
 
 
 
@@ -53,7 +57,6 @@ Since we are unaware how many tags people want to associate/how many people will
     - Thursday 30th May  
     - Tuesday 4th June 
     
- - Next Meetings
-    - Friday 7th June  
+ - Next Meetings  
     - Monday 10th June  
     - Wednesday 12th June  

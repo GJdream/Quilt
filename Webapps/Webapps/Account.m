@@ -12,14 +12,21 @@
 @interface Account ()
     @property (readwrite) NSString *username;
     @property (readwrite) NSString *password;
-    @property (readwrite) NSDictionary *tagToBookmark;
-    @property (readwrite) NSDictionary *urlToBookmark;
 @end
 
 
 @implementation Account
 
 Account *currentAccount;
+
++(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc
+{
+    NSLog(@"loginUser: %@, %@", username, password);
+    Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
+    currentAccount = newAccount;
+    [NetworkClient loginUser:newAccount LoginView:lvc];
+    
+}
 
 +(void)setCurrent:(Account*)newCurrent
 {
@@ -42,31 +49,9 @@ Account *currentAccount;
     {
         _username = initUsername;
         _password = initPassword;
-        _tagToBookmark = [[NSDictionary alloc] init];
-        _urlToBookmark = [[NSDictionary alloc] init];
     }
     
     return self;
-}
-
--(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
-{
-    UIBookmark *newBookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height];
-    for (NSString *tag in tags) {
-        NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
-        if(!bookmarkSet)
-            bookmarkSet = [[NSMutableSet alloc] initWithObjects:newBookmark, nil];
-        else
-            [bookmarkSet addObject:newBookmark];
-    }
-}
-
-+(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc
-{
-    NSLog(@"loginUser: %@, %@", username, password);
-    Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
-    currentAccount = newAccount;
-    [NetworkClient loginUser:newAccount LoginView:lvc];
 }
 
 @end
