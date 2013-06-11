@@ -7,11 +7,13 @@
 //
 
 #import "NavigationBarViewController.h"
+#import "NDTrie.h"
+#import "BookmarkDataController.h"
 
 @implementation NavigationBarViewController
 
 #define NUMBER_OF_STATIC_CELLS 2
-NSMutableArray *tableData;
+NSArray *tableData;
 
 /*
 - (id)initWithFrame:(CGRect)frame
@@ -27,8 +29,12 @@ NSMutableArray *tableData;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Initialize table data
-    tableData = [NSMutableArray arrayWithObjects:@"Social", @"Twitter", @"Cats", @"Funny", @"Videos", nil];
+    tableData = [[BookmarkDataController instantiate].tagTrie everyObject];
+    [[BookmarkDataController instantiate]registerUpdate:^(void)
+        {
+            tableData = [[BookmarkDataController instantiate].tagTrie everyObject];
+            [self.tableView reloadData];
+        }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -59,9 +65,6 @@ NSMutableArray *tableData;
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:staticCellID];
         }
-        
-        //cell.textLabel.text = staticCellID;
-        
     } else {
         NSString *dynamicCellID = @"TableItem";
         cell = [tableView dequeueReusableCellWithIdentifier:dynamicCellID];
@@ -74,6 +77,14 @@ NSMutableArray *tableData;
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
 }
 
 /*

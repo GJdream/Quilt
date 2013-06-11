@@ -9,7 +9,8 @@
 #import "NetworkController.h"
 #import "AppDelegate.h"
 #import "UIBookmark.h"
-#import "IIViewDeckController.h"
+#import "LoginViewController.h"
+#import "BookmarkDataController.h"
 
 @implementation NetworkController
 
@@ -28,10 +29,12 @@
     }
 }
 
-+(void)gotBookmarks:(NSData*)data DataController:(BookmarkDataController*)bookmarkDC
++(void)gotBookmarks:(NSData*)data
 {
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
     
     NSArray *bookmarksArray = (NSArray*)[json objectForKey:@"bookmarks"];
     NSDictionary *tagsDict = (NSDictionary*)[json objectForKey:@"tags"];

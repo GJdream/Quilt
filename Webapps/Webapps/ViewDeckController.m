@@ -7,6 +7,9 @@
 //
 
 #import "ViewDeckController.h"
+#import "NavigationBarViewController.h"
+#import "BookmarkViewController.h"
+#import "BookmarkDataController.h"
 
 @interface ViewDeckController ()
 

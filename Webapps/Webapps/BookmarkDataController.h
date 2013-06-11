@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIBookmark.h"
-#import "BookmarkViewController.h"
-#import "NDTrie.h"
+
+@class UIBookmark;
+@class NDMutableTrie;
+@class BookmarkViewController;
 
 @interface BookmarkDataController : NSObject
 
@@ -19,7 +20,11 @@
 @property NSMutableOrderedSet *mostUsedTags;
 @property NDMutableTrie *tagTrie;
 
++ (void)setViewController:(BookmarkViewController*)newVC;
++ (BookmarkDataController*)instantiate;
+
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
+- (void)registerUpdate:(void (^)(void))updateMethod;
 - (NSUInteger)countOfBookmarks;
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
 - (void)addBookmark:(UIBookmark *)bookmark;
