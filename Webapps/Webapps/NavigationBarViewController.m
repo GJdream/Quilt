@@ -12,7 +12,7 @@
 
 @implementation NavigationBarViewController
 
-#define NUMBER_OF_STATIC_CELLS 2
+#define NUMBER_OF_STATIC_CELLS 1
 NSArray *tableData;
 
 /*
@@ -29,12 +29,36 @@ NSArray *tableData;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.searchBar.delegate = (id)self;
     tableData = [[BookmarkDataController instantiate].tagTrie everyObject];
     [[BookmarkDataController instantiate]registerUpdate:^(void)
         {
             tableData = [[BookmarkDataController instantiate].tagTrie everyObject];
             [self.tableView reloadData];
         }];
+}
+
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+    {
+        tableData = [[BookmarkDataController instantiate].tagTrie everyObject];
+        [self.tableView reloadData];
+    }
+    else
+    {
+        NSString *searchItem;
+        NSEnumerator *itemsEnumerator = [[BookmarkDataController instantiate].tagTrie objectEnumeratorForKeyWithPrefix:text];
+        NSMutableArray *searchItems = [[NSMutableArray alloc] init];
+        if(!(searchItem = [itemsEnumerator nextObject]))
+            ; // Make an entry saying "no results".
+        do {
+            [searchItems addObject:searchItem];
+        } while (searchItem = [itemsEnumerator nextObject]);
+        
+        tableData = searchItems;
+        [self.tableView reloadData];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -52,12 +76,7 @@ NSArray *tableData;
         NSString *staticCellID;
         
         if (cellNum == 0)
-        {
-            staticCellID = @"TableSearch";
-        } else if (cellNum == 1)
-        {
             staticCellID = @"TableName";
-        }
         
         cell = [tableView dequeueReusableCellWithIdentifier:staticCellID];
         
