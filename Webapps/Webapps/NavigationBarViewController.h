@@ -1,5 +1,5 @@
 //
-//  NavigationBarView.h
+//  NavigationBarViewController.h
 //  Webapps
 //
 //  Created by Richard Jones on 10/06/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NavigationBarView : UIView
+@interface NavigationBarViewController : UITableViewController
 
 @end
