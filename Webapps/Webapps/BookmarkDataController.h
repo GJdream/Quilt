@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSMutableArray *bookmarksArray;
 @property BookmarkViewController *bookmarkVC;
 @property NSMutableOrderedSet *mostUsedTags;
-@property NDTrie *tagTrie;
+@property NDMutableTrie *tagTrie;
 
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (NSUInteger)countOfBookmarks;

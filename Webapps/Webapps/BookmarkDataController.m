@@ -10,6 +10,7 @@
 
 @interface BookmarkDataController ()
 @property NSMutableArray *updatedBookmarks;
+@property (readwrite) NSMutableDictionary *tagToBookmark;
 
 @end
 
@@ -41,6 +42,7 @@
     if(_bookmarksArray != newArray)
     {
         _bookmarksArray = [newArray mutableCopy];
+        _tagTrie = [[NDMutableTrie alloc] init];
     }
 }
 
@@ -49,6 +51,7 @@
     if (self = [super init])
     {
         _bookmarksArray = [[NSMutableArray alloc] init];
+        _tagTrie = [[NDMutableTrie alloc] init];
         //[self initDefaultBookmarks];
         [NetworkClient getNewBookmarks:self];
     }
@@ -61,6 +64,7 @@
     {
         _bookmarksArray = [[NSMutableArray alloc] init];
         _updatedBookmarks = [[NSMutableArray alloc] init];
+        _tagTrie = [[NDMutableTrie alloc] init];
         self.bookmarkVC = bookmarkVC;
         [NetworkClient getNewBookmarks:self];
     }
@@ -84,6 +88,19 @@
     NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedBookmarks addObject:indexPath];
+    
+    [self.tagTrie addArray:bookmark.tags];
+    
+    for (NSString *tag in bookmark.tags) {
+        NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
+        if(!bookmarkSet)
+        {
+            bookmarkSet = [[NSMutableSet alloc] initWithObjects:bookmark, nil];
+            [self.tagToBookmark setValue:bookmarkSet forKey:tag];
+        }
+        else
+            [bookmarkSet addObject:bookmark];
+    }
 }
 
 - (void)updateOnBookmarkInsertion

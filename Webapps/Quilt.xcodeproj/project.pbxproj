@@ -20,6 +20,7 @@
 		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
 		7910520F17662A4A00CC4555 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910520E17662A4A00CC4555 /* NavigationBarView.m */; };
 		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7910521817673D2900CC4555 /* Quilt-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7910521717673D2900CC4555 /* Quilt-Info.plist */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
@@ -60,6 +61,7 @@
 		7910520E17662A4A00CC4555 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		79105213176651A900CC4555 /* NDTrie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTrie.h; sourceTree = "<group>"; };
 		79105214176651A900CC4555 /* NDTrie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDTrie.m; sourceTree = "<group>"; };
+		7910521717673D2900CC4555 /* Quilt-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Quilt-Info.plist"; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -68,14 +70,13 @@
 		795288D3175AB33D00158F8E /* NetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClient.m; sourceTree = "<group>"; };
 		79B9314717612E8C006911AF /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
 		79B9314817612E8C006911AF /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
-		79BEAD271754FCAC0056DFBD /* Webapps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Webapps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79BEAD271754FCAC0056DFBD /* Quilt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quilt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79BEAD2A1754FCAC0056DFBD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79BEAD2C1754FCAC0056DFBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		79BEAD2E1754FCAC0056DFBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		79BEAD321754FCAC0056DFBD /* Webapps-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Webapps-Info.plist"; sourceTree = "<group>"; };
 		79BEAD341754FCAC0056DFBD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		79BEAD361754FCAC0056DFBD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		79BEAD381754FCAC0056DFBD /* Webapps-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Webapps-Prefix.pch"; sourceTree = "<group>"; };
+		79BEAD381754FCAC0056DFBD /* Quilt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quilt-Prefix.pch"; sourceTree = "<group>"; };
 		79BEAD391754FCAC0056DFBD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		79BEAD3C1754FCAC0056DFBD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -126,7 +127,7 @@
 		79BEAD281754FCAC0056DFBD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79BEAD271754FCAC0056DFBD /* Webapps.app */,
+				79BEAD271754FCAC0056DFBD /* Quilt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,7 +173,6 @@
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
 				79105213176651A900CC4555 /* NDTrie.h */,
 				79105214176651A900CC4555 /* NDTrie.m */,
-				7910520B176627B400CC4555 /* seathing.jpg */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 			);
@@ -182,10 +182,10 @@
 		79BEAD311754FCAC0056DFBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				79BEAD321754FCAC0056DFBD /* Webapps-Info.plist */,
+				7910521717673D2900CC4555 /* Quilt-Info.plist */,
 				79BEAD331754FCAC0056DFBD /* InfoPlist.strings */,
 				79BEAD361754FCAC0056DFBD /* main.m */,
-				79BEAD381754FCAC0056DFBD /* Webapps-Prefix.pch */,
+				79BEAD381754FCAC0056DFBD /* Quilt-Prefix.pch */,
 				79BEAD3C1754FCAC0056DFBD /* Default.png */,
 				79BEAD3E1754FCAC0056DFBD /* Default@2x.png */,
 				79BEAD401754FCAC0056DFBD /* Default-568h@2x.png */,
@@ -196,9 +196,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		79BEAD261754FCAC0056DFBD /* Webapps */ = {
+		79BEAD261754FCAC0056DFBD /* Quilt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79BEAD441754FCAC0056DFBD /* Build configuration list for PBXNativeTarget "Webapps" */;
+			buildConfigurationList = 79BEAD441754FCAC0056DFBD /* Build configuration list for PBXNativeTarget "Quilt" */;
 			buildPhases = (
 				79BEAD231754FCAC0056DFBD /* Sources */,
 				79BEAD241754FCAC0056DFBD /* Frameworks */,
@@ -208,9 +208,9 @@
 			);
 			dependencies = (
 			);
-			name = Webapps;
+			name = Quilt;
 			productName = Webapps;
-			productReference = 79BEAD271754FCAC0056DFBD /* Webapps.app */;
+			productReference = 79BEAD271754FCAC0056DFBD /* Quilt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Team Awesome";
 			};
-			buildConfigurationList = 79BEAD221754FCAC0056DFBD /* Build configuration list for PBXProject "Webapps" */;
+			buildConfigurationList = 79BEAD221754FCAC0056DFBD /* Build configuration list for PBXProject "Quilt" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -234,7 +234,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				79BEAD261754FCAC0056DFBD /* Webapps */,
+				79BEAD261754FCAC0056DFBD /* Quilt */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +250,7 @@
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
 				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
 				7910520A1766251300CC4555 /* navBarTexture.png in Resources */,
+				7910521817673D2900CC4555 /* Quilt-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,9 +357,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Webapps/Webapps-Prefix.pch";
-				INFOPLIST_FILE = "Webapps/Webapps-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Webapps/Quilt-Prefix.pch";
+				INFOPLIST_FILE = "Webapps/Quilt-Info.plist";
+				PRODUCT_NAME = Quilt;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -367,9 +368,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Webapps/Webapps-Prefix.pch";
-				INFOPLIST_FILE = "Webapps/Webapps-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Webapps/Quilt-Prefix.pch";
+				INFOPLIST_FILE = "Webapps/Quilt-Info.plist";
+				PRODUCT_NAME = Quilt;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -377,7 +378,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		79BEAD221754FCAC0056DFBD /* Build configuration list for PBXProject "Webapps" */ = {
+		79BEAD221754FCAC0056DFBD /* Build configuration list for PBXProject "Quilt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79BEAD421754FCAC0056DFBD /* Debug */,
@@ -386,7 +387,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79BEAD441754FCAC0056DFBD /* Build configuration list for PBXNativeTarget "Webapps" */ = {
+		79BEAD441754FCAC0056DFBD /* Build configuration list for PBXNativeTarget "Quilt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				79BEAD451754FCAC0056DFBD /* Debug */,

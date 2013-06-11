@@ -12,8 +12,6 @@
 @interface Account ()
     @property (readwrite) NSString *username;
     @property (readwrite) NSString *password;
-    @property (readwrite) NSDictionary *tagToBookmark;
-    @property (readwrite) NSDictionary *urlToBookmark;
 @end
 
 
@@ -56,18 +54,6 @@ Account *currentAccount;
     }
     
     return self;
-}
-
--(void)addBookmark:(NSString*)url WithTags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height
-{
-    UIBookmark *newBookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:width Height:height ID:-1];
-    for (NSString *tag in tags) {
-        NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
-        if(!bookmarkSet)
-            bookmarkSet = [[NSMutableSet alloc] initWithObjects:newBookmark, nil];
-        else
-            [bookmarkSet addObject:newBookmark];
-    }
 }
 
 @end
