@@ -79,6 +79,7 @@
         [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
+/*
 - (IBAction)addBookmarkClick:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     AddBookmarkViewController *addBookmarkViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
@@ -90,7 +91,7 @@
     vdc.topController = addBookmarkViewController;
     [vdc openTopViewAnimated:YES];
 }
-
+*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
