@@ -38,6 +38,13 @@ NSArray *tableData;
         }];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    CGRect newRect = self.tableView.frame;
+    newRect.size.width = 268;
+    self.tableView.frame = newRect;
+}
+
 -(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
 {
     if(text.length == 0)
@@ -48,13 +55,19 @@ NSArray *tableData;
     else
     {
         NSString *searchItem;
-        NSEnumerator *itemsEnumerator = [[BookmarkDataController instantiate].tagTrie objectEnumeratorForKeyWithPrefix:text];
+        NDTrie *tagTrie = [BookmarkDataController instantiate].tagTrie;
+        
         NSMutableArray *searchItems = [[NSMutableArray alloc] init];
-        if(!(searchItem = [itemsEnumerator nextObject]))
-            ; // Make an entry saying "no results".
-        do {
-            [searchItems addObject:searchItem];
-        } while (searchItem = [itemsEnumerator nextObject]);
+        
+        if([tagTrie containsObjectForKeyWithPrefix:text])
+        {
+            NSEnumerator *itemsEnumerator = [tagTrie objectEnumeratorForKeyWithPrefix:text];
+
+            while (searchItem = [itemsEnumerator nextObject])
+            {
+                [searchItems addObject:searchItem];
+            }
+        }
         
         tableData = searchItems;
         [self.tableView reloadData];
