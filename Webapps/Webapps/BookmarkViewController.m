@@ -13,6 +13,7 @@
 #import "NavigationBarViewController.h"
 #import "UIBookmark.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BookmarkViewFlowLayout.h"
 
 @implementation BookmarkViewController
 
@@ -23,6 +24,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.collectionView registerClass:[UIBookmark class] forCellWithReuseIdentifier:@"BookmarkCell"];
     [BookmarkDataController setViewController:self];
 }
 
@@ -30,6 +32,7 @@
 {
     [super viewDidLoad];
 }
+
 - (IBAction)sidebarOpenClick:(id)sender {
     [self.viewDeckController openLeftViewAnimated:YES];
 }
@@ -65,6 +68,7 @@
     [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
     cell.layer.shouldRasterize = YES;
     cell.layer.opaque = YES;
+    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
