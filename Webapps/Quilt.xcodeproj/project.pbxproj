@@ -11,6 +11,7 @@
 		2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */; };
 		2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136EC1768AF26000DA87E /* Quilt144.png */; };
 		2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4136EF1768B3D5000DA87E /* RegisterViewController.m */; };
+		2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136F11768C2E1000DA87E /* navBarTexture.png */; };
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
 		2ECCAA1A1767A18F002B617A /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCAA191767A18E002B617A /* SignInViewController.m */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
@@ -20,7 +21,6 @@
 		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
 		791052021765F77600CC4555 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791052011765F77600CC4555 /* QuartzCore.framework */; };
 		791052051765FD9F00CC4555 /* ViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052041765FD9F00CC4555 /* ViewDeckController.m */; };
-		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
 		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7910521B17674A6400CC4555 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910521A17674A6400CC4555 /* NavigationBarViewController.m */; };
 		791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */; };
@@ -48,6 +48,7 @@
 		2E4136EC1768AF26000DA87E /* Quilt144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt144.png; sourceTree = "<group>"; };
 		2E4136EE1768B3D5000DA87E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2E4136EF1768B3D5000DA87E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2E4136F11768C2E1000DA87E /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
 		2EB5C3311760CDAC0084BCD7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		2EB5C3321760CDAC0084BCD7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		2ECCAA181767A18E002B617A /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		791052011765F77600CC4555 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		791052031765FD9F00CC4555 /* ViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDeckController.h; sourceTree = "<group>"; };
 		791052041765FD9F00CC4555 /* ViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDeckController.m; sourceTree = "<group>"; };
-		791052091766251300CC4555 /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
 		79105213176651A900CC4555 /* NDTrie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDTrie.h; sourceTree = "<group>"; };
 		79105214176651A900CC4555 /* NDTrie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDTrie.m; sourceTree = "<group>"; };
 		7910521717673D2900CC4555 /* Quilt-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Quilt-Info.plist"; sourceTree = "<group>"; };
@@ -168,7 +168,10 @@
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
-				791052091766251300CC4555 /* navBarTexture.png */,
+				7910521F1768AD1400CC4555 /* BookmarkViewFlowLayout.h */,
+				791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */,
+				2ECCAA181767A18E002B617A /* SignInViewController.h */,
+				2ECCAA191767A18E002B617A /* SignInViewController.m */,
 				7910521917674A6400CC4555 /* NavigationBarViewController.h */,
 				7910521A17674A6400CC4555 /* NavigationBarViewController.m */,
 				79105213176651A900CC4555 /* NDTrie.h */,
@@ -177,6 +180,7 @@
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
 				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
+				2E4136F11768C2E1000DA87E /* navBarTexture.png */,
 				2E4136EC1768AF26000DA87E /* Quilt144.png */,
 				2E4136EE1768B3D5000DA87E /* RegisterViewController.h */,
 				2E4136EF1768B3D5000DA87E /* RegisterViewController.m */,
@@ -264,8 +268,8 @@
 				79BEAD3F1754FCAC0056DFBD /* Default@2x.png in Resources */,
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
 				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
-				7910520A1766251300CC4555 /* navBarTexture.png in Resources */,
 				2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */,
+				2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +298,7 @@
 				79105215176651A900CC4555 /* NDTrie.m in Sources */,
 				7910521B17674A6400CC4555 /* NavigationBarViewController.m in Sources */,
 				2ECCAA1A1767A18F002B617A /* SignInViewController.m in Sources */,
+				791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */,
 				2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
