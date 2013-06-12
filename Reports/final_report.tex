@@ -1,5 +1,8 @@
 \documentclass[a4wide, 10pt]{article}
 \usepackage{a4, fullpage}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
 \setlength{\parskip}{0.3cm}
 \setlength{\parindent}{0cm}
 
@@ -25,7 +28,7 @@ By enabling the ability to 'tag' URLs, users are able to remind themselves of wh
 % Target System
 Quilt has been created as an iPad application to reflect the current trend of most socialites within society. The idea behind Quilt is the speed and fluidity of sharing things of interest, and the iPad reflects this concept in its ability to be fast and mobile. By nature, whilst some may use their iPad for solid work, many iPad users engage with their iPad as a means for quick internet research and the ease of communicating with their friends through a variety of social media outlets; Quilt fits perfectly within this scope. Quilt is also able to take advantage of the unique style of the apple products and provide a sleek graphical interface to make the application a much more pleasurable experience for its user base.
 
-+% Target Audience
+% Target Audience
 Quilt has been designed to be appealing to a wide range of users, the expected average age to fall around the young to mid twenties, and for a huge variety of technical capabilities. The application has been designed with simplicity in mind for this reason but will include convenient short cuts for those who are very adept with the product.
  
 
@@ -47,13 +50,47 @@ Quilt is an information sharing tool for group research and social interaction.
 
 Our strategy for design revolved around this definition statement from early on in our design process in order to clarify our idea and ultimately create a coherent product that people would want to own. This stemmed from our identification of the current problems with information sharing and allowed us to put together our list of requirements (tags, images, friends etc.) as well as our target systems and target audience [see Motivation].
 
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/WebApps Portrait Mock-Up"}
+                \caption{Portrait}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/WebApps Landscape Mock-Up"}
+                \caption{Lanscape}
+        \end{subfigure}
+        \caption{Design Mock-Ups}\label{fig:design}
+\end{figure}
+
 Given that Quilt is predominantly an iPad application there are a couple of different aspects that are important to consider to produce a quality application. Battery life is one of the first points to consider on any mobile life. It is important to design a product that does not drain the life of the device too rapidly, or else the user may be less likely to use the product. Quilt has elected to group together temporally local network accesses as having many small network communications would drain the battery life much quicker, due to the constant use of the networking hardware. Group the accesses together means more idle time for the networking hardware and so less battery life spent. 
 
 There are other networking issues to consider besides this. Quilt requires to sort of the bookmarks by a number of categories - almost every field within the database. That is to say, it is required that we are able to search locally by tag, size, name etc. The issue with this is that is must be done locally and cannot be delegated to the database itself. The reason for this being that the main bottleneck is network performance, which could be incredibly poor. Even given one million bookmarks, stored in 256 bits each, this is still only 32MB of space, so we could could not justify not storing the information locally and simply receiving updates from the server. 256 bits can be considered a conservative estimate but even doubling the space requirement per bookmark, one million bookmarks would still only need 64MB of space - the size of a small video - which is not incredibly significant, thus the decision remains to store information locally and only send updates via the network, thereby simply syncing the database together with the iPad. Furthermore, holding as many bookmarks as possible locally means that  network accesses are minimised which increases the responsiveness of the application. To support this is a multitude of data structures, such as a dictionary to map tags with bookmarks and a search trie to check tag existence and to search existing tags.
 
 Once the physical aspects of the device have been considered we move onto the discussion of the virtual aspects of the application. Before the appearance of the application is fully considered the usability of the application must be considered and tested. iOS users are accustomed to the appearance and behaviour of the built-in applications, so they tend to expect similar experiences in the applications they download, and so the design choices behind the GUI are crucial to the appeal of our applications and its usability. Quilt will be making full use of the touch gestures available to the device to ensure it is an intuitive experience for the user; the structure will be clean and easy to navigate, user feedback will be subtle, but clear with precise, fluid animations. It is important to comply with other Apple products as users dislike being forced to learn new procedures that don't transfer to any other applications. Alongside this are such features as persistent logins and bookmark creation methods. In a similar vein to how applications such as Facebook and Twitter allow the user to remain logged in to their account permanently (entering an offline/idle state when the application is closed on the iPad so as not to appear permanently online), Quilt will allow users to use the application without logging in with each and every access. The code in place ensures proper authentication of the user through use of the cookies provided by internet services, so every effort is in place to stop users having their accounts hijacked by those with malicious intent. 
 
-To improve the user experience even such small points as username choice feedback as been implemented. In an initial iteration of the product the user would not be aware if their username was available until after submitting their form. In Quilt's current iteration the text will change colour after their cursor has left the field box to indicate whether the username in question is available or not. This is a subtle point but does a great deal to improve the users sign-up experience. Similarly, on registering, if the user inputs two different passwords, the text will change colour to let them know of the error sooner rather than later.
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/Unavailable User"}
+                \caption{Register Username}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/Incorrect Pass"}
+                \caption{Register Password}
+        \end{subfigure}
+        \caption{Register New Account}\label{fig:login}
+\end{figure}
+
+To improve the user experience even such small points as username choice feedback as been implemented [see figure 1]. In an initial iteration of the product the user would not be aware if their username was available until after submitting their form. In Quilt's current iteration the text will change colour after their cursor has left the field box to indicate whether the username in question is available or not. This is a subtle point but does a great deal to improve the users sign-up experience. Similarly, on registering, if the user inputs two different passwords, the text will change colour to let them know of the error sooner rather than later.
 
 Behind this it was important to have a strong, usable database structure to hold all of the necessary information. In the initial iteration of the application the database had only three tables - Users, Bookmarks, and Groups. Users simply contained their username and a password. Bookmarks held a post id, the url, priority sizes, the owner and an array field for the associated tags. Similarly Groups only held a group id and then an array for the members of the group. Initially this seemed adequate but it soon became evident that the use of arrays was difficult to add to simply and there was a situation where the syntax broke down and made the method unusable. To fix this the array was extracted out to become its own table within the database. 
 
@@ -79,16 +116,40 @@ Regarding physical work, the dynamic of the group has been relatively fluid than
 
 \subsubsection{Model-View-Controller}
 
-The MVC pattern is the global architecture of our application. MVC classifies objects according to the general roles that they play within the application. On benefit of MVC is that objects tend to be more reusable and interfaces better defined as a result of splitting them up in such a way. This makes the program more adaptable to changing requirements and more easily extensible than applications not based on MVC. Furthermore, many of the technologies in Cocoa, such as bindings, the document architecture, and scriptability, are based on MVC and it was required that our objects play one of the roles defined by MVC. Consistency in appearance in behaviour is essential so, by using MVC, we were able to identify the two most crucial parts of our system- the View and Model- and focus on these to maximise reusability.  We wanted our GUI to be consistent with the Apple interface and other iPad applications on the market and by adopting the MVC design pattern, we were able to take advantage of the AppKit framework in Cocoa, which defines a large number of view objects and provides many of them in the Interface Builder library. By reusing the AppKit's view objects, such as NSButton objects, we were able to guarantee that buttons in our application behave just like buttons in any other Cocoa application, assuring a high level of consistency in appearance and behaviour across applications. The controller object in Cocoa's MVC compound design pattern also incorporates the Mediator pattern as well as the Strategy pattern, mediating the flow of data between model and view objects. Changes in model state are communicated to view objects through the controller objects of an application. In addition view objects incorporate the Command pattern through their implementation of the target-action mechanism, which enables view objects to communicate user input and choices.
+The MVC pattern is the global architecture of our application. MVC classifies objects according to the general roles that they play within the application. On benefit of MVC is that objects tend to be more reusable and interfaces better defined as a result of splitting them up in such a way. This makes the program more adaptable to changing requirements and more easily extensible than applications not based on MVC. Furthermore, many of the technologies in Cocoa, such as bindings, the document architecture, and scriptability, are based on MVC and it was required that our objects play one of the roles defined by MVC. Consistency in appearance in behaviour is essential so, by using MVC, we were able to identify the two most crucial parts of our system- the View and Model- and focus on these to maximise re-usability.  We wanted our GUI to be consistent with the Apple interface and other iPad applications on the market and by adopting the MVC design pattern, we were able to take advantage of the AppKit framework in Cocoa, which defines a large number of view objects and provides many of them in the Interface Builder library. By reusing the AppKit's view objects, such as NSButton objects, we were able to guarantee that buttons in our application behave just like buttons in any other Cocoa application, assuring a high level of consistency in appearance and behaviour across applications. The controller object in Cocoa's MVC compound design pattern also incorporates the Mediator pattern as well as the Strategy pattern, mediating the flow of data between model and view objects. Changes in model state are communicated to view objects through the controller objects of an application. In addition view objects incorporate the Command pattern through their implementation of the target-action mechanism, which enables view objects to communicate user input and choices.
 
 \subsubsection{Singleton}
 We have used a singleton pattern within the data controller for the bookmarks. Despite the Singleton being a commonly misused pattern, we believe it is appropriate here as it greatly simplifies access to the data throughout the application, enabling us to access the bookmarks from multiple sources without the hassle of passing it messily. 
 
-\subsection{Diagrams}
+\subsection{The Storyboard}
 
-\subsection{Screenshots}
+\begin{figure}
+	\centering	
+	\includegraphics[width=\textwidth]{screenshots/Storyboard}
+	\caption{Xcode Storyboard}
+\end{figure}
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/In-App Browsing"}
+                \caption{Browsing}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.4\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{"screenshots/App Browsing"}
+                \caption{Adding Bookmarks}
+        \end{subfigure}
+        \caption{In-Quilt Web Browsing}\label{fig:browse}
+\end{figure}
 
 \section{Conclusion}
+
+In conclusion, Quilt is a sleek social application that will enable the users to share websites of interest between their peers with ease. In doing this project we have set up a good relational database and successfully used a variety of tools and features to connect out front-end UI to our back-end code over the network, putting a strong host of design patterns and processes to use. 
+
 	What we have done
 	What we have not done
 	What we have learned
@@ -96,49 +157,37 @@ We have used a singleton pattern within the data controller for the bookmarks. D
 		More advanced use of databases
 	What we would do differently
 	
-\section{Acknowledgments}
+\section{Acknowledgements}
 
-Xcode software
-License: Proprietary freeware with open source components
-Important points from the Software License Agreement for Xcode:
-you are granted a limited, nonexclusive license to use the Developer Software on Apple-branded computers to develop and test application and other software.
+We would like to extend our thanks to the following people and applications for their assistance in creating this product:
+
+Xcode is a proprietary freeware product that allows its users a limited, nonexclusive license to use the Developer Software on Apple-branded computers to develop and test applications and other software. Given this, were we to follow on to produce this product in a commercial setting we would be allowed to with no restriction from this license. We extend our thanks to Apple for providing the environment for such use.
+%^- Add reference to license below -> up to you if you add more of the license or not
+
+%Ask Richard about the developer license we got off of doc to test the app on the ipad. Need to check if that license would allow us to sell it on the istore or whether we would need to go ahead and get the paid license ourselves to do so. If it is just for project use note this here.
+
+
 
 Libraries: Objective-C libraries, Cocoa and Cocoa Touch libraries
+%^- extend these libraries into prose
 
-ViewDeck
+
+
 ViewDeck is a sidebar navigation tool created by Tom Adrianssen hosted on GitHub in 2011. We chose ViewDeck because of its clean simplicity, consistency with the 'look and feel' of other Apple apps, and the fact that, as a navigation tool, it accomplished everything we were looking for with the support for the features that we were currently using, such as Storyboarding in XCode. In particular, we chose ViewDeck over alternatives, such as the Facebook style navigation bar by Ben Hall, as it used the latest iOS.
+%^- this bit is basically fine, just add the reference to the license below
 
-License:
-UIViewDeckController published under the MIT license:
-Copyright (C) 2011-2013, Tom Adriaenssen
+
+\section{Licenses}
+
+\subsection{Xcode software License:}
+
+Proprietary freeware with open source components.
+
+\subsection{IIViewDeckController published under the MIT license:}
+
+Copyright (C) 2011-2013, Tom Adriaenssen\\
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\\
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	Libraries
-Do we need to acknowledge that we used the Xcode software?
-	Code
-	Pictures
-	Discussion of legal issues for official release
-
-Adapting from iPad to iPhone
-Adapt art to screen size
-Preserve primary functionality
-
-TODO:
-Eleanor:
-Group Structure
-Database layout and design choices
-Persistent logins
-
-Richard:
-Singleton
-Privacy when sharing
-
-Anna: 
-Storyboard screenshot 
-GUI layout
-
-
 
 \end{document}
