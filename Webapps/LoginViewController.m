@@ -39,11 +39,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)loginClicked:(id)sender {
+- (IBAction)loginClicked:(id)sender
+{
     self.loginButton.enabled = NO;
     [Account loginUser:txtUsername.text Password:txtPassword.text LoginView:self];
 }
 
-- (IBAction)backgroundClick:(id)sender {
+- (IBAction)backgroundClick:(id)sender
+{
 }
 @end

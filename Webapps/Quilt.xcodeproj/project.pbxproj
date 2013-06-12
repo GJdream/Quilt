@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E0F9E6817608B6A00B4305C /* BookmarkDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */; };
 		2E38EFEF175F6FAC00A41D05 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */; };
+		2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136EC1768AF26000DA87E /* Quilt144.png */; };
+		2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4136EF1768B3D5000DA87E /* RegisterViewController.m */; };
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
 		2ECCAA1A1767A18F002B617A /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCAA191767A18E002B617A /* SignInViewController.m */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
@@ -42,6 +44,9 @@
 		2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkDataController.m; sourceTree = "<group>"; };
 		2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewController.h; sourceTree = "<group>"; };
 		2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewController.m; sourceTree = "<group>"; };
+		2E4136EC1768AF26000DA87E /* Quilt144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt144.png; sourceTree = "<group>"; };
+		2E4136EE1768B3D5000DA87E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2E4136EF1768B3D5000DA87E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2EB5C3311760CDAC0084BCD7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		2EB5C3321760CDAC0084BCD7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		2ECCAA181767A18E002B617A /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
@@ -153,32 +158,35 @@
 				79B9314817612E8C006911AF /* AddBookmarkViewController.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
-				791052031765FD9F00CC4555 /* ViewDeckController.h */,
-				791052041765FD9F00CC4555 /* ViewDeckController.m */,
-				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
-				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
 				2E0F9E6617608B6A00B4305C /* BookmarkDataController.h */,
 				2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */,
+				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
+				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
-				2ECCAA181767A18E002B617A /* SignInViewController.h */,
-				2ECCAA191767A18E002B617A /* SignInViewController.m */,
+				791052091766251300CC4555 /* navBarTexture.png */,
 				7910521917674A6400CC4555 /* NavigationBarViewController.h */,
 				7910521A17674A6400CC4555 /* NavigationBarViewController.m */,
+				79105213176651A900CC4555 /* NDTrie.h */,
+				79105214176651A900CC4555 /* NDTrie.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
 				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
+				2E4136EC1768AF26000DA87E /* Quilt144.png */,
+				2E4136EE1768B3D5000DA87E /* RegisterViewController.h */,
+				2E4136EF1768B3D5000DA87E /* RegisterViewController.m */,
+				2ECCAA181767A18E002B617A /* SignInViewController.h */,
+				2ECCAA191767A18E002B617A /* SignInViewController.m */,
 				795288C317590D3500158F8E /* UIBookmark.h */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
-				791052091766251300CC4555 /* navBarTexture.png */,
+				791052031765FD9F00CC4555 /* ViewDeckController.h */,
+				791052041765FD9F00CC4555 /* ViewDeckController.m */,
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
-				79105213176651A900CC4555 /* NDTrie.h */,
-				79105214176651A900CC4555 /* NDTrie.m */,
-				791051F71765F55200CC4555 /* ViewDeck */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
+				791051F71765F55200CC4555 /* ViewDeck */,
 			);
 			path = Webapps;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
 				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
 				7910520A1766251300CC4555 /* navBarTexture.png in Resources */,
+				2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +291,7 @@
 				79105215176651A900CC4555 /* NDTrie.m in Sources */,
 				7910521B17674A6400CC4555 /* NavigationBarViewController.m in Sources */,
 				2ECCAA1A1767A18F002B617A /* SignInViewController.m in Sources */,
+				2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
