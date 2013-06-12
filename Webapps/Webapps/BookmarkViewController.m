@@ -17,6 +17,7 @@
 @implementation BookmarkViewController
 
 - (IBAction)menuButtonClicked:(id)sender {
+    [self.viewDeckController openLeftViewAnimated:YES];
 }
 
 - (void)awakeFromNib
