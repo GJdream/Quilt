@@ -53,14 +53,14 @@ NSUInteger lastUpdatedTime = 0;
     return retRequest;
 }
 
-+(void)getNewBookmarks:(BookmarkDataController*)bookmarkDC
++(void)getNewBookmarks
 {
     NSString *params = @"action=get_bookmarks";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {   
                dispatch_async(dispatch_get_main_queue(),
                             ^(void){
-                                    [NetworkController gotBookmarks:data DataController:bookmarkDC];
+                                    [NetworkController gotBookmarks:data];
                                 });
                
                if (error != nil)

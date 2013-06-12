@@ -11,6 +11,7 @@
 #import "UIBookmark.h"
 #import "NetworkClient.h"
 #import "ViewDeckController.h"
+#import "BookmarkDataController.h"
 
 @interface WebViewController ()
 
@@ -62,9 +63,9 @@
         AddBookmarkViewController *addController = [segue sourceViewController];
         if (addController.bookmark)
         {
-            [self.dataController addBookmark:addController.bookmark];
+            [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
             // Call function to reload bookmarkDataController
-            [self.dataController updateOnBookmarkInsertion];
+            [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
             [NetworkClient createBookmark:addController.bookmark];
             
         }
@@ -79,6 +80,7 @@
         [addBookmarkPopover dismissPopoverAnimated:YES];
     }
 }
+/*
 - (IBAction)addBookmarkClick:(id)sender {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     AddBookmarkViewController *addBookmarkViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
@@ -90,7 +92,7 @@
     vdc.topController = addBookmarkViewController;
     [vdc openTopViewAnimated:YES];
 }
-
+*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

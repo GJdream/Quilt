@@ -7,35 +7,41 @@
 
 #import "BookmarkDataController.h"
 #import "NetworkClient.h"
+#import "UIBookmark.h"
+#import "BookmarkViewController.h"
+#import "NDTrie.h"
+#import "NavigationBarViewController.h"
 
 @interface BookmarkDataController ()
 @property NSMutableArray *updatedBookmarks;
 @property (readwrite) NSMutableDictionary *tagToBookmark;
-
+@property NSMutableArray *watchingMethods;
 @end
 
 @implementation BookmarkDataController
 
-/*- (void)initDefaultBookmarks
+static BookmarkDataController *instance = nil;
+static BookmarkViewController *staticVC = nil;
+
++ (void)setViewController:(BookmarkViewController*)newVC
 {
-    NSMutableArray *bookmarks = [[NSMutableArray alloc] init];
-    self.bookmarksArray = bookmarks;
-    NSMutableArray *defaultTags = [[NSMutableArray alloc] initWithObjects:@"search", @"engine", @"google", @"test", nil];
-    UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:@"Google" URL:@"http://google.com" Tags:defaultTags Width:1 Height:1];
-    [self addBookmark:bookmark];
-    defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"friends", @"facebook", @"test", nil];
-    bookmark = [[UIBookmark alloc] initWithTitle:@"Facebook" URL:@"http://facebook.com" Tags:defaultTags Width:1 Height:1];
-    [self addBookmark:bookmark];
-    defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"cats", @"youtube", @"videos", @"test", nil];
-    bookmark = [[UIBookmark alloc] initWithTitle:@"Youtube" URL:@"http://youtube.com" Tags:defaultTags Width:1 Height:1];
-    [self addBookmark:bookmark];
-    //defaultTags = [[NSMutableArray alloc] initWithObjects:@"socialnetworks", @"friends", "@twitter", @"test", nil];
-    bookmark = [[UIBookmark alloc] initWithTitle:@"Twitter" URL:@"http://twitter.com" Tags:defaultTags Width:1 Height:1];
-    [self addBookmark:bookmark];
-    //defaultTags = [[NSMutableArray alloc] initWithObjects:@"social networks", @"friends", @"tumblr", @"test", nil];
-    bookmark = [[UIBookmark alloc] initWithTitle:@"Tumblr" URL:@"http://tumblr.com" Tags:defaultTags Width:1 Height:1];
-    [self addBookmark:bookmark];
-}*/
+    staticVC = newVC;
+    if(instance)
+        instance.bookmarkVC = newVC;
+}
+
++ (BookmarkDataController*)instantiate
+{
+    if(!instance)
+        instance = [[BookmarkDataController alloc] initWithViewController:staticVC];
+    
+    return instance;
+}
+
+- (void)registerUpdate:(void (^)(void))updateMethod
+{
+    [self.watchingMethods addObject:updateMethod];
+}
 
 - (void)setBookmarksArray:(NSMutableArray *)newArray
 {
@@ -54,8 +60,9 @@
         _bookmarkDisplayArray = _bookmarksArray;
         _tagTrie = [[NDMutableTrie alloc] init];
         _tagToBookmark = [[NSMutableDictionary alloc] init];
-        //[self initDefaultBookmarks];
-        [NetworkClient getNewBookmarks:self];
+        _updatedBookmarks = [[NSMutableArray alloc] init];
+        _watchingMethods = [[NSMutableArray alloc] init];
+        [NetworkClient getNewBookmarks];
     }
     return self;
 }
@@ -69,8 +76,10 @@
         _updatedBookmarks = [[NSMutableArray alloc] init];
         _tagTrie = [[NDMutableTrie alloc] init];
         _tagToBookmark = [[NSMutableDictionary alloc] init];
-        self.bookmarkVC = bookmarkVC;
-        [NetworkClient getNewBookmarks:self];
+        _updatedBookmarks = [[NSMutableArray alloc] init];
+        _watchingMethods = [[NSMutableArray alloc] init];
+        _bookmarkVC = bookmarkVC;
+        [NetworkClient getNewBookmarks];
     }
     
     return self;
@@ -102,7 +111,6 @@
         if(!bookmarkSet)
         {
             bookmarkSet = [[NSMutableSet alloc] initWithObjects:bookmark, nil];
-            //So this isn't adding it properly:
             [self.tagToBookmark setObject:bookmarkSet forKey:tag];
         }
         else
@@ -112,8 +120,35 @@
 
 - (void)updateOnBookmarkInsertion
 {
-    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
+    if(self.updatedBookmarks)
+        [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
     [self.updatedBookmarks removeAllObjects];
+    
+    for (void (^f)(void) in self.watchingMethods)
+        f();
+}
+
+- (void)showAll
+{
+    NSUInteger prevCount = self.bookmarkDisplayArray.count;
+    [self.updatedBookmarks removeAllObjects];
+    for (NSUInteger i = 0; i < prevCount; ++i) {
+        [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    self.bookmarkDisplayArray = nil;
+    
+    [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:self.updatedBookmarks];
+    
+    [self.updatedBookmarks removeAllObjects];
+    
+    self.bookmarkDisplayArray = self.bookmarksArray;
+    
+    for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {
+        [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
 }
 
 - (void)showTag:(NSString*)tag

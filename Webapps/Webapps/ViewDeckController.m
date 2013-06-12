@@ -7,6 +7,9 @@
 //
 
 #import "ViewDeckController.h"
+#import "NavigationBarViewController.h"
+#import "BookmarkViewController.h"
+#import "BookmarkDataController.h"
 
 @interface ViewDeckController ()
 
@@ -59,7 +62,9 @@
         self.navigationControllerBehavior = IIViewDeckNavigationControllerContained;
         self.centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainNavController"];
         self.leftController = [mainStoryboard instantiateViewControllerWithIdentifier:@"sidebarViewController"];
-        self.leftSize = 500.0f;
+        CGRect rect = [[UIScreen mainScreen] bounds];
+        CGSize size = rect.size;
+        self.leftSize = size.width - 268.0f;
         self.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
     }
     return self;

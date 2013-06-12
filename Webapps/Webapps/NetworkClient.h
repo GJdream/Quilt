@@ -13,7 +13,7 @@
 
 @interface NetworkClient : NSObject
 
-+(void)getNewBookmarks:(BookmarkDataController*)bookmarkDC;
++(void)getNewBookmarks;
 +(void)createAccount:(Account*)account;
 +(void)createBookmark:(UIBookmark*)bookmark;
 +(void)shareTag:(NSString*)tag With:(NSSet*)users;

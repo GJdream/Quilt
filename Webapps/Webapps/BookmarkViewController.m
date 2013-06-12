@@ -10,22 +10,28 @@
 #import "BookmarkDataController.h"
 #import "WebViewController.h"
 #import "ViewDeckController.h"
+#import "NavigationBarViewController.h"
+#import "UIBookmark.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation BookmarkViewController
 
 - (IBAction)menuButtonClicked:(id)sender {
+    [self.viewDeckController openLeftViewAnimated:YES];
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.dataController = [[BookmarkDataController alloc] initWithViewController:self];
+    [BookmarkDataController setViewController:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+- (IBAction)sidebarOpenClick:(id)sender {
+    [self.viewDeckController openLeftViewAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +47,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.dataController countOfBookmarks];
+    return [[BookmarkDataController instantiate] countOfBookmarks];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -50,16 +56,22 @@
     
     UIBookmark *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
-    UIBookmark *bookmarkAtIndex = [self.dataController bookmarkInListAtIndex:indexPath.row];
+    UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
     cell.label.text = bookmarkAtIndex.label.text;
+    
+    [cell.layer setMasksToBounds:YES];
+    [cell.layer setCornerRadius:15];
+    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.layer.shouldRasterize = YES;
+    cell.layer.opaque = YES;
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIBookmark *bookmark = [self.dataController bookmarkInListAtIndex:indexPath.row];
+    UIBookmark *bookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     NSString *url = bookmark.url;
     [self performSegueWithIdentifier:@"webSegue" sender:url];
 }
@@ -70,7 +82,6 @@
     {
         WebViewController *webViewController = segue.destinationViewController;
         webViewController.url = sender;
-        webViewController.dataController = self.dataController;
     }
 }
 
