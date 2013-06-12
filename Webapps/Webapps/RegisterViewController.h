@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UITableViewController
+@interface RegisterViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
+@property (weak, nonatomic) IBOutlet UILabel *validUsernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *validPasswordLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property BOOL validUsername;
+@property BOOL validPassword;
 
 - (IBAction)registerClicked:(id)sender;
 

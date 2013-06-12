@@ -11,6 +11,8 @@
 #import "UIBookmark.h"
 #import "LoginViewController.h"
 #import "BookmarkDataController.h"
+#import "RegisterViewController.h"
+#import "Account.h"
 
 @implementation NetworkController
 
@@ -31,6 +33,25 @@
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
         
         loginVC.loginButton.enabled = YES;
+    }
+}
+
++(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL success = [(NSNumber*)[json valueForKey:@"username_valid"] boolValue];
+    if(success)
+    {
+        rvc.registerButton.enabled = YES;
+        rvc.validUsernameLabel.text = @"";
+        rvc.username.textColor = [UIColor blackColor];
+    }
+    else
+    {
+        rvc.registerButton.enabled = NO;
+        rvc.validUsernameLabel.text = @"username in use";
+        rvc.username.textColor = [UIColor redColor];
     }
 }
 
@@ -57,6 +78,27 @@
     }
     
     [bookmarkDC updateOnBookmarkInsertion];
+}
+
++(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL success = [(NSNumber*)[json valueForKey:@"account_ready"] boolValue];
+    if(success)
+    {
+        [Account setCurrent:account];
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        AppDelegate *d = [[UIApplication sharedApplication] delegate];
+        [d.window setRootViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"rootViewDeckController"]];
+        [d.window makeKeyAndVisible];
+    }
+    else
+    {
+        registerVC.registerButton.enabled = YES;
+        [[[UIAlertView alloc] initWithTitle:@"Registration error" message:@"A problem occurred with registration" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    }
 }
 
 @end

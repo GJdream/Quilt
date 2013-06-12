@@ -83,6 +83,8 @@
         getFriends();
       else if($_GET['action'] === "get_group")
         getGroupMembers();
+      else if($_GET['action'] === "check_username")
+      	checkUsername();
     }
   
   echo json_encode($json_return);

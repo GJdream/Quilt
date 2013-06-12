@@ -8,6 +8,10 @@
 
 #import "NetworkClient.h"
 #import "NetworkController.h"
+#import "Account.h"
+#import "UIBookmark.h"
+#import "BookmarkDataController.h"
+#import "RegisterViewController.h"
 
 NSString *session_id;
 
@@ -91,13 +95,37 @@ NSUInteger lastUpdatedTime = 0;
     }];
 }
 
-+(void)createAccount:(Account*)account
++(void)createAccount:(Account*)account RegisterVC:(RegisterViewController *)rvc
 {
     NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
+               NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+               loginCookie = [fields valueForKey:@"Set-Cookie"];
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController accountCreated:data Account:account RegisterVC:rvc];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
++(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc
+{
+    NSString *params = [NSString stringWithFormat:@"action=check_username&username=%@", uname];
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController checkedUsername:data RegisterVC:rvc];
+                              });
+               
                if (error != nil)
                    NSLog(@"Connection failed! Error - %@ %@",
                          [error localizedDescription],
