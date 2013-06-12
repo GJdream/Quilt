@@ -22,6 +22,8 @@ By enabling the ability to 'tag' URLs, users are able to remind themselves of wh
 
 Quilt has been created as an iPad application to reflect the current trend of most socialites within society. The idea behind Quilt is the speed and fluidity of sharing things of interest, and the iPad reflects this concept in its ability to be fast and mobile. By nature, whilst some may use their iPad for solid work, many iPad users engage with their iPad as a means for quick internet research and the ease of communicating with their friends through a variety of social media outlets; Quilt fits perfectly within this scope. The iPad is thought to be more stable and easier to use than Android tablets, tending to be be simpler with applications consistent in their appearance and behaviour. Furthermore, by making an application for the Apple market we only needed to support a limited number of devices, therefore making it easier to fix bugs. In addition we favoured the sleek style of iPad and iPhone applications. 
 
+Quilt has been designed to be appealing to a wide range of users, the expected average age to fall around the young to mid twenties, and for a huge variety of technical capabilities. The application has been designed with simplicity in mind for this reason but will include convenient short cuts for those who are very adept with the product.
+
 
 \section{Project Management}
 
@@ -36,9 +38,9 @@ The database was coded using SQL. PostgreSQL is the world's most advanced open s
 
 \subsection{Design Process}
 
-Quilt has been designed to be appealing to a wide range of users, the expected average age to fall around the young to mid twenties, and for a huge variety of technical capabilities. The application has been designed with simplicity in mind for this reason but will include convenient short cuts for those who are very adept with the product. Given that Quilt is predominantly an iPad application there are a couple of different aspects that are important to consider to produce a quality application.
+Given that Quilt is predominantly an iPad application there are a couple of different aspects that are important to consider to produce a quality application.
 
-Battery life is one of the first points to consider on any mobile life. It is important to design a product that does not drain the life of the device too rapidly, or else the user may be less likely to use the product. Quilt has elected to group together temporally local network accesses as having many small network communications would drain the battery life much quicker, due to the constant use of the networking hardware. Group the accesses together means more idle time for the networking hardware and so less battery life spent. 
+Battery life is one of the first points to consider on any mobile device. It is important to design a product that does not drain the life of the device too rapidly, or else the user may be less likely to use the product. Quilt has elected to group together temporally local network accesses as having many small network communications would drain the battery life much quicker, due to the constant use of the networking hardware. Group the accesses together means more idle time for the networking hardware and so less battery life spent. 
 
 There are other networking issues to consider besides this. Quilt requires to sort of the bookmarks by a number of categories - almost every field within the database. That is to say, it is required that we are able to search locally by tag, size, name etc. The issue with this is that is must be done locally and cannot be delegated to the database itself. The reason for this being that the main bottleneck is network performance, which could be incredibly poor. Even given one million bookmarks, stored in 256 bits each, this is still only 32MB of space, so we could could not justify not storing the information locally and simply receiving updates from the server. 256 bits can be considered a conservative estimate but even doubling the space requirement per bookmark, one million bookmarks would still only need 64MB of space - the size of a small video - which is not incredibly significant, thus the decision remains to store information locally and only send updates via the network, thereby simply syncing the database together with the iPad. Furthermore, holding as many bookmarks as possible locally means that  network accesses are minimised which increases the responsiveness of the application. To support this is a multitude of data structures, such as a dictionary to map tags with bookmarks and a search trie to check tag existence and to search existing tags.
 
@@ -46,9 +48,9 @@ Once the physical aspects of the device have been considered we move onto the di
 
 \subsection{Back-up systems}
 
-Git was chosen as our source control and back-up system for several reasons. Git's branching model allows users to have multiple local branches that can be entirely independent of each other and the creation, merging and deletion of these branches is fast. This was ideal for such a group project as Quilt as it enabled us to experiment with different ideas without fear of breaking existing features and losing  previous work. Furthermore, as everything is local when using Git, operations such as 'fetch', 'pull' and 'push' are fast and enabled offline project work, which improved productivity as we were able to work while on trains or planes.  
+Git was chosen as our source control and back-up system for several reasons. Git's branching model allows users to have multiple local branches that can be entirely independent of each other and the creation, merging and deletion of these branches is fast. This was ideal for such a group project as Quiltas it enabled us to experiment with different ideas as well as work on in areas individually or for each new feature before merging back to the master branch. Furthermore, as everything is local when using Git, operations such as 'fetch', 'pull' and 'push' are fast and enabled offline project work, which improved productivity as we were able to work while on trains or planes.  
 
-A crucial feature of Git is that it is distributed. This meant that when we were using a centralised workflow, every user had a full backup of the main server, each of which could be pushed up to replace the main server in the event of a crash or corruption. There is no single point of failure as there existed multiple clones of the repository on multiple machines. Another major factor for choosing Git was the expansion to GitHub, which provided a friendly user-interface and allowed us to fork from other GitHub user's repositories (i.e. ViewDeck [see acknowledgements]) and streamline the overall management of the project.
+A crucial feature of Git is that it is distributed. This meant that when we were using a centralised workflow, every user had a full backup of the main server, each of which could be pushed up to replace the main server in the event of a crash or corruption so there is no single point of failure as there existed multiple clones of the repository on multiple machines. Another major factor for choosing Git was the expansion to GitHub, which provided a friendly user-interface and allowed us to fork from other GitHub user's repositories (i.e. ViewDeck [see acknowledgements]).
 
 \subsection{Group Structure}
 
@@ -66,8 +68,7 @@ The MVC pattern is the global architecture of our application. MVC classifies ob
 ... potenitally
 
 \subsection{Diagrams}
-
-\subsection{Screenshots}
+This storyboard provides  a visual representation of the user interface of our application, showing screens of content and the connections between them. Each scene represents a view controller and its views. 
 
 \section{Conclusion}
 	What we have done
@@ -90,7 +91,7 @@ ViewDeck
 ViewDeck is a sidebar navigation tool created by Tom Adrianssen hosted on GitHub in 2011. We chose ViewDeck because of its clean simplicity, consistency with the 'look and feel' of other Apple apps, and the fact that, as a navigation tool, it accomplished everything we were looking for with the support for the features that we were currently using, such as Storyboarding in XCode. In particular, we chose ViewDeck over alternatives, such as the Facebook style navigation bar by Ben Hall, as it used the latest iOS.
 
 License:
-IIViewDeckController published under the MIT license:
+UIViewDeckController published under the MIT license:
 Copyright (C) 2011-2013, Tom Adriaenssen
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
