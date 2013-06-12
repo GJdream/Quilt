@@ -1,0 +1,124 @@
+\documentclass[a4wide, 10pt]{article}
+\usepackage{a4, fullpage}
+\setlength{\parskip}{0.3cm}
+\setlength{\parindent}{0cm}
+
+\begin{document}
+
+\title{WebApps Final Report 2013 \\
+       Quilt}
+\author{Briony Goldsack \and Richard Jones \and Anna Thomas \and Eleanor Vincent}
+\date{\today}         
+\maketitle            
+
+\section{Abstract}
+
+This report will detail the requirements and targets of our web application, Quilt, the design choices involved and its implementation. Furthermore, we shall evaluate our project management and learning experience from this task as well as the future of the application. This report has been written to support the final presentation and demonstration of the application.
+
+\section{Motivation} 
+Quilt is a social application to improve the sharing and storage of information on the internet. The inspiration came from the idea of 'bookmarks' within a browser and past experiences when sharing information during research projects. Currently, the most used method of sharing websites of interest is to use a medium such as Facebook's Chat application to paste a collection of links. We identified several issues that arose from this practice. Links quickly become lost within the chat history or simply forgotten as the conversation progresses; they are purely text with little meaning, and there is no way of highlighting the areas of the website you found particularly useful or interesting in a way that is easy for the other participant to find. This equates to a messy and ultimately inefficient way of sharing information. Quilt's aim is to streamline this process. 
+
+By enabling the ability to 'tag' URLs, users are able to remind themselves of why a link held initial interest. Furthermore, users can collect a large selection of websites under one tag, which can then be shared with other users. Image thumbnails, rather than pure text, allow users to obtain an idea of the subject matter before actually clicking on a link, and also allow users to highlight the specific parts of the page that holds interest, for both themselves and friends. This enables them to browse those websites with the most relevance or interest first and less time is wasted gauging a page's overall use. 
+
+Quilt has been created as an iPad application to reflect the current trend of most socialites within society. The idea behind Quilt is the speed and fluidity of sharing things of interest, and the iPad reflects this concept in its ability to be fast and mobile. By nature, whilst some may use their iPad for solid work, many iPad users engage with their iPad as a means for quick internet research and the ease of communicating with their friends through a variety of social media outlets; Quilt fits perfectly within this scope. Quilt is also able to take advantage of the unique style of the apple products and provide a sleek graphical interface to make the application a much more pleasurable experience for its user base.
+
+\section{Project Management}
+
+\subsection{Language Specification}
+Objective-C is the primary programming language when writing software for OS X and iOS. It is a superset of the C programming language, but has the advantages of providing object-orientated capabilities and a dynamic runtime meaning that an Objective-C application can load an interface, connect objects in the interface to the application code, then run the correct method once the UIButton is pressed without the need to recompile. Objective-C is perfect for use within apps as it is compiled to run at very fast speeds. Furthermore, the framework classes of Cocoa and Cocoa Touch, Apple's GUI libraries, which some of the features of our application rely on, require coding with Objective-C. We felt Objective-C's provision of error objects was particularly important as a good web application should plan for errors and decide how best to handle them to present the best possible user experience when something goes wrong. In addition, we required a way of managing the lifetime of objects for which Objective-C provides an Automatic Reference Counting feature within the compiler.
+
+PHP is probably the most popular scripting language on the web. We chose PHP as it was easy to integrate with our web application to provide ways of interacting with our users, for example, creating a login, maintaining sessions, and implementing messaging systems. PHP also allowed us to utilise the infrastructure already in place on the DOC servers and communicate between the database and our application. 
+ 
+One of the main reasons we chose to use JSON as our data transmission format is because Apple's Objective-C libraries provide built in support for this language. JSON is highly versatile and can be parsed and used by lots of programming languages. An alternative to JSON could have been XML, however JSON is less verbose, so it is quicker to write and we also found it quicker to read. Furthermore, JSON can be parsed trivially using the eval() procedure in JavaScript, and includes arrays. 
+
+The database was coded using SQL. PostgreSQL is the world's most advanced open source database.
+
+\subsection{Design Process}
+
+Quilt has been designed to be appealing to a wide range of users, the expected average age to fall around the young to mid twenties, and for a huge variety of technical capabilities. The application has been designed with simplicity in mind for this reason but will include convenient short cuts for those who are very adept with the product. Given that Quilt is predominantly an iPad application there are a couple of different aspects that are important to consider to produce a quality application.
+
+Battery life is one of the first points to consider on any mobile life. It is important to design a product that does not drain the life of the device too rapidly, or else the user may be less likely to use the product. Quilt has elected to group together temporally local network accesses as having many small network communications would drain the battery life much quicker, due to the constant use of the networking hardware. Group the accesses together means more idle time for the networking hardware and so less battery life spent. 
+
+There are other networking issues to consider besides this. Quilt requires to sort of the bookmarks by a number of categories - almost every field within the database. That is to say, it is required that we are able to search locally by tag, size, name etc. The issue with this is that is must be done locally and cannot be delegated to the database itself. The reason for this being that the main bottleneck is network performance, which could be incredibly poor. Even given one million bookmarks, stored in 256 bits each, this is still only 32MB of space, so we could could not justify not storing the information locally and simply receiving updates from the server. 256 bits can be considered a conservative estimate but even doubling the space requirement per bookmark, one million bookmarks would still only need 64MB of space - the size of a small video - which is not incredibly significant, thus the decision remains to store information locally and only send updates via the network, thereby simply syncing the database together with the iPad. Furthermore, holding as many bookmarks as possible locally means that  network accesses are minimised which increases the responsiveness of the application. To support this is a multitude of data structures, such as a dictionary to map tags with bookmarks and a search trie to check tag existence and to search existing tags.
+
+Once the physical aspects of the device have been considered we move onto the discussion of the virtual aspects of the application. Before the appearance of the application is fully considered the usability of the application must be considered and tested. iOS users are accustomed to the appearance and behaviour of the built-in applications, so they tend to expect similar experiences in the applications they download, and so the design choices behind the GUI are crucial to the appeal of our applications and its usability. Quilt will be making full use of the touch gestures available to the device to ensure it is an intuitive experience for the user; the structure will be clean and easy to navigate, user feedback will be subtle, but clear with precise, fluid animations. It is important to comply with other Apple products as users dislike being forced to learn new procedures that don't transfer to any other applications. Alongside this are such features as persistent logins and bookmark creation methods. In a similar vein to how applications such as Facebook and Twitter allow the user to remain logged in to their account permanently (entering an offline/idle state when the application is closed on the iPad so as not to appear permanently online), Quilt will allow users to use the application without logging in with each and every access. The code in place ensures proper authentication of the user through use of the cookies provided by internet services, so every effort is in place to stop users having their accounts hijacked by those with malicious intent. 
+
+\subsection{Back-up systems}
+
+Git was chosen as our source control and back-up system for several reasons. Git's branching model allows users to have multiple local branches that can be entirely independent of each other and the creation, merging and deletion of these branches is fast. This was ideal for such a group project as Quilt as it enabled us to experiment with different ideas without fear of breaking existing features and losing  previous work. Furthermore, as everything is local when using Git, operations such as 'fetch', 'pull' and 'push' are fast and enabled offline project work, which improved productivity as we were able to work while on trains or planes.  
+
+A crucial feature of Git is that it is distributed. This meant that when we were using a centralised workflow, every user had a full backup of the main server, each of which could be pushed up to replace the main server in the event of a crash or corruption. There is no single point of failure as there existed multiple clones of the repository on multiple machines. Another major factor for choosing Git was the expansion to GitHub, which provided a friendly user-interface and allowed us to fork from other GitHub user's repositories (i.e. ViewDeck [see acknowledgements]) and streamline the overall management of the project.
+
+\subsection{Group Structure}
+
+
+
+\section{Implementation}
+
+\subsection{Design Patterns}
+
+\subsubsection{Model-View-Controller}
+
+The MVC pattern is the global architecture of our application. MVC classifies objects according to the general roles that they play within the application. On benefit of MVC is that objects tend to be more reusable and interfaces better defined as a result of splitting them up in such a way. This makes the program more adaptable to changing requirements and more easily extensible than applications not based on MVC. Furthermore, many of the technologies in Cocoa, such as bindings, the document architecture, and scriptability, are based on MVC and it was required that our objects play one of the roles defined by MVC. Consistency in appearance in behaviour is essential so, by using MVC, we were able to identify the two most crucial parts of our system- the View and Model- and focus on these to maximise reusability.  We wanted our GUI to be consistent with the Apple interface and other iPad apps on the market and by adopting the MVC design pattern, we were able to take advantage of the AppKit framework in Cocoa, which defines a large number of view objects and provides many of them in the Interface Builder library. By reusing the AppKit's view objects, such as NSButton objects, we were able to guarantee that buttons in our application behave just like buttons in any other Cocoa application, assuring a high level of consistency in appearance and behaviour across applications. The controller object in Cocoa's MVC compound design pattern also incorporates the Mediator pattern as well as the Strategy pattern, mediating the flow of data between model and view objects. Changes in model state are communicated to view objects through the controller objects of an application. In addition view objects incorporate the Command pattern through their implementation of the target-action mechanism, which enables view objects to communicate user input and choices.
+
+\subsubsection{Singleton}
+... potenitally
+
+\subsection{Diagrams}
+
+\subsection{Screenshots}
+
+\section{Conclusion}
+	What we have done
+	What we have not done
+	What we have learned
+		Never used Objective-C before.
+		More advanced use of databases
+	What we would do differently
+	
+\section{Acknowledgments}
+
+Xcode software
+License: Proprietary freeware with open source components
+Important points from the Software License Agreement for Xcode:
+you are granted a limited, nonexclusive license to use the Developer Software on Apple-branded computers to develop and test application and other software.
+
+Libraries: Objective-C libraries, Cocoa and Cocoa Touch libraries
+
+ViewDeck
+ViewDeck is a sidebar navigation tool created by Tom Adrianssen hosted on GitHub in 2011. We chose ViewDeck because of its clean simplicity, consistency with the 'look and feel' of other Apple apps, and the fact that, as a navigation tool, it accomplished everything we were looking for with the support for the features that we were currently using, such as Storyboarding in XCode. In particular, we chose ViewDeck over alternatives, such as the Facebook style navigation bar by Ben Hall, as it used the latest iOS.
+
+License:
+IIViewDeckController published under the MIT license:
+Copyright (C) 2011-2013, Tom Adriaenssen
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	Libraries
+Do we need to acknowledge that we used the Xcode software?
+	Code
+	Pictures
+	Discussion of legal issues for official release
+
+Adapting from iPad to iPhone
+Adapt art to screen size
+Preserve primary functionality
+
+TODO:
+Eleanor:
+Group Structure
+Database layout and design choices
+Persistent logins
+
+Richard:
+Singleton
+Privacy when sharing
+
+Anna: 
+Storyboard screenshot 
+GUI layout
+
+
+
+\end{document}
