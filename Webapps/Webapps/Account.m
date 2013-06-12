@@ -19,33 +19,59 @@
 
 Account *currentAccount;
 
-+(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc
++ (void)loginUser:(NSString *)username Password:(NSString *)password LoginView:(LoginViewController *)lvc
 {
     NSLog(@"loginUser: %@, %@", username, password);
     Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
     currentAccount = newAccount;
     [NetworkClient loginUser:newAccount LoginView:lvc];
-    
 }
 
-+(void)setCurrent:(Account*)newCurrent
++ (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc
+{
+    // Confirm passwords
+    BOOL validPassword = [Account validPassword:password ConfirmPassword:confirmPassword];
+    
+    //[NetworkClient registerUser:newAccount LoginView:lvc];
+    
+    NSLog(@"registerUser: %@, %@, %@", username, password, confirmPassword);
+    
+    // Check username is valid
+    BOOL validUsername = NO;
+    
+    if (validUsername && validPassword)
+    {
+        // Create account
+        //[Account loginUser:username Password:password LoginView:rvc];
+    } else
+    {
+        // Error message
+    }
+}
+
++ (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
+{
+    return ([password isEqualToString:confirmPassword]);
+}
+
++ (void)setCurrent:(Account *)newCurrent
 {
     currentAccount = newCurrent;
 }
 
-+(Account*)current
++ (Account *)current
 {
-    if(!currentAccount)
+    if (!currentAccount)
         NSLog(@"Error: Trying to execute action when no account is logged in!");
     
     return currentAccount;
 }
 
--(Account*)initWithUserName:(NSString*)initUsername Password:(NSString*)initPassword
+- (Account *)initWithUserName:(NSString *)initUsername Password:(NSString *)initPassword
 {
     self = [super init];
     
-    if(self)
+    if (self)
     {
         _username = initUsername;
         _password = initPassword;

@@ -8,16 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface Account : NSObject
 
 @property (readonly) NSString *username;
 @property (readonly) NSString *password;
 
--(Account*)initWithUserName:(NSString*)initUsername Password:(NSString*)initPassword;
+- (Account *)initWithUserName:(NSString *)initUsername Password:(NSString *)initPassword;
 //-(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
-+(Account*)current;
-+(void)setCurrent:(Account*)newCurrent;
-+(void)loginUser:(NSString*)username Password:(NSString*)password LoginView:(LoginViewController*)lvc;
++ (Account *)current;
++ (void)setCurrent:(Account *)newCurrent;
++ (void)loginUser:(NSString *)username Password:(NSString *)password LoginView:(LoginViewController *)lvc;
++ (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc;
++ (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 
 @end
