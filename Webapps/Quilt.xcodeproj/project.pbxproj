@@ -23,6 +23,7 @@
 		7910520A1766251300CC4555 /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 791052091766251300CC4555 /* navBarTexture.png */; };
 		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7910521B17674A6400CC4555 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910521A17674A6400CC4555 /* NavigationBarViewController.m */; };
+		791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
@@ -69,6 +70,8 @@
 		7910521717673D2900CC4555 /* Quilt-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Quilt-Info.plist"; sourceTree = "<group>"; };
 		7910521917674A6400CC4555 /* NavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarViewController.h; sourceTree = "<group>"; };
 		7910521A17674A6400CC4555 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
+		7910521F1768AD1400CC4555 /* BookmarkViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewFlowLayout.h; sourceTree = "<group>"; };
+		791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewFlowLayout.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
