@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Account.h"
-#import "UIBookmark.h"
-#import "BookmarkDataController.h"
+
+@class RegisterViewController;
+@class UIBookmark;
+@class Account;
+@class LoginViewController;
 
 @interface NetworkClient : NSObject
 
 +(void)getNewBookmarks;
-+(void)createAccount:(Account*)account;
++(void)createAccount:(Account*)account RegisterVC:(RegisterViewController*)rvc;
 +(void)createBookmark:(UIBookmark*)bookmark;
 +(void)shareTag:(NSString*)tag With:(NSSet*)users;
 +(void)deleteBookmark:(UIBookmark*)bookmark;
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
++(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc;
 
 @end

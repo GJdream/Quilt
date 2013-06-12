@@ -29,24 +29,7 @@ Account *currentAccount;
 
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc
 {
-    // Confirm passwords
-    BOOL validPassword = [Account validPassword:password ConfirmPassword:confirmPassword];
-    
-    //[NetworkClient registerUser:newAccount LoginView:lvc];
-    
-    NSLog(@"registerUser: %@, %@, %@", username, password, confirmPassword);
-    
-    // Check username is valid
-    BOOL validUsername = NO;
-    
-    if (validUsername && validPassword)
-    {
-        // Create account
-        //[Account loginUser:username Password:password LoginView:rvc];
-    } else
-    {
-        // Error message
-    }
+    [NetworkClient createAccount:[[Account alloc] initWithUserName:username Password:password] RegisterVC:rvc];
 }
 
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword

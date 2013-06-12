@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "Account.h"
+#import "NetworkClient.h"
 
 @interface RegisterViewController ()
 
@@ -30,7 +31,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.username.delegate = (id)self;
+    self.password.delegate = (id)self;
+    self.confirmPassword.delegate = (id)self;
+    // Do any additional setup after loading the view.
+    self.registerButton.enabled = NO;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if(textField == self.username)
+        [NetworkClient checkUsername:textField.text RegisterVC:self];
+    else if(textField == self.confirmPassword)
+    {
+        if([self.confirmPassword.text isEqualToString:self.password.text])
+        {
+            self.registerButton.enabled = YES;
+            self.validPasswordLabel.text = @"";
+            self.password.textColor = [UIColor blackColor];
+            self.confirmPassword.textColor = [UIColor blackColor];
+        }
+        else
+        {
+            if(![self.password.text isEqualToString:@""])
+            {
+                self.registerButton.enabled = NO;
+                self.validPasswordLabel.text = @"mismatched passwords";
+                self.password.textColor = [UIColor redColor];
+                self.confirmPassword.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if(textField == self.password)
+    {
+        if([self.confirmPassword.text isEqualToString:self.password.text])
+        {
+            self.registerButton.enabled = YES;
+            self.validPasswordLabel.text = @"";
+            self.password.textColor = [UIColor blackColor];
+            self.confirmPassword.textColor = [UIColor blackColor];
+        }
+        else
+        {
+            if(![self.confirmPassword.text isEqualToString:@""])
+            {
+                self.registerButton.enabled = NO;
+                self.validPasswordLabel.text = @"mismatched passwords";
+                self.password.textColor = [UIColor redColor];
+                self.confirmPassword.textColor = [UIColor redColor];
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

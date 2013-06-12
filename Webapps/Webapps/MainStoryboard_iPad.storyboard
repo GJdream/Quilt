@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -225,17 +225,30 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usernameRegister" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kls-zi-I8N">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="350" id="O0p-RP-oQd"/>
+                                                        <constraint firstAttribute="height" constant="30" id="t7k-cZ-1Pv"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-KB-HMe">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="3uj-ja-Luw"/>
+                                                        <constraint firstAttribute="width" constant="154" id="Ufj-Tn-dWK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Oc7-KB-HMe" firstAttribute="top" secondItem="ebH-5a-kze" secondAttribute="top" constant="15" id="8ch-dV-UgB"/>
                                             <constraint firstItem="kls-zi-I8N" firstAttribute="centerX" secondItem="ebH-5a-kze" secondAttribute="centerX" type="default" id="QEK-Vy-3pC"/>
                                             <constraint firstItem="kls-zi-I8N" firstAttribute="top" secondItem="ebH-5a-kze" secondAttribute="top" constant="13" id="ZWp-77-ntt"/>
+                                            <constraint firstItem="Oc7-KB-HMe" firstAttribute="baseline" secondItem="kls-zi-I8N" secondAttribute="baseline" type="default" id="bY2-VI-1dR"/>
+                                            <constraint firstAttribute="trailing" secondItem="Oc7-KB-HMe" secondAttribute="trailing" constant="45" id="hP3-Ft-pta"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iGq-p7-85O">
@@ -275,13 +288,24 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFj-J4-BXC">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="6LS-iP-QTk"/>
+                                                        <constraint firstAttribute="width" constant="156" id="lfC-9i-ztx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="cFj-J4-BXC" firstAttribute="leading" secondItem="cI4-F6-3zE" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Bbz-Qo-wk6"/>
                                             <constraint firstItem="cI4-F6-3zE" firstAttribute="centerX" secondItem="u5N-Jg-Neb" secondAttribute="centerX" type="default" id="CnW-Lc-i3F"/>
                                             <constraint firstItem="cI4-F6-3zE" firstAttribute="top" secondItem="u5N-Jg-Neb" secondAttribute="top" type="default" id="gVf-aL-VVg"/>
+                                            <constraint firstItem="cFj-J4-BXC" firstAttribute="top" secondItem="u5N-Jg-Neb" secondAttribute="top" constant="4" id="hsQ-JV-Ol6"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aBd-G7-q2l">
@@ -304,6 +328,9 @@
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="registerClicked:" destination="6Fv-ee-SjL" eventType="touchUpInside" id="O6T-tT-aVe"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -315,7 +342,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="591" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="591" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -360,6 +387,8 @@
                         <outlet property="password" destination="6oG-eH-hze" id="RZ7-eG-Pyx"/>
                         <outlet property="registerButton" destination="1P8-MB-P5P" id="lec-Vu-TlH"/>
                         <outlet property="username" destination="kls-zi-I8N" id="hlu-Tb-X7Q"/>
+                        <outlet property="validPasswordLabel" destination="cFj-J4-BXC" id="xXn-sJ-VnG"/>
+                        <outlet property="validUsernameLabel" destination="Oc7-KB-HMe" id="wxc-WC-gi1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ren-jC-pQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -796,6 +825,8 @@
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="validUsernameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="UIBookmark" superclassName="UICollectionViewCell">

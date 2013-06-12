@@ -2,6 +2,7 @@
   function register()
     {
       global $db;
+      global $json_return;
 
       $username = $_POST[username];
       $password = sha1($_POST[password]);
@@ -16,7 +17,9 @@
       $query  = "INSERT INTO \"Users\" (user_name, password) " . 
                 "VALUES ('$username', '$password')"; 
       pg_send_query($db, $query); 
-      $result = pg_get_result($db); 
+      $result = pg_get_result($db);
+      
+      $success = true;
 
       // pg_send_query and pg_get_result stop the warning 
       // generated from adding a duplicate key being thrown as output to the form
@@ -25,10 +28,25 @@
         {
           // the user is a duplicate
           // redirect back to register screen with suitable information
-          echo json_encode(false);
+          $success = false;
         }
+      
+      $json_return = array_merge($json_return, array("account_ready" => $success));
+    }
 
-      echo json_encode(true);
+  function checkUsername()
+    {
+      global $db;
+      global $json_return;
+
+      $username = $_GET[username];
+
+      // pull the user_id for later deletion use
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$username'";
+      $result   = pg_query($db, $query);
+      $users = pg_fetch_all($result);
+      $json_return = array_merge($json_return, array("username_valid" => ($users == NULL)));
     }
 
   function unregister()
