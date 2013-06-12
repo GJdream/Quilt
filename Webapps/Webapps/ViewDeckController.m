@@ -59,7 +59,9 @@
         self.navigationControllerBehavior = IIViewDeckNavigationControllerContained;
         self.centerController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainNavController"];
         UIViewController *sidebarVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"sidebarViewController"];
+        [self removeFromParentViewController];
         [sidebarVC removeFromParentViewController];
+        //[self.view addSubview:sidebarVC.view];
         [self addChildViewController:sidebarVC];
         self.leftController = sidebarVC;
         self.leftSize = 500.0f;

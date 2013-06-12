@@ -107,8 +107,8 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="loginClicked:" destination="Rjb-i9-vBv" eventType="touchUpInside" id="6zt-Vp-zUc"/>
                                                         <action selector="loginClicked:" destination="ifq-ry-ZU0" eventType="touchUpInside" id="PKe-GY-Akv"/>
-                                                        <segue destination="sbq-hn-L3T" kind="modal" identifier="loginSegue" id="x0s-Pe-fyV"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -135,6 +135,11 @@
                     <value key="contentSizeForViewInPopover" type="size" width="500" height="300"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="loginButton" destination="6x6-aL-4H8" id="qn3-gk-XqV"/>
+                        <outlet property="txtPassword" destination="BlK-xO-3Qo" id="t2g-Iy-e6B"/>
+                        <outlet property="txtUsername" destination="aQ6-cb-Cqy" id="jrd-hs-3VL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW6-Xd-JiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -571,7 +576,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQH-bc-8FA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420" y="-1588"/>
+            <point key="canvasLocation" x="1392" y="-1588"/>
         </scene>
     </scenes>
     <classes>
