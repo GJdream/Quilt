@@ -49,6 +49,21 @@
       $json_return = array_merge($json_return, array("username_valid" => ($users == NULL)));
     }
 
+  function updatePassword()
+    {
+      global $db;
+
+      $user_id      = $_POST[username];
+      $new_password = sha1($_POST[password]);
+
+      $query  = "UPDATE \"Users\" " .
+                "SET password = '$new_password' " .
+                "WHERE user_id = '$user_id'";
+      $result = pg_query($db, $query);
+
+      echo json_encode($result);
+    }
+
   function unregister()
     {
       global $db;
