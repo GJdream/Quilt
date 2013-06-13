@@ -14,6 +14,8 @@
 		2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136F11768C2E1000DA87E /* navBarTexture.png */; };
 		2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7151769E5A200CEF93B /* AccountViewController.m */; };
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
+		2EC21DC1176A0AD200366098 /* AddBookmarkPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC21DC0176A0AD200366098 /* AddBookmarkPopoverController.m */; };
+		2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC21DC3176A120000366098 /* FriendsViewController.m */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
@@ -53,6 +55,10 @@
 		2E7DE7151769E5A200CEF93B /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		2EB5C3311760CDAC0084BCD7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		2EB5C3321760CDAC0084BCD7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		2EC21DBF176A0AD200366098 /* AddBookmarkPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkPopoverController.h; sourceTree = "<group>"; };
+		2EC21DC0176A0AD200366098 /* AddBookmarkPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkPopoverController.m; sourceTree = "<group>"; };
+		2EC21DC2176A120000366098 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		2EC21DC3176A120000366098 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
@@ -160,12 +166,16 @@
 				2E7DE7151769E5A200CEF93B /* AccountViewController.m */,
 				79B9314717612E8C006911AF /* AddBookmarkViewController.h */,
 				79B9314817612E8C006911AF /* AddBookmarkViewController.m */,
+				2EC21DBF176A0AD200366098 /* AddBookmarkPopoverController.h */,
+				2EC21DC0176A0AD200366098 /* AddBookmarkPopoverController.m */,
 				79BEAD391754FCAC0056DFBD /* AppDelegate.h */,
 				79BEAD3A1754FCAC0056DFBD /* AppDelegate.m */,
 				2E0F9E6617608B6A00B4305C /* BookmarkDataController.h */,
 				2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */,
 				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
 				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
+				2EC21DC2176A120000366098 /* FriendsViewController.h */,
+				2EC21DC3176A120000366098 /* FriendsViewController.m */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
@@ -296,6 +306,8 @@
 				791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */,
 				2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */,
 				2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */,
+				2EC21DC1176A0AD200366098 /* AddBookmarkPopoverController.m in Sources */,
+				2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,13 +12,14 @@
 #import "NetworkClient.h"
 #import "ViewDeckController.h"
 #import "BookmarkDataController.h"
+#import "AddBookmarkPopoverController.h"
 
 @interface WebViewController ()
 
 @end
 
 @implementation WebViewController {
-    UIPopoverController *addBookmarkPopover;
+    AddBookmarkPopoverController *addBookmarkPopover;
 }
 
 @synthesize viewWeb;
@@ -70,6 +71,7 @@
             
         }
         [addBookmarkPopover dismissPopoverAnimated:YES];
+        //self.addBookmarkButton.enabled = YES;
     }
 }
 
@@ -78,6 +80,8 @@
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
         [addBookmarkPopover dismissPopoverAnimated:YES];
+        NSLog(@"Dismissed");
+        //self.addBookmarkButton.enabled = YES;
     }
 }
 /*
@@ -100,8 +104,12 @@
     {
         AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
         addBookmarkViewController.url = self.url;
-        addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        //addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        addBookmarkPopover.addBookmarkButton = self.addBookmarkButton;
+        self.addBookmarkButton.enabled = NO;
     }
 }
+
+
 
 @end
