@@ -28,10 +28,16 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.txtUsername resignFirstResponder];
+    [self.txtPassword resignFirstResponder];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,6 +12,7 @@
 #import "NetworkClient.h"
 #import "ViewDeckController.h"
 #import "BookmarkDataController.h"
+#import "ScreenshotSelectionView.h"
 
 @interface WebViewController ()
 
@@ -47,6 +48,8 @@
     [viewWeb loadRequest:requestObj];
     viewWeb.scalesPageToFit = YES;
     searchBar.text = fullURL;
+    
+    [self takeScreenshot];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +74,13 @@
         }
         [addBookmarkPopover dismissPopoverAnimated:YES];
     }
+}
+
+- (void)takeScreenshot
+{
+    ScreenshotSelectionView *shotView = [[ScreenshotSelectionView alloc] initWithFrame:self.viewWeb.frame];
+    [self.view addSubview:shotView];
+    [self.view bringSubviewToFront:shotView];
 }
 
 - (IBAction)cancel:(UIStoryboardSegue *)segue

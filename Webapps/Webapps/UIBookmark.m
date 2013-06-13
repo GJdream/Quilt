@@ -11,13 +11,14 @@
 
 @implementation UIBookmark
 
-- (UIBookmark *)initWithTitle:(NSString*)label URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id
+- (UIBookmark *)initWithTitle:(NSString*)title URL:(NSString*)url Tags:(NSMutableArray*)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id
 {
     self = [super init];
     if (self)
     {
-        _label = [[UILabel alloc] init];
-        _label.text = label;
+        _label.text = title;
+        _label.backgroundColor = [UIColor redColor];
+        _title = title;
         _url = url;
         _tags = tags;
         _width = width;

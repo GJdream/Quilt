@@ -24,6 +24,7 @@
 		79105215176651A900CC4555 /* NDTrie.m in Sources */ = {isa = PBXBuildFile; fileRef = 79105214176651A900CC4555 /* NDTrie.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7910521B17674A6400CC4555 /* NavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910521A17674A6400CC4555 /* NavigationBarViewController.m */; };
 		791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */; };
+		793064331769E7A8005FA5BF /* ScreenshotSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 793064321769E7A8005FA5BF /* ScreenshotSelectionView.m */; };
 		795288C517590D3500158F8E /* UIBookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288C417590D3500158F8E /* UIBookmark.m */; };
 		795288CB1759276600158F8E /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288CA1759276600158F8E /* Account.m */; };
 		795288D4175AB33D00158F8E /* NetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 795288D3175AB33D00158F8E /* NetworkClient.m */; };
@@ -72,6 +73,8 @@
 		7910521A17674A6400CC4555 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
 		7910521F1768AD1400CC4555 /* BookmarkViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewFlowLayout.h; sourceTree = "<group>"; };
 		791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewFlowLayout.m; sourceTree = "<group>"; };
+		793064311769E7A7005FA5BF /* ScreenshotSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotSelectionView.h; sourceTree = "<group>"; };
+		793064321769E7A8005FA5BF /* ScreenshotSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotSelectionView.m; sourceTree = "<group>"; };
 		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				791052041765FD9F00CC4555 /* ViewDeckController.m */,
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
+				793064311769E7A7005FA5BF /* ScreenshotSelectionView.h */,
+				793064321769E7A8005FA5BF /* ScreenshotSelectionView.m */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 			);
@@ -300,6 +305,7 @@
 				2ECCAA1A1767A18F002B617A /* SignInViewController.m in Sources */,
 				791052211768AD1400CC4555 /* BookmarkViewFlowLayout.m in Sources */,
 				2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */,
+				793064331769E7A8005FA5BF /* ScreenshotSelectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
