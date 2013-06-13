@@ -48,6 +48,8 @@
     [viewWeb loadRequest:requestObj];
     viewWeb.scalesPageToFit = YES;
     searchBar.text = fullURL;
+    
+    [self takeScreenshot];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +75,13 @@
         [addBookmarkPopover dismissPopoverAnimated:YES];
         //self.addBookmarkButton.enabled = YES;
     }
+}
+
+- (void)takeScreenshot
+{
+    ScreenshotSelectionView *shotView = [[ScreenshotSelectionView alloc] initWithFrame:self.viewWeb.frame];
+    [self.view addSubview:shotView];
+    [self.view bringSubviewToFront:shotView];
 }
 
 - (IBAction)cancel:(UIStoryboardSegue *)segue

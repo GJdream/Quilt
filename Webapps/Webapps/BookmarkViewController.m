@@ -25,7 +25,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self.collectionView registerClass:[UIBookmark class] forCellWithReuseIdentifier:@"BookmarkCell"];
     [BookmarkDataController setViewController:self];
 }
 
@@ -62,7 +61,7 @@
     
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
-    cell.label.text = bookmarkAtIndex.label.text;
+    cell.label.text = bookmarkAtIndex.title;
     
     [cell.layer setMasksToBounds:YES];
     [cell.layer setCornerRadius:15];

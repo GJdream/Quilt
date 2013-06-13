@@ -38,6 +38,12 @@
     self.registerButton.enabled = NO;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    [self.view endEditing:YES];
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     if(textField == self.username)

@@ -28,10 +28,15 @@
     return self;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +51,4 @@
     [Account loginUser:txtUsername.text Password:txtPassword.text LoginView:self];
 }
 
-- (IBAction)backgroundClick:(id)sender
-{
-}
 @end
