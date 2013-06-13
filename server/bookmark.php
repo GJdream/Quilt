@@ -110,34 +110,23 @@
       $owner = $_SESSION[user_id];
 
       // discover user's id
-      $query    = "SELECT user_id FROM \"Users\" " .
-                  "WHERE user_name = '$owner'";
-      $result   = pg_query($db, $query);
-      $owner_id = pg_fetch_result($result, 0);
+      $query     = "SELECT user_id FROM \"Users\" " .
+                   "WHERE user_name = '$owner'";
+      $result    = pg_query($db, $query);
+      $owner_id  = pg_fetch_result($result, 0);
 
-      $query  = "SELECT * FROM \"Bookmarks\" " .
-                "WHERE owner_id = '$owner_id'";
-      $result = pg_query($db, $query);
+      $query     = "SELECT * FROM \"Bookmarks\" " .
+                   "WHERE owner_id = '$owner_id'";
+      $result    = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
 
       if($bookmarks)
-      {
-	      $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
-	      
-	      /*$query =	"SELECT * FROM \"Tags\" " .
-	      			"JOIN \"Bookmarks\" " .
-	      			"ON \"Tags\".post_id=\"Bookmarks\".post_id";
-	      $result = pg_query($db, $query);
-	      $tags = pg_fetch_all($result);
-	      
-	      if($tags)
-	      {
-	      	$json_return = array_merge($json_return, array("tags" => $tags));
-	      }*/
-	      
-	      foreach($bookmarks as $bm)
-	      	getTagsForID($bm["post_id"]);
-      }
+        {
+          $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
+          
+          foreach($bookmarks as $bm)
+            getTagsForID($bm["post_id"]);
+        }
     }
 
   // tag functionality is implemented here because 
@@ -178,8 +167,8 @@
       $result = pg_query($db, $query);
       $tags   = pg_fetch_all_columns($result);
 
-	  if($tags)
-	      $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
+      if($tags)
+        $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
 
   function getTags()
@@ -194,7 +183,7 @@
       $result = pg_query($db, $query);
       $tags   = pg_fetch_all_columns($result);
 
-	  if($tags)
-	      $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
+      if($tags)
+        $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
 ?>
