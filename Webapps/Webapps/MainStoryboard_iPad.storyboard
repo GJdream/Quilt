@@ -1000,7 +1000,7 @@
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accNewPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cVo-Z3-OzT">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cVo-Z3-OzT">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="320" id="iyj-wu-CZa"/>
                                                     </constraints>
@@ -1023,7 +1023,7 @@
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-py-EvJ">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accNewPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-py-EvJ">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="320" id="fbP-JO-Bfh"/>
                                                     </constraints>
@@ -1122,8 +1122,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="confirmPassword" destination="WxR-8e-Ojo" id="Tdu-2n-DyP"/>
-                        <outlet property="newPassword" destination="dcN-py-EvJ" id="Tas-Il-1nB"/>
                         <outlet property="oldPassword" destination="cVo-Z3-OzT" id="0d9-dv-M4n"/>
+                        <outlet property="password" destination="dcN-py-EvJ" id="ZgD-qf-BTi"/>
                         <outlet property="profilePicture" destination="4GD-0q-Fh4" id="3hl-WI-t38"/>
                         <outlet property="saveChanges" destination="xrP-q6-Oqg" id="Pgw-yf-ycX"/>
                         <outlet property="uploadPicture" destination="Sgv-XN-StP" id="IEk-V7-eiM"/>
@@ -1146,8 +1146,8 @@
                 <relationship kind="action" name="saveChangesClicked:"/>
                 <relationship kind="action" name="uploadPictureClicked:"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="newPassword" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="uploadPicture" candidateClass="UIButton"/>

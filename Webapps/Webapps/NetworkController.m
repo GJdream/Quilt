@@ -13,6 +13,7 @@
 #import "BookmarkDataController.h"
 #import "RegisterViewController.h"
 #import "Account.h"
+#import "AccountViewController.h"
 
 @implementation NetworkController
 
@@ -50,7 +51,7 @@
     if(success)
     {
         avc.oldPassword.text = @"";
-        avc.newPassword.text = @"";
+        avc.password.text = @"";
         avc.confirmPassword.text = @"";
     }
     else

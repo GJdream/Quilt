@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *uploadPicture;
 
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
-@property (weak, nonatomic) IBOutlet UITextField *newPassword;
+@property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UILabel *validPasswordLabel;
 

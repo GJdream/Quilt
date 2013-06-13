@@ -32,7 +32,7 @@ Account *currentAccount;
     [NetworkClient createAccount:[[Account alloc] initWithUserName:username Password:password] RegisterVC:rvc];
 }
 
-+ (BOOL)changePassword:(NSString *)username OldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc
++ (BOOL)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc
 {
     if ([oldPassword isEqualToString:currentAccount.password])
     {
@@ -45,6 +45,7 @@ Account *currentAccount;
             return NO;
         }
     }
+    return NO;
 }
     
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword

@@ -13,10 +13,6 @@
 @end
 
 @implementation AccountViewController
-@synthesize username;
-@synthesize oldPassword;
-@synthesize newPassword;
-@synthesize confirmPassword;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

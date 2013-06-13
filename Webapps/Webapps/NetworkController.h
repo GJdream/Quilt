@@ -11,6 +11,7 @@
 @class RegisterViewController;
 @class LoginViewController;
 @class Account;
+@class AccountViewController;
 
 @interface NetworkController : NSObject
 
