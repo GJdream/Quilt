@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;
 @property (strong, nonatomic) NSString *url;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookmarkButton;
 
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;

@@ -22,5 +22,6 @@
 + (void)loginUser:(NSString *)username Password:(NSString *)password LoginView:(LoginViewController *)lvc;
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc;
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
++ (void)changePassword:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 
 @end

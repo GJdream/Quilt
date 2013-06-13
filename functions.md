@@ -53,17 +53,21 @@ action: add_group_member
 action: remove_group  
  -group_id  
 
-
+action: new_picture  
+ -username  
+  
+  
 ###### GET
 
-action: get_bookmarks  
- -username  
+action: get_bookmarks   
 
 action: get_tags  
  -post_id  
 
 action: get_friends  
- -username  
-
+  
 action: get_group  
- -group_id  
+ -group_id
+
+action: get_picture  
+  

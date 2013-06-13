@@ -12,15 +12,14 @@
 #import "NetworkClient.h"
 #import "ViewDeckController.h"
 #import "BookmarkDataController.h"
+#import "AddBookmarkPopoverController.h"
 #import "ScreenshotSelectionView.h"
 
 @interface WebViewController ()
-
+@property UIPopoverController *addBookmarkPopover;
 @end
 
-@implementation WebViewController {
-    UIPopoverController *addBookmarkPopover;
-}
+@implementation WebViewController
 
 @synthesize viewWeb;
 
@@ -36,6 +35,12 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if(self.addBookmarkPopover.popoverVisible)
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -58,7 +63,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)done:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
@@ -72,7 +76,8 @@
             [NetworkClient createBookmark:addController.bookmark];
             
         }
-        [addBookmarkPopover dismissPopoverAnimated:YES];
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
+        //self.addBookmarkButton.enabled = YES;
     }
 }
 
@@ -87,7 +92,9 @@
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
-        [addBookmarkPopover dismissPopoverAnimated:YES];
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
+        //NSLog(@"Dismissed");
+        //self.addBookmarkButton.enabled = YES;
     }
 }
 /*
@@ -108,10 +115,15 @@
 {
     if ([segue.identifier isEqualToString:@"addBookmarkSegue"])
     {
+        if(self.addBookmarkPopover.popoverVisible)
+            [self.addBookmarkPopover dismissPopoverAnimated:YES];
+
         AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
         addBookmarkViewController.url = self.url;
-        addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        self.addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
 }
+
+
 
 @end

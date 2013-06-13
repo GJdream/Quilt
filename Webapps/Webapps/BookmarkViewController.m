@@ -89,8 +89,13 @@
     }
     if ([segue.identifier isEqualToString:@"myAccountSegue"])
     {
-        AccountViewController *accountViewController = segue.destinationViewController;
+        //AccountViewController *accountViewController = segue.destinationViewController;
         //accountViewController.
+    }
+    
+    if ([segue.identifier isEqualToString:@"friendsSegue"])
+    {
+        
     }
 }
 

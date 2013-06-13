@@ -32,6 +32,11 @@ Account *currentAccount;
     [NetworkClient createAccount:[[Account alloc] initWithUserName:username Password:password] RegisterVC:rvc];
 }
 
++ (void)changePassword:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
+{
+    // DO SHIT HERE
+}
+
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
 {
     return ([password isEqualToString:confirmPassword]);
