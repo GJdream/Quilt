@@ -11,6 +11,7 @@
 @class RegisterViewController;
 @class LoginViewController;
 @class Account;
+@class AccountViewController;
 
 @interface NetworkController : NSObject
 
@@ -18,5 +19,6 @@
 +(void)gotBookmarks:(NSData*)data;
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc;
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC;
++(void)changePasswordComplete:(NSData*)data AccountViewController:(AccountViewController*)avc;
 
 @end
