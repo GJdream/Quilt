@@ -79,9 +79,9 @@
 		7910521A17674A6400CC4555 /* NavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarViewController.m; sourceTree = "<group>"; };
 		7910521F1768AD1400CC4555 /* BookmarkViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewFlowLayout.h; sourceTree = "<group>"; };
 		791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewFlowLayout.m; sourceTree = "<group>"; };
+		792894D2176A4B2200F57EFC /* UIBookmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		793064311769E7A7005FA5BF /* ScreenshotSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotSelectionView.h; sourceTree = "<group>"; };
 		793064321769E7A8005FA5BF /* ScreenshotSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotSelectionView.m; sourceTree = "<group>"; };
-		795288C317590D3500158F8E /* UIBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBookmark.h; sourceTree = "<group>"; };
 		795288C417590D3500158F8E /* UIBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBookmark.m; sourceTree = "<group>"; };
 		795288C91759276600158F8E /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		795288CA1759276600158F8E /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
@@ -197,6 +197,7 @@
 				2E4136EC1768AF26000DA87E /* Quilt144.png */,
 				2E4136EE1768B3D5000DA87E /* RegisterViewController.h */,
 				2E4136EF1768B3D5000DA87E /* RegisterViewController.m */,
+				792894D2176A4B2200F57EFC /* UIBookmark.h */,
 				795288C417590D3500158F8E /* UIBookmark.m */,
 				791052031765FD9F00CC4555 /* ViewDeckController.h */,
 				791052041765FD9F00CC4555 /* ViewDeckController.m */,

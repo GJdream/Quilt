@@ -23,6 +23,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"Here");
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGRect innerRect = CGRectInset(rect, 5, 5);
     CGContextSetStrokeColorWithColor(context, [[UIColor redColor] CGColor]);
