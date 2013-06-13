@@ -21,6 +21,9 @@
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
+    
+    NSLog(@"%@", json);
+    
     if(success)
     {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];

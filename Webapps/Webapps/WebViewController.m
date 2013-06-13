@@ -16,12 +16,10 @@
 #import "ScreenshotSelectionView.h"
 
 @interface WebViewController ()
-
+@property AddBookmarkPopoverController *addBookmarkPopover;
 @end
 
-@implementation WebViewController {
-    AddBookmarkPopoverController *addBookmarkPopover;
-}
+@implementation WebViewController
 
 @synthesize viewWeb;
 
@@ -37,6 +35,13 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if(self.addBookmarkPopover.popoverVisible)
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad
@@ -60,6 +65,24 @@
 }
 
 
+- (IBAction)addBookmarkClick:(id)sender {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    AddBookmarkViewController *addBookmarkVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
+    
+    addBookmarkVC.url = self.url;
+    
+    if(!self.addBookmarkPopover)
+        self.addBookmarkPopover = [[AddBookmarkPopoverController alloc] initWithContentViewController:addBookmarkVC];
+    
+    if(self.addBookmarkPopover.popoverVisible)
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
+    
+    self.addBookmarkPopover.passthroughViews = nil;
+    
+    self.addBookmarkPopover.addBookmarkButton = self.addBookmarkButton;
+    [self.addBookmarkPopover presentPopoverFromBarButtonItem:self.addBookmarkButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
 - (IBAction)done:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
@@ -73,7 +96,7 @@
             [NetworkClient createBookmark:addController.bookmark];
             
         }
-        [addBookmarkPopover dismissPopoverAnimated:YES];
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
         //self.addBookmarkButton.enabled = YES;
     }
 }
@@ -89,8 +112,8 @@
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
     {
-        [addBookmarkPopover dismissPopoverAnimated:YES];
-        NSLog(@"Dismissed");
+        [self.addBookmarkPopover dismissPopoverAnimated:YES];
+        //NSLog(@"Dismissed");
         //self.addBookmarkButton.enabled = YES;
     }
 }
@@ -110,14 +133,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"addBookmarkSegue"])
-    {
-        AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
-        addBookmarkViewController.url = self.url;
-        //addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
-        addBookmarkPopover.addBookmarkButton = self.addBookmarkButton;
-        self.addBookmarkButton.enabled = NO;
-    }
+    
 }
 
 
