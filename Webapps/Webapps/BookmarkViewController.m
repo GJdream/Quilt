@@ -61,7 +61,14 @@
     
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
-    cell.label.text = bookmarkAtIndex.title;
+    cell.titleLabel.text = bookmarkAtIndex.title;
+    
+    for (NSString *tag in bookmarkAtIndex.tags) {
+        [cell.firstTag setTitle:tag forState:UIControlStateNormal];
+         cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
+    }
+    
+    //for loop through tags and append to NSString for text 
     
     [cell.layer setMasksToBounds:YES];
     [cell.layer setCornerRadius:15];

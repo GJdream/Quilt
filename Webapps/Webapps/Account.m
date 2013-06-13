@@ -32,22 +32,26 @@ Account *currentAccount;
     [NetworkClient createAccount:[[Account alloc] initWithUserName:username Password:password] RegisterVC:rvc];
 }
 
-+ (BOOL)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc
++ (void)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc
 {
     if ([oldPassword isEqualToString:currentAccount.password])
     {
         if ([Account validPassword:newPassword ConfirmPassword:confirmPassword])
         {
             [NetworkClient changePassword:currentAccount Password:newPassword AccountVC:avc];
-            return YES;
         } else
         {
-            return NO;
+            [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Your new passwords do not match" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+            avc.uploadPicture.enabled = YES;
+            avc.saveChanges.enabled = YES;
         }
     }
-    return NO;
+    [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Your old password was not correct" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+    avc.uploadPicture.enabled = YES;
+    avc.saveChanges.enabled = YES;
+
 }
-    
+
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
 {
     return ([password isEqualToString:confirmPassword]);
