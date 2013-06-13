@@ -13,6 +13,7 @@
 #import "ViewDeckController.h"
 #import "BookmarkDataController.h"
 #import "AddBookmarkPopoverController.h"
+#import "ScreenshotSelectionView.h"
 
 @interface WebViewController ()
 

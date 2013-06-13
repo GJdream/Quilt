@@ -314,6 +314,7 @@
 				2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */,
 				2EC21DC1176A0AD200366098 /* AddBookmarkPopoverController.m in Sources */,
 				2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */,
+				793064331769E7A8005FA5BF /* ScreenshotSelectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
