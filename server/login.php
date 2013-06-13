@@ -42,7 +42,7 @@
       // unnecessary to double check the user in question has an active session
       // given the login validations the assumption is their session is genuine by this point
 
-      $_SESSION[active]  = false;
+      $_SESSION[active] = false;
       unset($_SESSION[user_id]);
 
       session_unset();
