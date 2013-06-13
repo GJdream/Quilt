@@ -11,11 +11,15 @@
 @interface AccountViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UIButton *uploadPicture;
+
+@property (weak, nonatomic) IBOutlet UITextField *oldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UILabel *validPasswordLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *saveChanges;
 
 @property BOOL validPassword;

@@ -1000,7 +1000,30 @@
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-py-EvJ">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cVo-Z3-OzT">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="iyj-wu-CZa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="cVo-Z3-OzT" firstAttribute="centerY" secondItem="a3E-JF-gfp" secondAttribute="centerY" type="default" id="Q6q-9B-hlN"/>
+                                            <constraint firstItem="cVo-Z3-OzT" firstAttribute="centerX" secondItem="a3E-JF-gfp" secondAttribute="centerX" type="default" id="rpV-qc-J1W"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rKg-Ey-MOP">
+                                        <rect key="frame" x="0.0" y="319" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="45" y="0.0" width="678" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="accNewPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcN-py-EvJ">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="320" id="fbP-JO-Bfh"/>
                                                     </constraints>
@@ -1012,12 +1035,12 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="dcN-py-EvJ" firstAttribute="centerY" secondItem="a3E-JF-gfp" secondAttribute="centerY" type="default" id="IQx-7u-dGd"/>
-                                            <constraint firstItem="dcN-py-EvJ" firstAttribute="centerX" secondItem="a3E-JF-gfp" secondAttribute="centerX" type="default" id="zIG-Mv-1nb"/>
+                                            <constraint firstItem="dcN-py-EvJ" firstAttribute="centerY" secondItem="rKg-Ey-MOP" secondAttribute="centerY" type="default" id="YgN-SQ-H8j"/>
+                                            <constraint firstItem="dcN-py-EvJ" firstAttribute="centerX" secondItem="rKg-Ey-MOP" secondAttribute="centerX" type="default" id="tGX-kh-CKc"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wC2-vV-LjZ">
-                                        <rect key="frame" x="0.0" y="319" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1051,7 +1074,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4be-pa-tK0">
-                                        <rect key="frame" x="0.0" y="363" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="407" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1099,7 +1122,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="confirmPassword" destination="WxR-8e-Ojo" id="Tdu-2n-DyP"/>
-                        <outlet property="password" destination="dcN-py-EvJ" id="W9T-A7-J5p"/>
+                        <outlet property="oldPassword" destination="cVo-Z3-OzT" id="0d9-dv-M4n"/>
+                        <outlet property="password" destination="dcN-py-EvJ" id="ZgD-qf-BTi"/>
                         <outlet property="profilePicture" destination="4GD-0q-Fh4" id="3hl-WI-t38"/>
                         <outlet property="saveChanges" destination="xrP-q6-Oqg" id="Pgw-yf-ycX"/>
                         <outlet property="uploadPicture" destination="Sgv-XN-StP" id="IEk-V7-eiM"/>
@@ -1122,6 +1146,7 @@
                 <relationship kind="action" name="saveChangesClicked:"/>
                 <relationship kind="action" name="uploadPictureClicked:"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
@@ -1140,10 +1165,6 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="menuButtonClicked:"/>
-                <relationship kind="action" name="sidebarOpenClick:"/>
-            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
@@ -1192,12 +1213,6 @@
                 <relationship kind="outlet" name="validUsernameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="UIBookmark" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -1240,6 +1255,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fod-x0-re8"/>
+        <segue reference="9Qo-do-rs0"/>
     </inferredMetricsTieBreakers>
 </document>
