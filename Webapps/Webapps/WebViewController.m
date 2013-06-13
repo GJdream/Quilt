@@ -16,7 +16,7 @@
 #import "ScreenshotSelectionView.h"
 
 @interface WebViewController ()
-@property AddBookmarkPopoverController *addBookmarkPopover;
+@property UIPopoverController *addBookmarkPopover;
 @end
 
 @implementation WebViewController
@@ -41,7 +41,6 @@
 {
     if(self.addBookmarkPopover.popoverVisible)
         [self.addBookmarkPopover dismissPopoverAnimated:YES];
-    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad
@@ -62,25 +61,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)addBookmarkClick:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    AddBookmarkViewController *addBookmarkVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
-    
-    addBookmarkVC.url = self.url;
-    
-    if(!self.addBookmarkPopover)
-        self.addBookmarkPopover = [[AddBookmarkPopoverController alloc] initWithContentViewController:addBookmarkVC];
-    
-    if(self.addBookmarkPopover.popoverVisible)
-        [self.addBookmarkPopover dismissPopoverAnimated:YES];
-    
-    self.addBookmarkPopover.passthroughViews = nil;
-    
-    self.addBookmarkPopover.addBookmarkButton = self.addBookmarkButton;
-    [self.addBookmarkPopover presentPopoverFromBarButtonItem:self.addBookmarkButton permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 - (IBAction)done:(UIStoryboardSegue *)segue
@@ -133,7 +113,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"addBookmarkSegue"])
+    {
+        if(self.addBookmarkPopover.popoverVisible)
+            [self.addBookmarkPopover dismissPopoverAnimated:YES];
+
+        AddBookmarkViewController *addBookmarkViewController = segue.destinationViewController;
+        addBookmarkViewController.url = self.url;
+        self.addBookmarkPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+    }
 }
 
 
