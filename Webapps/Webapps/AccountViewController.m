@@ -14,7 +14,8 @@
 
 @implementation AccountViewController
 @synthesize username;
-@synthesize password;
+@synthesize oldPassword;
+@synthesize newPassword;
 @synthesize confirmPassword;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,6 +49,7 @@
 
 - (IBAction)uploadPictureClicked:(id)sender
 {
+    //UIImagePickerController
     // ...
     //self.profilePicture.image
 }

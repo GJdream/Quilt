@@ -12,6 +12,7 @@
 #import "UIBookmark.h"
 #import "BookmarkDataController.h"
 #import "RegisterViewController.h"
+#import "AccountViewController.h"
 
 NSString *session_id;
 
@@ -88,6 +89,24 @@ NSUInteger lastUpdatedTime = 0;
                            [NetworkController loginComplete:data LoginView:lvc];
                        });
 
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
+}
+
++(void)changePassword:(Account *)account Password:(NSString *)password AccountVC:(AccountViewController *)avc
+{
+    NSString *params = [NSString stringWithFormat:@"action=change_password&username=%@&password=%@", [account username], [account password]];
+    
+    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [NetworkController changePasswordComplete:data AccountViewController:avc];
+                       });
+        
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],

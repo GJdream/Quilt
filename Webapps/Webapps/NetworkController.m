@@ -39,6 +39,27 @@
     }
 }
 
++(void)changePasswordComplete:(NSData*)data AccountViewController:(AccountViewController*)avc
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL success = [(NSNumber*)[json valueForKey:@"change_password"] boolValue];
+    
+    NSLog(@"%@", json);
+    
+    if(success)
+    {
+        avc.oldPassword.text = @"";
+        avc.newPassword.text = @"";
+        avc.confirmPassword.text = @"";
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Something went wrong with your change of password" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+    }
+    avc.saveChanges.enabled = YES;
+}
+
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc
 {
     NSError* error;
