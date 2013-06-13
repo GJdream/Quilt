@@ -51,6 +51,8 @@
         attemptUserLogin();
       else if($_POST['action'] === "logout_user")
         logoutUser();
+      else if($_POST['action'] === "new_password")
+        changePassword();
       else if($_POST['action'] === "new_bookmark")
         createBookmark();
       else if($_POST['action'] === "remove_bookmark")
@@ -69,6 +71,8 @@
         addGroupMember($_POST[group_id]);
       else if($_POST['action'] === "remove_group")
         destroyGroup();
+      else if($_POST['action'] === "new_picture")
+        updatePicture();
     }
   else if($_SERVER[REQUEST_METHOD] === "GET")
     {
@@ -85,6 +89,8 @@
         getGroupMembers();
       else if($_GET['action'] === "check_username")
       	checkUsername();
+      else f($_GET['action'] === "get_picture")
+        getPIcture();
     }
   
   echo json_encode($json_return);
