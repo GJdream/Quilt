@@ -14,6 +14,7 @@
 #import "UIBookmark.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BookmarkViewFlowLayout.h"
+#import "AccountViewController.h"
 
 @implementation BookmarkViewController
 
@@ -86,6 +87,11 @@
     {
         WebViewController *webViewController = segue.destinationViewController;
         webViewController.url = sender;
+    }
+    if ([segue.identifier isEqualToString:@"myAccountSegue"])
+    {
+        AccountViewController *accountViewController = segue.destinationViewController;
+        //accountViewController.
     }
 }
 

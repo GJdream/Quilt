@@ -1,21 +1,18 @@
 //
-//  SignInViewController.m
+//  AccountViewController.m
 //  Quilt
 //
-//  Created by Thomas, Anna E on 11/06/2013.
+//  Created by Thomas, Anna E on 13/06/2013.
 //  Copyright (c) 2013 Team Awesome. All rights reserved.
 //
 
-#import "SignInViewController.h"
-#import "LoginViewController.h"
+#import "AccountViewController.h"
 
-@interface SignInViewController ()
+@interface AccountViewController ()
 
 @end
 
-@implementation SignInViewController{
-    UIPopoverController *loginPopover;
-}
+@implementation AccountViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
