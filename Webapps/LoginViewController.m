@@ -28,11 +28,10 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [super viewDidAppear:animated];
-    [self.txtUsername resignFirstResponder];
-    [self.txtPassword resignFirstResponder];
+    [super prepareForSegue:segue sender:sender];
+    [self.view endEditing:YES];
 }
 
 - (void)viewDidLoad
@@ -52,7 +51,4 @@
     [Account loginUser:txtUsername.text Password:txtPassword.text LoginView:self];
 }
 
-- (IBAction)backgroundClick:(id)sender
-{
-}
 @end
