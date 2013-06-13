@@ -84,8 +84,9 @@
 - (void)takeScreenshot
 {
     ScreenshotSelectionView *shotView = [[ScreenshotSelectionView alloc] initWithFrame:self.viewWeb.frame];
-    [self.view addSubview:shotView];
-    [self.view bringSubviewToFront:shotView];
+    [self.viewWeb addSubview:shotView];
+    [self.viewWeb bringSubviewToFront:shotView];
+    self.viewWeb.opaque = YES;
 }
 
 - (IBAction)cancel:(UIStoryboardSegue *)segue

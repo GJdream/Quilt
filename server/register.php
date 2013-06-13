@@ -6,6 +6,7 @@
 
       $username = $_POST[username];
       $password = sha1($_POST[password]);
+
         // md5 and sha1 are not good hash functions to use {md5 moreso}
         // the system does not seem to support better given functions, however
         // a salt will improve security 
@@ -47,6 +48,21 @@
       $result   = pg_query($db, $query);
       $users = pg_fetch_all($result);
       $json_return = array_merge($json_return, array("username_valid" => ($users == NULL)));
+    }
+
+  function updatePassword()
+    {
+      global $db;
+
+      $user_id      = $_POST[username];
+      $new_password = sha1($_POST[password]);
+
+      $query  = "UPDATE \"Users\" " .
+                "SET password = '$new_password' " .
+                "WHERE user_id = '$user_id'";
+      $result = pg_query($db, $query);
+
+      echo json_encode($result);
     }
 
   function unregister()

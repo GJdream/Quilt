@@ -55,7 +55,9 @@ action: remove_group
 
 action: new_picture  
  -username  
-  
+
+action: update_password  
+   
   
 ###### GET
 
