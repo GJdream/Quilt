@@ -6,6 +6,7 @@
 
       $username = $_POST[username];
       $password = sha1($_POST[password]);
+
         // md5 and sha1 are not good hash functions to use {md5 moreso}
         // the system does not seem to support better given functions, however
         // a salt will improve security 
