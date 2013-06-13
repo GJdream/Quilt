@@ -1,10 +1,8 @@
 <?php
   function attemptUserLogin()
     {
-      global $json_return;
       global $db;
-
-      echo $_POST[password];
+      global $json_return;
 
       $submittedUsername = $_POST[username];
       $submittedPassword = sha1($_POST[password]);

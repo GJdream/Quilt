@@ -1,14 +1,14 @@
 <?php
   function createBookmark()
     {
-      global $json_return;
       global $db;
+      global $json_return;
 
       $owner   = $_SESSION[user_id];
       $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
-      $title  = $_POST[title];
+      $title   = $_POST[title];
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
@@ -50,7 +50,6 @@
       $post_id = $_POST[post_id];
       $owner   = $_SESSION[user_id];
 
-
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$owner'";
@@ -89,6 +88,7 @@
   function resizeBookmark()
     {
       global $db;
+      global $json_return;
 
       $postid  = $_POST[post_id];
       $owner   = $_SESSION[user_id];
@@ -96,10 +96,13 @@
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
 
-      $query  = "UPDATE \"Bookmarks\" " .
-                "SET p_height = 'pheight', p_width = 'pwidth' " .
-                "WHERE owner = '$owner' AND post_id = '$postid'";
-      $result = pg_query($db, $query);
+      $query   = "UPDATE \"Bookmarks\" " .
+                 "SET p_height = 'pheight', p_width = 'pwidth' " .
+                 "WHERE owner = '$owner' AND post_id = '$postid'";
+      $result  = pg_query($db, $query);
+      $success = pg_fetch_all($result);
+
+      $json_return = array_merge($json_return, array("resize_bookmark" => !$success));
     }
 
   function getBookmarks()
@@ -136,25 +139,33 @@
   function createTag()
     {
       global $db;
+      global $json_return;
 
       $post_id = $_POST[post_id];
-      $tag    = $_POST[tag];
+      $tag     = $_POST[tag];
 
-      $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
-                "VALUES ('$post_id', '$tag')";
-      $result = pg_query($db, $result);
+      $query   = "INSERT INTO \"Tags\" (post_id, tag) " .
+                 "VALUES ('$post_id', '$tag')";
+      $result  = pg_query($db, $result);
+      $update  = pg_fetch_all($result);
+
+      $json_return = array_merge($json_return, array("create_tag" => ($update == NULL)));
     }
 
   function destroyTag()
     {
       global $db;
+      global $json_return;
 
       $post_id = $_POST[post_id];
-      $tag    = $_POST[tag];
+      $tag     = $_POST[tag];
 
-      $query  = "DELETE FROM \"Tags\" " .
-                "WHERE post_id = '$post_id' AND tag = '$tag'";
-      $result = pg_query($db, $query);
+      $query   = "DELETE FROM \"Tags\" " .
+                 "WHERE post_id = '$post_id' AND tag = '$tag'";
+      $result  = pg_query($db, $query);
+      $update  = pg_fetch_all($result);
+ 
+      $json_return = array_merge($json_return, array("destroy_tag" => ($update == NULL)));
     }
 
   function getTagsForID($post_id)

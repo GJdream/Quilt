@@ -2,6 +2,7 @@
   function createFriend()
     {
       global $db;
+      global $json_return;
 
       $user_id   = $_POST[user_id];
       $friend_id = $_post[friend_id];
@@ -9,13 +10,15 @@
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$user_id', '$friend_id')";
       $result = pg_query($db, $result);
+      $update = pg_fetch_all($result);
       
-      echo json_encode($result);
+      $json_return = array_merge($json_return, array("create_friend" => ($update == NULL)));
     }
 
   function destroyFriend()
     {
       global $db;
+      global $json_return;
 
       $user_id   = $_POST[user_id];
       $friend_id = $_post[friend_id];
@@ -23,13 +26,15 @@
       $query  = "DELETE FROM \"Friends\" " .
                 "WHERE user_id = '$user_id' AND friend_id = '$friend_id'";
       $result = pg_query($db, $query);
+      $update = pg_fetch_all($result);
       
-      echo json_encode($result);
+      $json_return = array_merge($json_return, array("remove_friend" => ($update == NULL)));
     }
 
   function getFriends()
     {
       global $db;
+      global $json_return;
 
       $owner = $_GET[username];
 
@@ -39,17 +44,19 @@
       $result   = pg_query($db, $query);
       $owner_id = pg_fetch_result($result, 0);
 
-      $query   = "SELECT * FROM \"Friends\" " .
-                 "WHERE owner_id = '$owner_id'";
-      $result  = pg_query($db, $query);
-      $friends = pg_fetch_all($result);
+      $query    = "SELECT * FROM \"Friends\" " .
+                  "WHERE owner_id = '$owner_id'";
+      $result   = pg_query($db, $query);
+      $friends  = pg_fetch_all($result);
 
-      echo json_encode($friends);
+      if($friends)
+        $json_return = array_merge_recursive($json_return, array("friends" => array($owner => $friends)));
     }
 
   function createGroup()
     {
       global $db;
+      global $json_return;
 
       $owner    = $_POST[username];
       $owner_id = $_POST[user_id];
@@ -63,11 +70,11 @@
       if($_POST[members])
         {
           if(!addGroupMember($group_id))
-          	echo json_encode(false);
+          	echo json_encode(array("create_group" => false));
           	return;
         }
       
-      echo json_encode($result);
+      $json_return = array_merge($json_return, array("create_group" => true));
     }
 
   // this implementation assumes that there will usually be multiple
@@ -75,6 +82,7 @@
   function addGroupMember($group_id)
     {
       global $db;
+      global $json_return;
 
       // building array of members
       $members   = implode("','", $_POST[members]);
@@ -88,15 +96,18 @@
 
           if(!$result)
           {
-          	echo json_encode(false);
-          	return;
+            echo json_encode(array("add_group_member" => false));
+            return;
           }
         }
+
+      $json_return = array_merge($json_return, array("add_group_member" => true));
     }
 
   function destroyGroup()
     {
       global $db;
+      global $json_return;
 
       $groupid = $_POST[group_id];
 
@@ -110,14 +121,16 @@
 
       $query  = "DELETE FROM \"Group_Members\" " .
                 "WHERE group_id = '$groupid'";
-      $result = pg_query($db, $query);   
+      $result = pg_query($db, $query);
+      $update = pg_fetch_all($result);
       
-      echo json_encode($result);   
+      $json_return = array_merge($json_return, array("destroy_group" => ($update == NULL)));   
     }
 
   function getGroupMembers()
     {
       global $db;
+      global $json_return;
 
       $group_id = $_GET[group_id];
 
@@ -126,12 +139,14 @@
       $result   = pg_query($db, $query);
       $members  = pg_fetch_all($result);
 
-      echo json_encode($members);
+      if($members)
+        $json_return = array_merge_recursive($json_return, array("group_members" => array($group_id => $members)));
     }
 
   function updatePicture()
     {
       global $db;
+      global $json_return;
 
       $user_id = $_POST[username];
       $picture = $_POST[picture];
@@ -140,13 +155,15 @@
                 "SET picture = '$picture' " .
                 "WHERE user_id = '$user_id'";
       $result = pg_query($db, $query);
-
-      echo json_encode($result);
+      $update = pg_fetch_all($result);
+      
+      $json_return = array_merge($json_return, array("update_picture" => ($update == NULL)));
     }
 
   function getPicture()
     {
       global $db;
+      global $json_return;
 
       $user_id = $_SESSION[user_id];
 
@@ -157,6 +174,5 @@
 
       if($picture)
         $json_return = array_merge_recursive($json_return, array("user_picture" => $picture));
-
     }
 ?>
