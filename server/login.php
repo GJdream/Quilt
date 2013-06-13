@@ -4,6 +4,8 @@
       global $json_return;
       global $db;
 
+      echo $_POST[password];
+
       $submittedUsername = $_POST[username];
       $submittedPassword = sha1($_POST[password]);
         // md5 and sha1 are not good hash functions to use
@@ -11,23 +13,22 @@
 
         // hashing will likely be pulled into a common function somewhere
 
-      $query  = "SELECT password FROM \"Users\"" . 
+      $query  = "SELECT password FROM \"Users\" " . 
                 "WHERE user_name = '$submittedUsername'";
-//                "AND password = '$submittedPassword'";
       $result = pg_query($db, $query);
 
       $user_exists = (pg_num_rows($result) == 1);
 
       if(!$user_exists)
-      	$json_return = array_merge($json_return, array("user_exists" => $user_exists));
+        $json_return = array_merge($json_return, array("user_exists" => $user_exists));
       else
-      {
-    	  $result_array = pg_fetch_row($result, 0);
-	      if($result_array[0] === $submittedPassword)
-    	  	validateUser($submittedUsername);
-	      else
-      		$json_return = array_merge($json_return, array("password_correct" => false));
-      }
+        {
+          $result_array = pg_fetch_row($result, 0);
+          if($result_array[0] === $submittedPassword)
+            validateUser($submittedUsername);
+          else
+            $json_return = array_merge($json_return, array("password_correct" => false));
+        }
 
       // to be safe, check login was completed successfully
       $loggedin = isLoggedIn();
@@ -48,7 +49,5 @@
       session_destroy();
       
       echo json_encode(array("logout" => true));
-
-      // redirect to a home location
     }
 ?>

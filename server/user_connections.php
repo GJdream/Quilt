@@ -52,7 +52,7 @@
       global $db;
 
       $owner    = $_POST[username];
-      $owner_id  = $_POST[user_id];
+      $owner_id = $_POST[user_id];
 
       $query    = "INSERT INTO \"Groups\" (group_owner, group_owner_id) " .
                   "VALUES ('$owner', '$owner_id') " .
@@ -85,7 +85,7 @@
           $query  = "INSERT INTO \"Group_Members\" (group_id, member_id) " .
                     "VALUES ('$group_id', '$member')";
           $result = pg_query($db, $query);
-          //echo $result;
+
           if(!$result)
           {
           	echo json_encode(false);
@@ -121,11 +121,42 @@
 
       $group_id = $_GET[group_id];
 
-      $query   = "SELECT * FROM \"Group_Members\" " .
-                 "WHERE group_id = '$group_id'";
-      $result  = pg_query($db, $query);
-      $members = pg_fetch_all($result);
+      $query    = "SELECT * FROM \"Group_Members\" " .
+                  "WHERE group_id = '$group_id'";
+      $result   = pg_query($db, $query);
+      $members  = pg_fetch_all($result);
 
       echo json_encode($members);
+    }
+
+  function updatePicture()
+    {
+      global $db;
+
+      $user_id = $_POST[username];
+      $picture = $_POST[picture];
+
+      $query  = "UPDATE \"Users\" " .
+                "SET picture = '$picture' " .
+                "WHERE user_id = '$user_id'";
+      $result = pg_query($db, $query);
+
+      echo json_encode($result);
+    }
+
+  function getPicture()
+    {
+      global $db;
+
+      $user_id = $_SESSION[user_id];
+
+      $query = "SELECT user_picture FROM \"Users\" " .
+               "WHERE user_id = '$user_id'";
+      $results = pg_query($db, $query);
+      $picture = pg_fetch_all($result);
+
+      if($picture)
+        $json_return = array_merge_recursive($json_return, array("user_picture" => $picture));
+
     }
 ?>
