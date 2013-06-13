@@ -9,10 +9,11 @@
 #import "NavigationBarViewController.h"
 #import "NDTrie.h"
 #import "BookmarkDataController.h"
+#import "BookmarkViewController.h"
 
 @implementation NavigationBarViewController
 
-#define NUMBER_OF_STATIC_CELLS 1
+#define NUMBER_OF_STATIC_CELLS 2
 NSArray *tableData;
 
 /*
@@ -90,6 +91,8 @@ NSArray *tableData;
         
         if (cellNum == 0)
             staticCellID = @"TableName";
+        if (cellNum == 1)
+            staticCellID = @"MyAccount";
         
         cell = [tableView dequeueReusableCellWithIdentifier:staticCellID];
         
@@ -115,6 +118,11 @@ NSArray *tableData;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    if (indexPath.row == 1)
+    {
+        [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"myAccountSegue" sender:self];
+    }
     
     [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
 }
