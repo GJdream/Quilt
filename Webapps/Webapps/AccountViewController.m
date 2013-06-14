@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Team Awesome. All rights reserved.
 //
 
+//#import <MobileCoreServices/UTCoreTypes.h>
 #import "AccountViewController.h"
 #import "Account.h"
 
@@ -81,9 +82,8 @@
         imagePicker.delegate = self;
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         //imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
-        //imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = NO;
         [self presentViewController:imagePicker animated:YES completion:NULL];
-        //[imagePicker release];
         newMedia = YES;
     }
 }
@@ -101,12 +101,14 @@
             picker.delegate = self;
             
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //picker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
+            picker.allowsEditing = NO;
+            
             self.popoverController = [[UIPopoverController alloc] initWithContentViewController:picker];
             
             popoverController.delegate = self;
             
             [self.popoverController presentPopoverFromRect:self.uploadPicture.bounds inView:self.uploadPicture permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-             //Rect:self.view.bounds inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             newMedia = NO;
         }
     }
@@ -115,8 +117,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self.popoverController dismissPopoverAnimated:true];
-
-    //[self dismissViewControllerAnimated:YES completion:NULL];
+    
+    //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         
     imageView.image = image;
