@@ -175,7 +175,7 @@
       $user_id = pg_fetch_result($result, 0);
 
       $query  = "UPDATE \"Users\" " .
-                "SET picture = '$picture' " .
+                "SET user_picture = '$picture' " .
                 "WHERE user_id = '$user_id'";
       $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
