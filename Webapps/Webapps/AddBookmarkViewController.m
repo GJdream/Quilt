@@ -70,7 +70,7 @@
             NSMutableArray *tags = [[NSMutableArray alloc] init];
             NSCharacterSet *chars = [NSCharacterSet characterSetWithCharactersInString:@", "];
             [tags addObjectsFromArray:([self.tagsInput.text componentsSeparatedByCharactersInSet:chars])];
-            UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:self.titleInput.text URL:self.urlInput.text Tags:tags Width:1 Height:1 ID:-1];
+            UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:self.titleInput.text URL:self.urlInput.text Tags:tags Width:1 Height:1 ID:-1 Image:nil];
             self.bookmark = bookmark;
         }
     }

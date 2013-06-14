@@ -66,6 +66,8 @@
         CGSize size = rect.size;
         self.leftSize = size.width - 268.0f;
         self.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
+        
+        self.panningCancelsTouchesInView = NO;
     }
     return self;
 }
@@ -85,6 +87,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
