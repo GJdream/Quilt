@@ -127,7 +127,8 @@ NSArray *tableData;
     }
     else if (indexPath.row == 3)
     {
-        //log out
+        [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"logOutSegue" sender:self];
+        //Log out server
     }
     
     else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];

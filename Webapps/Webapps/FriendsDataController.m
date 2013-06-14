@@ -8,6 +8,11 @@
 
 #import "FriendsDataController.h"
 
+@interface FriendsDataController ()
+@property NSMutableArray *updatedFriends;
+@property (readwrite) NSMutableDictionary *nameToFriend;
+@end
+
 @implementation FriendsDataController
 
 - (FriendsDataController *)initWithViewController:(FriendsViewController *)bookmarkVC
