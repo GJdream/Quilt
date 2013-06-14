@@ -45,8 +45,6 @@
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    NSLog(@"%@", json);
-    
     BOOL success = [(NSNumber*)[json valueForKey:@"change_password"] boolValue];
     
     if(success)

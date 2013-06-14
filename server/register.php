@@ -55,9 +55,14 @@
     {
       global $db;
       global $json_return;
-
-      $user_id      = $_POST[username];
+      
+      $username     = $_SESSION[user_id];
       $new_password = sha1($_POST[password]);
+
+	  $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
 
       $query  = "UPDATE \"Users\" " .
                 "SET password = '$new_password' " .

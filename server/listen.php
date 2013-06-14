@@ -51,8 +51,8 @@
         attemptUserLogin();
       else if($_POST['action'] === "logout_user")
         logoutUser();
-      else if($_POST['action'] === "new_password")
-        changePassword();
+      else if($_POST['action'] === "change_password")
+        updatePassword();
       else if($_POST['action'] === "new_bookmark")
         createBookmark();
       else if($_POST['action'] === "remove_bookmark")

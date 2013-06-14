@@ -38,7 +38,7 @@ Account *currentAccount;
     {
         if ([Account validPassword:newPassword ConfirmPassword:confirmPassword])
         {
-            [NetworkClient changePassword:currentAccount Password:newPassword AccountVC:avc];
+            [NetworkClient changePassword:newPassword AccountVC:avc];
         } else
         {
             [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Your new passwords do not match" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
@@ -46,9 +46,12 @@ Account *currentAccount;
             avc.saveChanges.enabled = YES;
         }
     }
-    [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Your old password was not correct" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
-    avc.uploadPicture.enabled = YES;
-    avc.saveChanges.enabled = YES;
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Your old password was not correct" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+        avc.uploadPicture.enabled = YES;
+        avc.saveChanges.enabled = YES;
+    }
 
 }
 
