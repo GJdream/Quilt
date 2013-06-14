@@ -6,10 +6,10 @@
  - Set-up Database {Complete}  
  - Server side code to get commands from network to serve DB  
     - Link DB with PHP {Complete}
-    - Need to be able to listen on network and return requested data {Possible, being worked with}  
-    - Change password code {FIXED}
-    - Change profile picture code
-    - Friend addition/deletion/sharing
+    - Need to be able to listen on network and return requested data {Complete}  
+    - Change password code {FIXED}  
+    - Change profile picture code {FIXED}  
+    - Friend addition/deletion/sharing {In Progress}  
 
  - every request from app needs ID in it  
     - hash request with hash of user password  
