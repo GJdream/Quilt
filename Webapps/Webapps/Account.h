@@ -24,6 +24,7 @@
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc;
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 + (void)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc;
-+ (void)changePhoto:(UIImage *)image Username:(NSString *)username AccountView:(AccountViewController *)avc;
++ (void)changePhoto:(UIImage *)image AccountView:(AccountViewController *)avc;
+- (void)setPhoto:(AccountViewController *)avc;
 
 @end
