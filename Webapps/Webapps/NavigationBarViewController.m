@@ -16,17 +16,6 @@
 #define NUMBER_OF_STATIC_CELLS 4
 NSArray *tableData;
 
-/*
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"navBarTexture.png"]];
-    }
-    return self;
-}
-*/
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
