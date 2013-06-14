@@ -13,12 +13,12 @@
         //   -> once other basic functions have been implemented I will add this
 
         // a preferred hash algorithm is blowfish 
-        //   -> once everything is in place I may look to make this worth appropriately
+        //   -> once everything is in place I may look to make this work appropriately
 
-      $query  = "INSERT INTO \"Users\" (user_name, password) " . 
-                "VALUES ('$username', '$password')"; 
+      $query   = "INSERT INTO \"Users\" (user_name, password) " . 
+                 "VALUES ('$username', '$password')"; 
       pg_send_query($db, $query); 
-      $result = pg_get_result($db);
+      $result  = pg_get_result($db);
       
       $success = true;
 
@@ -46,13 +46,15 @@
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$username'";
       $result   = pg_query($db, $query);
-      $users = pg_fetch_all($result);
+      $users    = pg_fetch_all($result);
+
       $json_return = array_merge($json_return, array("username_valid" => ($users == NULL)));
     }
 
   function updatePassword()
     {
       global $db;
+      global $json_return;
 
       $user_id      = $_POST[username];
       $new_password = sha1($_POST[password]);
@@ -61,13 +63,15 @@
                 "SET password = '$new_password' " .
                 "WHERE user_id = '$user_id'";
       $result = pg_query($db, $query);
+      $update = pg_fetch_all($result);
 
-      echo json_encode($result);
+      $json_return = array_merge($json_return, array("change_password" => ($update == NULL)));
     }
 
   function unregister()
     {
       global $db;
+      global $json_return;
 
       $username = $_POST[username];
       $password = sha1($_POST[password]);
@@ -77,7 +81,7 @@
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$username'";
       $result   = pg_query($db, $query);
-      $id_value = pg_fetch_result($result,0);
+      $id_value = pg_fetch_result($result, 0);
 
       // if they are unregistering we want to remove all instances of them
       // from the rest of the database because it makes no sense to referrence
@@ -93,12 +97,11 @@
       // run logout to clear session data before deleting information?
 
       $success = (removeUserFrom($grpmem_tbl, $id_value) &&
-         removeUserFrom($friend_tbl, $id_value) &&
-         removeUserFrom($bmarks_tbl, $id_value));
+                  removeUserFrom($friend_tbl, $id_value) &&
+                  removeUserFrom($bmarks_tbl, $id_value));
          
       // if everything worked, goodbye {and thanks for all the fish}
-      echo json_encode($success);
-      return $success;
+      $json_return = array_merge($json_return, array("unregister" => $success));
 
       // have not decided how to deal with group ownership yet
       // the other members in the group might not want to lose group

@@ -13,6 +13,7 @@
 #import "BookmarkDataController.h"
 #import "RegisterViewController.h"
 #import "Account.h"
+#import "AccountViewController.h"
 
 @implementation NetworkController
 
@@ -37,6 +38,28 @@
         
         loginVC.loginButton.enabled = YES;
     }
+}
+
++(void)changePasswordComplete:(NSData*)data AccountViewController:(AccountViewController*)avc
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSLog(@"%@", json);
+    
+    BOOL success = [(NSNumber*)[json valueForKey:@"change_password"] boolValue];
+    
+    if(success)
+    {
+        avc.oldPassword.text = @"";
+        avc.password.text = @"";
+        avc.confirmPassword.text = @"";
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Change password error" message:@"Something went wrong with your change of password" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+    }
+    avc.saveChanges.enabled = YES;
 }
 
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc

@@ -7,6 +7,7 @@
 //
 
 #import "UIBookmark.h"
+#import "BookmarkDataController.h"
 #import <QuartzCore/CALayer.h>
 
 @implementation UIBookmark
@@ -16,8 +17,8 @@
     self = [super init];
     if (self)
     {
-        _label.text = title;
-        _label.backgroundColor = [UIColor redColor];
+        _titleLabel.text = title;
+        _titleLabel.backgroundColor = [UIColor redColor];
         _title = title;
         _url = url;
         _tags = tags;
@@ -29,5 +30,8 @@
     return self;
 }
 
+- (IBAction)tagClicked:(id)sender {
+    [[BookmarkDataController instantiate] showTag:_firstTag.titleLabel.text];
+}
 @end
 
