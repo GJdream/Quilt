@@ -197,4 +197,53 @@
       if($tags)
         $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
+
+  function updateBookmarkPicture()
+    {
+      global $db;
+      global $json_return;
+
+      $username = $_SESSION[user_id];
+      $picture  = $_FILE[picture];
+
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$username'";
+      $result   = pg_query($db, $query);
+      $user_id  = pg_fetch_result($result, 0);
+
+      // stripping slashes to ensure correct binary translation
+      $escaped_picture = str_replace(array("\\\\", "''"), array("\\", "'"), pg_escape_bytea($picture));
+
+      $query  = "UPDATE \"Bookmarks\" " .
+                "SET bookmark_picture = '$escaped_picture' " .
+                "WHERE user_id = '$user_id'";
+      $result = pg_query($db, $query);
+      $update = pg_fetch_all($result);
+      
+      $json_return = array_merge($json_return, array("update_bookmark_picture" => ($update == NULL)));
+    }
+
+  function getBookmarkPicture()
+    {
+      global $db;
+      global $json_return;
+
+      $username = $_SESSION[user_id];
+
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+
+      $query = "SELECT bookmark_picture FROM \"Bookmarks\" " .
+               "WHERE user_id = '$user_id'";
+      $results = pg_query($db, $query);
+      $picture = pg_fetch_all($result);
+
+      $original_picture = pg_unescape_bytea($picture);
+
+      if($picture)
+        $json_return = array_merge_recursive($json_return, array("bookmark_picture" => $oringal_picture));
+
+    }
 ?>

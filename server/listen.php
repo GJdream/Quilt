@@ -71,8 +71,10 @@
         addGroupMember($_POST[group_id]);
       else if($_POST['action'] === "remove_group")
         destroyGroup();
-      else if($_POST['action'] === "new_picture")
-        updatePicture();
+      else if($_POST['action'] === "new_user_picture")
+        updateUserPicture();
+      else if($_POST['action'] === "new_bookmark_picture")
+        updateBookmarkPicture();
     }
   else if($_SERVER[REQUEST_METHOD] === "GET")
     {
@@ -89,8 +91,10 @@
         getGroupMembers();
       else if($_GET['action'] === "check_username")
       	checkUsername();
-      else if($_GET['action'] === "get_picture")
-        getPicture();
+      else if($_GET['action'] === "get_user_picture")
+        getUserPicture();
+      else if($_GET['action'] === "get_bookmark_picture")
+        getBookmarkPicture();
     }
   
   echo json_encode($json_return);
