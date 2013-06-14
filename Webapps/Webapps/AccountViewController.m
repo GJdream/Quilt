@@ -14,13 +14,14 @@
 @end
 
 @implementation AccountViewController
+@synthesize popoverController;
+@synthesize imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        //self.username.text =
     }
     return self;
 }
@@ -28,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.password.delegate = (id)self;
+    self.confirmPassword.delegate = (id)self;
+    self.username.text = [Account current].username;
 	// Do any additional setup after loading the view.
 }
 
@@ -37,9 +41,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if(textField == self.password)
+    if(textField == self.confirmPassword)
     {
         NSLog(@"Editing");
         if([self.confirmPassword.text isEqualToString:self.password.text])
@@ -69,11 +73,73 @@
     [Account changePasswordWithOldPassword:self.oldPassword.text NewPassword:self.password.text ConfirmPassword:self.confirmPassword.text AccountView:self];
 }
 
+- (IBAction)takeCameraPhotoClicked:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
+        //imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:NULL];
+        //[imagePicker release];
+        newMedia = YES;
+    }
+}
+
 - (IBAction)uploadPictureClicked:(id)sender
 {
-    //UIImagePickerController
-    // ...
-    //self.profilePicture.image
+    if ([self.popoverController isPopoverVisible])
+    {
+        [self.popoverController dismissPopoverAnimated:YES];
+    } else
+    {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+        {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            self.popoverController = [[UIPopoverController alloc] initWithContentViewController:picker];
+            
+            popoverController.delegate = self;
+            
+            [self.popoverController presentPopoverFromRect:self.uploadPicture.bounds inView:self.uploadPicture permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+             //Rect:self.view.bounds inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            newMedia = NO;
+        }
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self.popoverController dismissPopoverAnimated:true];
+
+    //[self dismissViewControllerAnimated:YES completion:NULL];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        
+    imageView.image = image;
+    if (newMedia)
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:finishedSavingWithError:contextInfo:), nil);
+}
+
+-(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc]
+            initWithTitle: @"Save failed"
+            message: @"Failed to save image"\
+            delegate: nil
+            cancelButtonTitle:@"OK"
+            otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

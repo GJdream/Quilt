@@ -100,7 +100,7 @@
     if ([segue.identifier isEqualToString:@"myAccountSegue"])
     {
         //AccountViewController *accountViewController = segue.destinationViewController;
-        //accountViewController.
+        //accountViewController.username.text = @"Test";
     }
     
     if ([segue.identifier isEqualToString:@"friendsSegue"])

@@ -23,6 +23,7 @@
 + (void)setViewController:(BookmarkViewController*)newVC;
 + (BookmarkDataController*)instantiate;
 
+
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;
 - (NSUInteger)countOfBookmarks;
@@ -30,5 +31,6 @@
 - (void)addBookmark:(UIBookmark *)bookmark;
 - (void)updateOnBookmarkInsertion;
 - (void)showTag:(NSString*)tag;
+- (void)showAll;
 
 @end

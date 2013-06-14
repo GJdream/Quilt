@@ -44,7 +44,7 @@
     [self.view endEditing:YES];
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if(textField == self.username)
         [NetworkClient checkUsername:textField.text RegisterVC:self];
