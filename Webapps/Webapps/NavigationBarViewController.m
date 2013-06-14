@@ -13,7 +13,7 @@
 
 @implementation NavigationBarViewController
 
-#define NUMBER_OF_STATIC_CELLS 3
+#define NUMBER_OF_STATIC_CELLS 4
 NSArray *tableData;
 
 /*
@@ -95,6 +95,8 @@ NSArray *tableData;
             staticCellID = @"MyAccount";
         if (cellNum == 2)
             staticCellID = @"MyFriends";
+        if (cellNum == 3)
+            staticCellID = @"LogOut";
         
         cell = [tableView dequeueReusableCellWithIdentifier:staticCellID];
         
@@ -133,6 +135,10 @@ NSArray *tableData;
     else if (indexPath.row == 2)
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"friendsSegue" sender:self];
+    }
+    else if (indexPath.row == 3)
+    {
+        //log out
     }
     
     else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
