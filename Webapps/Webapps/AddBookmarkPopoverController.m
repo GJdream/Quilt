@@ -13,7 +13,6 @@
 - (void)dismissPopoverAnimated:(BOOL)animated
 {
     [super dismissPopoverAnimated:animated];
-    self.addBookmarkButton.enabled = YES;
     NSLog(@"Dismissed");
 }
 

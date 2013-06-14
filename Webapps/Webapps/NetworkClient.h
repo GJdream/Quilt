@@ -24,6 +24,7 @@
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
 +(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc;
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
-+(void)changePhoto:(UIImage *)photo Username:(NSString *)username AccountVC:(AccountViewController *)avc;
++(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;
++(void)setPhoto:(AccountViewController *)avc;
 
 @end
