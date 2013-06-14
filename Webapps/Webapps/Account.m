@@ -55,6 +55,11 @@ Account *currentAccount;
 
 }
 
++ (void)changePhoto:photo Username:(NSString *)username AccountView:(AccountViewController *)avc
+{
+    [NetworkClient changePhoto:photo Username:username AccountVC:avc];
+}
+
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
 {
     return ([password isEqualToString:confirmPassword]);

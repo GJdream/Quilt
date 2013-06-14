@@ -112,6 +112,8 @@
             newMedia = NO;
         }
     }
+    self.uploadPicture.enabled = NO;
+    self.takeCameraPhoto.enabled = NO;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -126,6 +128,8 @@
     imageView.image = image;
     if (newMedia)
         UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:finishedSavingWithError:contextInfo:), nil);
+    
+    [Account changePhoto:image Username:[Account current].username AccountView:self];
 }
 
 -(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
