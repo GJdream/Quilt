@@ -7,6 +7,22 @@
       $user_id   = $_POST[user_id];
       $friend_id = $_post[friend_id];
 
+      // must add friendship in both directions
+      // example:
+
+      // user-1 is friends with user-2
+      // so the database must record as such
+
+      //   | user_id (bigint) | friend_id (bigint) |
+      //   | ================ | ================== |
+      //   |        2         |         1          |
+      //   | ---------------- | ------------------ |
+      //   |        1         |         2          |
+
+      $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
+                "VALUES ('$friend_id', '$user_id')";
+      $result = pg_query($db, $result);
+
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$user_id', '$friend_id')";
       $result = pg_query($db, $result);
@@ -23,8 +39,10 @@
       $user_id   = $_POST[user_id];
       $friend_id = $_post[friend_id];
 
+      // OR is used within the SQL query so that any instance of the user is removed
+      // since users are registered in the database as both having and being friends
       $query  = "DELETE FROM \"Friends\" " .
-                "WHERE user_id = '$user_id' AND friend_id = '$friend_id'";
+                "WHERE user_id = '$user_id' OR friend_id = '$friend_id'";
       $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
       
