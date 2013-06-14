@@ -46,7 +46,7 @@ All functions aside from get requests are currently implemented. Once this is do
  - Bookmark URLs
  - Associated tags  
 
-Since we are unaware how many tags people want to associate/how many people will be in a group we have split the tables. There is a seperate table for tags which has two columns. Each row has the post_id that this particular tag belongs to. When querying for tags all responces can be collated with a JOIN.
+Since we are unaware how many tags people want to associate/how many people will be in a group we have split the tables. There is a seperate table for tags which has two columns. Each row has the post_id that this particular tag belongs to. When querying for tags they are all returned in an array. Friends work in a similar fashion.
 
 
 ## Meetings Schedule
