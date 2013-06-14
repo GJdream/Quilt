@@ -21,7 +21,7 @@
 @property uint64_t b_id;
 @property UIImage *image;
 
--(UIBookmark *)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id Image:(UIImage*)image;
+- (UIBookmark *)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id Image:(UIImage*)image;
 - (IBAction)tagClicked:(id)sender;
 
 @end

@@ -7,12 +7,16 @@
 //
 
 #import "FriendsViewController.h"
+#import "FriendsDataController.h"
+#import "NDTrie.h"
 
 @interface FriendsViewController ()
 
 @end
 
 @implementation FriendsViewController
+
+NSArray *tableData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.searchBar.delegate = (id)self;
+    /*
+    tableData = [[FriendsDataController instantiate].friendTrie everyObject];
+    [[FriendsDataController instantiate]registerUpdate:^(void)
+     {
+         tableData = [[FriendsDataController instantiate].friendTrie everyObject];
+         [self.collectionView reloadData];
+     }];
+     */
 }
 
 - (void)didReceiveMemoryWarning
