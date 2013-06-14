@@ -41,6 +41,8 @@
       undo_magic_quotes_gpc($_COOKIE);
     }
 
+  $will_return_json = true;
+
   if($_SERVER[REQUEST_METHOD] === "POST")
     {
       if($_POST['action'] === "new_account")
@@ -90,12 +92,10 @@
       else if($_GET['action'] === "get_group")
         getGroupMembers();
       else if($_GET['action'] === "check_username")
-      	checkUsername();
+        checkUsername();
       else if($_GET['action'] === "get_user_picture")
         getUserPicture();
       else if($_GET['action'] === "get_bookmark_picture")
         getBookmarkPicture();
     }
-  
-  echo json_encode($json_return);
 ?>

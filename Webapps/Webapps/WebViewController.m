@@ -84,6 +84,7 @@
             [self.shotView setScreenshotTakenFunction:^(CGRect rect){
                 UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
                 CGContextRef context = UIGraphicsGetCurrentContext();
+                CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);
                 [layer renderInContext:context];
                 UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();

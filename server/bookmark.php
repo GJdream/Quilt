@@ -204,8 +204,11 @@
       global $json_return;
 
       $username = $_SESSION[user_id];
-      $picture  = $_FILE[picture];
+      $picture  = $_FILES['picture']['tmp_name'];
+      
+      move_uploaded_file($_FILES['picture']['tmp_name'], "out.png");
 
+      // fetch user_id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$username'";
       $result   = pg_query($db, $query);
@@ -244,6 +247,5 @@
 
       if($picture)
         $json_return = array_merge_recursive($json_return, array("bookmark_picture" => $oringal_picture));
-
     }
 ?>

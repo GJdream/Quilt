@@ -19,11 +19,11 @@
 
 +(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC
 {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     if(success)
     {
@@ -63,15 +63,14 @@
 +(void)changePhotoComplete:(NSData*)data AccountViewController:(AccountViewController*)avc
 {
     NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     BOOL success = [(NSNumber*)[json valueForKey:@"update_picture"] boolValue];
     
     if(success)
     {
-
+        
     }
     else
     {
@@ -126,13 +125,15 @@
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
 {
     NSError* error;
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+/*    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];
+    NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];*/
     
-    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
     
-    avc.imageView.image = [UIImage imageWithData:imageData];
+    avc.imageView.image = [[UIImage alloc] initWithData:data];
+    
+//    avc.imageView.image = [UIImage imageWithData:imageData];
 }
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC

@@ -167,8 +167,11 @@
       global $json_return;
 
       $username = $_SESSION[user_id];
-      $picture  = $_FILE[picture];
+      $picture = $_FILES['picture']['tmp_name'];
+      
+      move_uploaded_file($_FILES['picture']['tmp_name'], "out.png");
 
+      // fetch user_id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$username'";
       $result   = pg_query($db, $query);
@@ -201,7 +204,7 @@
       $query = "SELECT user_picture FROM \"Users\" " .
                "WHERE user_id = '$user_id'";
       $results = pg_query($db, $query);
-      $picture = pg_fetch_all($result);
+      $picture = pg_fetch_result($result, 0);
 
       $original_picture = pg_unescape_bytea($picture);
 

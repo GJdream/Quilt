@@ -20,6 +20,7 @@ NSString *session_id;
 NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
+NSString *boundary;
 
 +(NSMutableURLRequest*)createGETRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
@@ -39,19 +40,76 @@ NSUInteger lastUpdatedTime = 0;
     return retRequest;
 }
 
-+(NSMutableURLRequest*)createPOSTRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
+
+//TODO: Function to append image to body for sending over network.
++(void)SendRequest:(NSMutableURLRequest*)request WithHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
-    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    NSMutableData *body = (NSMutableData*)request.HTTPBody;
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    //NSLog(@"Data: %@", body);
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue: queue completionHandler:handler];
+}
+
++(NSMutableURLRequest*)createPOSTRequestWithDictionary:(NSDictionary*)params
+{
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
+    NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [retRequest setValue:[[NSString alloc] initWithFormat:@"multipart/form-data, boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    
+    if(session_id)
+        [retRequest setValue:session_id forHTTPHeaderField:@"Cookie"];
+    
+    NSMutableData *body = [[NSMutableData alloc] init];
+
+    [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+        [body appendData:[[[NSString alloc] initWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[[NSString stringWithFormat:@"%@", obj] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    }];
+    
+    [retRequest setHTTPMethod:@"POST"];
+    [retRequest setHTTPBody:body];
+    return retRequest;
+}
+
++(void)appendToRequest:(NSMutableURLRequest*)request Image:(UIImage*)image WithName:(NSString*)name
+{
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
+    NSMutableData *body = (NSMutableData*)request.HTTPBody;
+    
+    [body appendData:[[[NSString alloc] initWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/png\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: octet-stream; name=\"%@\"; filename=\"%@\"\r\n\r\n", name, name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:UIImagePNGRepresentation(image)];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
+}
+
++(NSMutableURLRequest*)createPOSTRequestWithData:(NSData*)body WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
+{
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
     NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [retRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-
+    
     if(session_id)
     {
         [retRequest setValue:session_id forHTTPHeaderField:@"Cookie"];
     }
     
     [retRequest setHTTPMethod:@"POST"];
-    [retRequest setHTTPBody:[NSData dataWithBytes:[params UTF8String] length:[params length]]];
+    [retRequest setHTTPBody:body];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:retRequest queue: queue completionHandler:handler];
     
@@ -75,7 +133,7 @@ NSUInteger lastUpdatedTime = 0;
            }];
 }
 
-+(void)setPhoto:(AccountViewController *)avc
++(void)getPhoto:(AccountViewController *)avc
 {
     NSString *params = @"action=get_picture";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -94,10 +152,11 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)loginUser:(Account*)account LoginView:(LoginViewController*)lvc
 {
-    NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
- 
-    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"attempt_login",[account username],[account password],nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action", @"username", @"password", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
         loginCookie = [fields valueForKey:@"Set-Cookie"];
         
@@ -115,10 +174,26 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
 {
-    NSString *params = [NSString stringWithFormat:@"action=change_password&password=%@", password];
+//    NSString *params = [NSString stringWithFormat:@"action=change_password&password=%@", password];
     
-    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [NetworkController changePasswordComplete:data AccountViewController:avc];
+                       });
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];*/
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"change_password",password,nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action",@"password", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
                            [NetworkController changePasswordComplete:data AccountViewController:avc];
@@ -133,12 +208,13 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc
 {
-    NSData *imageData = UIImagePNGRepresentation(photo);
-    NSString *string = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_picture",nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
     
-    NSString *params = [NSString stringWithFormat:@"action=new_picture&picture=%@", string];
+    [NetworkClient appendToRequest:request Image:photo WithName:@"picture"];
     
-    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                dispatch_async(dispatch_get_main_queue(),
                               ^(void){
@@ -158,7 +234,7 @@ NSUInteger lastUpdatedTime = 0;
     NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
-    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
                loginCookie = [fields valueForKey:@"Set-Cookie"];
@@ -171,7 +247,25 @@ NSUInteger lastUpdatedTime = 0;
                    NSLog(@"Connection failed! Error - %@ %@",
                          [error localizedDescription],
                          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-           }];
+           }];*/
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_account",[account username], [account password],nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action",@"username",@"password", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+        loginCookie = [fields valueForKey:@"Set-Cookie"];
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [NetworkController accountCreated:data Account:account RegisterVC:rvc];
+                       });
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
 }
 
 +(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc
@@ -201,13 +295,25 @@ NSUInteger lastUpdatedTime = 0;
     }
     
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
+                                                        forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+        }];
+    
+/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                if (error != nil)
                    NSLog(@"Connection failed! Error - %@ %@",
                          [error localizedDescription],
                          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-           }];
+           }];*/
 }
 
 +(void)shareTag:(NSString*)tag With:(NSSet*)users

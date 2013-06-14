@@ -62,7 +62,7 @@ Account *currentAccount;
 
 - (void)setPhoto:(AccountViewController *)avc
 {
-    [NetworkClient setPhoto:avc];
+    [NetworkClient getPhoto:avc];
 }
 
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword
