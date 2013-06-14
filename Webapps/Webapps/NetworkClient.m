@@ -114,6 +114,13 @@ NSUInteger lastUpdatedTime = 0;
     }];
 }
 
++(void)changePhoto:(UIImage *)photo Username:(NSString *)username AccountVC:(AccountViewController *)avc
+{
+    //Change photo to binary
+    
+    //Send to network client
+}
+
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController *)rvc
 {
     NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
