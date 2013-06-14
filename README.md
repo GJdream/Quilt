@@ -7,7 +7,7 @@
  - Server side code to get commands from network to serve DB  
     - Link DB with PHP {Complete}
     - Need to be able to listen on network and return requested data {Possible, being worked with}  
-    - Change password code
+    - Change password code {FIXED}
     - Change profile picture code
     - Friend addition/deletion/sharing
 
