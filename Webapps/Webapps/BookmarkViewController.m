@@ -69,7 +69,7 @@
     }
     
     cell.imageView = [[UIImageView alloc] initWithImage:bookmarkAtIndex.image];
-    cell.imageView.frame = cell.frame;
+    cell.imageView.frame = cell.contentView.bounds;
     [cell addSubview:cell.imageView];
     
     //for loop through tags and append to NSString for text 

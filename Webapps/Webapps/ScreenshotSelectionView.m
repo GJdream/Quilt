@@ -7,11 +7,11 @@
 //
 
 #import "ScreenshotSelectionView.h"
-#import <QuartzCore/CALayer.h>
+
 
 @interface ScreenshotSelectionView ()
 {
-    void (^doneFunction)(UIImage*);
+    void (^doneFunction)(CGRect rect);
 }
 
 @property CGPoint originalTouch;
@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void)setScreenshotTakenFunction:(void (^)(UIImage*))screenshotTaken
+- (void)setScreenshotTakenFunction:(void (^)(CGRect rect))screenshotTaken
 {
     doneFunction = screenshotTaken;
 }
@@ -76,13 +76,8 @@
     self.dragging = NO;
     
     CGRect rect = CGRectMake(self.originalTouch.x, self.originalTouch.y, self.currentTouch.x - self.originalTouch.x, self.currentTouch.y - self.originalTouch.y);
-    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self.layer renderInContext:context];
-    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
     
-    doneFunction(capturedImage);
+    doneFunction(rect);
     [self removeFromSuperview];
 }
 
