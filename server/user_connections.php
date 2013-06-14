@@ -148,8 +148,13 @@
       global $db;
       global $json_return;
 
-      $user_id = $_POST[username];
+      $username = $_SESSION[user_id];
       $picture = $_POST[picture];
+
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
 
       $query  = "UPDATE \"Users\" " .
                 "SET picture = '$picture' " .
@@ -165,7 +170,12 @@
       global $db;
       global $json_return;
 
-      $user_id = $_SESSION[user_id];
+      $username = $_SESSION[user_id];
+
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
 
       $query = "SELECT user_picture FROM \"Users\" " .
                "WHERE user_id = '$user_id'";
