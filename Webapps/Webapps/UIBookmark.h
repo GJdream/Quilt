@@ -17,7 +17,8 @@
 @property NSInteger width;
 @property NSInteger height;
 @property uint64_t b_id;
+@property UIImage *image;
 
--(UIBookmark *)initWithTitle:(NSString *)label URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id;
+-(UIBookmark *)initWithTitle:(NSString *)label URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id Image:(UIImage*)image;
 
 @end

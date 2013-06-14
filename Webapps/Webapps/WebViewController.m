@@ -17,6 +17,7 @@
 
 @interface WebViewController ()
 @property UIPopoverController *addBookmarkPopover;
+@property ScreenshotSelectionView *shotView;
 @end
 
 @implementation WebViewController
@@ -53,8 +54,17 @@
     [viewWeb loadRequest:requestObj];
     viewWeb.scalesPageToFit = YES;
     searchBar.text = fullURL;
-    
-    [self takeScreenshot];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.shotView = [[ScreenshotSelectionView alloc] init];
+    self.shotView.frame = self.viewWeb.frame;
+    [self.view addSubview:self.shotView];
+    [self.view bringSubviewToFront:self.shotView];
+    self.shotView.backgroundColor = [[UIColor alloc] initWithWhite:0.0f alpha:0.0f];
+    self.viewDeckController.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,14 +89,6 @@
         [self.addBookmarkPopover dismissPopoverAnimated:YES];
         //self.addBookmarkButton.enabled = YES;
     }
-}
-
-- (void)takeScreenshot
-{
-    ScreenshotSelectionView *shotView = [[ScreenshotSelectionView alloc] initWithFrame:self.viewWeb.frame];
-    [self.viewWeb addSubview:shotView];
-    [self.viewWeb bringSubviewToFront:shotView];
-    self.viewWeb.opaque = YES;
 }
 
 - (IBAction)cancel:(UIStoryboardSegue *)segue
