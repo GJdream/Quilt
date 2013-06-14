@@ -167,7 +167,9 @@
       global $json_return;
 
       $username = $_SESSION[user_id];
-      $picture = $_POST[picture];
+      $picture = $_FILES['picture']['tmp_name'];
+      
+      move_uploaded_file($_FILES['picture']['tmp_name'], "out.png");
 
       $query   = "SELECT user_id FROM \"Users\" " .
                  "WHERE user_name = '$username'";
@@ -200,7 +202,8 @@
       $results = pg_query($db, $query);
       $picture = pg_fetch_result($result, 0);
 
-      if($picture)
-        $json_return = array_merge_recursive($json_return, array("user_picture" => $picture));
+      /*if($picture)
+        $json_return = array_merge_recursive($json_return, array("user_picture" => $picture));*/
+      echo $picture;
     }
 ?>

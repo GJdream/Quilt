@@ -41,6 +41,8 @@
       undo_magic_quotes_gpc($_COOKIE);
     }
 
+  $will_return_json = true;
+
   if($_SERVER[REQUEST_METHOD] === "POST")
     {
       if($_POST['action'] === "new_account")
@@ -90,8 +92,12 @@
       else if($_GET['action'] === "check_username")
       	checkUsername();
       else if($_GET['action'] === "get_picture")
+      {
+      	$will_return_json = false;
         getPicture();
+      }
     }
   
-  echo json_encode($json_return);
+  if($will_return_json)
+  	echo json_encode($json_return);
 ?>

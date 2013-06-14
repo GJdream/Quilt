@@ -20,6 +20,7 @@ NSString *session_id;
 NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
+NSString *boundary;
 
 +(NSMutableURLRequest*)createGETRequest:(NSString*)params WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
@@ -43,13 +44,21 @@ NSUInteger lastUpdatedTime = 0;
 //TODO: Function to append image to body for sending over network.
 +(void)SendRequest:(NSMutableURLRequest*)request WithHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
+    NSMutableData *body = (NSMutableData*)request.HTTPBody;
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    //NSLog(@"Data: %@", body);
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue: queue completionHandler:handler];
 }
 
 +(NSMutableURLRequest*)createPOSTRequestWithDictionary:(NSDictionary*)params
 {
-    NSString *boundary = [[NSUUID UUID] UUIDString];
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
     NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [retRequest setValue:[[NSString alloc] initWithFormat:@"multipart/form-data, boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
     
@@ -65,17 +74,32 @@ NSUInteger lastUpdatedTime = 0;
         [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     }];
     
-    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
     [retRequest setHTTPMethod:@"POST"];
     [retRequest setHTTPBody:body];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding]);
     return retRequest;
+}
+
++(void)appendToRequest:(NSMutableURLRequest*)request Image:(UIImage*)image WithName:(NSString*)name
+{
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
+    NSMutableData *body = (NSMutableData*)request.HTTPBody;
+    
+    [body appendData:[[[NSString alloc] initWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/png\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: octet-stream; name=\"%@\"; filename=\"%@\"\r\n\r\n", name, name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:UIImagePNGRepresentation(image)];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
 }
 
 +(NSMutableURLRequest*)createPOSTRequestWithData:(NSData*)body WithCompletionHandler:(void (^)(NSURLResponse*, NSData*, NSError*))handler
 {
+    if(!boundary)
+        boundary = [[NSUUID UUID] UUIDString];
+    
     NSMutableURLRequest *retRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [retRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
@@ -184,12 +208,13 @@ NSUInteger lastUpdatedTime = 0;
 
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc
 {
-    NSData *imageData = UIImagePNGRepresentation(photo);
-    NSString *string = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_picture",nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
     
-    NSString *params = [NSString stringWithFormat:@"action=new_picture&picture=%@", string];
+    [NetworkClient appendToRequest:request Image:photo WithName:@"picture"];
     
-    (void)[NetworkClient createPOSTRequestWithData:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                dispatch_async(dispatch_get_main_queue(),
                               ^(void){
