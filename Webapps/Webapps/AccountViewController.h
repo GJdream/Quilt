@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AccountViewController : UITableViewController
+@interface AccountViewController : UITableViewController <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
+{
+    UIImageView *imageView;
+    //UIImagePickerController *picker;
+    UIPopoverController *popoverController;
+    BOOL newMedia;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
 
-@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
-@property (weak, nonatomic) IBOutlet UIButton *uploadPicture;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) UIPopoverController *popoverController;
+
+@property (nonatomic, retain) IBOutlet UIButton *takeCameraPhoto;
+@property (nonatomic, retain) IBOutlet UIButton *uploadPicture;
 
 @property (weak, nonatomic) IBOutlet UITextField *oldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -24,6 +33,7 @@
 
 @property BOOL validPassword;
 
+- (IBAction)takeCameraPhotoClicked:(id)sender;
 - (IBAction)uploadPictureClicked:(id)sender;
 - (IBAction)saveChangesClicked:(id)sender;
 

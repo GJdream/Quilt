@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -113,7 +113,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="503" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="503" width="768" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -342,7 +342,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="591" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="591" width="768" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -967,7 +967,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="accUsername" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDg-VV-TId">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
@@ -1010,19 +1010,59 @@
                                                         <action selector="uploadPictureClicked:" destination="4hB-Au-gUq" eventType="touchUpInside" id="JQI-7a-4J5"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZI-xl-hb7">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="170" id="9FT-gk-SFZ"/>
+                                                        <constraint firstAttribute="height" constant="29" id="f2W-VN-fMo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <state key="normal" title="Take photo with camera">
+                                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="takeCameraPhotoClicked:" destination="4hB-Au-gUq" eventType="touchUpInside" id="wW3-Au-3Jh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Sgv-XN-StP" secondAttribute="bottom" constant="31" id="Ht6-K1-XKQ"/>
                                             <constraint firstItem="4GD-0q-Fh4" firstAttribute="centerX" secondItem="HZU-FJ-aXV" secondAttribute="centerX" type="default" id="OX2-uG-NJc"/>
                                             <constraint firstItem="Sgv-XN-StP" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Q4h-7u-2wx"/>
+                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="top" secondItem="2ZI-xl-hb7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lbO-eO-iCN"/>
                                             <constraint firstItem="4GD-0q-Fh4" firstAttribute="top" secondItem="HZU-FJ-aXV" secondAttribute="top" constant="20" type="default" id="phQ-eN-Pms"/>
+                                            <constraint firstItem="2ZI-xl-hb7" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rZL-pe-jlw"/>
+                                            <constraint firstAttribute="bottom" secondItem="2ZI-xl-hb7" secondAttribute="bottom" constant="68" id="sek-2l-qdd"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DAP-YB-cTo">
+                                        <rect key="frame" x="0.0" y="275" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="45" y="0.0" width="678" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Change Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-Rz-5Zu">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="3Fh-Rz-5Zu" firstAttribute="top" secondItem="DAP-YB-cTo" secondAttribute="top" constant="11" id="AcV-ME-bVj"/>
+                                            <constraint firstItem="3Fh-Rz-5Zu" firstAttribute="centerX" secondItem="DAP-YB-cTo" secondAttribute="centerX" type="default" id="ytO-Un-ORn"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="a3E-JF-gfp">
-                                        <rect key="frame" x="0.0" y="275" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="319" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1045,7 +1085,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rKg-Ey-MOP">
-                                        <rect key="frame" x="0.0" y="319" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="363" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1068,7 +1108,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wC2-vV-LjZ">
-                                        <rect key="frame" x="0.0" y="363" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="407" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1102,7 +1142,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4be-pa-tK0">
-                                        <rect key="frame" x="0.0" y="407" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="451" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1150,10 +1190,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="confirmPassword" destination="WxR-8e-Ojo" id="Tdu-2n-DyP"/>
+                        <outlet property="imageView" destination="4GD-0q-Fh4" id="3Lm-ty-d17"/>
                         <outlet property="oldPassword" destination="cVo-Z3-OzT" id="0d9-dv-M4n"/>
                         <outlet property="password" destination="dcN-py-EvJ" id="ZgD-qf-BTi"/>
-                        <outlet property="profilePicture" destination="4GD-0q-Fh4" id="3hl-WI-t38"/>
                         <outlet property="saveChanges" destination="xrP-q6-Oqg" id="Pgw-yf-ycX"/>
+                        <outlet property="takeCameraPhoto" destination="2ZI-xl-hb7" id="dMX-dc-Fy0"/>
                         <outlet property="uploadPicture" destination="Sgv-XN-StP" id="IEk-V7-eiM"/>
                         <outlet property="username" destination="oDg-VV-TId" id="hOV-Tj-UNd"/>
                         <outlet property="validPasswordLabel" destination="ZeZ-AD-EQM" id="bwZ-3A-DN2"/>
@@ -1172,12 +1213,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
             <relationships>
                 <relationship kind="action" name="saveChangesClicked:"/>
+                <relationship kind="action" name="takeCameraPhotoClicked:"/>
                 <relationship kind="action" name="uploadPictureClicked:"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="profilePicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="takeCameraPhoto" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="uploadPicture" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="username" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
@@ -1261,6 +1304,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
