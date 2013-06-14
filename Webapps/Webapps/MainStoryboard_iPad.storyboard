@@ -469,14 +469,14 @@
                                 </view>
                                 <color key="backgroundColor" red="1" green="0.49225243428580667" blue="0.95628010025950871" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Jmk-u8-6gK" firstAttribute="centerX" secondItem="8Uq-3m-dkU" secondAttribute="centerX" type="default" id="1oI-B6-1p2"/>
-                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="bottom" secondItem="zX5-d9-jpk" secondAttribute="bottom" type="default" id="2uB-RU-wci"/>
-                                    <constraint firstItem="FxY-ug-eqv" firstAttribute="top" secondItem="zX5-d9-jpk" secondAttribute="top" type="default" id="Aaa-cq-kgf"/>
+                                    <constraint firstItem="FxY-ug-eqv" firstAttribute="leading" secondItem="zX5-d9-jpk" secondAttribute="leading" type="default" id="BkG-9p-pqS"/>
+                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="bottom" secondItem="zX5-d9-jpk" secondAttribute="bottom" type="default" id="GrJ-cf-e81"/>
                                     <constraint firstItem="Jmk-u8-6gK" firstAttribute="centerX" secondItem="FxY-ug-eqv" secondAttribute="centerX" type="default" id="Lob-aK-jkO"/>
-                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="leading" secondItem="zX5-d9-jpk" secondAttribute="leading" type="default" id="NYm-eY-gDt"/>
+                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="centerX" secondItem="zX5-d9-jpk" secondAttribute="centerX" type="default" id="QAQ-kB-FGG"/>
                                     <constraint firstItem="Jmk-u8-6gK" firstAttribute="top" secondItem="zX5-d9-jpk" secondAttribute="top" constant="78" id="bnw-6W-faN"/>
-                                    <constraint firstItem="Jmk-u8-6gK" firstAttribute="centerX" secondItem="zX5-d9-jpk" secondAttribute="centerX" type="default" id="fMm-kK-ujn"/>
-                                    <constraint firstItem="FxY-ug-eqv" firstAttribute="leading" secondItem="zX5-d9-jpk" secondAttribute="leading" type="default" id="k03-4F-fr8"/>
+                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="leading" secondItem="zX5-d9-jpk" secondAttribute="leading" type="default" id="fEm-ui-ZOT"/>
+                                    <constraint firstItem="8Uq-3m-dkU" firstAttribute="trailing" secondItem="FxY-ug-eqv" secondAttribute="trailing" type="default" id="gRL-Oc-ROu"/>
+                                    <constraint firstItem="FxY-ug-eqv" firstAttribute="top" secondItem="zX5-d9-jpk" secondAttribute="top" type="default" id="giK-pE-Poh"/>
                                 </constraints>
                                 <size key="customSize" width="200" height="200"/>
                                 <connections>
@@ -1260,6 +1260,10 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="menuButtonClicked:"/>
+                <relationship kind="action" name="sidebarOpenClick:"/>
+            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>

@@ -51,8 +51,8 @@
         attemptUserLogin();
       else if($_POST['action'] === "logout_user")
         logoutUser();
-      else if($_POST['action'] === "new_password")
-        changePassword();
+      else if($_POST['action'] === "change_password")
+        updatePassword();
       else if($_POST['action'] === "new_bookmark")
         createBookmark();
       else if($_POST['action'] === "remove_bookmark")
@@ -89,8 +89,8 @@
         getGroupMembers();
       else if($_GET['action'] === "check_username")
       	checkUsername();
-      else f($_GET['action'] === "get_picture")
-        getPIcture();
+      else if($_GET['action'] === "get_picture")
+        getPicture();
     }
   
   echo json_encode($json_return);

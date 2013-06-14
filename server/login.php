@@ -30,6 +30,7 @@
 
       // to be safe, check login was completed successfully
       $loggedin = isLoggedIn();
+      $json_return = array_merge($json_return, array("login" => $loggedin));
       return $loggedin;
     }
 

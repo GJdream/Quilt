@@ -23,6 +23,6 @@
 +(void)deleteBookmark:(UIBookmark*)bookmark;
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
 +(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc;
-+ (void)changePassword:(Account *)account Password:(NSString *)password AccountVC:(AccountViewController *)avc;
++(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
 
 @end

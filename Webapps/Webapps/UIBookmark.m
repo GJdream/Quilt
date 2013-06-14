@@ -19,13 +19,13 @@
     {
         _titleLabel.text = title;
         _titleLabel.backgroundColor = [UIColor redColor];
+        _imageView.image = image;
         _title = title;
         _url = url;
         _tags = tags;
         _width = width;
         _height = height;
         _b_id = id;
-        _image = image;
     }
     return self;
 }

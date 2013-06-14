@@ -96,9 +96,9 @@ NSUInteger lastUpdatedTime = 0;
     }];
 }
 
-+(void)changePassword:(Account *)account Password:(NSString *)password AccountVC:(AccountViewController *)avc
++(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
 {
-    NSString *params = [NSString stringWithFormat:@"action=change_password&username=%@&password=%@", [account username], [account password]];
+    NSString *params = [NSString stringWithFormat:@"action=change_password&password=%@", password];
     
     (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
     {

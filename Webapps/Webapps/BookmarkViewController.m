@@ -68,6 +68,9 @@
          cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
     }
     
+//    cell.imageView.image = bookmarkAtIndex.imageView.image;
+    cell.backgroundColor = [[UIColor alloc] initWithPatternImage:bookmarkAtIndex.imageView.image];
+    
     //for loop through tags and append to NSString for text 
     
     [cell.layer setMasksToBounds:YES];

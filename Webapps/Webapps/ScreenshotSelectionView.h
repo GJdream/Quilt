@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ScreenshotSelectionView : UIView
-
+- (void)setScreenshotTakenFunction:(void (^)(UIImage*))screenshotTaken;
 @end

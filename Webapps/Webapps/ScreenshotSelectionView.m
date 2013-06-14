@@ -10,6 +10,10 @@
 #import <QuartzCore/CALayer.h>
 
 @interface ScreenshotSelectionView ()
+{
+    void (^doneFunction)(UIImage*);
+}
+
 @property CGPoint originalTouch;
 @property CGPoint currentTouch;
 @property bool dragging;
@@ -24,6 +28,11 @@
         _dragging = NO;
     }
     return self;
+}
+
+- (void)setScreenshotTakenFunction:(void (^)(UIImage*))screenshotTaken
+{
+    doneFunction = screenshotTaken;
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -60,8 +69,6 @@
     if (CGRectContainsPoint(self.window.frame, touchLocation) && self.dragging)
         self.currentTouch = touchLocation;
     
-    NSLog(@"(%f, %f)", self.currentTouch.x, self.currentTouch.y);
-    
     [self setNeedsDisplay];
 }
 
@@ -74,6 +81,9 @@
     [self.layer renderInContext:context];
     UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
+    doneFunction(capturedImage);
+    [self removeFromSuperview];
 }
 
 @end
