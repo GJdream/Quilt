@@ -60,6 +60,25 @@
     avc.saveChanges.enabled = YES;
 }
 
++(void)changePhotoComplete:(NSData*)data AccountViewController:(AccountViewController*)avc
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
+    BOOL success = [(NSNumber*)[json valueForKey:@"update_picture"] boolValue];
+    
+    if(success)
+    {
+
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Change picture error" message:@"Something went wrong with your change of picture" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+    }
+}
+
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc
 {
     NSError* error;
@@ -102,6 +121,18 @@
     }
     
     [bookmarkDC updateOnBookmarkInsertion];
+}
+
++(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];
+    
+    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    avc.imageView.image = [UIImage imageWithData:imageData];
 }
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC

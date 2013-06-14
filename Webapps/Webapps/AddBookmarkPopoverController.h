@@ -10,6 +10,6 @@
 
 @interface AddBookmarkPopoverController : UIPopoverController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookmarkButton;
+//@property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookmarkButton;
 
 @end

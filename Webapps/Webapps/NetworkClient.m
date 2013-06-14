@@ -75,6 +75,23 @@ NSUInteger lastUpdatedTime = 0;
            }];
 }
 
++(void)setPhoto:(AccountViewController *)avc
+{
+    NSString *params = @"action=get_picture";
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController gotPhoto:data AccountViewController:avc];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
 +(void)loginUser:(Account*)account LoginView:(LoginViewController*)lvc
 {
     NSString *params = [NSString stringWithFormat:@"action=attempt_login&username=%@&password=%@", [account username], [account password]];
@@ -114,11 +131,26 @@ NSUInteger lastUpdatedTime = 0;
     }];
 }
 
-+(void)changePhoto:(UIImage *)photo Username:(NSString *)username AccountVC:(AccountViewController *)avc
++(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc
 {
-    //Change photo to binary
+    NSData *imageData = UIImagePNGRepresentation(photo);
+    NSString *string = [[NSString alloc] initWithData:imageData encoding:NSUTF8StringEncoding];
     
-    //Send to network client
+    NSString *params = [NSString stringWithFormat:@"action=new_picture&picture=%@", string];
+    
+    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController changePhotoComplete:data AccountViewController:avc];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+
 }
 
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController *)rvc
