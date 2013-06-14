@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -908,7 +908,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendCell" id="ncH-2e-BRp">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendCell" id="ncH-2e-BRp" customClass="Friend">
                                 <rect key="frame" x="0.0" y="44" width="150" height="170"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -933,20 +933,24 @@
                                     <constraint firstItem="l4E-5X-zOG" firstAttribute="trailing" secondItem="ncH-2e-BRp" secondAttribute="trailing" type="default" id="tRm-dk-Clt"/>
                                 </constraints>
                                 <size key="customSize" width="150" height="170"/>
+                                <connections>
+                                    <outlet property="friendName" destination="Xkk-gs-n11" id="jqG-bd-ZU7"/>
+                                    <outlet property="friendPhoto" destination="l4E-5X-zOG" id="oML-ZX-47D"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendsSearchBar" id="xfV-q6-ONb">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tVi-OX-C3a">
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-VK-jNu">
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="tVi-OX-C3a" firstAttribute="trailing" secondItem="xfV-q6-ONb" secondAttribute="trailing" type="default" id="e5j-9B-d7X"/>
-                                <constraint firstItem="tVi-OX-C3a" firstAttribute="leading" secondItem="xfV-q6-ONb" secondAttribute="leading" type="default" id="kxo-vl-e1p"/>
-                                <constraint firstItem="tVi-OX-C3a" firstAttribute="top" secondItem="xfV-q6-ONb" secondAttribute="top" type="default" id="weg-Kw-L9o"/>
+                                <constraint firstItem="bfU-VK-jNu" firstAttribute="leading" secondItem="xfV-q6-ONb" secondAttribute="leading" type="default" id="j5m-9q-LsP"/>
+                                <constraint firstItem="bfU-VK-jNu" firstAttribute="trailing" secondItem="xfV-q6-ONb" secondAttribute="trailing" type="default" id="m5p-9T-d8i"/>
+                                <constraint firstItem="bfU-VK-jNu" firstAttribute="top" secondItem="xfV-q6-ONb" secondAttribute="top" type="default" id="yCd-7G-JTk"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
@@ -1264,8 +1268,18 @@
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
         </class>
+        <class className="Friend" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Friend.h"/>
+            <relationships>
+                <relationship kind="outlet" name="friendName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="friendPhoto" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
         <class className="FriendsViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
         </class>
         <class className="IIViewDeckController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
@@ -1359,6 +1373,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Qo-do-rs0"/>
+        <segue reference="fod-x0-re8"/>
     </inferredMetricsTieBreakers>
 </document>

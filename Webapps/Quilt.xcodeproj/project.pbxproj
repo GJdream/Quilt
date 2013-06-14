@@ -13,6 +13,8 @@
 		2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4136EF1768B3D5000DA87E /* RegisterViewController.m */; };
 		2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136F11768C2E1000DA87E /* navBarTexture.png */; };
 		2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7151769E5A200CEF93B /* AccountViewController.m */; };
+		2E8BEBBA176B5D300011DA3D /* FriendsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */; };
+		2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBBC176B5FBF0011DA3D /* Friend.m */; };
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
 		2EC21DC1176A0AD200366098 /* AddBookmarkPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC21DC0176A0AD200366098 /* AddBookmarkPopoverController.m */; };
 		2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC21DC3176A120000366098 /* FriendsViewController.m */; };
@@ -54,6 +56,10 @@
 		2E4136F11768C2E1000DA87E /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
 		2E7DE7141769E5A200CEF93B /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		2E7DE7151769E5A200CEF93B /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDataController.h; sourceTree = "<group>"; };
+		2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDataController.m; sourceTree = "<group>"; };
+		2E8BEBBB176B5FBE0011DA3D /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		2E8BEBBC176B5FBF0011DA3D /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		2EB5C3311760CDAC0084BCD7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		2EB5C3321760CDAC0084BCD7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		2EC21DBF176A0AD200366098 /* AddBookmarkPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkPopoverController.h; sourceTree = "<group>"; };
@@ -178,6 +184,10 @@
 				2E0F9E6717608B6A00B4305C /* BookmarkDataController.m */,
 				2E38EFED175F6FAB00A41D05 /* BookmarkViewController.h */,
 				2E38EFEE175F6FAB00A41D05 /* BookmarkViewController.m */,
+				2E8BEBBB176B5FBE0011DA3D /* Friend.h */,
+				2E8BEBBC176B5FBF0011DA3D /* Friend.m */,
+				2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */,
+				2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */,
 				2EC21DC2176A120000366098 /* FriendsViewController.h */,
 				2EC21DC3176A120000366098 /* FriendsViewController.m */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
@@ -187,10 +197,10 @@
 				791052201768AD1400CC4555 /* BookmarkViewFlowLayout.m */,
 				7910521917674A6400CC4555 /* NavigationBarViewController.h */,
 				7910521A17674A6400CC4555 /* NavigationBarViewController.m */,
-				79105213176651A900CC4555 /* NDTrie.h */,
-				79105214176651A900CC4555 /* NDTrie.m */,
 				795288D2175AB33C00158F8E /* NetworkClient.h */,
 				795288D3175AB33D00158F8E /* NetworkClient.m */,
+				79105213176651A900CC4555 /* NDTrie.h */,
+				79105214176651A900CC4555 /* NDTrie.m */,
 				79EC4ABD1760AAE300D6F757 /* NetworkController.h */,
 				79EC4ABE1760AAE300D6F757 /* NetworkController.m */,
 				2E4136F11768C2E1000DA87E /* navBarTexture.png */,
@@ -316,6 +326,8 @@
 				2EC21DC1176A0AD200366098 /* AddBookmarkPopoverController.m in Sources */,
 				2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */,
 				793064331769E7A8005FA5BF /* ScreenshotSelectionView.m in Sources */,
+				2E8BEBBA176B5D300011DA3D /* FriendsDataController.m in Sources */,
+				2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
