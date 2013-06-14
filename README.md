@@ -7,6 +7,9 @@
  - Server side code to get commands from network to serve DB  
     - Link DB with PHP {Complete}
     - Need to be able to listen on network and return requested data {Possible, being worked with}  
+    - Change password code
+    - Change profile picture code
+    - Friend addition/deletion/sharing
 
  - every request from app needs ID in it  
     - hash request with hash of user password  
@@ -23,6 +26,9 @@
     - Bookmark view {In progress}
     - Navigation view {In progress}
         - Table view implemented
+        - Log out button
+        - Back to all bookmarks - Click QUILT
+
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
