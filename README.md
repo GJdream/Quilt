@@ -11,24 +11,20 @@
     - Change profile picture code {FIXED}  
     - Friend addition/deletion/sharing {In Progress}  
 
- - every request from app needs ID in it  
-    - hash request with hash of user password  
-
- - Client-side code: {In Progress}  
-    - junk data in DB to test app drawing  
-    - networking code on iPad also
-
- - GUI: {In Progress} (Merged back to Master)
-    - Login screen (Briony) {Working}
-    - Web view (Anna) {Complete}
-    - Add bookmark popup {Almost complete}
-        - Need to disable add bookmark button when clicked
+ - GUI: {In Progress}
     - Bookmark view {In progress}
-    - Navigation view {In progress}
-        - Table view implemented
-        - Log out button
-        - Back to all bookmarks - Click QUILT
+        - Friend share button on dynamic cells
+        - Tag buttons
+    - Friend view and data controller
 
+ - Networking Code
+    - Add logout functionality
+    - Send images to and from database
+    - Friends
+
+ - Graphics
+    - Background colour/image
+    - Quilt logo resized in photoshop to fit login/nav bar
 
 #### Current Plan:  
 Postgres DB as provided by CSG + PHP server  
