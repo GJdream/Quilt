@@ -89,8 +89,8 @@
         getGroupMembers();
       else if($_GET['action'] === "check_username")
       	checkUsername();
-      else f($_GET['action'] === "get_picture")
-        getPIcture();
+      else if($_GET['action'] === "get_picture")
+        getPicture();
     }
   
   echo json_encode($json_return);

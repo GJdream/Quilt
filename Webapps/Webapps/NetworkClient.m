@@ -17,7 +17,7 @@
 NSString *session_id;
 
 @implementation NetworkClient
-NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
+NSString *url=@"https://www.doc.ic.ac.uk/project/2012/271/g1227105/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
 

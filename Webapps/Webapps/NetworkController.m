@@ -23,7 +23,7 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
     
-    NSLog(@"%@", json);
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     if(success)
     {

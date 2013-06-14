@@ -59,12 +59,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.shotView = [[ScreenshotSelectionView alloc] init];
-    self.shotView.frame = self.viewWeb.frame;
-    [self.view addSubview:self.shotView];
-    [self.view bringSubviewToFront:self.shotView];
-    self.shotView.backgroundColor = [[UIColor alloc] initWithWhite:0.0f alpha:0.0f];
-    self.viewDeckController.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,16 +71,29 @@
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
     {
+        NSLog(@"done");
         AddBookmarkViewController *addController = [segue sourceViewController];
         if (addController.bookmark)
         {
-            [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
-            // Call function to reload bookmarkDataController
-            [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
-            [NetworkClient createBookmark:addController.bookmark];
+            NSLog(@"done");
+            self.shotView = [[ScreenshotSelectionView alloc] init];
             
+            [self.shotView setScreenshotTakenFunction:^(UIImage *image){
+                addController.bookmark.imageView.image = image;
+                [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
+                // Call function to reload bookmarkDataController
+                [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
+                [NetworkClient createBookmark:addController.bookmark];
+            }];
+            
+            self.shotView.frame = self.view.frame;
+            [self.view addSubview:self.shotView];
+            [self.view bringSubviewToFront:self.shotView];
+            self.shotView.backgroundColor = [[UIColor alloc] initWithWhite:0.0f alpha:0.0f];
+            self.viewDeckController.enabled = NO;
         }
         [self.addBookmarkPopover dismissPopoverAnimated:YES];
+        
         //self.addBookmarkButton.enabled = YES;
     }
 }
