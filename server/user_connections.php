@@ -198,7 +198,7 @@
       $query = "SELECT user_picture FROM \"Users\" " .
                "WHERE user_id = '$user_id'";
       $results = pg_query($db, $query);
-      $picture = pg_fetch_all($result);
+      $picture = pg_fetch_result($result, 0);
 
       if($picture)
         $json_return = array_merge_recursive($json_return, array("user_picture" => $picture));
