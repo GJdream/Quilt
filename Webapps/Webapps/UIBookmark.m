@@ -19,7 +19,7 @@
     {
         _titleLabel.text = title;
         _titleLabel.backgroundColor = [UIColor redColor];
-        _imageView.image = image;
+        image = image;
         _title = title;
         _url = url;
         _tags = tags;

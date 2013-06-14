@@ -14,6 +14,7 @@
 #import "BookmarkDataController.h"
 #import "AddBookmarkPopoverController.h"
 #import "ScreenshotSelectionView.h"
+#import <QuartzCore/CALayer.h>
 
 @interface WebViewController ()
 @property UIPopoverController *addBookmarkPopover;
@@ -77,9 +78,17 @@
         {
             NSLog(@"done");
             self.shotView = [[ScreenshotSelectionView alloc] init];
+            CALayer *layer = self.viewWeb.layer;
             
-            [self.shotView setScreenshotTakenFunction:^(UIImage *image){
-                addController.bookmark.imageView.image = image;
+            //Screenshot is still off by some.
+            [self.shotView setScreenshotTakenFunction:^(CGRect rect){
+                UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                [layer renderInContext:context];
+                UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                
+                addController.bookmark.image = image;
                 [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
                 // Call function to reload bookmarkDataController
                 [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
