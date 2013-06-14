@@ -121,16 +121,21 @@ NSArray *tableData;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     
-    if (indexPath.row == 1)
+    if (indexPath.row == 0)
+    {
+        [[BookmarkDataController instantiate] showAll];
+    }
+    
+    else if (indexPath.row == 1)
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"myAccountSegue" sender:self];
     }
-    if (indexPath.row == 2)
+    else if (indexPath.row == 2)
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"friendsSegue" sender:self];
     }
     
-    [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
+    else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
 }
 
 /*
