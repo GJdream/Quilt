@@ -40,13 +40,12 @@
 ## Database Notes
 
  - Current Table Count:: 7  
- 
- - Users  
- - Friends  
- - Group  
- - Group_Members  
- - Tags  
- - Tag_Visibility  
+    - Users  
+    - Friends  
+    - Group  
+    - Group_Members  
+    - Tags  
+    - Tag_Visibility  
 
 
 ## Meetings Schedule
