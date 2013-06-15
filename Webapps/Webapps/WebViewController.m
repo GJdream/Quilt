@@ -72,15 +72,12 @@
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"])
     {
-        NSLog(@"done");
         AddBookmarkViewController *addController = [segue sourceViewController];
         if (addController.bookmark)
         {
-            NSLog(@"done");
             self.shotView = [[ScreenshotSelectionView alloc] init];
             CALayer *layer = self.viewWeb.layer;
             
-            //Screenshot is still off by some.
             [self.shotView setScreenshotTakenFunction:^(CGRect rect){
                 UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
                 CGContextRef context = UIGraphicsGetCurrentContext();
@@ -89,9 +86,8 @@
                 UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
                 
-                addController.bookmark.image = image;
+                [addController.bookmark setPicture:image];
                 [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
-                // Call function to reload bookmarkDataController
                 [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
                 [NetworkClient createBookmark:addController.bookmark];
             }];
@@ -111,11 +107,7 @@
 - (IBAction)cancel:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"CancelInput"])
-    {
         [self.addBookmarkPopover dismissPopoverAnimated:YES];
-        //NSLog(@"Dismissed");
-        //self.addBookmarkButton.enabled = YES;
-    }
 }
 /*
 - (IBAction)addBookmarkClick:(id)sender {

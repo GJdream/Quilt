@@ -48,8 +48,6 @@ NSString *boundary;
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPBody:body];
     
-    //NSLog(@"Data: %@", body);
-    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue: queue completionHandler:handler];
 }
@@ -135,7 +133,7 @@ NSString *boundary;
 
 +(void)getBookmarkPicture:(UIBookmark*)bookmark
 {
-    NSString *params = @"action=get_bookmarks";
+    NSString *params = [[NSString alloc] initWithFormat:@"action=get_bookmark_picture&b_id=%llu", bookmark.b_id];
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                dispatch_async(dispatch_get_main_queue(),
@@ -268,21 +266,6 @@ NSString *boundary;
     NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
     params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
-/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-           {
-               NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
-               loginCookie = [fields valueForKey:@"Set-Cookie"];
-               dispatch_async(dispatch_get_main_queue(),
-                              ^(void){
-                                  [NetworkController accountCreated:data Account:account RegisterVC:rvc];
-                              });
-               
-               if (error != nil)
-                   NSLog(@"Connection failed! Error - %@ %@",
-                         [error localizedDescription],
-                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-           }];*/
-    
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
                                     [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_account",[account username], [account password],nil]
                                                                   forKeys:[[NSArray alloc] initWithObjects:@"action",@"username",@"password", nil]]];
@@ -321,11 +304,17 @@ NSString *boundary;
 
 +(void)createBookmark:(UIBookmark*)bookmark
 {
-    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
-                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
-                                                        forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]]];
+    NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
+                        initWithObjects: [[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
+                        forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]];
+    
+    for(NSUInteger i = 0; i < bookmark.tags.count; ++i)
+        [paramDict setObject:bookmark.tags[i] forKey:[[NSString alloc] initWithFormat:@"tags[%u]", i]];
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:(NSDictionary*)paramDict];
     
     [NetworkClient appendToRequest:request Image:bookmark.image WithName:@"picture"];
+    UIImageWriteToSavedPhotosAlbum(bookmark.image, nil, nil, nil);
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         if (error != nil)
@@ -333,14 +322,6 @@ NSString *boundary;
                   [error localizedDescription],
                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
         }];
-    
-/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-           {
-               if (error != nil)
-                   NSLog(@"Connection failed! Error - %@ %@",
-                         [error localizedDescription],
-                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-           }];*/
 }
 
 +(void)shareTag:(NSString*)tag With:(NSSet*)users

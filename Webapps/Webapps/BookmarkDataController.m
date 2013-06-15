@@ -104,7 +104,6 @@ static BookmarkViewController *staticVC = nil;
     NSUInteger index = [self.bookmarkDisplayArray indexOfObject:bookmark];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedBookmarks addObject:indexPath];
-    
     [self.tagTrie addArray:bookmark.tags];
     
     for (NSString *tag in bookmark.tags)
@@ -118,14 +117,12 @@ static BookmarkViewController *staticVC = nil;
         else
             [bookmarkSet addObject:bookmark];
     }
-    
-    [NetworkClient getBookmarkPicture:bookmark];
 }
 
 - (void)deleteBookmark:(UIBookmark *)viewBookmark
 {
     UIBookmark *bookmark = viewBookmark.dataBookmark;
-    NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    NSUInteger index = [self.bookmarkDisplayArray indexOfObject:bookmark];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     
     [self.bookmarksArray removeObject:bookmark];
@@ -150,13 +147,11 @@ static BookmarkViewController *staticVC = nil;
         }
     }
     
-    [self showAll];
+    [NetworkClient deleteBookmark:bookmark];
 }
 
 - (void)updateOnBookmarkInsertion
 {
-    NSLog(@"Bookmarks inserted: %@", self.updatedBookmarks);
-    
     if (self.updatedBookmarks && self.updatedBookmarks.count > 0)
         [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
     [self.updatedBookmarks removeAllObjects];
@@ -167,10 +162,7 @@ static BookmarkViewController *staticVC = nil;
 
 - (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath
 {
-    NSLog(@"Delete %d", indexPath.row);
     NSArray *indexArray = [[NSArray alloc] initWithObjects:indexPath, nil];
-    NSLog(@"Items: %d %d", [self countOfBookmarks], [self.bookmarksArray count]);
-    //[self.bookmarkVC deleteItemsFromDataSourceAtIndexPaths:indexArray];
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
 }
 

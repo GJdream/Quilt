@@ -47,7 +47,6 @@
 {
     if(textField == self.confirmPassword)
     {
-        NSLog(@"Editing");
         if([self.confirmPassword.text isEqualToString:self.password.text])
         {
             self.saveChanges.enabled = YES;

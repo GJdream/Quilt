@@ -21,8 +21,6 @@
 
 +(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC
 {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
@@ -136,7 +134,6 @@
     {
         NSString *name = (NSString *)[friendsDict objectForKey:@"name"];
         UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
-                
         Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
         [friendsDC addFriend:friend];
     }
@@ -151,7 +148,9 @@
 
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
 {
-    [bookmark setPicture:[[UIImage alloc] initWithData:data]];
+    UIImage *retImage = [[UIImage alloc] initWithData:data];
+    [bookmark setPicture:retImage];
+    UIImageWriteToSavedPhotosAlbum(retImage,nil,nil,nil);
 }
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC

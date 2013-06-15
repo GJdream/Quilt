@@ -69,6 +69,20 @@
     if (CGRectContainsPoint(self.window.frame, touchLocation) && self.dragging)
         self.currentTouch = touchLocation;
     
+    /*if(self.currentTouch.x < self.originalTouch.x)
+    {
+        CGFloat tmpX = self.originalTouch.x;
+        self.originalTouch = CGPointMake(self.currentTouch.x, self.originalTouch.y);
+        self.currentTouch = CGPointMake(tmpX, self.currentTouch.y);
+    }
+    
+    if(self.currentTouch.y < self.originalTouch.y)
+    {
+        CGFloat tmpY = self.originalTouch.y;
+        self.originalTouch = CGPointMake(self.originalTouch.x, self.currentTouch.y);
+        self.currentTouch = CGPointMake(self.currentTouch.x, tmpY);
+    }*/
+    
     [self setNeedsDisplay];
 }
 
