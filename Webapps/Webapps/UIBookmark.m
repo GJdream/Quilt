@@ -30,8 +30,15 @@
     return self;
 }
 
-- (IBAction)tagClicked:(id)sender {
+- (IBAction)tagClicked:(id)sender
+{
     [[BookmarkDataController instantiate] showTag:_firstTag.titleLabel.text];
 }
-@end
 
+- (IBAction)deleteClicked:(id)sender
+{
+    NSLog(@"Deleting");
+    [[BookmarkDataController instantiate] deleteBookmark:self];
+}
+
+@end

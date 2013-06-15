@@ -70,6 +70,7 @@
     
     cell.imageView = [[UIImageView alloc] initWithImage:bookmarkAtIndex.image];
     cell.imageView.frame = cell.contentView.bounds;
+    cell.dataBookmark = bookmarkAtIndex;
     [cell addSubview:cell.imageView];
     
     //for loop through tags and append to NSString for text 
@@ -98,13 +99,12 @@
         WebViewController *webViewController = segue.destinationViewController;
         webViewController.url = sender;
     }
-    if ([segue.identifier isEqualToString:@"myAccountSegue"])
+    else if ([segue.identifier isEqualToString:@"myAccountSegue"])
     {
         //AccountViewController *accountViewController = segue.destinationViewController;
         //accountViewController.username.text = @"Test";
     }
-    
-    if ([segue.identifier isEqualToString:@"friendsSegue"])
+    else if ([segue.identifier isEqualToString:@"friendsSegue"])
     {
         
     }

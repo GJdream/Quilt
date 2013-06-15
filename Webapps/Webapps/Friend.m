@@ -19,6 +19,17 @@
     return self;
 }
 
+- (Friend *)initWithUsername:(NSString *)name Image:(UIImage *)image
+{
+    self = [super init];
+    if (self)
+    {
+        _name = name;
+        _image = image;
+    }
+    return self;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

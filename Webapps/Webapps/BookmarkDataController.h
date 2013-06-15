@@ -14,8 +14,8 @@
 
 @interface BookmarkDataController : NSObject
 
-@property (nonatomic, copy) NSMutableArray *bookmarksArray;
-@property (nonatomic, copy) NSMutableArray *bookmarkDisplayArray;
+@property (nonatomic) NSMutableArray *bookmarksArray;
+@property (nonatomic) NSMutableArray *bookmarkDisplayArray;
 @property BookmarkViewController *bookmarkVC;
 @property NSMutableOrderedSet *mostUsedTags;
 @property NDMutableTrie *tagTrie;
@@ -23,13 +23,17 @@
 + (void)setViewController:(BookmarkViewController*)newVC;
 + (BookmarkDataController*)instantiate;
 
-
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;
 - (NSUInteger)countOfBookmarks;
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
+
 - (void)addBookmark:(UIBookmark *)bookmark;
+- (void)deleteBookmark:(UIBookmark *)bookmark;
+
 - (void)updateOnBookmarkInsertion;
+- (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath;
+
 - (void)showTag:(NSString*)tag;
 - (void)showAll;
 

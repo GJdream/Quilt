@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class FriendsDataController;
+
 @interface FriendsViewController : UICollectionViewController
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) FriendsDataController *dataController;
 
 @end

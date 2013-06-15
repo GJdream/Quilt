@@ -87,26 +87,29 @@ static BookmarkViewController *staticVC = nil;
 
 - (NSUInteger)countOfBookmarks
 {
-    //return [self.bookmarksArray count];
-    return [self.bookmarkDisplayArray count];
+    if(self.bookmarkDisplayArray)
+        return [self.bookmarkDisplayArray count];
+    return 0;
 }
 
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index
 {
-    //return [self.bookmarksArray objectAtIndex:index];
     return [self.bookmarkDisplayArray objectAtIndex:index];
 }
 
 - (void)addBookmark:(UIBookmark *)bookmark
 {
     [self.bookmarksArray addObject:bookmark];
-    NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    if(self.bookmarkDisplayArray != self.bookmarksArray)
+        [self.bookmarkDisplayArray addObject:bookmark];
+    NSUInteger index = [self.bookmarkDisplayArray indexOfObject:bookmark];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedBookmarks addObject:indexPath];
     
     [self.tagTrie addArray:bookmark.tags];
     
-    for (NSString *tag in bookmark.tags) {
+    for (NSString *tag in bookmark.tags)
+    {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)
         {
@@ -118,14 +121,56 @@ static BookmarkViewController *staticVC = nil;
     }
 }
 
+- (void)deleteBookmark:(UIBookmark *)viewBookmark
+{
+    UIBookmark *bookmark = viewBookmark.dataBookmark;
+    NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    
+    [self.bookmarksArray removeObject:bookmark];
+    if (self.bookmarksArray != self.bookmarkDisplayArray)
+        [self.bookmarkDisplayArray removeObject:bookmark];
+
+    if ([self.updatedBookmarks containsObject:bookmark])
+        [self.updatedBookmarks removeObject:bookmark];
+    else
+        [self updateOnBookmarkDeletion:indexPath];
+
+    // Remove from tagTrie and tagToBookmark if tag not used elsewhere
+    for (NSString *tag in bookmark.tags)
+    {
+        NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
+        [bookmarkSet removeObject:bookmark];
+        
+        if ([bookmarkSet count] == 0)
+        {
+            [self.tagToBookmark removeObjectForKey:tag];
+            [self.tagTrie removeObjectForKey:tag];
+        }
+    }
+    
+    [self showAll];
+}
+
 - (void)updateOnBookmarkInsertion
 {
-    if(self.updatedBookmarks)
+    NSLog(@"Bookmarks inserted: %@", self.updatedBookmarks);
+    
+    if (self.updatedBookmarks && self.updatedBookmarks.count > 0)
         [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
     [self.updatedBookmarks removeAllObjects];
     
     for (void (^f)(void) in self.watchingMethods)
         f();
+}
+
+- (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath
+{
+    NSLog(@"Delete %d", indexPath.row);
+    NSArray *indexArray = [[NSArray alloc] initWithObjects:indexPath, nil];
+    NSLog(@"Items: %d %d", [self countOfBookmarks], [self.bookmarksArray count]);
+    //[self.bookmarkVC deleteItemsFromDataSourceAtIndexPaths:indexArray];
+    [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
 }
 
 - (void)showAll
@@ -144,11 +189,11 @@ static BookmarkViewController *staticVC = nil;
     
     self.bookmarkDisplayArray = self.bookmarksArray;
     
-    for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {
+    for (NSUInteger i = 0; i < [self countOfBookmarks]; ++i) {
         [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     
-    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
+    [self updateOnBookmarkInsertion];
 }
 
 - (void)showTag:(NSString*)tag
@@ -165,13 +210,13 @@ static BookmarkViewController *staticVC = nil;
     
     [self.updatedBookmarks removeAllObjects];
     
-    self.bookmarkDisplayArray = (NSMutableArray*)[[self.tagToBookmark objectForKey:tag] allObjects];
+    self.bookmarkDisplayArray = [[[self.tagToBookmark objectForKey:tag] allObjects] mutableCopy];
     
     for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {
         [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     
-    [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
+    [self updateOnBookmarkInsertion];
 }
 
 @end

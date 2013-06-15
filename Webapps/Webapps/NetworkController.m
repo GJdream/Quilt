@@ -11,8 +11,10 @@
 #import "UIBookmark.h"
 #import "LoginViewController.h"
 #import "BookmarkDataController.h"
+#import "FriendsDataController.h"
 #import "RegisterViewController.h"
 #import "Account.h"
+#import "Friend.h"
 #import "AccountViewController.h"
 
 @implementation NetworkController
@@ -66,7 +68,7 @@
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    BOOL success = [(NSNumber*)[json valueForKey:@"update_picture"] boolValue];
+    BOOL success = [(NSNumber*)[json valueForKey:@"update_user_picture"] boolValue];
     
     if(success)
     {
@@ -118,18 +120,41 @@
         UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:p_width Height:p_height ID:b_id Image:nil];
         [bookmarkDC addBookmark:bookmark];
     }
-    
     [bookmarkDC updateOnBookmarkInsertion];
+}
+
++(void)gotFriends:(NSData*)data
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    FriendsDataController *friendsDC = [FriendsDataController instantiate];
+    
+    NSArray *friendsArray = (NSArray*)[json objectForKey:@"friends"];
+    
+    for(NSDictionary *friendsDict in friendsArray)
+    {
+        NSString *name = (NSString *)[friendsDict objectForKey:@"name"];
+        UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
+                
+        Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
+        [friendsDC addFriend:friend];
+    }
+    
+    [friendsDC updateOnFriendInsertion];
 }
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
 {
-    NSError* error;
+//    NSError* error;
 /*    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];*/
     
 //    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"%d", [data length]);// [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] length]);
     
     avc.imageView.image = [[UIImage alloc] initWithData:data];
     

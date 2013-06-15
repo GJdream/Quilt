@@ -17,6 +17,8 @@
 @interface NetworkClient : NSObject
 
 +(void)getNewBookmarks;
++(void)getNewFriends;
+
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController*)rvc;
 +(void)createBookmark:(UIBookmark*)bookmark;
 +(void)shareTag:(NSString*)tag With:(NSSet*)users;
