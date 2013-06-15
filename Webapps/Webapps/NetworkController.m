@@ -137,8 +137,8 @@
         NSString *name = (NSString *)[friendsDict objectForKey:@"name"];
         //UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
                 
-        Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
-        //[friendsDC addFriend:friend];
+        //Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
+        [friendsDC addFriend:name];
     }
     
     [friendsDC updateOnFriendInsertion];
