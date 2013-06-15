@@ -120,7 +120,6 @@
         UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:p_width Height:p_height ID:b_id Image:nil];
         [bookmarkDC addBookmark:bookmark];
     }
-    
     [bookmarkDC updateOnBookmarkInsertion];
 }
 

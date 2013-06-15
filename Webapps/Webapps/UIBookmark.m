@@ -37,6 +37,7 @@
 
 - (IBAction)deleteClicked:(id)sender
 {
+    NSLog(@"Deleting");
     [[BookmarkDataController instantiate] deleteBookmark:self];
 }
 
