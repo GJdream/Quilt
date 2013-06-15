@@ -172,7 +172,7 @@
       
       $success = true;
 
-	  $query   = "SELECT user_picture FROM \"Users\" " .
+      $query   = "SELECT user_picture FROM \"Users\" " .
                  "WHERE user_name = '$username'";
       $result  = pg_query($db, $query);
       $lo_id   = pg_fetch_result($result, 0);
@@ -180,23 +180,19 @@
       pg_query($db, "begin");
       
       if($oid === NULL)
-      	$lo_id = pg_lo_create();
-      
-      $lo_fp = pg_lo_open($lo_id, "w");
-      
-      $byteswritten = pg_lo_write($lo_fp, $picture);
-      
-      $success = $success && ($byteswritten >= $picturesize);
+        $lo_id = pg_lo_create();
 
-	  pg_lo_close($lo_fp);
-	  pg_query($db, "commit");
+      $lo_fp   = pg_lo_open($lo_id, "w");
+      $byteswritten = pg_lo_write($lo_fp, $picture);
+      $success = $success && ($byteswritten >= $picturesize);
+      pg_lo_close($lo_fp);
+      pg_query($db, "commit");
 
       $query   = "UPDATE \"Users\" " .
                  "SET user_picture = '$lo_id', picture_size = '$picturesize' " .
                  "WHERE user_name = '$username'";
       $result  = pg_query($db, $query);
       $update  = pg_fetch_all($result);
-      
       $success = $success && ($update == NULL);
       
       $json_return = array_merge($json_return, array("update_user_picture" => $success));
@@ -205,24 +201,22 @@
   function getUserPicture()
     {
       global $db;
-      global $json_return;
 
       $username = $_SESSION[user_id];
 
-      $query  = "SELECT user_picture, picture_size FROM \"Users\" " .
-                "WHERE user_name = '$username'";
-      $result = pg_query($db, $query);
-      $lo_id  = pg_fetch_result($result, 0);
+      $query    = "SELECT user_picture, picture_size FROM \"Users\" " .
+                  "WHERE user_name = '$username'";
+      $result   = pg_query($db, $query);
+      $lo_id    = pg_fetch_result($result, 0);
       $filesize = pg_fetch_result($result, 1);
       
       pg_query($db, "begin");
-      
       $fd   = pg_lo_open($lo_id,"r");
       $data = pg_lo_read($fd, $filesize);
       pg_lo_close($fd);
       pg_query($db, "commit");
 
-	  header('Content-Type: image/png');
-	  echo $data;
+      header('Content-Type: image/png');
+      echo $data;
     }
 ?>

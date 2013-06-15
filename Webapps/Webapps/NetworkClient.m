@@ -133,6 +133,23 @@ NSString *boundary;
            }];
 }
 
++(void)getNewFriends
+{
+    NSString *params = @"action=get_friends";
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController gotFriends:data];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
 +(void)getPhoto:(AccountViewController *)avc
 {
     NSString *params = @"action=get_user_picture";

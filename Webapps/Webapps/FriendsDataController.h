@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class NDMutableTrie;
 @class FriendsViewController;
 @class Friend;
 
@@ -17,17 +16,21 @@
 @property (nonatomic, copy) NSMutableArray *friendsArray;
 @property (nonatomic, copy) NSMutableArray *friendsDisplayArray;
 @property FriendsViewController *friendsVC;
-@property NDMutableTrie *friendTrie;
 
 + (void)setViewController:(FriendsViewController *)newVC;
-+ (FriendsViewController *)instantiate;
++ (FriendsDataController *)instantiate;
 
-- (FriendsDataController *)initWithViewController:(FriendsViewController *)bookmarkVC;
+- (FriendsDataController *)initWithViewController:(FriendsViewController *)friendsVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;
-- (NSUInteger)countOfBookmarks;
+- (NSUInteger)countOfFriends;
 - (Friend *)friendInListAtIndex:(NSUInteger)index;
+
 - (void)addFriend:(Friend *)friend;
+- (void)deleteFriend:(Friend *)friend;
+
 - (void)updateOnFriendInsertion;
+- (void)updateOnFriendDeletion:(NSIndexPath *)indexPath;
+
 - (void)showFriend:(NSString *)friend;
 - (void)showAll;
 

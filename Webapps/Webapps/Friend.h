@@ -13,4 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *friendPhoto;
 @property (weak, nonatomic) IBOutlet UILabel *friendName;
 
+@property NSString *name;
+@property NSMutableArray *sharedTags;
+@property UIImage *image;
+
+- (Friend *)initWithUsername:(NSString *)name Image:(UIImage *)image;
+
 @end
