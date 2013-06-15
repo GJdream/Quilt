@@ -21,7 +21,6 @@ Account *currentAccount;
 
 + (void)loginUser:(NSString *)username Password:(NSString *)password LoginView:(LoginViewController *)lvc
 {
-    NSLog(@"loginUser: %@, %@", username, password);
     Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
     currentAccount = newAccount;
     [NetworkClient loginUser:newAccount LoginView:lvc];

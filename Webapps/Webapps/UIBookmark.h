@@ -24,9 +24,11 @@
 @property UIImage *image;
 @property UIImageView *imageView;
 @property UIBookmark *dataBookmark;
+@property UIBookmark *viewBookmark;
 
 - (UIBookmark *)initWithTitle:(NSString *)title URL:(NSString *)url Tags:(NSMutableArray *)tags Width:(NSInteger)width Height:(NSInteger)height ID:(uint64_t)id Image:(UIImage*)image;
 - (IBAction)tagClicked:(id)sender;
 - (IBAction)deleteClicked:(id)sender;
+- (void)setPicture:(UIImage*)picture;
 
 @end

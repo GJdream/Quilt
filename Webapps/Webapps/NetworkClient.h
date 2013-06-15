@@ -28,5 +28,6 @@
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;
 +(void)getPhoto:(AccountViewController *)avc;
++(void)getBookmarkPicture:(UIBookmark*)bookmark;
 
 @end

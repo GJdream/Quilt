@@ -21,8 +21,6 @@
 
 +(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC
 {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"login"] boolValue];
@@ -115,7 +113,7 @@
         NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
         NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
         uint64_t b_id = [(NSNumber*)[bookmarkDict valueForKey:@"post_id"] longLongValue];
-        NSMutableArray *tags = (NSMutableArray*)[tagsDict objectForKey:[[NSString alloc] initWithFormat:@"%lld", b_id]];
+        NSMutableArray *tags = (NSMutableArray*)[tagsDict objectForKey:[[NSString alloc] initWithFormat:@"%lld", b_id]];	
 
         UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:p_width Height:p_height ID:b_id Image:nil];
         [bookmarkDC addBookmark:bookmark];
@@ -146,19 +144,14 @@
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
 {
-//    NSError* error;
-/*    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    
-    NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];*/
-    
-//    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    NSLog(@"%d", [data length]);// [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] length]);
-    
     avc.imageView.image = [[UIImage alloc] initWithData:data];
-    
-//    avc.imageView.image = [UIImage imageWithData:imageData];
+}
+
++(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
+{
+    UIImage *retImage = [[UIImage alloc] initWithData:data];
+    [bookmark setPicture:retImage];
+    UIImageWriteToSavedPhotosAlbum(retImage,nil,nil,nil);
 }
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC
