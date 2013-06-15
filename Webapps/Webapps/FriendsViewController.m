@@ -8,7 +8,9 @@
 
 #import "FriendsViewController.h"
 #import "FriendsDataController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "NDTrie.h"
+#import "Friend.h"
 
 @interface FriendsViewController ()
 
@@ -25,6 +27,12 @@ NSArray *tableData;
         // Custom initialization
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [FriendsDataController setViewController:self];
 }
 
 - (void)viewDidLoad
@@ -45,6 +53,40 @@ NSArray *tableData;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+//    return 0;
+    return [[FriendsDataController instantiate] countOfFriends];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellID = @"FriendCell";
+    
+    Friend *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    
+    Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+    
+    cell.friendName.text = friendAtIndex.name;
+    //cell.friendPhoto = [[UIImageView alloc] initWithImage:friendAtIndex.image];
+    cell.friendPhoto.frame = cell.contentView.bounds;
+    [cell addSubview:cell.friendPhoto];
+    
+    [cell.layer setMasksToBounds:YES];
+    [cell.layer setCornerRadius:15];
+    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.layer.shouldRasterize = YES;
+    cell.layer.opaque = YES;
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    return cell;
 }
 
 @end

@@ -87,14 +87,11 @@ static BookmarkViewController *staticVC = nil;
 
 - (NSUInteger)countOfBookmarks
 {
-    //return [self.bookmarksArray count];
-    NSLog(@"countOfBookmarks: %d/%d", [self.bookmarkDisplayArray count], [self.bookmarksArray count]);
     return [self.bookmarkDisplayArray count];
 }
 
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index
 {
-    //return [self.bookmarksArray objectAtIndex:index];
     return [self.bookmarkDisplayArray objectAtIndex:index];
 }
 
@@ -102,13 +99,13 @@ static BookmarkViewController *staticVC = nil;
 {
     [self.bookmarksArray addObject:bookmark];
     NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
-    NSLog(@"Adding bookmark at index %d", index);
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedBookmarks addObject:indexPath];
     
     [self.tagTrie addArray:bookmark.tags];
     
-    for (NSString *tag in bookmark.tags) {
+    for (NSString *tag in bookmark.tags)
+    {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         if(!bookmarkSet)
         {
@@ -120,8 +117,9 @@ static BookmarkViewController *staticVC = nil;
     }
 }
 
-- (void)deleteBookmark:(UIBookmark *)bookmark
+- (void)deleteBookmark:(UIBookmark *)viewBookmark
 {
+    UIBookmark *bookmark = viewBookmark.dataBookmark;
     NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     
@@ -133,7 +131,8 @@ static BookmarkViewController *staticVC = nil;
         [self updateOnBookmarkDeletion:indexPath];
     
     // Remove from tagTrie and tagToBookmark if tag not used elsewhere
-    for (NSString *tag in bookmark.tags) {
+    for (NSString *tag in bookmark.tags)
+    {
         NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
         [bookmarkSet removeObject:bookmark];
         
@@ -149,7 +148,7 @@ static BookmarkViewController *staticVC = nil;
 
 - (void)updateOnBookmarkInsertion
 {
-    if (self.updatedBookmarks)
+    if (self.updatedBookmarks && self.updatedBookmarks.count > 0)
         [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
     [self.updatedBookmarks removeAllObjects];
     
@@ -180,7 +179,7 @@ static BookmarkViewController *staticVC = nil;
     
     self.bookmarkDisplayArray = self.bookmarksArray;
     
-    for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {
+    for (NSUInteger i = 0; i < [self countOfBookmarks]; ++i) {
         [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
     

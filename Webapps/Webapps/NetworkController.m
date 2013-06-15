@@ -11,8 +11,10 @@
 #import "UIBookmark.h"
 #import "LoginViewController.h"
 #import "BookmarkDataController.h"
+#import "FriendsDataController.h"
 #import "RegisterViewController.h"
 #import "Account.h"
+#import "Friend.h"
 #import "AccountViewController.h"
 
 @implementation NetworkController
@@ -120,6 +122,27 @@
     }
     
     [bookmarkDC updateOnBookmarkInsertion];
+}
+
++(void)gotFriends:(NSData*)data
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    FriendsDataController *friendsDC = [FriendsDataController instantiate];
+    
+    NSArray *friendsArray = (NSArray*)[json objectForKey:@"friends"];
+    
+    for(NSDictionary *friendsDict in friendsArray)
+    {
+        NSString *name = (NSString *)[friendsDict objectForKey:@"name"];
+        UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
+                
+        Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
+        [friendsDC addFriend:friend];
+    }
+    
+    [friendsDC updateOnFriendInsertion];
 }
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc

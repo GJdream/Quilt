@@ -16,11 +16,14 @@
 @interface NetworkController : NSObject
 
 +(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC;
+
 +(void)gotBookmarks:(NSData*)data;
++(void)gotFriends:(NSData*)data;
++(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc;
+
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc;
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC;
 +(void)changePasswordComplete:(NSData*)data AccountViewController:(AccountViewController*)avc;
 +(void)changePhotoComplete:(NSData*)data AccountViewController:(AccountViewController*)avc;
-+(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc;
 
 @end

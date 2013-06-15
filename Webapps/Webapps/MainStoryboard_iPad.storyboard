@@ -979,7 +979,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-VK-jNu">
+                                <searchBar contentMode="redraw" placeholder="Search friends" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-VK-jNu">
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
@@ -1298,6 +1298,10 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="menuButtonClicked:"/>
+                <relationship kind="action" name="sidebarOpenClick:"/>
+            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>

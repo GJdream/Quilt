@@ -8,6 +8,7 @@
 
 #import "AddBookmarkViewController.h"
 #import "UIBookmark.h"
+#import "BookmarkDataController.h"
 
 @interface AddBookmarkViewController ()
 
