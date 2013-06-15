@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NavigationBarViewController : UITableViewController
+@interface NavigationBarViewController : UITableViewController <UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 

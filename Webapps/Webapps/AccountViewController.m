@@ -9,6 +9,7 @@
 //#import <MobileCoreServices/UTCoreTypes.h>
 #import "AccountViewController.h"
 #import "Account.h"
+#import "FriendsDataController.h"
 
 @interface AccountViewController ()
 
@@ -72,6 +73,11 @@
     self.saveChanges.enabled = NO;
     self.uploadPicture.enabled = NO;
     [Account changePasswordWithOldPassword:self.oldPassword.text NewPassword:self.password.text ConfirmPassword:self.confirmPassword.text AccountView:self];
+}
+
+- (IBAction)addFriend:(id)sender {
+    NSString *name = self.addFriendUsername.text;
+    [[FriendsDataController instantiate] addFriend:name];
 }
 
 - (IBAction)takeCameraPhotoClicked:(id)sender

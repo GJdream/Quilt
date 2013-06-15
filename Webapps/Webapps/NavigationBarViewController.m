@@ -78,8 +78,9 @@ NSArray *tableData;
     {
         NSString *staticCellID;
         
-        if (cellNum == 0)
+        if (cellNum == 0) {
             staticCellID = @"TableName";
+        }
         if (cellNum == 1)
             staticCellID = @"MyAccount";
         if (cellNum == 2)
@@ -92,6 +93,7 @@ NSArray *tableData;
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:staticCellID];
+           
         }
     } else {
         NSString *dynamicCellID = @"TableItem";
@@ -105,6 +107,25 @@ NSArray *tableData;
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
     }
     return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger cellNum = indexPath.row;
+    CGFloat customTableCellHeight = 0.0;
+    
+    if (cellNum < NUMBER_OF_STATIC_CELLS)
+    {
+        if (cellNum == 0) 
+            customTableCellHeight = 107;
+        if (cellNum == 1)
+            customTableCellHeight = 44;
+        if (cellNum == 2)
+            customTableCellHeight = 44;
+        if (cellNum == 3)
+            customTableCellHeight = 44;
+    }
+    return customTableCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,6 +154,9 @@ NSArray *tableData;
     
     else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
 }
+
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
