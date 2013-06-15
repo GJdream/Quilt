@@ -58,18 +58,10 @@
 
       // must remove all referrences to given post from the following tables:
       //   - Bookmarks
-      //   - Bookmark_Visibility
       //   - Tags
 
       $query  = "DELETE FROM \"Bookmarks\" " .
                 "WHERE owner_id = '$owner_id' AND post_id = '$post_id'";
-      $result = pg_query($db, $query);
-      
-      if(!result)
-      	$success = false;
-
-      $query  = "DELETE FROM \"Bookmark_Visibility\" " .
-                "WHERE post_id = '$post_id'";
       $result = pg_query($db, $query);
       
       if(!result)
@@ -82,7 +74,7 @@
       if(!result)
       	$success = false;
       
-      $json_return = array_merge($json_return, array("delete_bookmark" => success));
+      $json_return = array_merge($json_return, array("delete_bookmark" => $success));
     }
 
   function resizeBookmark()
@@ -96,9 +88,15 @@
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
 
+      // fetch the user's id
+      $query     = "SELECT user_id FROM \"Users\" " .
+                   "WHERE user_name = '$owner'";
+      $result    = pg_query($db, $query);
+      $owner_id  = pg_fetch_result($result, 0);
+
       $query   = "UPDATE \"Bookmarks\" " .
                  "SET p_height = 'pheight', p_width = 'pwidth' " .
-                 "WHERE owner = '$owner' AND post_id = '$postid'";
+                 "WHERE owner_id = '$owner_id' AND post_id = '$postid'";
       $result  = pg_query($db, $query);
       $success = pg_fetch_all($result);
 
@@ -112,7 +110,7 @@
 
       $owner = $_SESSION[user_id];
 
-      // discover user's id
+      // fetch the user's id
       $query     = "SELECT user_id FROM \"Users\" " .
                    "WHERE user_name = '$owner'";
       $result    = pg_query($db, $query);
@@ -157,9 +155,28 @@
       global $db;
       global $json_return;
 
-      $post_id = $_POST[post_id];
-      $tag     = $_POST[tag];
+      $username = $_SESSION[user_id];
+      $post_id  = $_POST[post_id];
+      $tag      = $_POST[tag];
 
+      // fetch the user's id
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+
+      // fetch tag's id
+      $query   = "SELECT tag_id FROM \"Tags\" " .
+                 "WHERE post_id = '$post_id' AND tag = '$tag'";
+      $result  = pg_query($db, $query);
+      $tag_id  = pg_fetch_result($result, 0);
+
+      // delete the tag visibility
+      $query   = "DELETE FROM \"Tag_Visibility\" " .
+                 "WHERE tag_id = '$tag_id'";
+      $result  = pg_query($db, $query);
+
+      // delete the tag
       $query   = "DELETE FROM \"Tags\" " .
                  "WHERE post_id = '$post_id' AND tag = '$tag'";
       $result  = pg_query($db, $query);
@@ -198,6 +215,22 @@
         $json_return = array_merge_recursive($json_return, array("tags" => array($post_id => $tags)));
     }
 
+  function getTagVisibility()
+    {
+      global $db;
+      global $json_return;
+
+      $tag_id = $_GET[tad_id];
+
+      $query     = "SELECT visibile_to FROM \"Tag_Visibility\" " .
+                   "WHERE tag_id = '$tag_id'";
+      $result    = pg_query($db, $query);
+      $visbility = pg_fetch_all_columns($result);
+
+      if($visbility)
+        $json_return = array_merge_recursive($json_return, array("get_tag_visibility" => array($tag_id => $visbility)));
+    }
+
   function updateBookmarkPicture()
     {
       global $db;
@@ -231,11 +264,11 @@
       pg_lo_close($lo_fp);
       pg_query($db, "commit");
 
-      $query  = "UPDATE \"Bookmarks\" " .
-                "SET bookmark_picture = '$$lo_id', bookmark_picture_size = '$picturesize' " .
-                "WHERE owner_id = '$user_id'";
-      $result = pg_query($db, $query);
-      $update = pg_fetch_all($result);
+      $query   = "UPDATE \"Bookmarks\" " .
+                 "SET bookmark_picture = '$$lo_id', bookmark_picture_size = '$picturesize' " .
+                 "WHERE owner_id = '$user_id'";
+      $result  = pg_query($db, $query);
+      $update  = pg_fetch_all($result);
       $success = $success && ($update == NULL);
       
       $json_return = array_merge($json_return, array("update_bookmark_picture" => $success));
@@ -244,7 +277,6 @@
   function getBookmarkPicture()
     {
       global $db;
-      global $json_return;
 
       $username = $_SESSION[user_id];
 

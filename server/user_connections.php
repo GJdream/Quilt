@@ -201,7 +201,6 @@
   function getUserPicture()
     {
       global $db;
-      global $json_return;
 
       $username = $_SESSION[user_id];
 
