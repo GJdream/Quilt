@@ -45,7 +45,7 @@
     
 }
 
-- (void)addFriend:(Friend *)friend
+- (void)addFriend:(NSString *)friend
 {
     
 }
