@@ -68,7 +68,7 @@
     NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    BOOL success = [(NSNumber*)[json valueForKey:@"update_picture"] boolValue];
+    BOOL success = [(NSNumber*)[json valueForKey:@"update_user_picture"] boolValue];
     
     if(success)
     {
@@ -147,12 +147,15 @@
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
 {
-    NSError* error;
+//    NSError* error;
 /*    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];*/
     
 //    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"%d", [data length]);// [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] length]);
     
     avc.imageView.image = [[UIImage alloc] initWithData:data];
     

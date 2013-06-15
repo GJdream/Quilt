@@ -152,7 +152,7 @@ NSString *boundary;
 
 +(void)getPhoto:(AccountViewController *)avc
 {
-    NSString *params = @"action=get_picture";
+    NSString *params = @"action=get_user_picture";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                dispatch_async(dispatch_get_main_queue(),
@@ -226,7 +226,7 @@ NSString *boundary;
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc
 {
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
-                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_picture",nil]
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_user_picture",nil]
                                                                   forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
     
     [NetworkClient appendToRequest:request Image:photo WithName:@"picture"];
