@@ -287,18 +287,11 @@ NSString *boundary;
 
 +(void)createBookmark:(UIBookmark*)bookmark
 {
-    NSString *params = [NSString stringWithFormat:@"action=new_bookmark&owner=%@&url=%@&p_height=%ld&p_width=%ld", [[Account current] username], [bookmark url], (long)[bookmark height], (long)[bookmark width]];
-    
-    for(NSUInteger i = 0; i < [bookmark.tags count]; ++i)
-    {
-        params = [NSString stringWithFormat:@"%@&tags[%d]=%@", params, i, bookmark.tags[i]];
-    }
-    
-    params = [params stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-    
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
                                     [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
                                                         forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]]];
+    
+    [NetworkClient appendToRequest:request Image:bookmark.image WithName:@"image"];
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         if (error != nil)
