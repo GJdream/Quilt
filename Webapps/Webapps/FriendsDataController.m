@@ -84,7 +84,7 @@ static FriendsViewController *staticVC = nil;
     return [self.friendsDisplayArray objectAtIndex:index];
 }
 
-- (void)addFriend:(Friend *)friend
+- (void)addFriend:(NSString *)friend
 {
     [self.friendsArray addObject:friend];
     NSUInteger index = [self.friendsArray indexOfObject:friend];

@@ -33,8 +33,13 @@
 
 @property BOOL validPassword;
 
+@property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
+@property (weak, nonatomic) IBOutlet UITextField *addFriendUsername;
+
 - (IBAction)takeCameraPhotoClicked:(id)sender;
 - (IBAction)uploadPictureClicked:(id)sender;
 - (IBAction)saveChangesClicked:(id)sender;
+
+- (IBAction)addFriend:(id)sender;
 
 @end
