@@ -14,8 +14,8 @@
 
 @interface BookmarkDataController : NSObject
 
-@property (nonatomic, copy) NSMutableArray *bookmarksArray;
-@property (nonatomic, copy) NSMutableArray *bookmarkDisplayArray;
+@property (nonatomic) NSMutableArray *bookmarksArray;
+@property (nonatomic) NSMutableArray *bookmarkDisplayArray;
 @property BookmarkViewController *bookmarkVC;
 @property NSMutableOrderedSet *mostUsedTags;
 @property NDMutableTrie *tagTrie;
