@@ -204,26 +204,41 @@
       global $json_return;
 
       $username = $_SESSION[user_id];
-      $picture  = $_FILES['picture']['tmp_name'];
+      $picture  = file_get_contents($_FILES['picture']['tmp_name']);
+      $picturesize = $_FILES['picture']['size'];
+
+      // fetch id of user
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
       
-      move_uploaded_file($_FILES['picture']['tmp_name'], "out.png");
+      $success = true;
 
-      // fetch user_id
-      $query    = "SELECT user_id FROM \"Users\" " .
-                  "WHERE user_name = '$username'";
-      $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
+      $query   = "SELECT bookmark_picture FROM \"Bookmarks\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $lo_id   = pg_fetch_result($result, 0);
+      
+      pg_query($db, "begin");
+      
+      if($oid === NULL)
+        $lo_id = pg_lo_create();
 
-      // stripping slashes to ensure correct binary translation
-      $escaped_picture = str_replace(array("\\\\", "''"), array("\\", "'"), pg_escape_bytea($picture));
+      $lo_fp   = pg_lo_open($lo_id, "w");
+      $byteswritten = pg_lo_write($lo_fp, $picture);
+      $success = $success && ($byteswritten >= $picturesize);
+      pg_lo_close($lo_fp);
+      pg_query($db, "commit");
 
       $query  = "UPDATE \"Bookmarks\" " .
-                "SET bookmark_picture = '$escaped_picture' " .
-                "WHERE user_id = '$user_id'";
+                "SET bookmark_picture = '$$lo_id', bookmark_picture_size = '$picturesize' " .
+                "WHERE owner_id = '$user_id'";
       $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
+      $success = $success && ($update == NULL);
       
-      $json_return = array_merge($json_return, array("update_bookmark_picture" => ($update == NULL)));
+      $json_return = array_merge($json_return, array("update_bookmark_picture" => $success));
     }
 
   function getBookmarkPicture()
@@ -233,19 +248,25 @@
 
       $username = $_SESSION[user_id];
 
-      $query   = "SELECT user_id FROM \"Users\" " .
-                 "WHERE user_name = '$username'";
-      $result  = pg_query($db, $query);
-      $user_id = pg_fetch_result($result, 0);
+      // fetch id of user
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$username'";
+      $result   = pg_query($db, $query);
+      $user_id  = pg_fetch_result($result, 0);
 
-      $query = "SELECT bookmark_picture FROM \"Bookmarks\" " .
-               "WHERE user_id = '$user_id'";
-      $results = pg_query($db, $query);
-      $picture = pg_fetch_all($result);
+      $query    = "SELECT bookmark_picture FROM \"Bookmarks\" " .
+                  "WHERE owner_id = '$user_id'";
+      $result   = pg_query($db, $query);
+      $lo_id    = pg_fetch_result($result, 0);
+      $filesize = pg_fetch_result($result, 1);
+      
+      pg_query($db, "begin");
+      $fd   = pg_lo_open($lo_id,"r");
+      $data = pg_lo_read($fd, $filesize);
+      pg_lo_close($fd);
+      pg_query($db, "commit");
 
-      $original_picture = pg_unescape_bytea($picture);
-
-      if($picture)
-        $json_return = array_merge_recursive($json_return, array("bookmark_picture" => $oringal_picture));
+      header('Content-Type: image/png');
+      echo $data;
     }
 ?>
