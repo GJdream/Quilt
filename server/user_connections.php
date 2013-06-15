@@ -210,7 +210,7 @@
       $username = $_SESSION[user_id];
 
       $query  = "SELECT user_picture, picture_size FROM \"Users\" " .
-                "WHERE user_name = '$username'";        
+                "WHERE user_name = '$username'";
       $result = pg_query($db, $query);
       $lo_id  = pg_fetch_result($result, 0);
       $filesize = pg_fetch_result($result, 1);
