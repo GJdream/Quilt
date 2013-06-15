@@ -82,6 +82,8 @@
     cell.layer.opaque = YES;
     cell.backgroundColor = [UIColor whiteColor];
     
+    NSLog(@"cell.imageView: %@", cell.imageView);
+    
     return cell;
 }
 

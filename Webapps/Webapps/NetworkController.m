@@ -138,7 +138,7 @@
         UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
                 
         Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
-        [friendsDC addFriend:friend];
+        //[friendsDC addFriend:friend];
     }
     
     [friendsDC updateOnFriendInsertion];
