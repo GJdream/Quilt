@@ -78,9 +78,8 @@ NSArray *tableData;
     {
         NSString *staticCellID;
         
-        if (cellNum == 0) {
+        if (cellNum == 0)
             staticCellID = @"TableName";
-        }
         if (cellNum == 1)
             staticCellID = @"MyAccount";
         if (cellNum == 2)
@@ -112,7 +111,7 @@ NSArray *tableData;
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger cellNum = indexPath.row;
-    CGFloat customTableCellHeight = 0.0;
+    CGFloat customTableCellHeight = 40.0;
     
     if (cellNum < NUMBER_OF_STATIC_CELLS)
     {
