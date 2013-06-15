@@ -132,8 +132,6 @@
 
   // tag functionality is implemented here because 
   // it is so closely linked with bookmarks
-
-  // will this be called on a per tag basis or always on arrays of tags?
   function createTag()
     {
       global $db;
