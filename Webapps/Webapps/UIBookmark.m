@@ -19,7 +19,7 @@
     {
         _titleLabel.text = title;
         _titleLabel.backgroundColor = [UIColor redColor];
-        image = image;
+        _image = image;
         _title = title;
         _url = url;
         _tags = tags;
@@ -30,6 +30,13 @@
     return self;
 }
 
+- (void)setPicture:(UIImage*)picture
+{
+    self.image = picture;
+    if(self.viewBookmark)
+        self.viewBookmark.imageView.image = picture;
+}
+
 - (IBAction)tagClicked:(id)sender
 {
     [[BookmarkDataController instantiate] showTag:_firstTag.titleLabel.text];
@@ -37,6 +44,7 @@
 
 - (IBAction)deleteClicked:(id)sender
 {
+    self.viewBookmark = nil;
     [[BookmarkDataController instantiate] deleteBookmark:self];
 }
 

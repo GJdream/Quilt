@@ -279,15 +279,10 @@
       global $db;
 
       $username = $_SESSION[user_id];
-
-      // fetch id of user
-      $query    = "SELECT user_id FROM \"Users\" " .
-                  "WHERE user_name = '$username'";
-      $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
+      $b_id = $_GET[b_id];
 
       $query    = "SELECT bookmark_picture FROM \"Bookmarks\" " .
-                  "WHERE owner_id = '$user_id'";
+                  "WHERE post_id = '$b_id'";
       $result   = pg_query($db, $query);
       $lo_id    = pg_fetch_result($result, 0);
       $filesize = pg_fetch_result($result, 1);

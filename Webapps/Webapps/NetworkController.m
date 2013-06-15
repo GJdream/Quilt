@@ -147,19 +147,12 @@
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
 {
-//    NSError* error;
-/*    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    
-    NSString *imageString = (NSString*)[json objectForKey:@"user_picture"];*/
-    
-//    NSData *imageData = [imageString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    NSLog(@"%d", [data length]);// [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] length]);
-    
     avc.imageView.image = [[UIImage alloc] initWithData:data];
-    
-//    avc.imageView.image = [UIImage imageWithData:imageData];
+}
+
++(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
+{
+    [bookmark setPicture:[[UIImage alloc] initWithData:data]];
 }
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC

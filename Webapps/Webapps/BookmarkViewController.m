@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
+#import "NetworkClient.h"
 
 @implementation BookmarkViewController
 
@@ -68,10 +69,17 @@
          cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
     }
     
-    cell.imageView = [[UIImageView alloc] initWithImage:bookmarkAtIndex.image];
-    cell.imageView.frame = cell.contentView.bounds;
+    if(bookmarkAtIndex.image == nil)
+        [NetworkClient getBookmarkPicture:bookmarkAtIndex];
+    else
+    {
+        NSLog(@"bookmark image exists");
+        cell.imageView = [[UIImageView alloc] initWithImage:bookmarkAtIndex.image];
+        cell.imageView.frame = cell.contentView.bounds;
+        [cell addSubview:cell.imageView];
+    }
     cell.dataBookmark = bookmarkAtIndex;
-    [cell addSubview:cell.imageView];
+    bookmarkAtIndex.viewBookmark = cell;
     
     //for loop through tags and append to NSString for text 
     

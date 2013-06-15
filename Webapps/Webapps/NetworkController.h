@@ -12,6 +12,7 @@
 @class LoginViewController;
 @class Account;
 @class AccountViewController;
+@class UIBookmark;
 
 @interface NetworkController : NSObject
 
@@ -20,6 +21,7 @@
 +(void)gotBookmarks:(NSData*)data;
 +(void)gotFriends:(NSData*)data;
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc;
++(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark;
 
 +(void)checkedUsername:(NSData*)data RegisterVC:(RegisterViewController*)rvc;
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC;

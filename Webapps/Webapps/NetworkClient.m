@@ -133,6 +133,23 @@ NSString *boundary;
            }];
 }
 
++(void)getBookmarkPicture:(UIBookmark*)bookmark
+{
+    NSString *params = @"action=get_bookmarks";
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController gotBookmarkPicture:data ForBookmark:bookmark];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
 +(void)getNewFriends
 {
     NSString *params = @"action=get_friends";
@@ -308,7 +325,7 @@ NSString *boundary;
                                     [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
                                                         forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]]];
     
-    [NetworkClient appendToRequest:request Image:bookmark.image WithName:@"image"];
+    [NetworkClient appendToRequest:request Image:bookmark.image WithName:@"picture"];
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
         if (error != nil)
@@ -333,7 +350,16 @@ NSString *boundary;
 
 +(void)deleteBookmark:(UIBookmark*)bookmark
 {
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"remove_bookmark", [NSNumber numberWithLongLong:bookmark.b_id],nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action",@"post_id", nil]]];
     
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
 }
 
 @end

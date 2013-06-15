@@ -76,7 +76,6 @@ static BookmarkViewController *staticVC = nil;
         _updatedBookmarks = [[NSMutableArray alloc] init];
         _tagTrie = [[NDMutableTrie alloc] init];
         _tagToBookmark = [[NSMutableDictionary alloc] init];
-        _updatedBookmarks = [[NSMutableArray alloc] init];
         _watchingMethods = [[NSMutableArray alloc] init];
         _bookmarkVC = bookmarkVC;
         [NetworkClient getNewBookmarks];
@@ -115,6 +114,8 @@ static BookmarkViewController *staticVC = nil;
         else
             [bookmarkSet addObject:bookmark];
     }
+    
+    [NetworkClient getBookmarkPicture:bookmark];
 }
 
 - (void)deleteBookmark:(UIBookmark *)viewBookmark
