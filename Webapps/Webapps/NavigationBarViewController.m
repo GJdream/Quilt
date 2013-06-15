@@ -119,11 +119,11 @@ NSArray *tableData;
         if (cellNum == 0) 
             customTableCellHeight = 107;
         if (cellNum == 1)
-            customTableCellHeight = 50;
+            customTableCellHeight = 44;
         if (cellNum == 2)
-            customTableCellHeight = 50;
+            customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 50;
+            customTableCellHeight = 44;
     }
     return customTableCellHeight;
 }
