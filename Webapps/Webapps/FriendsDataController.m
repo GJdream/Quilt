@@ -94,7 +94,10 @@ static FriendsViewController *staticVC = nil;
 
 - (void)deleteFriend:(Friend *)friend
 {
-    // TODO
+    NSUInteger index = [self.friendsArray indexOfObject:friend];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.friendsArray removeObject:friend];
+    [self.updatedFriends removeObject:indexPath];
 }
 
 - (void)updateOnFriendInsertion

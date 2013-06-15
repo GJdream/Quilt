@@ -78,7 +78,7 @@
 
 - (IBAction)addFriend:(id)sender {
     NSString *name = self.addFriendUsername.text;
-    [FriendsDataController addFriend:name];
+    [[FriendsDataController instantiate] addFriend:name];
 }
 
 - (IBAction)takeCameraPhotoClicked:(id)sender

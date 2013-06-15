@@ -24,7 +24,7 @@
 - (void)registerUpdate:(void (^)(void))updateMethod;
 - (NSUInteger)countOfFriends;
 - (Friend *)friendInListAtIndex:(NSUInteger)index;
-+ (void)addFriend:(NSString *)friend;
+- (void)addFriend:(NSString *)friend;
 - (void)updateOnFriendInsertion;
 - (void)updateOnFriendDeletion:(NSIndexPath *)indexPath;
 
