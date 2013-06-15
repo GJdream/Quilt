@@ -3,6 +3,7 @@
     {
       global $db;
       global $json_return;
+      global $b_id;
 
       $owner   = $_SESSION[user_id];
       $link    = $_POST[url];
@@ -26,8 +27,7 @@
       if($_POST[tags])
         {
           // building array of tags
-          $tags   = implode("','", $_POST[tags]);
-          $tagarr = "ARRAY['" . $tags . "']";
+          $tags   = $_POST[tags];
 
           foreach($tags as $tag)
             {
@@ -38,6 +38,8 @@
         }
         
         $json_return = array_merge($json_return, array("create_bookmark" => true, "b_id" => $post_id));
+        
+        $b_id = $post_id;
     }
     
   function destroyBookmark()
@@ -128,6 +130,8 @@
           foreach($bookmarks as $bm)
             getTagsForID($bm["post_id"]);
         }
+      else
+      	$json_return = array_merge($json_return, array("bookmarks" => array()));
     }
 
   // tag functionality is implemented here because 
@@ -233,9 +237,13 @@
     {
       global $db;
       global $json_return;
+      global $b_id;
 
       $username = $_SESSION[user_id];
+      if($_POST[b_id])
+      	$b_id = $_POST[b_id];
       $picture  = file_get_contents($_FILES['picture']['tmp_name']);
+      
       $picturesize = $_FILES['picture']['size'];
 
       // fetch id of user
@@ -247,7 +255,7 @@
       $success = true;
 
       $query   = "SELECT bookmark_picture FROM \"Bookmarks\" " .
-                 "WHERE user_name = '$username'";
+                 "WHERE owner_id = '$user_id' AND post_id = '$b_id'";
       $result  = pg_query($db, $query);
       $lo_id   = pg_fetch_result($result, 0);
       
@@ -263,8 +271,8 @@
       pg_query($db, "commit");
 
       $query   = "UPDATE \"Bookmarks\" " .
-                 "SET bookmark_picture = '$$lo_id', bookmark_picture_size = '$picturesize' " .
-                 "WHERE owner_id = '$user_id'";
+                 "SET bookmark_picture = '$lo_id', bookmark_picture_size = '$picturesize' " .
+                 "WHERE owner_id = '$user_id' AND post_id = '$b_id'";
       $result  = pg_query($db, $query);
       $update  = pg_fetch_all($result);
       $success = $success && ($update == NULL);
@@ -277,24 +285,27 @@
       global $db;
 
       $username = $_SESSION[user_id];
+      $b_id = $_GET[b_id];
 
-      // fetch id of user
-      $query    = "SELECT user_id FROM \"Users\" " .
-                  "WHERE user_name = '$username'";
+      $query    = "SELECT bookmark_picture, bookmark_picture_size FROM \"Bookmarks\" " .
+                  "WHERE post_id = '$b_id'";
       $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
 
-      $query    = "SELECT bookmark_picture FROM \"Bookmarks\" " .
-                  "WHERE owner_id = '$user_id'";
-      $result   = pg_query($db, $query);
       $lo_id    = pg_fetch_result($result, 0);
       $filesize = pg_fetch_result($result, 1);
+      
+      if($lo_id === NULL)
+      	return;
       
       pg_query($db, "begin");
       $fd   = pg_lo_open($lo_id,"r");
       $data = pg_lo_read($fd, $filesize);
       pg_lo_close($fd);
       pg_query($db, "commit");
+
+      $fd = fopen("out$b_id.png", "w");
+      fwrite($fd, $data);
+      fclose($fd);
 
       header('Content-Type: image/png');
       echo $data;

@@ -15,6 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
+#import "NetworkClient.h"
 
 @implementation BookmarkViewController
 
@@ -31,10 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (IBAction)sidebarOpenClick:(id)sender {
-    [self.viewDeckController openLeftViewAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,12 +65,19 @@
          cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
     }
     
-    cell.imageView = [[UIImageView alloc] initWithImage:bookmarkAtIndex.image];
+    if(!cell.imageView)
+        cell.imageView = [[UIImageView alloc] init];
+    
     cell.imageView.frame = cell.contentView.bounds;
-    cell.dataBookmark = bookmarkAtIndex;
     [cell addSubview:cell.imageView];
     
-    //for loop through tags and append to NSString for text 
+    if(bookmarkAtIndex.image == nil)
+        [NetworkClient getBookmarkPicture:bookmarkAtIndex];
+    else
+        cell.imageView.image = bookmarkAtIndex.image;
+    
+    cell.dataBookmark = bookmarkAtIndex;
+    bookmarkAtIndex.viewBookmark = cell;
     
     [cell.layer setMasksToBounds:YES];
     [cell.layer setCornerRadius:15];
@@ -82,7 +86,7 @@
     cell.layer.opaque = YES;
     cell.backgroundColor = [UIColor whiteColor];
     
-    NSLog(@"cell.imageView: %@", cell.imageView);
+    //for loop through tags and append to NSString for text 
     
     return cell;
 }

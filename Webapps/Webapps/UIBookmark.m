@@ -8,6 +8,7 @@
 
 #import "UIBookmark.h"
 #import "BookmarkDataController.h"
+#import "BookmarkViewController.h"
 #import <QuartzCore/CALayer.h>
 
 @implementation UIBookmark
@@ -19,15 +20,25 @@
     {
         _titleLabel.text = title;
         _titleLabel.backgroundColor = [UIColor redColor];
-        image = image;
+        _image = image;
         _title = title;
         _url = url;
         _tags = tags;
         _width = width;
         _height = height;
         _b_id = id;
+        _viewBookmark = nil;
+        _dataBookmark = nil;
+        _imageView = nil;
     }
     return self;
+}
+
+- (void)setPicture:(UIImage*)picture
+{
+    self.image = picture;
+    self.viewBookmark.imageView.image = picture;
+    [self.viewBookmark setNeedsDisplay];
 }
 
 - (IBAction)tagClicked:(id)sender
@@ -37,7 +48,7 @@
 
 - (IBAction)deleteClicked:(id)sender
 {
-    NSLog(@"Deleting");
+    self.viewBookmark = nil;
     [[BookmarkDataController instantiate] deleteBookmark:self];
 }
 
