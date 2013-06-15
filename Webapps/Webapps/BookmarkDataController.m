@@ -88,6 +88,7 @@ static BookmarkViewController *staticVC = nil;
 - (NSUInteger)countOfBookmarks
 {
     //return [self.bookmarksArray count];
+    NSLog(@"countOfBookmarks: %d/%d", [self.bookmarkDisplayArray count], [self.bookmarksArray count]);
     return [self.bookmarkDisplayArray count];
 }
 
@@ -101,6 +102,7 @@ static BookmarkViewController *staticVC = nil;
 {
     [self.bookmarksArray addObject:bookmark];
     NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    NSLog(@"Adding bookmark at index %d", index);
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedBookmarks addObject:indexPath];
     
@@ -118,14 +120,48 @@ static BookmarkViewController *staticVC = nil;
     }
 }
 
+- (void)deleteBookmark:(UIBookmark *)bookmark
+{
+    NSUInteger index = [self.bookmarksArray indexOfObject:bookmark];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    
+    [self.bookmarksArray removeObject:bookmark];
+
+    if ([self.updatedBookmarks containsObject:bookmark])
+        [self.updatedBookmarks removeObject:bookmark];
+    else
+        [self updateOnBookmarkDeletion:indexPath];
+    
+    // Remove from tagTrie and tagToBookmark if tag not used elsewhere
+    for (NSString *tag in bookmark.tags) {
+        NSMutableSet *bookmarkSet = [self.tagToBookmark objectForKey:tag];
+        [bookmarkSet removeObject:bookmark];
+        
+        if ([bookmarkSet count] == 0)
+        {
+            [self.tagToBookmark removeObjectForKey:tag];
+            [self.tagTrie removeObjectForKey:tag];
+        }
+    }
+    
+    [self showAll];
+}
+
 - (void)updateOnBookmarkInsertion
 {
-    if(self.updatedBookmarks)
+    if (self.updatedBookmarks)
         [self.bookmarkVC.collectionView insertItemsAtIndexPaths:(NSArray*)self.updatedBookmarks];
     [self.updatedBookmarks removeAllObjects];
     
     for (void (^f)(void) in self.watchingMethods)
         f();
+}
+
+- (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath
+{
+    NSLog(@"Delete %d", indexPath.row);
+    NSArray *indexArray = [[NSArray alloc] initWithObjects:indexPath, nil];
+    [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
 }
 
 - (void)showAll
