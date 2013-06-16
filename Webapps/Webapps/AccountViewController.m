@@ -35,6 +35,7 @@
     self.confirmPassword.delegate = (id)self;
     self.username.text = [Account current].username;
     [[Account current] setPhoto:self];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 	// Do any additional setup after loading the view.
 }
 

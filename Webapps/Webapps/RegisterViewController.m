@@ -36,6 +36,7 @@
     self.confirmPassword.delegate = (id)self;
     // Do any additional setup after loading the view.
     self.registerButton.enabled = NO;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
