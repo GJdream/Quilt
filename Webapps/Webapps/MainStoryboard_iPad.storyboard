@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1061,6 +1061,26 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendsSearchBar" id="xfV-q6-ONb">
+                            <rect key="frame" x="0.0" y="0.0" width="580" height="44"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" placeholder="Find a friend..." showsSearchResultsButton="YES" showsBookmarkButton="YES" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-VK-jNu">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="768" id="UXJ-gu-oL3"/>
+                                    </constraints>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="bfU-VK-jNu" firstAttribute="leading" secondItem="xfV-q6-ONb" secondAttribute="leading" type="default" id="j5m-9q-LsP"/>
+                                <constraint firstItem="bfU-VK-jNu" firstAttribute="top" secondItem="xfV-q6-ONb" secondAttribute="top" type="default" id="yCd-7G-JTk"/>
+                            </constraints>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Ga1-Gr-paT" id="x5R-ml-Van"/>
                             <outlet property="delegate" destination="Ga1-Gr-paT" id="YZo-sE-2bX"/>
@@ -1576,6 +1596,6 @@
         <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="fod-x0-re8"/>
+        <segue reference="9Qo-do-rs0"/>
     </inferredMetricsTieBreakers>
 </document>
