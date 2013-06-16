@@ -28,7 +28,7 @@ Account *currentAccount;
 
 + (void)logoutUser
 {
-    [NetworkClient logoutUser:currentAccount];
+    //[NetworkClient logoutUser:currentAccount];
     currentAccount = nil;
 }
 
