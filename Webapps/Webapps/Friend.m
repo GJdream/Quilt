@@ -26,8 +26,17 @@
     {
         _name = name;
         _image = image;
+        _viewFriend = nil;
+        _dataFriend = nil;
     }
     return self;
+}
+
+- (void)setPicture:(UIImage*)picture
+{
+    self.image = picture;
+    self.viewFriend.friendPhoto.image = picture;
+    [self.viewFriend setNeedsDisplay];
 }
 
 /*

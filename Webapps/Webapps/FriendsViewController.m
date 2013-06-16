@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NDTrie.h"
 #import "Friend.h"
+#import "NetworkClient.h"
 
 @interface FriendsViewController ()
 
@@ -72,10 +73,20 @@ NSArray *tableData;
     
     Friend *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
+    if(cell.dataFriend)
+        cell.dataFriend.viewFriend = nil;
+    
     Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
     
+    cell.dataFriend = friendAtIndex;
+    friendAtIndex.viewFriend = cell;
+    
+    if(friendAtIndex.image == nil)
+        [NetworkClient getFriendPhoto:friendAtIndex];
+    else
+        cell.friendPhoto.image = friendAtIndex.image;
+
     cell.friendName.text = friendAtIndex.name;
-    //cell.friendPhoto = [[UIImageView alloc] initWithImage:friendAtIndex.image];
     cell.friendPhoto.frame = cell.contentView.bounds;
     [cell addSubview:cell.friendPhoto];
     

@@ -54,21 +54,28 @@
       global $db;
       global $json_return;
 
-      $owner = $_GET[username];
+      $owner = $_SESSION[user_id];
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$owner'";
       $result   = pg_query($db, $query);
-      $owner_id = pg_fetch_result($result, 0);
+      $user_id = pg_fetch_result($result, 0);
 
-      $query    = "SELECT * FROM \"Friends\" " .
-                  "WHERE owner_id = '$owner_id'";
+      $query    = "SELECT friend_id FROM \"Friends\" " .
+                  "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
-      $friends  = pg_fetch_all($result);
+      $friend_ids  = pg_fetch_all_columns($result, 0);
 
-      if($friends)
-        $json_return = array_merge_recursive($json_return, array("friends" => array($owner => $friends)));
+	  foreach($friend_ids as $id)
+	  {
+	  	$query	= "SELECT user_name FROM \"Users\" " .
+	  			  "WHERE user_id = '$id'";
+	  	$result	 = pg_query($db, $query);
+	  	$name = pg_fetch_result($result, 0);
+	  	
+	  	$json_return = array_merge_recursive($json_return, array("friends" => $name));
+	  }
     }
 
   function createGroup()
@@ -165,7 +172,7 @@
     {
       global $db;
       global $json_return;
-
+      
       $username = $_SESSION[user_id];
       $picture  = file_get_contents($_FILES['picture']['tmp_name']);
       $picturesize = $_FILES['picture']['size'];
@@ -202,7 +209,10 @@
     {
       global $db;
 
-      $username = $_SESSION[user_id];
+	  $username = $_GET[username];
+	  
+	  if($username === NULL)
+      	$username = $_SESSION[user_id];
 
       $query    = "SELECT user_picture, picture_size FROM \"Users\" " .
                   "WHERE user_name = '$username'";
