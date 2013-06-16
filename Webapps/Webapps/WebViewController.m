@@ -57,9 +57,24 @@
     viewWeb.delegate = self;
 }
 
-- (void)reload
+- (IBAction)back
+{
+    [self.viewWeb goBack];
+}
+
+- (IBAction)forward
+{
+    [self.viewWeb goForward];
+}
+
+- (IBAction)reload
 {
     [self.viewWeb reload];
+}
+
+- (IBAction)stop
+{
+    [self.viewWeb stopLoading];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -160,9 +160,10 @@ NSArray *tableData;
     
     if (indexPath.row == 0)
     {
-        [[BookmarkDataController instantiate] showAll];
+        BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+        [bookmarkDC showAll];
+        bookmarkDC.bookmarkVC.navigationItem.title = @"Quilt";
     }
-    
     else if (indexPath.row == 1)
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"myAccountSegue" sender:self];
@@ -178,10 +179,11 @@ NSArray *tableData;
     }
     
     else {
-        
-        [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
+        BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+        [bookmarkDC showTag:selectedCell.textLabel.text];
+        NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
+        bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];
         //[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
-   
     }
 }
 
