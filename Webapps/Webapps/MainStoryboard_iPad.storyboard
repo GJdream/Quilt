@@ -841,18 +841,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="268" height="106"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Quilt Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-k5-ezg">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="107" id="Os2-7U-o0T"/>
-                                                <constraint firstAttribute="width" constant="161" id="eMs-3e-yZw"/>
-                                            </constraints>
-                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Quilt_trans_mini.png" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-k5-ezg"/>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="FDK-k5-ezg" firstAttribute="centerX" secondItem="UR2-CJ-QE3" secondAttribute="centerX" type="default" id="bS9-MX-xXc"/>
-                                    <constraint firstItem="FDK-k5-ezg" firstAttribute="top" secondItem="UR2-CJ-QE3" secondAttribute="top" constant="-1" id="uYM-Qf-Nzf"/>
+                                    <constraint firstItem="FDK-k5-ezg" firstAttribute="centerY" secondItem="UR2-CJ-QE3" secondAttribute="centerY" type="default" id="SoD-ub-ygB"/>
+                                    <constraint firstItem="FDK-k5-ezg" firstAttribute="centerX" secondItem="UR2-CJ-QE3" secondAttribute="centerX" type="default" id="oI3-bU-fPM"/>
                                 </constraints>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAccount" id="RZV-6D-dz4">
@@ -1436,9 +1431,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Quilt Logo.png" width="878" height="590"/>
         <image name="Quilt144.png" width="144" height="144"/>
         <image name="Quilt_blue_trans.png" width="620" height="417"/>
+        <image name="Quilt_trans_mini.png" width="200" height="134"/>
     </resources>
     <classes>
         <class className="AccountViewController" superclassName="UITableViewController">
@@ -1584,8 +1579,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9Qo-do-rs0"/>
+        <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="nbe-SD-eWm"/>
     </inferredMetricsTieBreakers>
 </document>
