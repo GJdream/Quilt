@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController {
+@interface WebViewController : UIViewController <UIWebViewDelegate> {
     IBOutlet UIWebView *viewWeb;
     IBOutlet UITextField *searchBar;
 }
@@ -16,6 +16,11 @@
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;
 @property (strong, nonatomic) NSString *url;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addBookmarkButton;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *reloadButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
