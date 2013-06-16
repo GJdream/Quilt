@@ -59,10 +59,7 @@
       else if($_POST['action'] === "change_password")
         updatePassword();
       else if($_POST['action'] === "new_bookmark")
-      {
         createBookmark();
-        updateBookmarkPicture();
-      }
       else if($_POST['action'] === "remove_bookmark")
         destroyBookmark();
       else if($_POST['action'] === "new_tag")
