@@ -10,6 +10,7 @@
 #import "NDTrie.h"
 #import "BookmarkDataController.h"
 #import "BookmarkViewController.h"
+#import "Account.h"
 
 @implementation NavigationBarViewController
 
@@ -176,6 +177,7 @@ NSArray *tableData;
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"logOutSegue" sender:self];
         //Log out server
+        [Account logoutUser];
     }
     
     else {
