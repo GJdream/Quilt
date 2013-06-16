@@ -343,15 +343,14 @@ NSString *boundary;
         }];
 }
 
-+(void)shareTag:(NSString*)tag WithFriends:(NSSet*)users
++(void)shareTag:(NSString*)tag WithFriends:(NSArray*)users
 {
     NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
                                       initWithObjects: [[NSArray alloc] initWithObjects:@"share_tag", tag,nil]
                                       forKeys:[[NSArray alloc] initWithObjects:@"action", @"tag",nil]];
     
-    NSArray *usersArray = users.allObjects;
     for(NSUInteger i = 0; i < users.count; ++i)
-        [paramDict setObject:usersArray[i] forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
+        [paramDict setObject:((Friend*)users[i]).name forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
     
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:(NSDictionary*)paramDict];
     

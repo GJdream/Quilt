@@ -39,16 +39,8 @@ NSArray *tableData;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.selectedItems = [[NSMutableArray alloc] init];
     self.searchBar.delegate = (id)self;
-    /*
-    tableData = [[FriendsDataController instantiate].friendTrie everyObject];
-    [[FriendsDataController instantiate]registerUpdate:^(void)
-     {
-         tableData = [[FriendsDataController instantiate].friendTrie everyObject];
-         [self.collectionView reloadData];
-     }];
-     */
-    //self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,6 +91,25 @@ NSArray *tableData;
     cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.shareEnabled) {
+        NSLog(@"Select");
+        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+        [self.selectedItems addObject:friendAtIndex];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.shareEnabled)
+    {
+        NSLog(@"Deselect");
+        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+        [self.selectedItems removeObject:friendAtIndex];
+    }
 }
 
 @end
