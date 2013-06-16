@@ -104,8 +104,34 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        
+        UIImage *image = [UIImage imageNamed:@"arrow.png"] ;
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+        button.frame = frame;	// match the button's size with the image size
+        
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        
+        // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet
+        [button addTarget:self action:@selector(arrowButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = button;
+
+                
     }
     return cell;
+}
+
+- (void)arrowButtonTapped:(id)sender event:(id)event
+{
+	NSSet *touches = [event allTouches];
+	UITouch *touch = [touches anyObject];
+	CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition];
+	if (indexPath != nil)
+	{
+		[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+	}
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,7 +148,7 @@ NSArray *tableData;
         if (cellNum == 2)
             customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 44;
+            customTableCellHeight = 60;
     }
     return customTableCellHeight;
 }
@@ -151,11 +177,19 @@ NSArray *tableData;
         //Log out server
     }
     
-    else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
+    else {
+        
+        [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
+        //[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+   
+    }
 }
 
 
-
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+	[[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
