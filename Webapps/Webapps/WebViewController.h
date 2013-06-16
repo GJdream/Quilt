@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *reloadButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 
+- (IBAction)back;
+- (IBAction)forward;
+- (IBAction)reload;
+- (IBAction)stop;
+
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
 - (IBAction)search;

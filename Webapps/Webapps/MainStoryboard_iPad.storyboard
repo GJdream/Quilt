@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -762,11 +762,27 @@
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="c7K-RN-F8X">
                                 <items>
-                                    <barButtonItem title="&lt;" id="dkM-Pt-Cij"/>
-                                    <barButtonItem title=">" id="2Hu-AG-cxb"/>
+                                    <barButtonItem title="&lt;" id="dkM-Pt-Cij">
+                                        <connections>
+                                            <action selector="back" destination="EX0-HF-PZB" id="RR7-Ss-85g"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title=">" id="2Hu-AG-cxb">
+                                        <connections>
+                                            <action selector="forward" destination="EX0-HF-PZB" id="8wi-BM-ub2"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rxj-Gf-FIm"/>
-                                    <barButtonItem title="Item" systemItem="refresh" id="exG-JD-TNH"/>
-                                    <barButtonItem systemItem="stop" id="T8k-wB-khO"/>
+                                    <barButtonItem systemItem="refresh" id="exG-JD-TNH">
+                                        <connections>
+                                            <action selector="reload" destination="EX0-HF-PZB" id="Jc2-gT-x4B"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="stop" id="T8k-wB-khO">
+                                        <connections>
+                                            <action selector="stop" destination="EX0-HF-PZB" id="Xfg-2B-oGL"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -905,7 +921,7 @@
                                     <constraint firstItem="js1-4h-9Eo" firstAttribute="centerX" secondItem="Cbr-ZY-EfJ" secondAttribute="centerX" type="default" id="YXH-Pe-ZSz"/>
                                 </constraints>
                             </tableViewCell>
-                            <tableViewCell opaque="NO" autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableItem" id="wbt-0S-Vq6">
+                            <tableViewCell autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableItem" id="wbt-0S-Vq6">
                                 <rect key="frame" x="0.0" y="305" width="268" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1446,146 +1462,6 @@
         <image name="Quilt_blue_trans.png" width="620" height="417"/>
         <image name="Quilt_trans_mini.png" width="200" height="134"/>
     </resources>
-    <classes>
-        <class className="AccountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addFriend:"/>
-                <relationship kind="action" name="saveChangesClicked:"/>
-                <relationship kind="action" name="takeCameraPhotoClicked:"/>
-                <relationship kind="action" name="uploadPictureClicked:"/>
-                <relationship kind="outlet" name="addFriendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFriendUsername" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="takeCameraPhoto" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="uploadPicture" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AddBookmarkViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="infoButtonClicked:"/>
-                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="label2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tagsInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titleInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="urlInput" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="BookmarkViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-        </class>
-        <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
-        </class>
-        <class className="Friend" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Friend.h"/>
-            <relationships>
-                <relationship kind="outlet" name="friendName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="friendPhoto" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="FriendsViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="IIViewDeckController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginClicked:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NavigationBarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavigationBarViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="RegisterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="registerClicked:"/>
-                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validUsernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UIBookmark" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteClicked:"/>
-                <relationship kind="action" name="tagClicked:"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="ViewDeckController" superclassName="IIViewDeckController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewDeckController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bookmarkView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="WebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="search"/>
-                <relationship kind="outlet" name="addBookmarkButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="viewWeb" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
