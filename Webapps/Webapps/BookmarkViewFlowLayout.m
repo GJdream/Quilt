@@ -8,6 +8,10 @@
 
 #import "BookmarkViewFlowLayout.h"
 
+@interface BookmarkViewFlowLayout ()
+;
+@end
+
 @implementation BookmarkViewFlowLayout
 
 - (id)init

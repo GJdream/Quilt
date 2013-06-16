@@ -13,6 +13,7 @@
 @class Account;
 @class LoginViewController;
 @class AccountViewController;
+@class Friend;
 
 @interface NetworkClient : NSObject
 
@@ -29,5 +30,6 @@
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;
 +(void)getPhoto:(AccountViewController *)avc;
 +(void)getBookmarkPicture:(UIBookmark*)bookmark;
++(void)getFriendPhoto:(Friend *)friend;
 
 @end

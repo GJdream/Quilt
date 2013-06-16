@@ -9,6 +9,7 @@
 #import "FriendsDataController.h"
 #import "FriendsViewController.h"
 #import "NetworkClient.h"
+#import "Friend.h"
 
 @interface FriendsDataController ()
 @property NSMutableArray *updatedFriends;
@@ -76,7 +77,7 @@ static FriendsViewController *staticVC = nil;
 
 - (NSUInteger)countOfFriends
 {
-    return 0;
+    return self.friendsDisplayArray.count;
 }
 
 - (Friend *)friendInListAtIndex:(NSUInteger)index
@@ -84,8 +85,9 @@ static FriendsViewController *staticVC = nil;
     return [self.friendsDisplayArray objectAtIndex:index];
 }
 
-- (void)addFriend:(NSString *)friend
+- (void)addFriend:(NSString *)friendName
 {
+    Friend *friend = [[Friend alloc] initWithUsername:friendName Image:nil];
     [self.friendsArray addObject:friend];
     NSUInteger index = [self.friendsArray indexOfObject:friend];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];

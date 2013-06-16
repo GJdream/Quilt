@@ -13,6 +13,7 @@
 #import "BookmarkDataController.h"
 #import "RegisterViewController.h"
 #import "AccountViewController.h"
+#import "Friend.h"
 
 NSString *session_id;
 
@@ -156,6 +157,23 @@ NSString *boundary;
                dispatch_async(dispatch_get_main_queue(),
                               ^(void){
                                   [NetworkController gotFriends:data];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
++(void)getFriendPhoto:(Friend *)friend
+{
+    NSString *params = [[NSString alloc] initWithFormat:@"action=get_user_picture&username=%@", friend.name];
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController gotPhoto:data ForFriend:friend];
                               });
                
                if (error != nil)

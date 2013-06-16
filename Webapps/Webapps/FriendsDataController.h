@@ -13,8 +13,8 @@
 
 @interface FriendsDataController : NSObject
 
-@property (nonatomic, copy) NSMutableArray *friendsArray;
-@property (nonatomic, copy) NSMutableArray *friendsDisplayArray;
+@property (nonatomic) NSMutableArray *friendsArray;
+@property (nonatomic) NSMutableArray *friendsDisplayArray;
 @property FriendsViewController *friendsVC;
 
 + (void)setViewController:(FriendsViewController *)newVC;
