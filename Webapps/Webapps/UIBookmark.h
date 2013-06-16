@@ -11,10 +11,11 @@
 @interface UIBookmark : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
-@property (weak, nonatomic) IBOutlet UIButton *firstTag;
+//@property (weak, nonatomic) IBOutlet UILabel *tagLabel;
+//@property (weak, nonatomic) IBOutlet UIButton *firstTag;
 @property NSString *title;
 @property NSString *url;
 @property NSMutableArray *tags;
@@ -22,7 +23,7 @@
 @property NSInteger height;
 @property uint64_t b_id;
 @property UIImage *image;
-@property UIImageView *imageView;
+//@property UIImageView *imageView;
 @property UIBookmark *dataBookmark;
 @property UIBookmark *viewBookmark;
 

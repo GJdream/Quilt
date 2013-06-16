@@ -43,7 +43,7 @@
 
 - (IBAction)tagClicked:(id)sender
 {
-    [[BookmarkDataController instantiate] showTag:_firstTag.titleLabel.text];
+    //[[BookmarkDataController instantiate] showTag:_firstTag.titleLabel.text];
 }
 
 - (IBAction)deleteClicked:(id)sender
