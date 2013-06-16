@@ -18,7 +18,7 @@
 NSString *session_id;
 
 @implementation NetworkClient
-NSString *url= @"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
+NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
 NSString *boundary;
@@ -222,28 +222,6 @@ NSString *boundary;
     }];
 }
 
-+(void)logoutUser:(Account*)account
-{
-    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
-                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"logout_user", nil]
-                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
-    
-    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-        //NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
-        //loginCookie = NULL;
-        
-        dispatch_async(dispatch_get_main_queue(),
-                       ^(void){
-                           [NetworkController logoutComplete:data];
-                       });
-        
-        if (error != nil)
-            NSLog(@"Connection failed! Error - %@ %@",
-                  [error localizedDescription],
-                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    }];
-}
-
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
 {
 //    NSString *params = [NSString stringWithFormat:@"action=change_password&password=%@", password];
@@ -365,15 +343,14 @@ NSString *boundary;
         }];
 }
 
-+(void)shareTag:(NSString*)tag WithFriends:(NSSet*)users
++(void)shareTag:(NSString*)tag WithFriends:(NSArray*)users
 {
     NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
                                       initWithObjects: [[NSArray alloc] initWithObjects:@"share_tag", tag,nil]
                                       forKeys:[[NSArray alloc] initWithObjects:@"action", @"tag",nil]];
     
-    NSArray *usersArray = users.allObjects;
     for(NSUInteger i = 0; i < users.count; ++i)
-        [paramDict setObject:usersArray[i] forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
+        [paramDict setObject:((Friend*)users[i]).name forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
     
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:(NSDictionary*)paramDict];
     

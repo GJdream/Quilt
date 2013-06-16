@@ -16,6 +16,7 @@
 #import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
 #import "NetworkClient.h"
+#import "ShareViewController.h"
 
 @implementation BookmarkViewController
 

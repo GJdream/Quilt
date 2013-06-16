@@ -18,7 +18,6 @@
 @interface NetworkController : NSObject
 
 +(void)loginComplete:(NSData*)data LoginView:(LoginViewController*)loginVC;
-+(void)logoutComplete:(NSData*)data;
 
 +(void)gotBookmarks:(NSData*)data;
 +(void)gotFriends:(NSData*)data;

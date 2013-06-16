@@ -32,9 +32,9 @@
         }
       
       // setting the default user picture
-      $fd = fopen("../Mock-Ups/DefaultUserPicture.png", "r");
-      $picture = fread($fd);
-      $picturesize = filesize("../Mock-Ups/DefaultUserPicture.png");
+      $fd = fopen("DefaultUserPicture.png", "r");
+      $picturesize = filesize("DefaultUserPicture.png");
+      $picture = fread($fd, $picturesize);
       fclose($fd);
 
       $query   = "SELECT user_picture FROM \"Users\" " .
@@ -59,6 +59,15 @@
       $result  = pg_query($db, $query);
       $update  = pg_fetch_all($result);
       $success = $success && ($update == NULL);
+      
+      // if the function did not execute properly take the username out of the database
+      // so that the user will not lose the ability to use that name
+      if(!$success)
+        {
+      	  $query  = "DELETE FROM \"Users\" " .
+      	            "WHERE user_name = '$username'";
+      	  $result = pg_query($db, $query);
+        }
       
       $json_return = array_merge($json_return, array("account_ready" => $success));
     }

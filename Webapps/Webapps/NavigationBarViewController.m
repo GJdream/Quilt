@@ -10,7 +10,6 @@
 #import "NDTrie.h"
 #import "BookmarkDataController.h"
 #import "BookmarkViewController.h"
-#import "Account.h"
 
 @implementation NavigationBarViewController
 
@@ -177,7 +176,6 @@ NSArray *tableData;
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"logOutSegue" sender:self];
         //Log out server
-        [Account logoutUser];
     }
     
     else {
@@ -192,7 +190,11 @@ NSArray *tableData;
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-	[[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+	BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = selectedCell.textLabel.text;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
 }
 
 /*
