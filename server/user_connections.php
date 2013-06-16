@@ -74,7 +74,7 @@
 	  	$result	 = pg_query($db, $query);
 	  	$name = pg_fetch_result($result, 0);
 	  	
-	  	$json_return = array_merge_recursive($json_return, array("friends" => $name));
+	  	$json_return = array_merge_recursive($json_return, array("friends" => (string)$name));
 	  }
     }
     
