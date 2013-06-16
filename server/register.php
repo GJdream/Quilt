@@ -6,7 +6,6 @@
 
       $username = $_POST[username];
       $password = sha1($_POST[password]);
-
         // md5 and sha1 are not good hash functions to use {md5 moreso}
         // the system does not seem to support better given functions, however
         // a salt will improve security 
@@ -21,7 +20,7 @@
       $result  = pg_get_result($db);
       
       $success = true;
-
+      
       // pg_send_query and pg_get_result stop the warning 
       // generated from adding a duplicate key being thrown as output to the form
       // the following if statement allows us to deal with the result as we wish
@@ -31,6 +30,35 @@
           // redirect back to register screen with suitable information
           $success = false;
         }
+      
+      // setting the default user picture
+      $fd = fopen("../Mock-Ups/DefaultUserPicture.png", "w");
+      $picture = fread($fd);
+      $picturesize = filesize("../Mock-Ups/DefaultUserPicture.png");
+      fclose($fd);
+
+      $query   = "SELECT user_picture FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $lo_id   = pg_fetch_result($result, 0);
+      
+      pg_query($db, "begin");
+      
+      if($oid === NULL)
+        $lo_id = pg_lo_create();
+
+      $lo_fp   = pg_lo_open($lo_id, "w");
+      $byteswritten = pg_lo_write($lo_fp, $picture);
+      $success = $success && ($byteswritten >= $picturesize);
+      pg_lo_close($lo_fp);
+      pg_query($db, "commit");
+
+      $query   = "UPDATE \"Users\" " .
+                 "SET user_picture = '$lo_id', picture_size = '$picturesize' " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $update  = pg_fetch_all($result);
+      $success = $success && ($update == NULL);
       
       $json_return = array_merge($json_return, array("account_ready" => $success));
     }

@@ -24,6 +24,7 @@
 		2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
+		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
 		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
@@ -78,6 +79,7 @@
 		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		64279590176E1483008A0C44 /* QuiltTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuiltTexture.png; sourceTree = "<group>"; };
 		64B250EA176DE9F300E08BA3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		79BEAD311754FCAC0056DFBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				64279590176E1483008A0C44 /* QuiltTexture.png */,
 				64B250EA176DE9F300E08BA3 /* arrow.png */,
 				2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */,
 				2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */,
@@ -317,6 +320,7 @@
 				2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */,
 				2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */,
 				64B250EB176DE9F300E08BA3 /* arrow.png in Resources */,
+				64279591176E1483008A0C44 /* QuiltTexture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
