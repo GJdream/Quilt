@@ -48,6 +48,8 @@
 {
     [super viewDidLoad];
     self.urlInput.text = self.url;
+    [self.label1 setHidden:YES];
+    [self.label2 setHidden:YES];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,6 +62,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)infoButtonClicked:(id)sender
+{
+    [self.label1 setHidden:!(self.label1.isHidden)];
+    [self.label2 setHidden:!(self.label2.isHidden)];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

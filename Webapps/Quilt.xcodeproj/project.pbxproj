@@ -19,6 +19,9 @@
 		2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBBC176B5FBF0011DA3D /* Friend.m */; };
 		2EB5C3341760CDAC0084BCD7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB5C3321760CDAC0084BCD7 /* WebViewController.m */; };
 		2EC21DC4176A120000366098 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC21DC3176A120000366098 /* FriendsViewController.m */; };
+		2EDC2996176DD09B00F0C6B6 /* Quilt_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */; };
+		2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */; };
+		2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */; };
 		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
@@ -67,6 +70,9 @@
 		2EB5C3321760CDAC0084BCD7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		2EC21DC2176A120000366098 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		2EC21DC3176A120000366098 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_blue.png; sourceTree = "<group>"; };
+		2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_blue_trans.png; sourceTree = "<group>"; };
+		2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_trans_mini.png; sourceTree = "<group>"; };
 		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
@@ -223,6 +229,9 @@
 		79BEAD311754FCAC0056DFBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */,
+				2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */,
+				2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */,
 				7910521717673D2900CC4555 /* Quilt-Info.plist */,
 				2E6CAD44176B9679006138D6 /* Quilt72.png */,
 				79BEAD331754FCAC0056DFBD /* InfoPlist.strings */,
@@ -296,6 +305,9 @@
 				2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */,
 				2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */,
 				2E6CAD45176B9679006138D6 /* Quilt72.png in Resources */,
+				2EDC2996176DD09B00F0C6B6 /* Quilt_blue.png in Resources */,
+				2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */,
+				2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
