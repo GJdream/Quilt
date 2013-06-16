@@ -9,7 +9,7 @@
 #import "ShareViewController.h"
 #import "FriendsViewController.h"
 #import "NetworkClient.h"
-#import "BookmarkDataController.h";
+#import "BookmarkDataController.h"
 
 @interface ShareViewController ()
 
