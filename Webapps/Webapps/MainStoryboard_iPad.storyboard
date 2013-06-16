@@ -958,7 +958,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHb-Qg-5o9">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="searchBar" destination="Rqk-PD-a7t" id="Xou-E0-1RQ"/>
                                     <segue destination="Ga1-Gr-paT" kind="embed" id="MIp-dG-Jry"/>
                                 </connections>
                             </containerView>
@@ -977,12 +976,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="Rqk-PD-a7t">
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="OJp-oH-vFC" id="Rm0-KD-pPb"/>
-                                </connections>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mss-A7-8PE">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="fTq-Ln-w9e"/>
@@ -996,20 +989,23 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <searchBar contentMode="redraw" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="Boc-Ik-jma">
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tHb-Qg-5o9" firstAttribute="bottom" secondItem="CgV-G9-bvL" secondAttribute="bottom" type="default" id="4FB-V2-6wB"/>
                             <constraint firstAttribute="trailing" secondItem="mss-A7-8PE" secondAttribute="trailing" constant="65" id="Bkx-GI-Cg6"/>
                             <constraint firstItem="mss-A7-8PE" firstAttribute="top" secondItem="CgV-G9-bvL" secondAttribute="top" constant="95" id="Fd3-9E-xU2"/>
-                            <constraint firstItem="Rqk-PD-a7t" firstAttribute="trailing" secondItem="CgV-G9-bvL" secondAttribute="trailing" type="default" id="JNA-0f-7gb"/>
+                            <constraint firstItem="Boc-Ik-jma" firstAttribute="leading" secondItem="CgV-G9-bvL" secondAttribute="leading" type="default" id="Y42-Qo-1xj"/>
+                            <constraint firstItem="Boc-Ik-jma" firstAttribute="bottom" secondItem="tHb-Qg-5o9" secondAttribute="top" type="default" id="YNb-eu-rmk"/>
                             <constraint firstItem="tHb-Qg-5o9" firstAttribute="trailing" secondItem="CgV-G9-bvL" secondAttribute="trailing" type="default" id="Zcl-eS-67K"/>
-                            <constraint firstItem="Rqk-PD-a7t" firstAttribute="bottom" secondItem="tHb-Qg-5o9" secondAttribute="top" type="default" id="c6d-o4-8Xx"/>
+                            <constraint firstItem="Boc-Ik-jma" firstAttribute="top" secondItem="CgV-G9-bvL" secondAttribute="top" constant="199" id="geD-T5-gj9"/>
+                            <constraint firstItem="Boc-Ik-jma" firstAttribute="trailing" secondItem="CgV-G9-bvL" secondAttribute="trailing" type="default" id="h7F-4E-7xZ"/>
                             <constraint firstItem="tHb-Qg-5o9" firstAttribute="leading" secondItem="CgV-G9-bvL" secondAttribute="leading" type="default" id="lHy-BM-JGR"/>
                             <constraint firstItem="ePQ-EC-WEv" firstAttribute="top" secondItem="CgV-G9-bvL" secondAttribute="top" constant="33" id="mpr-eH-J87"/>
-                            <constraint firstItem="Rqk-PD-a7t" firstAttribute="top" secondItem="CgV-G9-bvL" secondAttribute="top" constant="199" id="qXA-IE-l3H"/>
                             <constraint firstItem="ePQ-EC-WEv" firstAttribute="leading" secondItem="CgV-G9-bvL" secondAttribute="leading" constant="67" id="uRf-IO-WUg"/>
-                            <constraint firstItem="Rqk-PD-a7t" firstAttribute="leading" secondItem="CgV-G9-bvL" secondAttribute="leading" type="default" id="wa5-Wh-fyy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Share Tag" id="d5D-M6-KaU">
@@ -1091,7 +1087,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4E-5X-zOG"/>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="friendName" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkk-gs-n11">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1611,9 +1607,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
@@ -1652,6 +1645,6 @@
         <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="9Qo-do-rs0"/>
+        <segue reference="fod-x0-re8"/>
     </inferredMetricsTieBreakers>
 </document>

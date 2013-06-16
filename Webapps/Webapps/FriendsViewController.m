@@ -48,7 +48,7 @@ NSArray *tableData;
          [self.collectionView reloadData];
      }];
      */
-    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
+    //self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)didReceiveMemoryWarning
