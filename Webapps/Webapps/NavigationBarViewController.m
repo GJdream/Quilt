@@ -197,7 +197,11 @@ NSArray *tableData;
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-	[[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+	BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = selectedCell.textLabel.text;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
 }
 
 /*
