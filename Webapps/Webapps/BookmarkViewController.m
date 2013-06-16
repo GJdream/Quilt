@@ -59,17 +59,23 @@
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
     cell.titleLabel.text = bookmarkAtIndex.title;
-    
+    /*
     for (NSString *tag in bookmarkAtIndex.tags) {
         [cell.firstTag setTitle:tag forState:UIControlStateNormal];
          cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
-    }
+    }*/
     
+    /*
     if(!cell.imageView)
         cell.imageView = [[UIImageView alloc] init];
     
+    
+    
     cell.imageView.frame = cell.contentView.bounds;
+     
+     
     [cell addSubview:cell.imageView];
+     */
     
     if(bookmarkAtIndex.image == nil)
         [NetworkClient getBookmarkPicture:bookmarkAtIndex];
@@ -79,12 +85,12 @@
     cell.dataBookmark = bookmarkAtIndex;
     bookmarkAtIndex.viewBookmark = cell;
     
-    [cell.layer setMasksToBounds:YES];
-    [cell.layer setCornerRadius:15];
-    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
-    cell.layer.shouldRasterize = YES;
-    cell.layer.opaque = YES;
-    cell.backgroundColor = [UIColor whiteColor];
+    [cell.imageView.layer setMasksToBounds:YES];
+    [cell.imageView.layer setCornerRadius:15];
+    [cell.imageView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.imageView.layer.shouldRasterize = YES;
+    cell.imageView.layer.opaque = YES;
+    cell.imageView.backgroundColor = [UIColor whiteColor];
     
     //for loop through tags and append to NSString for text 
     

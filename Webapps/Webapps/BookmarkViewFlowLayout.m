@@ -32,7 +32,7 @@
 
 - (void)setup
 {
-    self.itemSize = CGSizeMake(150, 150);
+    self.itemSize = CGSizeMake(150, 170);
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
 }
