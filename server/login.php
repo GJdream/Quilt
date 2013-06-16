@@ -47,6 +47,6 @@
       session_unset();
       session_destroy();
       
-      echo json_encode(array("logout" => true));
+      $json_return = array_merge($json_return, array("login" => $loggedin));
     }
 ?>
