@@ -8,7 +8,7 @@
         <scene sceneID="QNC-gD-rJe">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="Rjb-i9-vBv" customClass="LoginViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="20" sectionFooterHeight="10" id="Loa-5z-V1Z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="100" sectionFooterHeight="10" id="Loa-5z-V1Z">
                         <rect key="frame" x="0.0" y="20" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -16,11 +16,11 @@
                         <sections>
                             <tableViewSection id="B2X-dm-byL">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="500" id="5qp-mD-eYH">
-                                        <rect key="frame" x="0.0" y="40" width="768" height="501"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="350" id="5qp-mD-eYH">
+                                        <rect key="frame" x="0.0" y="120" width="768" height="351"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="45" y="1" width="678" height="499"/>
+                                            <rect key="frame" x="45" y="1" width="678" height="349"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Quilt_blue_trans.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-YG-XeA">
@@ -34,12 +34,12 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Qg6-YG-XeA" firstAttribute="top" secondItem="5qp-mD-eYH" secondAttribute="top" constant="21" id="8lo-L7-QKk"/>
                                             <constraint firstItem="Qg6-YG-XeA" firstAttribute="centerX" secondItem="5qp-mD-eYH" secondAttribute="centerX" type="default" id="QFc-w5-kMa"/>
+                                            <constraint firstItem="Qg6-YG-XeA" firstAttribute="centerY" secondItem="5qp-mD-eYH" secondAttribute="centerY" type="default" id="RG6-zo-Qrh"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TBb-ac-ntS">
-                                        <rect key="frame" x="0.0" y="541" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="471" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -62,7 +62,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QYW-O8-uWx">
-                                        <rect key="frame" x="0.0" y="585" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="515" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -85,7 +85,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GlW-qp-jhw">
-                                        <rect key="frame" x="0.0" y="629" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="559" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -93,8 +93,8 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="loginButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6x6-aL-4H8">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="197" id="KnR-Ca-wzv"/>
                                                         <constraint firstAttribute="height" constant="29" id="dNk-lT-LYz"/>
+                                                        <constraint firstAttribute="width" constant="200" id="uTs-Wv-8Yr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="Login">
@@ -113,12 +113,12 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="6x6-aL-4H8" firstAttribute="centerX" secondItem="GlW-qp-jhw" secondAttribute="centerX" type="default" id="AVW-hM-WB1"/>
                                             <constraint firstItem="6x6-aL-4H8" firstAttribute="top" secondItem="GlW-qp-jhw" secondAttribute="top" constant="7" id="fBA-ot-fEX"/>
-                                            <constraint firstItem="6x6-aL-4H8" firstAttribute="centerX" secondItem="GlW-qp-jhw" secondAttribute="centerX" type="default" id="wYL-Ch-5Cz"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="673" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -759,18 +759,30 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="c7K-RN-F8X">
+                                <items>
+                                    <barButtonItem title="&lt;" id="dkM-Pt-Cij"/>
+                                    <barButtonItem title=">" id="2Hu-AG-cxb"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="rxj-Gf-FIm"/>
+                                    <barButtonItem title="Item" systemItem="refresh" id="exG-JD-TNH"/>
+                                    <barButtonItem systemItem="stop" id="T8k-wB-khO"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="c7K-RN-F8X" firstAttribute="top" secondItem="P0r-aG-1vy" secondAttribute="bottom" type="default" id="Fti-ld-Rey"/>
+                            <constraint firstItem="c7K-RN-F8X" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="TbX-zE-Pj2"/>
                             <constraint firstItem="P0r-aG-1vy" firstAttribute="trailing" secondItem="Lcx-a7-0WB" secondAttribute="trailing" type="default" id="YrV-S4-yKR"/>
-                            <constraint firstItem="P0r-aG-1vy" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="gig-iF-xAl"/>
-                            <constraint firstItem="P0r-aG-1vy" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="kHq-XA-JRY"/>
+                            <constraint firstItem="c7K-RN-F8X" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="guc-Vh-kgQ"/>
                             <constraint firstItem="P0r-aG-1vy" firstAttribute="leading" secondItem="Lcx-a7-0WB" secondAttribute="leading" type="default" id="n9a-13-krW"/>
+                            <constraint firstItem="P0r-aG-1vy" firstAttribute="top" secondItem="Lcx-a7-0WB" secondAttribute="top" type="default" id="rel-FI-BAh"/>
+                            <constraint firstItem="c7K-RN-F8X" firstAttribute="bottom" secondItem="Lcx-a7-0WB" secondAttribute="bottom" type="default" id="yWi-Sa-C9h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="McD-Wq-ghX">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="&lt;Enter URL>" minimumFontSize="17" id="Tre-Rs-Y4d">
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter URL" minimumFontSize="17" clearButtonMode="whileEditing" id="Tre-Rs-Y4d">
                             <rect key="frame" x="7" y="7" width="641" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -789,7 +801,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBookmarkButton" destination="m8v-bc-vcp" id="IL6-Aq-QVT"/>
+                        <outlet property="backButton" destination="dkM-Pt-Cij" id="Mps-nl-ZZj"/>
+                        <outlet property="forwardButton" destination="2Hu-AG-cxb" id="twY-GW-BX4"/>
+                        <outlet property="reloadButton" destination="exG-JD-TNH" id="w2M-Jt-ty4"/>
                         <outlet property="searchBar" destination="Tre-Rs-Y4d" id="ZA8-69-jXD"/>
+                        <outlet property="stopButton" destination="T8k-wB-khO" id="KFs-oh-c9B"/>
                         <outlet property="viewWeb" destination="P0r-aG-1vy" id="ADP-bu-2Jb"/>
                     </connections>
                 </viewController>
@@ -1448,9 +1464,6 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="menuButtonClicked:"/>
-            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
@@ -1531,9 +1544,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
@@ -1550,7 +1560,11 @@
                 <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="action" name="search"/>
                 <relationship kind="outlet" name="addBookmarkButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="viewWeb" candidateClass="UIWebView"/>
             </relationships>
         </class>

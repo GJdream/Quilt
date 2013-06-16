@@ -48,13 +48,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     NSString *fullURL = self.url;
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [viewWeb loadRequest:requestObj];
     viewWeb.scalesPageToFit = YES;
     searchBar.text = fullURL;
+    viewWeb.delegate = self;
+}
+
+- (void)reload
+{
+    [self.viewWeb reload];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -66,6 +71,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    searchBar.text = [request.mainDocumentURL absoluteString];
+    return YES;
 }
 
 - (IBAction)done:(UIStoryboardSegue *)segue
