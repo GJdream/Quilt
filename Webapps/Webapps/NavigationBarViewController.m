@@ -10,6 +10,8 @@
 #import "NDTrie.h"
 #import "BookmarkDataController.h"
 #import "BookmarkViewController.h"
+#import "Account.h"
+
 
 @implementation NavigationBarViewController
 
@@ -104,6 +106,8 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        cell.indentationWidth = 10;
         
         UIImage *image = [UIImage imageNamed:@"arrow.png"] ;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -116,6 +120,8 @@ NSArray *tableData;
         [button addTarget:self action:@selector(arrowButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor = [UIColor clearColor];
         cell.accessoryView = button;
+        
+        
 
                 
     }
@@ -142,13 +148,13 @@ NSArray *tableData;
     if (cellNum < NUMBER_OF_STATIC_CELLS)
     {
         if (cellNum == 0) 
-            customTableCellHeight = 107;
+            customTableCellHeight = 160;
         if (cellNum == 1)
             customTableCellHeight = 44;
         if (cellNum == 2)
             customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 60;
+            customTableCellHeight = 70;
     }
     return customTableCellHeight;
 }
@@ -176,6 +182,7 @@ NSArray *tableData;
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"logOutSegue" sender:self];
         //Log out server
+        [Account logoutUser];
     }
     
     else {
