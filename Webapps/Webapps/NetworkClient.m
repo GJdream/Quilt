@@ -18,7 +18,7 @@
 NSString *session_id;
 
 @implementation NetworkClient
-NSString *url= @"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
+NSString *url=@"https://www.doc.ic.ac.uk/~rj1411/server/listen.php";
 NSString *loginCookie;
 NSUInteger lastUpdatedTime = 0;
 NSString *boundary;
@@ -215,28 +215,6 @@ NSString *boundary;
                            [NetworkController loginComplete:data LoginView:lvc];
                        });
 
-        if (error != nil)
-            NSLog(@"Connection failed! Error - %@ %@",
-                  [error localizedDescription],
-                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    }];
-}
-
-+(void)logoutUser:(Account*)account
-{
-    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
-                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"logout_user", nil]
-                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
-    
-    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-        //NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
-        //loginCookie = NULL;
-        
-        dispatch_async(dispatch_get_main_queue(),
-                       ^(void){
-                           [NetworkController logoutComplete:data];
-                       });
-        
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],
