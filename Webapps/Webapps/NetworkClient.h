@@ -25,6 +25,7 @@
 +(void)shareTag:(NSString*)tag WithFriends:(NSSet*)users;
 +(void)deleteBookmark:(UIBookmark*)bookmark;
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
++(void)logoutUser:(Account*)logoutAccount;
 +(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc;
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;

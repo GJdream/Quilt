@@ -41,6 +41,19 @@
     }
 }
 
++(void)logoutComplete:(NSData*)data
+{
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL success = [(NSNumber*)[json valueForKey:@"logout"] boolValue];
+    
+    if(!success)
+    {
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        [[[UIAlertView alloc] initWithTitle:@"Logout error" message:@"Logout unsuccessful" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
+    }
+}
+
 +(void)changePasswordComplete:(NSData*)data AccountViewController:(AccountViewController*)avc
 {
     NSError* error;
