@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -906,7 +906,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="js1-4h-9Eo" firstAttribute="top" secondItem="Cbr-ZY-EfJ" secondAttribute="top" constant="11" id="7VT-cu-Meo"/>
+                                    <constraint firstItem="js1-4h-9Eo" firstAttribute="top" secondItem="Cbr-ZY-EfJ" secondAttribute="top" constant="11" id="AHx-Vz-xHV"/>
                                     <constraint firstItem="js1-4h-9Eo" firstAttribute="centerX" secondItem="Cbr-ZY-EfJ" secondAttribute="centerX" type="default" id="YXH-Pe-ZSz"/>
                                 </constraints>
                             </tableViewCell>
@@ -1165,11 +1165,11 @@
                                             <rect key="frame" x="45" y="0.0" width="678" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="accPicture" image="Quilt144.png" translatesAutoresizingMaskIntoConstraints="NO" id="4GD-0q-Fh4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="accPicture" translatesAutoresizingMaskIntoConstraints="NO" id="4GD-0q-Fh4">
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="WLA-eh-8Cc"/>
-                                                        <constraint firstAttribute="width" constant="150" id="xL7-ze-KBi"/>
+                                                        <constraint firstAttribute="height" constant="200" id="YSZ-bY-SpA"/>
+                                                        <constraint firstAttribute="width" constant="200" id="s6g-X5-VHN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="changePicture" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgv-XN-StP">
@@ -1190,10 +1190,10 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZI-xl-hb7">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="170" id="9FT-gk-SFZ"/>
                                                         <constraint firstAttribute="height" constant="29" id="f2W-VN-fMo"/>
+                                                        <constraint firstAttribute="width" constant="156" id="kQW-Rc-QMF"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <state key="normal" title="Take photo with camera">
                                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1210,13 +1210,13 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="2ZI-xl-hb7" firstAttribute="trailing" secondItem="Sgv-XN-StP" secondAttribute="trailing" type="default" id="50u-dB-fvV"/>
-                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="centerX" secondItem="HZU-FJ-aXV" secondAttribute="centerX" type="default" id="OX2-uG-NJc"/>
-                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Q4h-7u-2wx"/>
-                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="top" secondItem="2ZI-xl-hb7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lbO-eO-iCN"/>
-                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="top" secondItem="HZU-FJ-aXV" secondAttribute="top" constant="20" type="default" id="phQ-eN-Pms"/>
-                                            <constraint firstItem="2ZI-xl-hb7" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rZL-pe-jlw"/>
-                                            <constraint firstAttribute="bottom" secondItem="Sgv-XN-StP" secondAttribute="bottom" constant="31" id="yTf-Uc-7HJ"/>
+                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="centerX" secondItem="HZU-FJ-aXV" secondAttribute="centerX" type="default" id="1Lz-jG-puO"/>
+                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="top" secondItem="2ZI-xl-hb7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JUH-pe-S6h"/>
+                                            <constraint firstItem="2ZI-xl-hb7" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="VQh-ZK-kt5"/>
+                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="mYq-Jh-Fce"/>
+                                            <constraint firstItem="Sgv-XN-StP" firstAttribute="trailing" secondItem="2ZI-xl-hb7" secondAttribute="trailing" type="default" id="mqK-nc-Fhe"/>
+                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="bottom" secondItem="Sgv-XN-StP" secondAttribute="bottom" type="default" id="r6e-LU-DD4"/>
+                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="top" secondItem="HZU-FJ-aXV" secondAttribute="top" constant="-1" id="zhM-Nk-tRg"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DAP-YB-cTo">
@@ -1373,7 +1373,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="yyR-Dq-LtK">
-                                        <rect key="frame" x="0.0" y="560" width="768" height="66"/>
+                                        <rect key="frame" x="0.0" y="560" width="768" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="64"/>
@@ -1468,7 +1468,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Quilt144.png" width="144" height="144"/>
         <image name="Quilt72.png" width="72" height="72"/>
         <image name="Quilt_blue_trans.png" width="620" height="417"/>
         <image name="Quilt_trans_mini.png" width="200" height="134"/>
@@ -1633,6 +1632,6 @@
         <segue reference="xwG-He-zBw"/>
         <segue reference="GNh-Ti-tqT"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="idd-b1-BD3"/>
+        <segue reference="9Qo-do-rs0"/>
     </inferredMetricsTieBreakers>
 </document>

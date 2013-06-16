@@ -10,6 +10,7 @@
 #import "NetworkClient.h"
 #import "BookmarkDataController.h"
 
+
 @interface Account ()
     @property (readwrite) NSString *username;
     @property (readwrite) NSString *password;
@@ -30,7 +31,10 @@ Account *currentAccount;
 + (void)logoutUser
 {
     [NetworkClient logoutUser:currentAccount];
-    [[BookmarkDataController instantiate] emptyBookmarkArray];
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    [bookmarkDC.bookmarksArray removeAllObjects];
+    [bookmarkDC emptyBookmarkArray];
+    [bookmarkDC emptyTagTrie];
     currentAccount = nil;
 }
 

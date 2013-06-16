@@ -141,7 +141,7 @@ NSArray *tableData;
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger cellNum = indexPath.row;
-    CGFloat customTableCellHeight = 40.0;
+    CGFloat customTableCellHeight = 44.0;
     
     if (cellNum < NUMBER_OF_STATIC_CELLS)
     {
@@ -152,7 +152,7 @@ NSArray *tableData;
         if (cellNum == 2)
             customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 60;
+            customTableCellHeight = 44;
     }
     return customTableCellHeight;
 }
