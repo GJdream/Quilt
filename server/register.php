@@ -32,7 +32,7 @@
         }
       
       // setting the default user picture
-      $fd = fopen("../Mock-Ups/DefaultUserPicture.png", "w");
+      $fd = fopen("../Mock-Ups/DefaultUserPicture.png", "r");
       $picture = fread($fd);
       $picturesize = filesize("../Mock-Ups/DefaultUserPicture.png");
       fclose($fd);
