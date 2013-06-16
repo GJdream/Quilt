@@ -335,6 +335,7 @@ NSString *boundary;
     UIImageWriteToSavedPhotosAlbum(bookmark.image, nil, nil, nil);
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],
@@ -342,9 +343,26 @@ NSString *boundary;
         }];
 }
 
-+(void)shareTag:(NSString*)tag With:(NSSet*)users
++(void)shareTag:(NSString*)tag WithFriends:(NSSet*)users
 {
+    NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
+                                      initWithObjects: [[NSArray alloc] initWithObjects:@"share_tag", tag,nil]
+                                      forKeys:[[NSArray alloc] initWithObjects:@"action", @"tag",nil]];
     
+    NSArray *usersArray = users.allObjects;
+    for(NSUInteger i = 0; i < users.count; ++i)
+        [paramDict setObject:usersArray[i] forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:(NSDictionary*)paramDict];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
 }
 
 +(void)deleteBookmark:(UIBookmark*)bookmark

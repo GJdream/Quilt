@@ -26,8 +26,12 @@
 @synthesize viewWeb;
 
 - (IBAction)search {
-    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [searchBar text]]]];
     self.url = [searchBar text];
+    
+    if(!([self.url hasPrefix:@"http://"] || [self.url hasPrefix:@"https://"]))
+        self.url = [[NSString alloc] initWithFormat:@"http://%@", self.url];
+    
+    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: self.url]]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
