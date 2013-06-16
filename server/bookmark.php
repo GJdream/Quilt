@@ -272,7 +272,7 @@
       $user_id = pg_fetch_row($result, 0);
 
       if($username)
-        $json_return = array_marge($json_return, array("get_tag_owner_id" => $user_id))
+        $json_return = array_marge($json_return, array("get_tag_owner_id" => $user_id));
     }
 
   function updateBookmarkPicture()
