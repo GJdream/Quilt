@@ -328,7 +328,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="761" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1603,9 +1603,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xwG-He-zBw"/>
         <segue reference="GNh-Ti-tqT"/>
         <segue reference="oUv-lc-lkf"/>
         <segue reference="MIp-dG-Jry"/>
+        <segue reference="xwG-He-zBw"/>
     </inferredMetricsTieBreakers>
 </document>
