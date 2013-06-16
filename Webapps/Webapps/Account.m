@@ -26,6 +26,12 @@ Account *currentAccount;
     [NetworkClient loginUser:newAccount LoginView:lvc];
 }
 
++ (void)logoutUser
+{
+    //[NetworkClient logoutUser:currentAccount];
+    currentAccount = nil;
+}
+
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc
 {
     [NetworkClient createAccount:[[Account alloc] initWithUserName:username Password:password] RegisterVC:rvc];
