@@ -166,7 +166,7 @@ static BookmarkViewController *staticVC = nil;
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
 }
 
-- (void)showAll
+- (void)emptyBookmarkArray
 {
     NSUInteger prevCount = self.bookmarkDisplayArray.count;
     [self.updatedBookmarks removeAllObjects];
@@ -179,7 +179,11 @@ static BookmarkViewController *staticVC = nil;
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:self.updatedBookmarks];
     
     [self.updatedBookmarks removeAllObjects];
-    
+}
+
+- (void)showAll
+{
+    [self emptyBookmarkArray];
     self.bookmarkDisplayArray = self.bookmarksArray;
     
     for (NSUInteger i = 0; i < [self countOfBookmarks]; ++i) {
@@ -191,18 +195,7 @@ static BookmarkViewController *staticVC = nil;
 
 - (void)showTag:(NSString*)tag
 {
-    NSUInteger prevCount = self.bookmarkDisplayArray.count;
-    [self.updatedBookmarks removeAllObjects];
-    for (NSUInteger i = 0; i < prevCount; ++i) {
-        [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-    }
-    
-    self.bookmarkDisplayArray = nil;
-    
-    [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:self.updatedBookmarks];
-    
-    [self.updatedBookmarks removeAllObjects];
-    
+    [self emptyBookmarkArray];
     self.bookmarkDisplayArray = [[[self.tagToBookmark objectForKey:tag] allObjects] mutableCopy];
     
     for (NSUInteger i = 0; i < self.bookmarkDisplayArray.count; ++i) {

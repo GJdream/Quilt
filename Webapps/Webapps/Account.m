@@ -8,6 +8,7 @@
 
 #import "Account.h"
 #import "NetworkClient.h"
+#import "BookmarkDataController.h"
 
 @interface Account ()
     @property (readwrite) NSString *username;
@@ -28,7 +29,8 @@ Account *currentAccount;
 
 + (void)logoutUser
 {
-    //[NetworkClient logoutUser:currentAccount];
+    [NetworkClient logoutUser:currentAccount];
+    [[BookmarkDataController instantiate] emptyBookmarkArray];
     currentAccount = nil;
 }
 

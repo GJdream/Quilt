@@ -36,6 +36,8 @@
 - (void)updateOnBookmarkInsertion;
 - (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath;
 
+- (void)emptyBookmarkArray;
+
 - (void)showTag:(NSString*)tag;
 - (void)showAll;
 
