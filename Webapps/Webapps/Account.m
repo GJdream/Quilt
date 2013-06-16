@@ -29,6 +29,7 @@ Account *currentAccount;
 + (void)logoutUser
 {
     [NetworkClient logoutUser:currentAccount];
+    currentAccount = nil;
 }
 
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc
