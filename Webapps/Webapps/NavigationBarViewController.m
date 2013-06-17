@@ -104,8 +104,9 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
-        //[Account getTagOwner];
-        cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        cell.detailTextLabel.text = @"";
+        [Account getTagOwner:cell];
+        //cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
         cell.indentationWidth = 10;
         
         UIImage *image = [UIImage imageNamed:@"arrow.png"] ;

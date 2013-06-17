@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "AccountViewController.h"
+#import "NavigationBarViewController.h"
 
 @interface Account : NSObject
 
@@ -30,6 +31,6 @@
 + (void)changePhoto:(UIImage *)image AccountView:(AccountViewController *)avc;
 - (void)setPhoto:(AccountViewController *)avc;
 
-+ (NSString *)getTagOwner;
++ (void)getTagOwner:(UITableViewCell *)cell;
 
 @end

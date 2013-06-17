@@ -107,9 +107,9 @@ Account *currentAccount;
     return self;
 }
 
-+ (NSString *)getTagOwner
++ (void)getTagOwner:(UITableViewCell *)cell
 {
-    //[NetworkClient getTagOwner];
+    [NetworkClient getTagOwner:cell];
 }
 
 @end

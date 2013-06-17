@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1460,160 +1460,6 @@
         <image name="Quilt_blue_trans.png" width="620" height="417"/>
         <image name="Quilt_trans_mini.png" width="200" height="134"/>
     </resources>
-    <classes>
-        <class className="AccountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addFriend:"/>
-                <relationship kind="action" name="saveChangesClicked:"/>
-                <relationship kind="action" name="takeCameraPhotoClicked:"/>
-                <relationship kind="action" name="uploadPictureClicked:"/>
-                <relationship kind="outlet" name="addFriendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addFriendUsername" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="friendAddedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="friendUsername" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="takeCameraPhoto" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="uploadPicture" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="AddBookmarkViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="infoButtonClicked:"/>
-                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="label2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tagsInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titleInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="urlInput" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="BookmarkViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-        </class>
-        <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
-        </class>
-        <class className="Friend" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Friend.h"/>
-            <relationships>
-                <relationship kind="outlet" name="friendName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="friendPhoto" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="FriendsViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-        </class>
-        <class className="FriendsViewFlowLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewFlowLayout.h"/>
-        </class>
-        <class className="IIViewDeckController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginClicked:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NavigationBarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavigationBarViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="RegisterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="registerClicked:"/>
-                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="validUsernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ShareViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShareViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="shareButtonClick:"/>
-                <relationship kind="outlet" name="friendViewContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="UIBookmark" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteClicked:"/>
-                <relationship kind="action" name="tagClicked:"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-        <class className="ViewDeckController" superclassName="IIViewDeckController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewDeckController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bookmarkView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="WebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back"/>
-                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="action" name="forward"/>
-                <relationship kind="action" name="reload"/>
-                <relationship kind="action" name="search"/>
-                <relationship kind="action" name="stop"/>
-                <relationship kind="outlet" name="addBookmarkButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="viewWeb" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
