@@ -42,6 +42,6 @@
 - (IBAction)uploadPictureClicked:(id)sender;
 - (IBAction)saveChangesClicked:(id)sender;
 
-- (IBAction)addFriend:(id)sender AccountVC:(AccountViewController *)avc;
+- (IBAction)addFriend:(id)sender;
 
 @end
