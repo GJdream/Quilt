@@ -109,7 +109,7 @@ NSArray *tableData;
         //cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
         cell.indentationWidth = 10;
         
-        UIImage *image = [UIImage imageNamed:@"arrow.png"] ;
+        UIImage *image = [UIImage imageNamed:@"share_arrow.png"] ;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
         button.frame = frame;	// match the button's size with the image size

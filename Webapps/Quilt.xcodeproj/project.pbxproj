@@ -25,6 +25,7 @@
 		2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
+		6497E6EE176F3F1C006696CA /* share_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497E6ED176F3F1C006696CA /* share_arrow.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
 		64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */; };
 		64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */; };
@@ -93,6 +94,7 @@
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		64279590176E1483008A0C44 /* QuiltTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuiltTexture.png; sourceTree = "<group>"; };
+		6497E6ED176F3F1C006696CA /* share_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_arrow.png; sourceTree = "<group>"; };
 		64B250EA176DE9F300E08BA3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		64EFE2F5176F22CB001AD248 /* FriendsViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewFlowLayout.h; sourceTree = "<group>"; };
 		64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		79BEAD311754FCAC0056DFBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6497E6ED176F3F1C006696CA /* share_arrow.png */,
 				2EADAA54176F175500286628 /* DefaultUserPicture.png */,
 				798C41B9176E7514003215F3 /* Gray.png */,
 				798C41BA176E7515003215F3 /* green.png */,
@@ -384,6 +387,7 @@
 				2EADAA55176F175500286628 /* DefaultUserPicture.png in Resources */,
 				64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */,
 				64EFE2FB176F2B37001AD248 /* delete_button.png in Resources */,
+				6497E6EE176F3F1C006696CA /* share_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
