@@ -269,12 +269,12 @@
       $query    = "SELECT owner_id FROM \"Tags\" " .
                   "WHERE tag_id = '$tag_id'";
       $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
+      $user_id  = pg_fetch_all($result);
       
       $query    = "SELECT user_name FROM \"Users\" " .
                   "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
-      $username = pg_fetch_result($result, 0);
+      $username = pg_fetch_all($result);
 
       if($username)
         $json_return = array_marge($json_return, array("get_tag_owner_id" => $username));
