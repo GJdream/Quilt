@@ -140,5 +140,7 @@
 
 - (IBAction)pinchDetected:(id)sender {
 //    self.pinchGestureRecogniser.
+    CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
+//    UIBookmark *bookmark = [self.collectionView.collectionViewLayout indexPathForPosition:point];
 }
 @end

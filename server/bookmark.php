@@ -271,6 +271,9 @@
       $result   = pg_query($db, $query);
       $user_id  = pg_fetch_all($result);
       
+      echo "Returned User_ID:: \n";
+      echo $user_id;
+      
       $query    = "SELECT user_name FROM \"Users\" " .
                   "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
