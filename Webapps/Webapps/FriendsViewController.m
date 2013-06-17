@@ -81,21 +81,33 @@ NSArray *tableData;
         [NetworkClient getFriendPhoto:friendAtIndex];
     else
         cell.friendPhoto.image = friendAtIndex.image;
-
+    
+    CGRect frame = cell.friendPhoto.frame;
+    
+    cell.friendPhoto.frame = CGRectMake(5.0f, 5.0f, frame.size.width, frame.size.height);
+    
     cell.friendName.text = friendAtIndex.name;
-    cell.friendPhoto.frame = cell.contentView.bounds;
-    [cell addSubview:cell.friendPhoto];
+    //cell.friendPhoto.frame = cell.contentView.bounds;
+    //[cell addSubview:cell.friendPhoto];
     
-    [cell.layer setMasksToBounds:YES];
-    [cell.layer setCornerRadius:15];
-    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
-    cell.layer.shouldRasterize = YES;
-    cell.layer.opaque = YES;
-    //cell.backgroundColor = [UIColor whiteColor];
-    
+    [cell.friendPhoto.layer setMasksToBounds:YES];
+    [cell.friendPhoto.layer setCornerRadius:15];
+    [cell.friendPhoto.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.friendPhoto.layer.shouldRasterize = YES;
+    cell.friendPhoto.layer.opaque = YES;
+    cell.friendPhoto.backgroundColor = [UIColor whiteColor];
+
     if (self.shareEnabled) {
-        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Gray.png"]];
+        cell.selectedBackgroundView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+        
+        [cell.selectedBackgroundView.layer setMasksToBounds:YES];
+        [cell.selectedBackgroundView.layer setCornerRadius:15];
+        [cell.selectedBackgroundView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+        cell.selectedBackgroundView.layer.shouldRasterize = YES;
+        cell.selectedBackgroundView.layer.opaque = YES;
+        cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
     }
+    
     
     
     return cell;
@@ -110,6 +122,7 @@ NSArray *tableData;
         overlay.alpha = 0.5f;
         [friendAtIndex addSubview:overlay];
         [self.selectedItems addObject:friendAtIndex];
+
     }
 }
 
@@ -123,3 +136,4 @@ NSArray *tableData;
 }
 
 @end
+;
