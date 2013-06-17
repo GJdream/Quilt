@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -978,7 +978,7 @@
                     <navigationItem key="navigationItem" title="Select Friends To Share With" id="d5D-M6-KaU">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="zOv-go-pD4">
                             <connections>
-                                <segue destination="sbq-hn-L3T" kind="modal" identifier="shareSegue" modalTransitionStyle="flipHorizontal" id="HO3-Ri-1hV"/>
+                                <segue destination="sbq-hn-L3T" kind="modal" modalTransitionStyle="flipHorizontal" id="HO3-Ri-1hV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Share" id="zJL-r5-PU1">
@@ -992,7 +992,7 @@
                         <outlet property="friendViewContainer" destination="tHb-Qg-5o9" id="Qsf-R2-tCB"/>
                         <outlet property="searchBar" destination="Boc-Ik-jma" id="j8Y-fN-9oY"/>
                         <outlet property="searchDisplayController" destination="g5P-d7-t5q" id="6b4-Q7-D6G"/>
-                        <segue destination="sbq-hn-L3T" kind="modal" id="wFO-p3-259"/>
+                        <segue destination="YF0-55-1ip" kind="modal" identifier="shareSegue" id="El8-jk-MuS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1651,5 +1651,7 @@
         <segue reference="xwG-He-zBw"/>
         <segue reference="9Qo-do-rs0"/>
         <segue reference="MIp-dG-Jry"/>
+        <segue reference="HO3-Ri-1hV"/>
+        <segue reference="El8-jk-MuS"/>
     </inferredMetricsTieBreakers>
 </document>
