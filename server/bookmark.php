@@ -264,15 +264,20 @@
       global $db;
       global $json_return;
 
-      $tag_id = $_GET[tag_id];
+      $tag_id   = $_GET[tag_id];
 
-      $query   = "SELECT owner_id FROM \"Tags\" " .
-                 "WHERE tag_id = '$tag_id'";
-      $result  = pg_query($db, $query);
-      $user_id = pg_fetch_row($result, 0);
+      $query    = "SELECT owner_id FROM \"Tags\" " .
+                  "WHERE tag_id = '$tag_id'";
+      $result   = pg_query($db, $query);
+      $user_id  = pg_fetch_all($result);
+      
+      $query    = "SELECT user_name FROM \"Users\" " .
+                  "WHERE user_id = '$user_id'";
+      $result   = pg_query($db, $query);
+      $username = pg_fetch_all($result);
 
       if($username)
-        $json_return = array_marge($json_return, array("get_tag_owner_id" => $user_id));
+        $json_return = array_marge($json_return, array("get_tag_owner_id" => $username));
     }
 
   function updateBookmarkPicture()

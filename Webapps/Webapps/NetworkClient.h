@@ -14,6 +14,7 @@
 @class LoginViewController;
 @class AccountViewController;
 @class Friend;
+@class NavigationBarViewController;
 
 @interface NetworkClient : NSObject
 
@@ -37,4 +38,5 @@
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;
 
++(void)getTagOwner:(UITableViewCell *)cell;
 @end
