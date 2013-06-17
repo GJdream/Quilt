@@ -23,6 +23,7 @@
 
 + (void)setViewController:(BookmarkViewController*)newVC;
 + (BookmarkDataController*)instantiate;
++ (void)deleteInstance;
 
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;
