@@ -109,7 +109,6 @@
 
       $postid  = $_POST[post_id];
       $owner   = $_SESSION[user_id];
-      $link    = $_POST[url];
       $pheight = $_POST[p_height];
       $pwidth  = $_POST[p_width];
 
@@ -120,7 +119,7 @@
       $owner_id  = pg_fetch_result($result, 0);
 
       $query     = "UPDATE \"Bookmarks\" " .
-                   "SET p_height = 'pheight', p_width = 'pwidth' " .
+                   "SET p_height = '$pheight', p_width = '$pwidth' " .
                    "WHERE owner_id = '$owner_id' AND post_id = '$postid'";
       $result    = pg_query($db, $query);
       $success   = pg_fetch_all($result);
