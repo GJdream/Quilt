@@ -15,6 +15,7 @@
 @interface FriendsDataController ()
 @property NSMutableArray *updatedFriends;
 @property NSMutableArray *watchingMethods;
+@property NSMutableArray *deletedFriends;
 @end
 
 @implementation FriendsDataController
@@ -29,6 +30,7 @@ static FriendsViewController *staticVC = nil;
         _friendsArray = [[NSMutableArray alloc] init];
         _friendsDisplayArray = _friendsArray;
         _updatedFriends = [[NSMutableArray alloc] init];
+        _deletedFriends = [[NSMutableArray alloc] init];
         _watchingMethods = [[NSMutableArray alloc] init];
         _friendsVC = friendsVC;
         _friendTrie = [[NDMutableTrie alloc] init];
@@ -104,6 +106,8 @@ static FriendsViewController *staticVC = nil;
     {
         Friend *friend = [[Friend alloc] initWithUsername:friendName Image:nil];
         [self.friendsArray addObject:friend];
+        if(self.friendsArray != self.friendsDisplayArray)
+            [self.friendsDisplayArray addObject:friend];
         [self.friendTrie addString:friendName];
         [self.friendsDictionary setObject:friend forKey:friendName];
         NSUInteger index = [self.friendsArray indexOfObject:friend];
@@ -117,8 +121,12 @@ static FriendsViewController *staticVC = nil;
     NSUInteger index = [self.friendsArray indexOfObject:friend];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.friendsArray removeObject:friend];
+    if(self.friendsArray != self.friendsDisplayArray)
+        [self.friendsDisplayArray removeObject:friend];
     [self.friendsDictionary removeObjectForKey:friend.name];
     [self.updatedFriends removeObject:indexPath];
+    [self.deletedFriends addObject:indexPath];
+    [self.friendTrie removeObjectForKey:friend.name];
     [NetworkClient removeFriend:friend.name];
 }
 
@@ -132,9 +140,11 @@ static FriendsViewController *staticVC = nil;
         f();
 }
 
-- (void)updateOnFriendDeletion:(NSIndexPath *)indexPath
+- (void)updateOnFriendDeletion
 {
-    // TODO
+    if (self.deletedFriends && self.deletedFriends.count > 0)
+        [self.friendsVC.collectionView deleteItemsAtIndexPaths:(NSArray *)self.deletedFriends];
+    [self.deletedFriends removeAllObjects];
 }
 
 - (void)showFriend:(NSString *)friend

@@ -141,19 +141,6 @@
     if ([[segue identifier] isEqualToString:@"CancelInput"])
         [self.addBookmarkPopover dismissPopoverAnimated:YES];
 }
-/*
-- (IBAction)addBookmarkClick:(id)sender {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    AddBookmarkViewController *addBookmarkViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addBookmarkViewController"];
-    addBookmarkViewController.url = self.url;
-    IIViewDeckController *vdc = self.viewDeckController;
-    [addBookmarkViewController removeFromParentViewController];
-    [vdc addChildViewController:addBookmarkViewController];
-    vdc.topSize = 500;
-    vdc.topController = addBookmarkViewController;
-    [vdc openTopViewAnimated:YES];
-}
-*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

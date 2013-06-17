@@ -470,9 +470,17 @@
                                 <action selector="shareButtonClicked:" destination="fX2-UC-hl8" id="vzR-Bt-s4X"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem enabled="NO" systemItem="trash" id="UcA-hr-I4b"/>
+                        <barButtonItem enabled="NO" systemItem="trash" id="UcA-hr-I4b">
+                            <connections>
+                                <action selector="deleteButtonClicked:" destination="fX2-UC-hl8" id="ay8-aJ-kNB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XK9-d6-3K0"/>
-                        <barButtonItem title="Edit" id="R12-4x-Bzu"/>
+                        <barButtonItem title="Edit" id="R12-4x-Bzu">
+                            <connections>
+                                <action selector="editButtonClicked:" destination="fX2-UC-hl8" id="tQ4-X7-mcC"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Quilt" id="TmH-sn-WmV">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="aXP-rA-zDU">
@@ -1498,8 +1506,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xwG-He-zBw"/>
+        <segue reference="GNh-Ti-tqT"/>
         <segue reference="MIp-dG-Jry"/>
         <segue reference="sZ8-R4-aMQ"/>
-        <segue reference="nbe-SD-eWm"/>
     </inferredMetricsTieBreakers>
 </document>

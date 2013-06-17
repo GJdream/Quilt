@@ -25,6 +25,8 @@
 @property NSUInteger initialPinchHeight;
 @property RFQuiltLayout *layout;
 @property NSIndexPath *pinchIndexPath;
+@property BOOL editEnabled;
+@property NSMutableArray *selectedItems;
 
 @end
 
@@ -56,6 +58,7 @@ UIImageView *ghostView;
     self.layout.direction = UICollectionViewScrollDirectionVertical;
     self.layout.blockPixels = CGSizeMake(180, 200);
     self.layout.delegate = (id)self;
+    self.selectedItems = [[NSMutableArray alloc] init];
 }
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,18 +107,41 @@ UIImageView *ghostView;
     cell.imageView.layer.opaque = YES;
     cell.imageView.backgroundColor = [UIColor whiteColor];
     
-    //for loop through tags and append to NSString for text
-    
     cell.contentView.backgroundColor = [UIColor clearColor];
+    
+    if(!cell.selectedBackgroundView)
+        cell.selectedBackgroundView = [[UIView alloc] init];
+    
+    [cell.selectedBackgroundView.layer setMasksToBounds:YES];
+    [cell.selectedBackgroundView.layer setCornerRadius:15];
+    [cell.selectedBackgroundView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.selectedBackgroundView.layer.shouldRasterize = YES;
+    cell.selectedBackgroundView.layer.opaque = YES;
+    cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIBookmark *bookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
-    NSString *url = bookmark.url;
-    [self performSegueWithIdentifier:@"webSegue" sender:url];
+    UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
+    
+    if(self.editEnabled)
+        [self.selectedItems addObject:bookmarkAtIndex];
+    else
+    {
+        UIBookmark *bookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
+        NSString *url = bookmark.url;
+        [self performSegueWithIdentifier:@"webSegue" sender:url];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
+    
+    if(self.editEnabled)
+        [self.selectedItems removeObject:bookmarkAtIndex];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -222,5 +248,26 @@ UIImageView *ghostView;
     BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
     bookmarkDC.sharingTag = bookmarkDC.bookmarkVC.navigationItem.title;
 	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+}
+
+- (IBAction)editButtonClicked:(id)sender {
+    if (self.editEnabled) {
+        self.editEnabled = NO;
+        self.deleteButton.enabled = NO;
+        self.collectionView.allowsSelection = NO;
+    }
+    else
+    {
+        self.editEnabled = YES;
+        self.deleteButton.enabled = YES;
+        self.collectionView.allowsMultipleSelection = YES;
+        self.collectionView.allowsSelection = YES;
+    }
+}
+
+- (IBAction)deleteButtonClicked:(id)sender {
+    for (UIBookmark *bookmark in self.selectedItems)
+        [[BookmarkDataController instantiate] deleteBookmark:bookmark.viewBookmark];
+    [self.selectedItems removeAllObjects];
 }
 @end

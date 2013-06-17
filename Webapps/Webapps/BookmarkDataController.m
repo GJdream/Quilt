@@ -167,6 +167,7 @@ static BookmarkViewController *staticVC = nil;
 - (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath
 {
     NSArray *indexArray = [[NSArray alloc] initWithObjects:indexPath, nil];
+    NSLog(@"%@", indexArray);
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
     [self.updatedBookmarks removeAllObjects];
 }
