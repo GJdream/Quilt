@@ -29,6 +29,8 @@
 {
     [super awakeFromNib];
     [BookmarkDataController setViewController:self];
+    self.pinchGestureRecogniser.delegate = (id)self;
+    [self.view addGestureRecognizer:self.pinchGestureRecogniser];
 }
 
 - (void)viewDidLoad
@@ -136,4 +138,7 @@
     }
 }
 
+- (IBAction)pinchDetected:(id)sender {
+//    self.pinchGestureRecogniser.
+}
 @end
