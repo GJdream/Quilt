@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -470,7 +470,7 @@
                                 <action selector="shareButtonClicked:" destination="fX2-UC-hl8" id="vzR-Bt-s4X"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem enabled="NO" title="Delete" id="UcA-hr-I4b"/>
+                        <barButtonItem enabled="NO" systemItem="trash" id="UcA-hr-I4b"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XK9-d6-3K0"/>
                         <barButtonItem title="Edit" id="R12-4x-Bzu"/>
                     </toolbarItems>
@@ -781,7 +781,7 @@
                     <navigationItem key="navigationItem" id="McD-Wq-ghX">
                         <nil key="title"/>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www." borderStyle="roundedRect" placeholder="Enter URL" minimumFontSize="17" clearButtonMode="whileEditing" id="Tre-Rs-Y4d">
-                            <rect key="frame" x="7" y="7" width="641" height="30"/>
+                            <rect key="frame" x="63" y="7" width="641" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="URL"/>
@@ -789,7 +789,7 @@
                                 <action selector="search" destination="EX0-HF-PZB" eventType="editingDidEndOnExit" id="QDU-am-rPB"/>
                             </connections>
                         </textField>
-                        <barButtonItem key="rightBarButtonItem" title="Add bookmark" id="m8v-bc-vcp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="m8v-bc-vcp">
                             <connections>
                                 <segue destination="YF0-55-1ip" kind="popover" identifier="addBookmarkSegue" popoverAnchorBarButtonItem="m8v-bc-vcp" id="g07-Ld-fN6">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -917,7 +917,7 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqO-yk-Naa">
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -944,9 +944,18 @@
         <!--Share View Controller - Select Friends To Share With-->
         <scene sceneID="Vpd-fZ-DOY">
             <objects>
+                <searchDisplayController id="g5P-d7-t5q">
+                    <connections>
+                        <outlet property="delegate" destination="OJp-oH-vFC" id="S83-9I-0rh"/>
+                        <outlet property="searchContentsController" destination="OJp-oH-vFC" id="Rag-Qz-nJQ"/>
+                        <outlet property="searchResultsDataSource" destination="OJp-oH-vFC" id="biC-QF-MO9"/>
+                        <outlet property="searchResultsDelegate" destination="OJp-oH-vFC" id="zlr-wj-DcJ"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="shareViewController" id="OJp-oH-vFC" customClass="ShareViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CgV-G9-bvL">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="916"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHb-Qg-5o9">
@@ -970,6 +979,7 @@
                             <constraint firstItem="Boc-Ik-jma" firstAttribute="top" secondItem="CgV-G9-bvL" secondAttribute="top" type="default" id="xXT-lf-Dxz"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Select Friends To Share With" id="d5D-M6-KaU">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="zOv-go-pD4">
                             <connections>
@@ -990,15 +1000,6 @@
                         <segue destination="sbq-hn-L3T" kind="modal" id="sZ8-R4-aMQ"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="g5P-d7-t5q">
-                    <connections>
-                        <outlet property="delegate" destination="OJp-oH-vFC" id="S83-9I-0rh"/>
-                        <outlet property="searchContentsController" destination="OJp-oH-vFC" id="Rag-Qz-nJQ"/>
-                        <outlet property="searchResultsDataSource" destination="OJp-oH-vFC" id="biC-QF-MO9"/>
-                        <outlet property="searchResultsDelegate" destination="OJp-oH-vFC" id="zlr-wj-DcJ"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1254" y="470"/>
         </scene>
@@ -1022,12 +1023,18 @@
         <!--Navigation Controller-->
         <scene sceneID="DDO-2S-lpu">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Sig-g1-QiJ" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="Sig-g1-QiJ" sceneMemberID="viewController">
+                    <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ozi-hY-yXW">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="syD-kM-8jD">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Ga1-Gr-paT" kind="relationship" relationship="rootViewController" id="KIi-Sa-W9L"/>
                     </connections>
@@ -1041,7 +1048,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Ga1-Gr-paT" customClass="FriendsViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="5IU-VD-G1M">
-                        <rect key="frame" x="0.0" y="44" width="768" height="872"/>
+                        <rect key="frame" x="0.0" y="44" width="768" height="784"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewLayout key="collectionViewLayout" id="Ozs-bQ-yM8" customClass="FriendsViewFlowLayout"/>
@@ -1091,6 +1098,19 @@
                             <outlet property="delegate" destination="Ga1-Gr-paT" id="YZo-sE-2bX"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem enabled="NO" systemItem="trash" id="Ncw-1g-67Z">
+                            <connections>
+                                <action selector="deleteFriendsClicked:" destination="Ga1-Gr-paT" id="LPf-lU-5Wx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fBW-15-Ds9"/>
+                        <barButtonItem title="Edit" id="nam-Mf-cyJ">
+                            <connections>
+                                <action selector="editFriendsClicked:" destination="Ga1-Gr-paT" id="Hj2-uk-kwP"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Friends" id="RD5-Pu-7zc">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="ij2-kc-E2q">
                             <connections>
@@ -1099,6 +1119,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
+                    <connections>
+                        <outlet property="deleteFriendsButton" destination="Ncw-1g-67Z" id="f4c-yz-qdW"/>
+                        <outlet property="editFriendsButton" destination="nam-Mf-cyJ" id="HA8-bR-Q1Z"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1AX-7a-dx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1352,7 +1377,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="yyR-Dq-LtK">
-                                        <rect key="frame" x="0.0" y="560" width="768" height="66"/>
+                                        <rect key="frame" x="0.0" y="560" width="768" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="64"/>
@@ -1442,14 +1467,17 @@
         <!--Navigation Controller-->
         <scene sceneID="NDd-rj-J8W">
             <objects>
-                <navigationController id="foJ-lG-msP" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="foJ-lG-msP" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="xGz-Ys-2Zc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="fXH-3d-uLC">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="OJp-oH-vFC" kind="relationship" relationship="rootViewController" id="qte-Dh-37E"/>
                     </connections>
@@ -1469,9 +1497,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xwG-He-zBw"/>
         <segue reference="GNh-Ti-tqT"/>
+        <segue reference="xwG-He-zBw"/>
+        <segue reference="sZ8-R4-aMQ"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="fod-x0-re8"/>
     </inferredMetricsTieBreakers>
 </document>
