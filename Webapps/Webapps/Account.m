@@ -8,6 +8,8 @@
 
 #import "Account.h"
 #import "NetworkClient.h"
+#import "BookmarkDataController.h"
+
 
 @interface Account ()
     @property (readwrite) NSString *username;
@@ -24,6 +26,18 @@ Account *currentAccount;
     Account *newAccount = [[Account alloc] initWithUserName:username Password:password];
     currentAccount = newAccount;
     [NetworkClient loginUser:newAccount LoginView:lvc];
+}
+
++ (void)logoutUser
+{
+    [NetworkClient logoutUser:currentAccount];
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    [bookmarkDC emptyBookmarkArray];
+    [bookmarkDC.bookmarksArray removeAllObjects];
+    [bookmarkDC emptyTagTrie];
+    
+    [BookmarkDataController deleteInstance];
+    currentAccount = nil;
 }
 
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc

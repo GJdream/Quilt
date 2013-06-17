@@ -10,12 +10,15 @@
 
 @class FriendsViewController;
 @class Friend;
+@class NDMutableTrie;
 
 @interface FriendsDataController : NSObject
 
-@property (nonatomic, copy) NSMutableArray *friendsArray;
-@property (nonatomic, copy) NSMutableArray *friendsDisplayArray;
+@property (nonatomic) NSMutableArray *friendsArray;
+@property (nonatomic) NSMutableArray *friendsDisplayArray;
+@property NSMutableDictionary *friendsDictionary;
 @property FriendsViewController *friendsVC;
+@property NDMutableTrie *friendTrie;
 
 + (void)setViewController:(FriendsViewController *)newVC;
 + (FriendsDataController *)instantiate;
@@ -25,6 +28,7 @@
 - (NSUInteger)countOfFriends;
 - (Friend *)friendInListAtIndex:(NSUInteger)index;
 - (void)addFriend:(NSString *)friend;
+- (void)deleteFriend:(Friend *)friend;
 - (void)updateOnFriendInsertion;
 - (void)updateOnFriendDeletion:(NSIndexPath *)indexPath;
 

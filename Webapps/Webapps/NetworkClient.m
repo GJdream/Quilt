@@ -13,6 +13,8 @@
 #import "BookmarkDataController.h"
 #import "RegisterViewController.h"
 #import "AccountViewController.h"
+#import "Friend.h"
+#import "FriendsDataController.h"
 
 NSString *session_id;
 
@@ -118,7 +120,7 @@ NSString *boundary;
 {
     NSString *params = @"action=get_bookmarks";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-           {   
+           {
                dispatch_async(dispatch_get_main_queue(),
                             ^(void){
                                     [NetworkController gotBookmarks:data];
@@ -156,6 +158,23 @@ NSString *boundary;
                dispatch_async(dispatch_get_main_queue(),
                               ^(void){
                                   [NetworkController gotFriends:data];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
+
++(void)getFriendPhoto:(Friend *)friend
+{
+    NSString *params = [[NSString alloc] initWithFormat:@"action=get_user_picture&username=%@", friend.name];
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  [NetworkController gotPhoto:data ForFriend:friend];
                               });
                
                if (error != nil)
@@ -204,23 +223,30 @@ NSString *boundary;
     }];
 }
 
-+(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
++(void)logoutUser:(Account*)logoutAccount
 {
-//    NSString *params = [NSString stringWithFormat:@"action=change_password&password=%@", password];
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"logout_user",nil] forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
     
-/*    (void)[NetworkClient createPOSTRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-    {
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        //NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+        loginCookie = nil;
+        
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
-                           [NetworkController changePasswordComplete:data AccountViewController:avc];
+                           [NetworkController logoutComplete:data];
                        });
         
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],
                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    }];*/
-    
+    }];
+
+}
+
++(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
+{
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
                                     [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"change_password",password,nil]
                                                                   forKeys:[[NSArray alloc] initWithObjects:@"action",@"password", nil]]];
@@ -317,6 +343,7 @@ NSString *boundary;
     UIImageWriteToSavedPhotosAlbum(bookmark.image, nil, nil, nil);
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],
@@ -324,9 +351,59 @@ NSString *boundary;
         }];
 }
 
-+(void)shareTag:(NSString*)tag With:(NSSet*)users
++(void)shareTag:(NSString*)tag WithFriends:(NSArray*)users
 {
+    NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
+                                      initWithObjects: [[NSArray alloc] initWithObjects:@"share_tag", tag,nil]
+                                      forKeys:[[NSArray alloc] initWithObjects:@"action", @"tag",nil]];
     
+    for(NSUInteger i = 0; i < users.count; ++i)
+        [paramDict setObject:((Friend*)users[i]).name forKey:[[NSString alloc] initWithFormat:@"users[%u]", i]];
+    
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:(NSDictionary*)paramDict];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
+}
+
++(void)addFriend:(NSString*)friendName
+{
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_friend", friendName,nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action",@"friend_name", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [[FriendsDataController instantiate] addFriend:friendName];
+                       });
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
+}
+
++(void)removeFriend:(NSString*)friendName
+{
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"remove_friend", friendName,nil]
+                                                                  forKeys:[[NSArray alloc] initWithObjects:@"action",@"friend_name", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
 }
 
 +(void)deleteBookmark:(UIBookmark*)bookmark
@@ -342,5 +419,7 @@ NSString *boundary;
                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     }];
 }
+
+
 
 @end

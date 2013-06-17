@@ -8,6 +8,10 @@
 
 #import "BookmarkViewFlowLayout.h"
 
+@interface BookmarkViewFlowLayout ()
+;
+@end
+
 @implementation BookmarkViewFlowLayout
 
 - (id)init
@@ -35,6 +39,7 @@
     self.itemSize = CGSizeMake(150, 170);
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
+    self.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
 @end

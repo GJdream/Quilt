@@ -16,6 +16,7 @@
 #import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
 #import "NetworkClient.h"
+#import "ShareViewController.h"
 
 @implementation BookmarkViewController
 
@@ -32,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +95,9 @@
     cell.imageView.layer.opaque = YES;
     cell.imageView.backgroundColor = [UIColor whiteColor];
     
-    //for loop through tags and append to NSString for text 
+    //for loop through tags and append to NSString for text
+    
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
     return cell;
 }

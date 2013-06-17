@@ -37,6 +37,7 @@
   function logoutUser()
     {
       global $db;
+      global $json_return;
 
       // unnecessary to double check the user in question has an active session
       // given the login validations the assumption is their session is genuine by this point
@@ -47,6 +48,6 @@
       session_unset();
       session_destroy();
       
-      echo json_encode(array("logout" => true));
+      $json_return = array_merge($json_return, array("logout" => true));
     }
 ?>

@@ -4,8 +4,18 @@
       global $db;
       global $json_return;
 
-      $user_id   = $_POST[user_id];
-      $friend_id = $_post[friend_id];
+      $user_name   = $_SESSION[user_id];
+      $friend_name = $_POST[friend_name];
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$user_name'";
+      $result   = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$friend_name'";
+      $result   = pg_query($db, $query);
+      $friend_id = pg_fetch_result($result, 0);
 
       // must add friendship in both directions
       // example:
@@ -21,11 +31,11 @@
 
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$friend_id', '$user_id')";
-      $result = pg_query($db, $result);
+      $result = pg_query($db, $query);
 
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$user_id', '$friend_id')";
-      $result = pg_query($db, $result);
+      $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
       
       $json_return = array_merge($json_return, array("create_friend" => ($update == NULL)));
@@ -36,13 +46,24 @@
       global $db;
       global $json_return;
 
-      $user_id   = $_POST[user_id];
-      $friend_id = $_post[friend_id];
+      $user_name   = $_SESSION[user_id];
+      $friend_name = $_POST[friend_name];
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$user_name'";
+      $result   = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$friend_name'";
+      $result   = pg_query($db, $query);
+      $friend_id = pg_fetch_result($result, 0);
 
       // OR is used within the SQL query so that any instance of the user is removed
       // since users are registered in the database as both having and being friends
       $query  = "DELETE FROM \"Friends\" " .
-                "WHERE user_id = '$user_id' OR friend_id = '$friend_id'";
+                "WHERE (user_id = '$user_id' AND friend_id = '$friend_id') " .
+                "OR (user_id = '$friend_id' AND friend_id = '$user_id')";
       $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
       
@@ -54,21 +75,62 @@
       global $db;
       global $json_return;
 
-      $owner = $_GET[username];
+      $owner = $_SESSION[user_id];
 
       // discover user's id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$owner'";
       $result   = pg_query($db, $query);
-      $owner_id = pg_fetch_result($result, 0);
+      $user_id = pg_fetch_result($result, 0);
 
-      $query    = "SELECT * FROM \"Friends\" " .
-                  "WHERE owner_id = '$owner_id'";
+      $query    = "SELECT friend_id FROM \"Friends\" " .
+                  "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
-      $friends  = pg_fetch_all($result);
+      $friend_ids  = pg_fetch_all_columns($result, 0);
 
-      if($friends)
-        $json_return = array_merge_recursive($json_return, array("friends" => array($owner => $friends)));
+	  $json_return = array_merge_recursive($json_return, array("friends" => array()));
+
+	  foreach($friend_ids as $id)
+	  {
+	  	$query	= "SELECT user_name FROM \"Users\" " .
+	  			  "WHERE user_id = '$id'";
+	  	$result	 = pg_query($db, $query);
+	  	$name = pg_fetch_result($result, 0);
+	  	
+	  	$json_return = array_merge_recursive($json_return, array("friends" => (string)$name));
+	  }
+    }
+    
+  function shareTag()
+    {
+      global $db;
+    	
+      $owner  	= $_SESSION[user_id];
+      $tag		= $_POST[tag];
+    	
+	  $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$owner'";
+      $result   = pg_query($db, $query);
+      $user_id  = pg_fetch_result($result, 0);
+
+      $query    = "SELECT tag_id FROM \"Tags\" " .
+                  "WHERE owner_id = '$user_id' AND tag = '$tag'";
+      $result   = pg_query($db, $query);
+      $tag_id  = pg_fetch_result($result, 0);
+      
+      echo $tag;
+      
+      foreach($_POST[users] as $share_uname)
+      {
+		$query    = "SELECT user_id FROM \"Users\" " .
+                    "WHERE user_name = '$share_uname'";
+      	$result   = pg_query($db, $query);
+      	$share_id  = pg_fetch_result($result, 0);
+
+	    $query    = "INSERT INTO \"Tag_Visibility\" (tag_id, visible_to) " .
+	                "VALUES ('$tag_id', '$share_id')";
+	    $result   = pg_query($db, $query);
+      }
     }
 
   function createGroup()
@@ -76,7 +138,7 @@
       global $db;
       global $json_return;
 
-      $owner    = $_POST[username];
+      $owner    = $_SESSION[username];
       $owner_id = $_POST[user_id];
 
       $query    = "INSERT INTO \"Groups\" (group_owner, group_owner_id) " .
@@ -165,7 +227,7 @@
     {
       global $db;
       global $json_return;
-
+      
       $username = $_SESSION[user_id];
       $picture  = file_get_contents($_FILES['picture']['tmp_name']);
       $picturesize = $_FILES['picture']['size'];
@@ -202,7 +264,10 @@
     {
       global $db;
 
-      $username = $_SESSION[user_id];
+	  $username = $_GET[username];
+	  
+	  if($username === NULL)
+      	$username = $_SESSION[user_id];
 
       $query    = "SELECT user_picture, picture_size FROM \"Users\" " .
                   "WHERE user_name = '$username'";

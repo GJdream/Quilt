@@ -26,8 +26,12 @@
 @synthesize viewWeb;
 
 - (IBAction)search {
-    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [searchBar text]]]];
     self.url = [searchBar text];
+    
+    if(!([self.url hasPrefix:@"http://"] || [self.url hasPrefix:@"https://"]))
+        self.url = [[NSString alloc] initWithFormat:@"http://%@", self.url];
+    
+    [viewWeb loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: self.url]]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,13 +52,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     NSString *fullURL = self.url;
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [viewWeb loadRequest:requestObj];
     viewWeb.scalesPageToFit = YES;
     searchBar.text = fullURL;
+    viewWeb.delegate = self;
+}
+
+- (IBAction)back
+{
+    [self.viewWeb goBack];
+}
+
+- (IBAction)forward
+{
+    [self.viewWeb goForward];
+}
+
+- (IBAction)reload
+{
+    [self.viewWeb reload];
+}
+
+- (IBAction)stop
+{
+    [self.viewWeb stopLoading];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -66,6 +90,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    searchBar.text = [request.mainDocumentURL absoluteString];
+    self.url = searchBar.text;
+    return YES;
 }
 
 - (IBAction)done:(UIStoryboardSegue *)segue

@@ -10,6 +10,7 @@
 #import "AccountViewController.h"
 #import "Account.h"
 #import "FriendsDataController.h"
+#import "NetworkClient.h"
 
 @interface AccountViewController ()
 
@@ -35,6 +36,7 @@
     self.confirmPassword.delegate = (id)self;
     self.username.text = [Account current].username;
     [[Account current] setPhoto:self];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 	// Do any additional setup after loading the view.
 }
 
@@ -77,7 +79,7 @@
 
 - (IBAction)addFriend:(id)sender {
     NSString *name = self.addFriendUsername.text;
-    [[FriendsDataController instantiate] addFriend:name];
+    [NetworkClient addFriend:name];
 }
 
 - (IBAction)takeCameraPhotoClicked:(id)sender

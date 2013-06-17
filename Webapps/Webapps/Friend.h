@@ -16,7 +16,10 @@
 @property NSString *name;
 @property NSMutableArray *sharedTags;
 @property UIImage *image;
+@property Friend *viewFriend;
+@property Friend *dataFriend;
 
 - (Friend *)initWithUsername:(NSString *)name Image:(UIImage *)image;
+- (void)setPicture:(UIImage*)picture;
 
 @end

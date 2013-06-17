@@ -16,34 +16,6 @@
 @end
 
 @implementation ViewDeckController
-/*
-@synthesize navController = _navController;
-@synthesize bookmarkView = _bookmarkView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Override point for customization after appliaction launch
-    //UIViewController *viewController = [[viewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    //self.navController = [[UINavigationController alloc] initWithRootViewController:<#(UIViewController *)#>]
-}
-*/
 
 - (id)init
 {
@@ -64,12 +36,35 @@
         self.leftController = [mainStoryboard instantiateViewControllerWithIdentifier:@"sidebarViewController"];
         CGRect rect = [[UIScreen mainScreen] bounds];
         CGSize size = rect.size;
-        self.leftSize = size.width - 268.0f;
+        
+        UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        if (UIInterfaceOrientationIsPortrait(interfaceOrientation))
+            self.leftSize = size.width - 268.0f;
+        else
+            self.leftSize = size.height - 268.0f;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(handleDidChangeStatusBarOrientationNotification:)
+            name:UIApplicationDidChangeStatusBarOrientationNotification
+            object:nil];
+        
         self.centerhiddenInteractivity = IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose;
         
         self.panningCancelsTouchesInView = NO;
     }
     return self;
+}
+
+- (void)handleDidChangeStatusBarOrientationNotification:(NSNotification *)notification;
+{
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    CGSize size = rect.size;
+    
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (UIInterfaceOrientationIsPortrait(interfaceOrientation))
+        self.leftSize = size.width - 268.0f;
+    else
+        self.leftSize = size.height - 268.0f;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

@@ -19,20 +19,26 @@
 @property BookmarkViewController *bookmarkVC;
 @property NSMutableOrderedSet *mostUsedTags;
 @property NDMutableTrie *tagTrie;
+@property NSString *sharingTag;
 
 + (void)setViewController:(BookmarkViewController*)newVC;
 + (BookmarkDataController*)instantiate;
++ (void)deleteInstance;
 
 - (BookmarkDataController*)initWithViewController:(BookmarkViewController*)bookmarkVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;
 - (NSUInteger)countOfBookmarks;
 - (UIBookmark *)bookmarkInListAtIndex:(NSUInteger)index;
 
+
 - (void)addBookmark:(UIBookmark *)bookmark;
 - (void)deleteBookmark:(UIBookmark *)bookmark;
 
 - (void)updateOnBookmarkInsertion;
 - (void)updateOnBookmarkDeletion:(NSIndexPath *)indexPath;
+
+- (void)emptyBookmarkArray;
+- (void)emptyTagTrie;
 
 - (void)showTag:(NSString*)tag;
 - (void)showAll;

@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NDTrie.h"
 #import "Friend.h"
+#import "NetworkClient.h"
 
 @interface FriendsViewController ()
 
@@ -38,15 +39,8 @@ NSArray *tableData;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.searchBar.delegate = (id)self;
-    /*
-    tableData = [[FriendsDataController instantiate].friendTrie everyObject];
-    [[FriendsDataController instantiate]registerUpdate:^(void)
-     {
-         tableData = [[FriendsDataController instantiate].friendTrie everyObject];
-         [self.collectionView reloadData];
-     }];
-     */
+    self.selectedItems = [[NSMutableArray alloc] init];
+    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +49,7 @@ NSArray *tableData;
     // Dispose of any resources that can be recreated.
 }
 
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -62,20 +57,31 @@ NSArray *tableData;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return 0;
     return [[FriendsDataController instantiate] countOfFriends];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellID = @"FriendCell";
-    
+
     Friend *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    
+    if(cell.dataFriend)
+        cell.dataFriend.viewFriend = nil;
+    
+    cell.friendPhoto.image = nil;
     
     Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
     
+    cell.dataFriend = friendAtIndex;
+    friendAtIndex.viewFriend = cell;
+    
+    if(friendAtIndex.image == nil)
+        [NetworkClient getFriendPhoto:friendAtIndex];
+    else
+        cell.friendPhoto.image = friendAtIndex.image;
+
     cell.friendName.text = friendAtIndex.name;
-    //cell.friendPhoto = [[UIImageView alloc] initWithImage:friendAtIndex.image];
     cell.friendPhoto.frame = cell.contentView.bounds;
     [cell addSubview:cell.friendPhoto];
     
@@ -87,6 +93,27 @@ NSArray *tableData;
     cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.shareEnabled) {
+        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+        UIView *overlay = [[UIView alloc] initWithFrame:friendAtIndex.contentView.bounds];
+        overlay.backgroundColor = [UIColor blackColor];
+        overlay.alpha = 0.5f;
+        [friendAtIndex addSubview:overlay];
+        [self.selectedItems addObject:friendAtIndex];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.shareEnabled)
+    {
+        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+        [self.selectedItems removeObject:friendAtIndex];
+    }
 }
 
 @end

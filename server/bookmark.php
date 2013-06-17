@@ -31,15 +31,38 @@
 
           foreach($tags as $tag)
             {
-              $query  = "INSERT INTO \"Tags\" (post_id, tag) " .
-                        "VALUES ('$post_id', '$tag')";
+              $query  = "SELECT tag_id FROM \"Tags\" " .
+              			"WHERE owner_id='$owner_id' AND tag='$tag'";
               $result = pg_query($db, $query);
+              $tag_id = pg_fetch_result($result, 0);
+
+              if(pg_num_rows($result) === 0)
+                {
+                  $query  = "INSERT INTO \"Tags\" (tag_id, post_id, tag, owner_id) " .
+                            "VALUES (nextval('tag_id'), '$post_id', '$tag', '$owner_id')" .
+                            "RETURNING tag_id";
+
+                  $result = pg_query($db, $query);
+                  $tag_id = pg_fetch_result($result, 0);
+                      
+                  $query  = "INSERT INTO \"Tag_Visibility\" (visible_to, tag_id) " .
+                            "VALUES ('$owner_id', '$tag_id')";
+                  $result = pg_query($db, $query);
+                }
+              else
+                {
+                  $query  = "INSERT INTO \"Tags\" (tag_id, post_id, tag, owner_id) " .
+                            "VALUES ('$tag_id', '$post_id', '$tag', '$owner_id')";
+                  $result = pg_query($db, $query);
+                }
             }
         }
         
         $json_return = array_merge($json_return, array("create_bookmark" => true, "b_id" => $post_id));
         
         $b_id = $post_id;
+
+        updateBookmarkPicture();
     }
     
   function destroyBookmark()
@@ -96,14 +119,15 @@
       $result    = pg_query($db, $query);
       $owner_id  = pg_fetch_result($result, 0);
 
-      $query   = "UPDATE \"Bookmarks\" " .
-                 "SET p_height = 'pheight', p_width = 'pwidth' " .
-                 "WHERE owner_id = '$owner_id' AND post_id = '$postid'";
-      $result  = pg_query($db, $query);
-      $success = pg_fetch_all($result);
+      $query     = "UPDATE \"Bookmarks\" " .
+                   "SET p_height = 'pheight', p_width = 'pwidth' " .
+                   "WHERE owner_id = '$owner_id' AND post_id = '$postid'";
+      $result    = pg_query($db, $query);
+      $success   = pg_fetch_all($result);
 
       $json_return = array_merge($json_return, array("resize_bookmark" => !$success));
     }
+
 
   function getBookmarks()
     {
@@ -117,15 +141,17 @@
                    "WHERE user_name = '$owner'";
       $result    = pg_query($db, $query);
       $owner_id  = pg_fetch_result($result, 0);
-
-      $query     = "SELECT * FROM \"Bookmarks\" " .
-                   "WHERE owner_id = '$owner_id'";
+      	
+      $query     = "SELECT DISTINCT \"Bookmarks\".* FROM \"Bookmarks\" " .
+                   "JOIN \"Tags\" ON \"Tags\".post_id=\"Bookmarks\".post_id " .
+                   "JOIN \"Tag_Visibility\" ON \"Tag_Visibility\".tag_id=\"Tags\".tag_id " .
+                   "WHERE \"Tag_Visibility\".visible_to='$owner_id'";
       $result    = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
-
-      if($bookmarks)
+      
+      if(!($bookmarks === NULL))
         {
-          $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
+          $json_return = array_merge_recursive($json_return, array("bookmarks" => $bookmarks));
           
           foreach($bookmarks as $bm)
             getTagsForID($bm["post_id"]);
@@ -231,6 +257,22 @@
 
       if($visbility)
         $json_return = array_merge_recursive($json_return, array("get_tag_visibility" => array($tag_id => $visbility)));
+    }
+
+  function getTagOwnerID()
+    {
+      global $db;
+      global $json_return;
+
+      $tag_id = $_GET[tag_id];
+
+      $query   = "SELECT owner_id FROM \"Tags\" " .
+                 "WHERE tag_id = '$tag_id'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_row($result, 0);
+
+      if($username)
+        $json_return = array_marge($json_return, array("get_tag_owner_id" => $user_id));
     }
 
   function updateBookmarkPicture()

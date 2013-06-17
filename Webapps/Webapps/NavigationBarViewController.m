@@ -10,6 +10,7 @@
 #import "NDTrie.h"
 #import "BookmarkDataController.h"
 #import "BookmarkViewController.h"
+#import "Account.h"
 
 @implementation NavigationBarViewController
 
@@ -104,19 +105,48 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        cell.indentationWidth = 10;
+        
+        UIImage *image = [UIImage imageNamed:@"arrow.png"] ;
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
+        button.frame = frame;	// match the button's size with the image size
+        
+        [button setBackgroundImage:image forState:UIControlStateNormal];
+        
+        // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet
+        [button addTarget:self action:@selector(arrowButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+        button.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = button;
+    
+
+                
     }
     return cell;
+}
+
+- (void)arrowButtonTapped:(id)sender event:(id)event
+{
+	NSSet *touches = [event allTouches];
+	UITouch *touch = [touches anyObject];
+	CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition];
+	if (indexPath != nil)
+	{
+		[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+	}
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger cellNum = indexPath.row;
-    CGFloat customTableCellHeight = 40.0;
+    CGFloat customTableCellHeight = 44.0;
     
     if (cellNum < NUMBER_OF_STATIC_CELLS)
     {
         if (cellNum == 0) 
-            customTableCellHeight = 107;
+            customTableCellHeight = 160;
         if (cellNum == 1)
             customTableCellHeight = 44;
         if (cellNum == 2)
@@ -134,9 +164,10 @@ NSArray *tableData;
     
     if (indexPath.row == 0)
     {
-        [[BookmarkDataController instantiate] showAll];
+        BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+        [bookmarkDC showAll];
+        bookmarkDC.bookmarkVC.navigationItem.title = @"Quilt";
     }
-    
     else if (indexPath.row == 1)
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"myAccountSegue" sender:self];
@@ -149,13 +180,27 @@ NSArray *tableData;
     {
         [[BookmarkDataController instantiate].bookmarkVC performSegueWithIdentifier:@"logOutSegue" sender:self];
         //Log out server
+        [Account logoutUser];
     }
     
-    else [[BookmarkDataController instantiate] showTag:selectedCell.textLabel.text];
+    else {
+        BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+        [bookmarkDC showTag:selectedCell.textLabel.text];
+        NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
+        bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];
+        //[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
+    }
 }
 
 
-
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+	BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = selectedCell.textLabel.text;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

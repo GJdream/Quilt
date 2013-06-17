@@ -13,21 +13,28 @@
 @class Account;
 @class LoginViewController;
 @class AccountViewController;
+@class Friend;
 
 @interface NetworkClient : NSObject
 
 +(void)getNewBookmarks;
 +(void)getNewFriends;
++(void)getPhoto:(AccountViewController *)avc;
++(void)getBookmarkPicture:(UIBookmark*)bookmark;
++(void)getFriendPhoto:(Friend *)friend;
 
++(void)addFriend:(NSString*)friendName;
++(void)removeFriend:(NSString*)friendName;
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController*)rvc;
 +(void)createBookmark:(UIBookmark*)bookmark;
-+(void)shareTag:(NSString*)tag With:(NSSet*)users;
++(void)shareTag:(NSString*)tag WithFriends:(NSArray*)users;
 +(void)deleteBookmark:(UIBookmark*)bookmark;
+
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
++(void)logoutUser:(Account*)logoutAccount;
+
 +(void)checkUsername:(NSString*)uname RegisterVC:(RegisterViewController*)rvc;
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc;
 +(void)changePhoto:(UIImage *)photo AccountVC:(AccountViewController *)avc;
-+(void)getPhoto:(AccountViewController *)avc;
-+(void)getBookmarkPicture:(UIBookmark*)bookmark;
 
 @end

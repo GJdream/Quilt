@@ -34,9 +34,25 @@
     }
     else
     {
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [[[UIAlertView alloc] initWithTitle:@"Login error" message:@"Your username or password was incorrect" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
         
         loginVC.loginButton.enabled = YES;
+    }
+}
+
++(void)logoutComplete:(NSData*)data
+{
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL success = [(NSNumber*)[json valueForKey:@"logout"] boolValue];
+    
+    if(!success)
+    {
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        [[[UIAlertView alloc] initWithTitle:@"Logout error" message:@"Something went wrong with logging out of your account" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] show];
     }
 }
 
@@ -99,6 +115,7 @@
 
 +(void)gotBookmarks:(NSData*)data
 {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
@@ -123,6 +140,7 @@
 
 +(void)gotFriends:(NSData*)data
 {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
@@ -130,16 +148,16 @@
     
     NSArray *friendsArray = (NSArray*)[json objectForKey:@"friends"];
     
-    for(NSDictionary *friendsDict in friendsArray)
-    {
-        NSString *name = (NSString *)[friendsDict objectForKey:@"name"];
-        //UIImage *image = (UIImage *)[friendsDict objectForKey:@"image"];
-                
-        //Friend *friend = [[Friend alloc] initWithUsername:name Image:image];
-        [friendsDC addFriend:name];
-    }
+    for(NSString *friendName in friendsArray)
+        [friendsDC addFriend:friendName];
     
     [friendsDC updateOnFriendInsertion];
+}
+
++(void)gotPhoto:(NSData*)data ForFriend:(Friend*)friend
+{
+    UIImage *retImage = [[UIImage alloc] initWithData:data];
+    [friend setPicture:retImage];
 }
 
 +(void)gotPhoto:(NSData*)data AccountViewController:(AccountViewController *)avc
@@ -156,6 +174,7 @@
 
 +(void)accountCreated:(NSData*)data Account:(Account*)account RegisterVC:(RegisterViewController*)registerVC
 {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     BOOL success = [(NSNumber*)[json valueForKey:@"account_ready"] boolValue];
