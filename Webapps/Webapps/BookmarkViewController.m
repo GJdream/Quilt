@@ -13,11 +13,18 @@
 #import "NavigationBarViewController.h"
 #import "UIBookmark.h"
 #import <QuartzCore/QuartzCore.h>
-#import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
 #import "NetworkClient.h"
 #import "RFQuiltLayout.h"
 #import "ShareViewController.h"
+
+@interface BookmarkViewController ()
+
+@property UIBookmark *pinchBookmark;
+@property NSUInteger initialPinchWidth;
+@property NSUInteger initialPinchHeight;
+
+@end
 
 @implementation BookmarkViewController
 
@@ -139,8 +146,34 @@
 }
 
 - (IBAction)pinchDetected:(id)sender {
-//    self.pinchGestureRecogniser.
-    CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
-//    UIBookmark *bookmark = [self.collectionView.collectionViewLayout indexPathForPosition:point];
+    if(!self.pinchBookmark)
+    {
+        CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
+        NSIndexPath *ip = [((RFQuiltLayout*)self.collectionView.collectionViewLayout) indexPathForPosition:point];
+        self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:ip.row];
+        self.initialPinchWidth = self.pinchBookmark.width;
+        self.initialPinchHeight = self.pinchBookmark.height;
+    }
+    
+    self.pinchBookmark.width = self.initialPinchWidth * self.pinchGestureRecogniser.scale;
+    self.pinchBookmark.height = self.initialPinchHeight * self.pinchGestureRecogniser.scale;
+    
+    if(self.pinchBookmark.width < 1)
+        self.pinchBookmark.width = 1;
+    else if(self.pinchBookmark.width > 4)
+        self.pinchBookmark.width = 4;
+    
+    if(self.pinchBookmark.height < 1)
+        self.pinchBookmark.height = 1;
+    else if(self.pinchBookmark.height > 4)
+        self.pinchBookmark.height = 4;
+    
+    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state]){
+        [self.view setNeedsDisplay];
+        NSLog(@"Ended");
+    }
+    
+    NSLog(@"%u, %u", self.pinchBookmark.width, self.pinchBookmark.height);
 }
+
 @end
