@@ -28,6 +28,7 @@
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
 		64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */; };
 		64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */; };
+		64EFE2FB176F2B37001AD248 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2FA176F2B37001AD248 /* delete_button.png */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
 		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
 		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
@@ -95,6 +96,7 @@
 		64EFE2F5176F22CB001AD248 /* FriendsViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewFlowLayout.h; sourceTree = "<group>"; };
 		64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
 		64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		64EFE2FA176F2B37001AD248 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_button.png; sourceTree = "<group>"; };
 		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		791051FA1765F55200CC4555 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -227,12 +229,12 @@
 				79516305176D0CED000F7B10 /* bookmark_layout.c */,
 				79516307176D0D03000F7B10 /* bookmark_layout.h */,
 				2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */,
-				64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */,
 				2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */,
 				2EC21DC2176A120000366098 /* FriendsViewController.h */,
 				2EC21DC3176A120000366098 /* FriendsViewController.m */,
 				64EFE2F5176F22CB001AD248 /* FriendsViewFlowLayout.h */,
 				64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */,
+				64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				79516308176E2C27000F7B10 /* ShareViewController.h */,
@@ -271,6 +273,7 @@
 				798C41BA176E7515003215F3 /* green.png */,
 				798C41BB176E7515003215F3 /* Light Blue.png */,
 				798C41BC176E7515003215F3 /* light green.png */,
+				64EFE2FA176F2B37001AD248 /* delete_button.png */,
 				798C41BD176E7515003215F3 /* Light Red.png */,
 				798C41BE176E7515003215F3 /* Purple.png */,
 				798C41BF176E7515003215F3 /* red.png */,
@@ -367,6 +370,7 @@
 				798C41C8176E7515003215F3 /* Yellow.png in Resources */,
 				2EADAA55176F175500286628 /* DefaultUserPicture.png in Resources */,
 				64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */,
+				64EFE2FB176F2B37001AD248 /* delete_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
