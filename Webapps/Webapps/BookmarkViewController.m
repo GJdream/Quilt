@@ -40,7 +40,7 @@
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionVertical;
     layout.blockPixels = CGSizeMake(150, 150);
-    layout.delegate = (id)self;
+    layout.delegate = (id)self;    
 }
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -169,6 +169,7 @@ NSArray *tableData;
         BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
         [bookmarkDC showAll];
         bookmarkDC.bookmarkVC.navigationItem.title = @"Quilt";
+        bookmarkDC.bookmarkVC.shareButton.enabled = NO;
     }
     else if (indexPath.row == 1)
     {
@@ -190,6 +191,7 @@ NSArray *tableData;
         [bookmarkDC showTag:selectedCell.textLabel.text];
         NSString *title = selectedCell.textLabel.text;
         bookmarkDC.bookmarkVC.navigationItem.title = title;
+        bookmarkDC.bookmarkVC.shareButton.enabled = YES;
 
         
         //NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
