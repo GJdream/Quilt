@@ -9,7 +9,8 @@
 #import "ShareViewController.h"
 #import "FriendsViewController.h"
 #import "NetworkClient.h"
-#import "BookmarkDataController.h";
+#import "BookmarkDataController.h"
+#import "FriendsDataController.h"
 
 @interface ShareViewController ()
 
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     self.friendsViewController.collectionView.allowsMultipleSelection = YES;
     self.friendsViewController.shareEnabled = YES;
+    self.searchBar.delegate = (id)[FriendsDataController instantiate];
     self.tag = @"web";
 }
 

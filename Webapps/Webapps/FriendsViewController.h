@@ -13,11 +13,7 @@
 @interface FriendsViewController : UICollectionViewController
 
 @property NSMutableArray *selectedItems;
-
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
 @property (strong, nonatomic) FriendsDataController *dataController;
-
 @property BOOL shareEnabled;
 
 @end

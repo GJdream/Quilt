@@ -4,8 +4,18 @@
       global $db;
       global $json_return;
 
-      $user_id   = $_POST[user_id];
-      $friend_id = $_post[friend_id];
+      $user_name   = $_SESSION[user_id];
+      $friend_name = $_POST[friend_name];
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$user_name'";
+      $result   = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$friend_name'";
+      $result   = pg_query($db, $query);
+      $friend_id = pg_fetch_result($result, 0);
 
       // must add friendship in both directions
       // example:
@@ -21,11 +31,11 @@
 
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$friend_id', '$user_id')";
-      $result = pg_query($db, $result);
+      $result = pg_query($db, $query);
 
       $query  = "INSERT INTO \"Friends\" (user_id, friend_id) " .
                 "VALUES ('$user_id', '$friend_id')";
-      $result = pg_query($db, $result);
+      $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
       
       $json_return = array_merge($json_return, array("create_friend" => ($update == NULL)));
@@ -36,13 +46,24 @@
       global $db;
       global $json_return;
 
-      $user_id   = $_POST[user_id];
-      $friend_id = $_post[friend_id];
+      $user_name   = $_SESSION[user_id];
+      $friend_name = $_POST[friend_name];
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$user_name'";
+      $result   = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+      
+      $query    = "SELECT user_id FROM \"Users\" " .
+                  "WHERE user_name = '$friend_name'";
+      $result   = pg_query($db, $query);
+      $friend_id = pg_fetch_result($result, 0);
 
       // OR is used within the SQL query so that any instance of the user is removed
       // since users are registered in the database as both having and being friends
       $query  = "DELETE FROM \"Friends\" " .
-                "WHERE user_id = '$user_id' OR friend_id = '$friend_id'";
+                "WHERE (user_id = '$user_id' AND friend_id = '$friend_id') " .
+                "OR (user_id = '$friend_id' AND friend_id = '$user_id')";
       $result = pg_query($db, $query);
       $update = pg_fetch_all($result);
       
@@ -66,6 +87,8 @@
                   "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
       $friend_ids  = pg_fetch_all_columns($result, 0);
+
+	  $json_return = array_merge_recursive($json_return, array("friends" => array()));
 
 	  foreach($friend_ids as $id)
 	  {

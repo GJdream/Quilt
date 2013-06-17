@@ -40,7 +40,6 @@ NSArray *tableData;
 {
     [super viewDidLoad];
     self.selectedItems = [[NSMutableArray alloc] init];
-    self.searchBar.delegate = (id)self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +48,7 @@ NSArray *tableData;
     // Dispose of any resources that can be recreated.
 }
 
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -56,18 +56,19 @@ NSArray *tableData;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return 0;
     return [[FriendsDataController instantiate] countOfFriends];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellID = @"FriendCell";
-    
+
     Friend *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
     
     if(cell.dataFriend)
         cell.dataFriend.viewFriend = nil;
+    
+    cell.friendPhoto.image = nil;
     
     Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
     
@@ -96,8 +97,11 @@ NSArray *tableData;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.shareEnabled) {
-        NSLog(@"Select");
         Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+        UIView *overlay = [[UIView alloc] initWithFrame:friendAtIndex.contentView.bounds];
+        overlay.backgroundColor = [UIColor blackColor];
+        overlay.alpha = 0.5f;
+        [friendAtIndex addSubview:overlay];
         [self.selectedItems addObject:friendAtIndex];
     }
 }
@@ -106,7 +110,6 @@ NSArray *tableData;
 {
     if(self.shareEnabled)
     {
-        NSLog(@"Deselect");
         Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
         [self.selectedItems removeObject:friendAtIndex];
     }

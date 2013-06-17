@@ -10,6 +10,7 @@
 #import "AccountViewController.h"
 #import "Account.h"
 #import "FriendsDataController.h"
+#import "NetworkClient.h"
 
 @interface AccountViewController ()
 
@@ -78,7 +79,7 @@
 
 - (IBAction)addFriend:(id)sender {
     NSString *name = self.addFriendUsername.text;
-    [[FriendsDataController instantiate] addFriend:name];
+    [NetworkClient addFriend:name];
 }
 
 - (IBAction)takeCameraPhotoClicked:(id)sender

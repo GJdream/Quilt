@@ -148,10 +148,12 @@
                    "WHERE \"Tag_Visibility\".visible_to='$owner_id'";
       $result    = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
-
-      if($bookmarks)
+      
+      // TODO: WORK OUT WHY NOT DISPLAYING SHARED BOOKMARKS
+      
+      if(!($bookmarks === NULL))
         {
-          $json_return = array_merge_recursive($json_return, array("bookmarks" => $bookmarks));
+          $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
           
           foreach($bookmarks as $bm)
             getTagsForID($bm["post_id"]);

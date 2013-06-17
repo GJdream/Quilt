@@ -10,6 +10,7 @@
 #import "FriendsViewController.h"
 #import "NetworkClient.h"
 #import "Friend.h"
+#import "NDTrie.h"
 
 @interface FriendsDataController ()
 @property NSMutableArray *updatedFriends;
@@ -30,6 +31,8 @@ static FriendsViewController *staticVC = nil;
         _updatedFriends = [[NSMutableArray alloc] init];
         _watchingMethods = [[NSMutableArray alloc] init];
         _friendsVC = friendsVC;
+        _friendTrie = [[NDMutableTrie alloc] init];
+        _friendsDictionary = [[NSMutableDictionary alloc] init];
         [NetworkClient getNewFriends];
     }
     return self;
@@ -89,6 +92,8 @@ static FriendsViewController *staticVC = nil;
 {
     Friend *friend = [[Friend alloc] initWithUsername:friendName Image:nil];
     [self.friendsArray addObject:friend];
+    [self.friendTrie addString:friendName];
+    [self.friendsDictionary setObject:friend forKey:friendName];
     NSUInteger index = [self.friendsArray indexOfObject:friend];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.updatedFriends addObject:indexPath];
@@ -99,7 +104,9 @@ static FriendsViewController *staticVC = nil;
     NSUInteger index = [self.friendsArray indexOfObject:friend];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.friendsArray removeObject:friend];
+    [self.friendsDictionary removeObjectForKey:friend.name];
     [self.updatedFriends removeObject:indexPath];
+    [NetworkClient removeFriend:friend.name];
 }
 
 - (void)updateOnFriendInsertion
@@ -120,6 +127,47 @@ static FriendsViewController *staticVC = nil;
 - (void)showFriend:(NSString *)friend
 {
     // Not sure if needed
+}
+
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+        [self showAll];
+    else
+    {
+        NSString *searchItem;
+        NDTrie *friendTrie = self.friendTrie;
+        
+        NSMutableArray *searchItems = [[NSMutableArray alloc] init];
+        
+        if([friendTrie containsObjectForKeyWithPrefix:text])
+        {
+            NSEnumerator *itemsEnumerator = [friendTrie objectEnumeratorForKeyWithPrefix:text];
+            
+            while ((searchItem = [self.friendsDictionary objectForKey:[itemsEnumerator nextObject]]))
+                [searchItems addObject:searchItem];
+        }
+        
+        NSUInteger prevCount = self.friendsDisplayArray.count;
+        [self.updatedFriends removeAllObjects];
+        for (NSUInteger i = 0; i < prevCount; ++i) {
+            [self.updatedFriends addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        
+        self.friendsDisplayArray = nil;
+        
+        [self.friendsVC.collectionView deleteItemsAtIndexPaths:self.updatedFriends];
+        
+        [self.updatedFriends removeAllObjects];
+        
+        self.friendsDisplayArray = searchItems;
+        
+        for (NSUInteger i = 0; i < self.friendsDisplayArray.count; ++i) {
+            [self.updatedFriends addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        
+        [self updateOnFriendInsertion];
+    }
 }
 
 - (void)showAll
