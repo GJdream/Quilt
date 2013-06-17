@@ -13,31 +13,24 @@
 
  - GUI: {In Progress}
     - Bookmark view {In progress}
-        - Friend share button on dynamic cells
-        - Tag buttons
+       - Friend share button on dynamic cells
+       - Tag buttons
     - Friend view and data controller
+    - Tag detail {owner id code}  
+    - Toolbar - edit/delete bookmarks
 
  - Networking Code
-    - Add logout functionality
-    - Send images to and from database {Complete?}
-    - Friends
+    - Add logout functionality {Complete}
+    - Send images to and from database {Complete}
+    - Friends {Complete}
+       - Remove ability to add duplicates
+       - Remove ability to add people that doesn't exist
 
- - Graphics {Will do when access to PS is back}
-    - Background colour/image
-    - Quilt logo resized in photoshop to fit login/nav bar
+ - Graphics {Complete}
+    - Fix iPad icon 
 
-
-
-###### Functions to implement:
   
- - Tag sharing  
- - Check Tag deletion is still adequete {might need to adapt tag deletion function to delete visiblity fields}   
-  
-###### Features to implement:  
-  
-  
-  
-## Database Notes
+###### Database Notes
 
  - Current Table Count:: 7  
     - Users  
@@ -46,18 +39,4 @@
     - Group_Members  
     - Tags  
     - Tag_Visibility  
-
-
-## Meetings Schedule
-
- - Past Meetings  
-    - Tuesday 21st May  
-    - Friday 24th May  
-    - Monday 27th May  
-    - Wednesday 29th May  
-    - Thursday 30th May  
-    - Tuesday 4th June 
-    
- - Next Meetings  
-    - Monday 10th June  
-    - Wednesday 12th June  
+  

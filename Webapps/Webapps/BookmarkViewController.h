@@ -14,6 +14,10 @@
 
 @property (strong, nonatomic) IBOutlet UIPinchGestureRecognizer *pinchGestureRecogniser;
 @property (strong, nonatomic) BookmarkDataController *dataController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 - (IBAction)pinchDetected:(id)sender;
+- (IBAction)shareButtonClicked:(id)sender;
 
 @end

@@ -13,7 +13,7 @@
 		2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4136EF1768B3D5000DA87E /* RegisterViewController.m */; };
 		2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136F11768C2E1000DA87E /* navBarTexture.png */; };
 		2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD42176B9003006138D6 /* Quilt Logo.png */; };
-		2E6CAD45176B9679006138D6 /* Quilt72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD44176B9679006138D6 /* Quilt72.png */; };
+		2E6CAD45176B9679006138D6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD44176B9679006138D6 /* Icon-72.png */; };
 		2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7151769E5A200CEF93B /* AccountViewController.m */; };
 		2E8BEBBA176B5D300011DA3D /* FriendsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */; };
 		2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBBC176B5FBF0011DA3D /* Friend.m */; };
@@ -25,6 +25,7 @@
 		2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
+		6497E6EE176F3F1C006696CA /* share_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497E6ED176F3F1C006696CA /* share_arrow.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
 		64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */; };
 		64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */; };
@@ -74,7 +75,7 @@
 		2E4136EF1768B3D5000DA87E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2E4136F11768C2E1000DA87E /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
 		2E6CAD42176B9003006138D6 /* Quilt Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quilt Logo.png"; sourceTree = "<group>"; };
-		2E6CAD44176B9679006138D6 /* Quilt72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt72.png; sourceTree = "<group>"; };
+		2E6CAD44176B9679006138D6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		2E7DE7141769E5A200CEF93B /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		2E7DE7151769E5A200CEF93B /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDataController.h; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		64279590176E1483008A0C44 /* QuiltTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuiltTexture.png; sourceTree = "<group>"; };
+		6497E6ED176F3F1C006696CA /* share_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_arrow.png; sourceTree = "<group>"; };
 		64B250EA176DE9F300E08BA3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		64EFE2F5176F22CB001AD248 /* FriendsViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewFlowLayout.h; sourceTree = "<group>"; };
 		64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EADAA57176F459600286628 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2E6CAD44176B9679006138D6 /* Icon-72.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +277,7 @@
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
 				64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */,
+				2EADAA57176F459600286628 /* Resources */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 			);
@@ -276,6 +287,7 @@
 		79BEAD311754FCAC0056DFBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6497E6ED176F3F1C006696CA /* share_arrow.png */,
 				2EADAA54176F175500286628 /* DefaultUserPicture.png */,
 				798C41B9176E7514003215F3 /* Gray.png */,
 				798C41BA176E7515003215F3 /* green.png */,
@@ -292,7 +304,6 @@
 				2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */,
 				2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */,
 				7910521717673D2900CC4555 /* Quilt-Info.plist */,
-				2E6CAD44176B9679006138D6 /* Quilt72.png */,
 				79BEAD331754FCAC0056DFBD /* InfoPlist.strings */,
 				2E6CAD42176B9003006138D6 /* Quilt Logo.png */,
 				79BEAD361754FCAC0056DFBD /* main.m */,
@@ -362,7 +373,7 @@
 				2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */,
 				2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */,
 				2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */,
-				2E6CAD45176B9679006138D6 /* Quilt72.png in Resources */,
+				2E6CAD45176B9679006138D6 /* Icon-72.png in Resources */,
 				2EDC2996176DD09B00F0C6B6 /* Quilt_blue.png in Resources */,
 				2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */,
 				2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */,
@@ -379,6 +390,7 @@
 				2EADAA55176F175500286628 /* DefaultUserPicture.png in Resources */,
 				64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */,
 				64EFE2FB176F2B37001AD248 /* delete_button.png in Resources */,
+				6497E6EE176F3F1C006696CA /* share_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
