@@ -12,6 +12,8 @@
 
 @interface BookmarkViewController : UICollectionViewController
 
+@property (strong, nonatomic) IBOutlet UIPinchGestureRecognizer *pinchGestureRecogniser;
 @property (strong, nonatomic) BookmarkDataController *dataController;
+- (IBAction)pinchDetected:(id)sender;
 
 @end
