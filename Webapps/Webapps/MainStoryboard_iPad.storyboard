@@ -1488,7 +1488,7 @@
         <class className="AccountViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addFriend:AccountVC:"/>
+                <relationship kind="action" name="addFriend:"/>
                 <relationship kind="action" name="saveChangesClicked:"/>
                 <relationship kind="action" name="takeCameraPhotoClicked:"/>
                 <relationship kind="action" name="uploadPictureClicked:"/>
@@ -1605,6 +1605,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
