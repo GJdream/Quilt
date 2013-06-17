@@ -126,8 +126,8 @@
     
     for(NSDictionary *bookmarkDict in bookmarksArray)
     {
-        NSString *url = (NSString*)[bookmarkDict objectForKey:@"url"];
-        NSString *title = (NSString*)[bookmarkDict objectForKey:@"title"];
+        NSString *url = [(NSString*)[bookmarkDict objectForKey:@"url"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *title = [(NSString*)[bookmarkDict objectForKey:@"title"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
         NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
         uint64_t b_id = [(NSNumber*)[bookmarkDict valueForKey:@"post_id"] longLongValue];
@@ -141,7 +141,6 @@
 
 +(void)gotFriends:(NSData*)data
 {
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
