@@ -105,7 +105,11 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
-        cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        
+        // TODO: Set to sharer's id 
+        cell.detailTextLabel.text = [Account current].username;
+        
+        
         cell.indentationWidth = 10;
         
         UIImage *image = [UIImage imageNamed:@"arrow.png"] ;
@@ -152,7 +156,7 @@ NSArray *tableData;
         if (cellNum == 2)
             customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 44;
+            customTableCellHeight = 60;
     }
     return customTableCellHeight;
 }

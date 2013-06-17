@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -1049,12 +1049,7 @@
                         <rect key="frame" x="0.0" y="44" width="768" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CM3-gG-dCJ">
-                            <size key="itemSize" width="150" height="170"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="l5a-NA-ZIv" customClass="FriendsViewFlowLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="ncH-2e-BRp" customClass="Friend">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
@@ -1087,25 +1082,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendsSearchBar" id="xfV-q6-ONb">
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" placeholder="Find a friend..." showsSearchResultsButton="YES" showsBookmarkButton="YES" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-VK-jNu">
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="768" id="UXJ-gu-oL3"/>
-                                    </constraints>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                </searchBar>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="bfU-VK-jNu" firstAttribute="leading" secondItem="xfV-q6-ONb" secondAttribute="leading" type="default" id="j5m-9q-LsP"/>
-                                <constraint firstItem="bfU-VK-jNu" firstAttribute="top" secondItem="xfV-q6-ONb" secondAttribute="top" type="default" id="yCd-7G-JTk"/>
-                            </constraints>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Ga1-Gr-paT" id="x5R-ml-Van"/>
                             <outlet property="delegate" destination="Ga1-Gr-paT" id="YZo-sE-2bX"/>
@@ -1523,6 +1499,9 @@
         <class className="FriendsViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
         </class>
+        <class className="FriendsViewFlowLayout" superclassName="UICollectionViewFlowLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewFlowLayout.h"/>
+        </class>
         <class className="IIViewDeckController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
             <relationships>
@@ -1635,7 +1614,7 @@
         <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
         <segue reference="MIp-dG-Jry"/>
-        <segue reference="HO3-Ri-1hV"/>
         <segue reference="El8-jk-MuS"/>
+        <segue reference="fod-x0-re8"/>
     </inferredMetricsTieBreakers>
 </document>
