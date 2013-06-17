@@ -383,8 +383,19 @@ NSString *boundary;
         NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
-                           [[FriendsDataController instantiate] addFriend:friendName];
-                           avc.friendAddedLabel.text = @"Friend added successfully";
+                           FriendsDataController *friendsDC = [FriendsDataController instantiate];
+                           NSLog(@"Here");
+                           if ([friendsDC containsFriend:friendName])
+                           {
+                               avc.friendAddedLabel.text = @"Friend already added";
+                               NSLog(@"Is friends");
+                           }
+                           else
+                           {
+                               [friendsDC addFriend:friendName];
+                               avc.friendAddedLabel.text = @"Friend added successfully";
+                               NSLog(@"Not friends");
+                           }
                        });
         
         if (error != nil)

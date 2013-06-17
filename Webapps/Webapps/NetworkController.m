@@ -145,6 +145,7 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     FriendsDataController *friendsDC = [FriendsDataController instantiate];
+    NSLog(@"%@",json);
     
     NSArray *friendsArray = (NSArray*)[json objectForKey:@"friends"];
     
@@ -168,10 +169,18 @@
 + (void)gotTagOwner:(NSData *)data Cell:(UITableViewCell *)cell
 {
     NSString *username =[Account current].username;
-    NSString *owner = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSString *owner = (NSString *)[json objectForKey:@"get_tag_owner_id"];
+    
     NSLog(@"%@,%@",username, owner);
-    if ([username isEqualToString:owner])
+    if (![username isEqualToString:owner])
+    {
         cell.detailTextLabel.text = owner;
+    } else {
+        cell.detailTextLabel.text = @"";
+    }
 }
 
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark

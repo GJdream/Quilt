@@ -13,7 +13,7 @@
       $result = pg_query($db, $query);
       $exists = pg_fetch_all($result);
 
-      if(!$exist)
+      if($exist)
         {
           $json_return = array_merge($json_return, array("create_friend" => $exists));
           return;
