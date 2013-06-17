@@ -15,7 +15,7 @@
 @property FriendsViewController *friendsViewController;
 @property NSString *tag;
 @property (weak, nonatomic) IBOutlet UIView *friendViewContainer;
-- (IBAction)shareButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+- (IBAction)shareButtonClick:(id)sender;
 
 @end

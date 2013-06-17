@@ -142,18 +142,16 @@
       $result    = pg_query($db, $query);
       $owner_id  = pg_fetch_result($result, 0);
       	
-      $query     = "SELECT \"Bookmarks\".* FROM \"Bookmarks\" " .
+      $query     = "SELECT DISTINCT \"Bookmarks\".* FROM \"Bookmarks\" " .
                    "JOIN \"Tags\" ON \"Tags\".post_id=\"Bookmarks\".post_id " .
                    "JOIN \"Tag_Visibility\" ON \"Tag_Visibility\".tag_id=\"Tags\".tag_id " .
                    "WHERE \"Tag_Visibility\".visible_to='$owner_id'";
       $result    = pg_query($db, $query);
       $bookmarks = pg_fetch_all($result);
       
-      // TODO: WORK OUT WHY NOT DISPLAYING SHARED BOOKMARKS
-      
       if(!($bookmarks === NULL))
         {
-          $json_return = array_merge($json_return, array("bookmarks" => $bookmarks));
+          $json_return = array_merge_recursive($json_return, array("bookmarks" => $bookmarks));
           
           foreach($bookmarks as $bm)
             getTagsForID($bm["post_id"]);
