@@ -30,6 +30,8 @@
 
 @implementation BookmarkViewController
 
+UIImageView *ghostView;
+
 - (IBAction)menuButtonClicked:(id)sender {
     [self.viewDeckController openLeftViewAnimated:YES];
 }
@@ -134,18 +136,53 @@
     }
 }
 
-- (IBAction)pinchDetected:(id)sender {
+- (IBAction)pinchDetected:(id)sender
+{
+    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state] || self.pinchGestureRecogniser.numberOfTouches != 2)
+    {
+        [self.collectionView reloadItemsAtIndexPaths:[[NSArray alloc] initWithObjects:self.pinchIndexPath, nil]];
+        self.pinchBookmark = nil;
+        [ghostView removeFromSuperview];
+        return;
+    }
+    
+    CGPoint prevOffsetPoint = self.collectionView.contentOffset;
+    
+    CGPoint point = [self.pinchGestureRecogniser locationInView:self.collectionView];
+    
     if(!self.pinchBookmark)
     {
-        CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
         self.pinchIndexPath = [self.collectionView indexPathForItemAtPoint:point];
+//        point = CGPointMake(point.x, point.y - self.collectionView.contentOffset.y);
         self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:self.pinchIndexPath.row];
         self.initialPinchWidth = self.pinchBookmark.width;
         self.initialPinchHeight = self.pinchBookmark.height;
+        
+/*        UIView *ghostView = [[UIView alloc] initWithFrame:self.collectionView.bounds];
+        ghostView.backgroundColor = [UIColor redColor];
+        [self.collectionView addSubview:ghostView];*/
+        
+        ghostView = [[UIImageView alloc] initWithFrame:self.pinchBookmark.viewBookmark.frame];
+        ghostView.image = self.pinchBookmark.image;
+        ghostView.alpha = 0.7f;
+        //ghostView = [[UIView alloc] initWithFrame:self.pinchBookmark.viewBookmark.frame];
+        //ghostView.backgroundColor = [UIColor redColor];
+        [self.collectionView addSubview:ghostView];
+        [self.collectionView bringSubviewToFront:ghostView];
+        
+        [ghostView.layer setMasksToBounds:YES];
+        [ghostView.layer setCornerRadius:15];
+        [ghostView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+        ghostView.layer.shouldRasterize = YES;
+        ghostView.layer.opaque = YES;
+        ghostView.backgroundColor = [[UIColor alloc] initWithWhite:1.0f alpha:0.7f];
+        ghostView.opaque = YES;
     }
     
     CGPoint point0 = [self.pinchGestureRecogniser locationOfTouch:0 inView:self.collectionView];
     CGPoint point1 = [self.pinchGestureRecogniser locationOfTouch:1 inView:self.collectionView];
+
+    
     CGFloat distance = sqrt((point1.x - point0.x) * (point1.x - point0.x) + (point1.y - point0.y) * (point1.y - point0.y));
     
     CGFloat xPortion = fabsf(point1.x - point0.x);
@@ -157,28 +194,31 @@
     NSUInteger prevWidth = self.pinchBookmark.width;
     NSUInteger prevHeight = self.pinchBookmark.height;
     
-    self.pinchBookmark.width = self.initialPinchWidth * xScale;
-    self.pinchBookmark.height = self.initialPinchHeight * yScale;
+    CGFloat ghostWidth = self.initialPinchWidth * xScale;
+    CGFloat ghostHeight = self.initialPinchHeight * yScale;
     
-    if(self.pinchBookmark.width < 1)
-        self.pinchBookmark.width = 1;
-    else if(self.pinchBookmark.width > 4)
-        self.pinchBookmark.width = 4;
+    if(ghostWidth < 1)
+        ghostWidth = 1;
+    else if(ghostWidth > 4)
+        ghostWidth = 4;
     
-    if(self.pinchBookmark.height < 1)
-        self.pinchBookmark.height = 1;
-    else if(self.pinchBookmark.height > 4)
-        self.pinchBookmark.height = 4;
+    if(ghostHeight < 1)
+        ghostHeight = 1;
+    else if(ghostHeight > 4)
+        ghostHeight = 4;
     
-    [NetworkClient updateBookmarkSize:self.pinchBookmark];
+    self.pinchBookmark.width = ghostWidth + 0.5;
+    self.pinchBookmark.height = ghostHeight + 0.5;
     
-    if(!(prevWidth == self.pinchBookmark.width && prevHeight == self.pinchBookmark.height))
-    {
-        [self.collectionView reloadItemsAtIndexPaths:[[NSArray alloc] initWithObjects:self.pinchIndexPath, nil]];
-    }
+    if(!(self.pinchBookmark.height == prevHeight && self.pinchBookmark.width == prevWidth))
+        [NetworkClient updateBookmarkSize:self.pinchBookmark];
     
-    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state])
-        self.pinchBookmark = nil;
+    ghostWidth *= self.layout.blockPixels.width;
+    ghostHeight *= self.layout.blockPixels.height;
+
+    ghostView.frame = CGRectMake(point.x - ghostWidth / 2, point.y - ghostHeight / 2, ghostWidth, ghostHeight);
+    
+    self.collectionView.contentOffset = prevOffsetPoint;
 }
 
 - (IBAction)shareButtonClicked:(id)sender {
