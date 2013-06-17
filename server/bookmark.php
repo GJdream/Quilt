@@ -124,7 +124,7 @@
       $result    = pg_query($db, $query);
       $success   = pg_fetch_all($result);
 
-      $json_return = array_merge($json_return, array("resize_bookmark" => !$success));
+      $json_return = array_merge($json_return, array("resize_bookmark" => ($success === NULL)));
     }
 
 

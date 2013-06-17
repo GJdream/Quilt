@@ -15,5 +15,12 @@
 @property NSMutableArray *selectedItems;
 @property (strong, nonatomic) FriendsDataController *dataController;
 @property BOOL shareEnabled;
+@property BOOL editEnabled;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editFriendsButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteFriendsButton;
+
+- (IBAction)editFriendsClicked:(id)sender;
+- (IBAction)deleteFriendsClicked:(id)sender;
 
 @end

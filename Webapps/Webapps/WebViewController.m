@@ -121,6 +121,7 @@
                 [[BookmarkDataController instantiate] addBookmark:addController.bookmark];
                 [[BookmarkDataController instantiate] updateOnBookmarkInsertion];
                 [NetworkClient createBookmark:addController.bookmark];
+                
             }];
             
             self.shotView.frame = self.view.frame;

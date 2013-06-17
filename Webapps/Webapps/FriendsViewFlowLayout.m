@@ -36,7 +36,7 @@
 
 - (void)setup
 {
-    self.itemSize = CGSizeMake(150, 170);
+    self.itemSize = CGSizeMake(160, 180);
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
     self.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
