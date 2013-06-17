@@ -32,6 +32,8 @@
 - (void)updateOnFriendInsertion;
 - (void)updateOnFriendDeletion:(NSIndexPath *)indexPath;
 
+- (BOOL)containsFriend:(NSString *)name;
+
 - (void)showFriend:(NSString *)friend;
 - (void)showAll;
 

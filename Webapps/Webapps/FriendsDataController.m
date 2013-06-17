@@ -93,15 +93,23 @@ static FriendsViewController *staticVC = nil;
     return [self.friendsDisplayArray objectAtIndex:index];
 }
 
+- (BOOL)containsFriend:(NSString *)name
+{
+    return [self.friendTrie containsObjectForKey:name];
+}
+
 - (void)addFriend:(NSString *)friendName
 {
-    Friend *friend = [[Friend alloc] initWithUsername:friendName Image:nil];
-    [self.friendsArray addObject:friend];
-    [self.friendTrie addString:friendName];
-    [self.friendsDictionary setObject:friend forKey:friendName];
-    NSUInteger index = [self.friendsArray indexOfObject:friend];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [self.updatedFriends addObject:indexPath];
+    if (![self containsFriend:friendName])
+    {
+        Friend *friend = [[Friend alloc] initWithUsername:friendName Image:nil];
+        [self.friendsArray addObject:friend];
+        [self.friendTrie addString:friendName];
+        [self.friendsDictionary setObject:friend forKey:friendName];
+        NSUInteger index = [self.friendsArray indexOfObject:friend];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.updatedFriends addObject:indexPath];
+    }
 }
 
 - (void)deleteFriend:(Friend *)friend

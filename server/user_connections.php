@@ -134,7 +134,7 @@
       
       echo $tag;
       
-      foreach($users] as $share_uname)
+      foreach($users as $share_uname)
         {
           $query    = "SELECT user_id FROM \"Users\" " .
                       "WHERE user_name = '$share_uname'";

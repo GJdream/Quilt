@@ -9,12 +9,12 @@
     - Need to be able to listen on network and return requested data {Complete}  
     - Change password code {FIXED}  
     - Change profile picture code {FIXED}  
-    - Friend addition/deletion/sharing {In Progress}  
+    - Friend addition/deletion/sharing {Complete}  
 
  - GUI: {In Progress}
     - Bookmark view {In progress}
-       - Friend share button on dynamic cells
-       - Tag buttons
+       - Friend share button on dynamic cells {?}
+       - Tag buttons {?}
     - Friend view and data controller
     - Tag detail {owner id code}  
     - Toolbar - edit/delete bookmarks
@@ -23,8 +23,8 @@
     - Add logout functionality {Complete}
     - Send images to and from database {Complete}
     - Friends {Complete}
-       - Remove ability to add duplicates
-       - Remove ability to add people that doesn't exist
+       - Remove ability to add duplicates {FIXED}
+       - Remove ability to add people that doesn't exist {FIXED}
 
  - Graphics {Complete}
     - Fix iPad icon 

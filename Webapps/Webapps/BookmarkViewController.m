@@ -23,6 +23,8 @@
 @property UIBookmark *pinchBookmark;
 @property NSUInteger initialPinchWidth;
 @property NSUInteger initialPinchHeight;
+@property RFQuiltLayout *layout;
+@property UIBookmark *pinchDisplayBookmark;
 
 @end
 
@@ -44,10 +46,10 @@
 {
     [super viewDidLoad];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
-    RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
-    layout.direction = UICollectionViewScrollDirectionVertical;
-    layout.blockPixels = CGSizeMake(150, 150);
-    layout.delegate = (id)self;    
+    self.layout = (id)[self.collectionView collectionViewLayout];
+    self.layout.direction = UICollectionViewScrollDirectionVertical;
+    self.layout.blockPixels = CGSizeMake(150, 150);
+    self.layout.delegate = (id)self;
 }
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,7 +151,7 @@
     if(!self.pinchBookmark)
     {
         CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
-        NSIndexPath *ip = [((RFQuiltLayout*)self.collectionView.collectionViewLayout) indexPathForPosition:point];
+        NSIndexPath *ip = [self.layout indexPathForPosition:point];
         self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:ip.row];
         self.initialPinchWidth = self.pinchBookmark.width;
         self.initialPinchHeight = self.pinchBookmark.height;
@@ -168,7 +170,8 @@
     else if(self.pinchBookmark.height > 4)
         self.pinchBookmark.height = 4;
     
-    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state]){
+    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state])
+    {
         [self.view setNeedsDisplay];
         NSLog(@"Ended");
     }
@@ -179,8 +182,6 @@
 - (IBAction)shareButtonClicked:(id)sender {
     BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
     bookmarkDC.sharingTag = bookmarkDC.bookmarkVC.navigationItem.title;
-    NSLog(@"%@", bookmarkDC.sharingTag);
 	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
-
 }
 @end
