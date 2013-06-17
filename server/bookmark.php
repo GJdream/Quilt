@@ -264,10 +264,10 @@
       global $db;
       global $json_return;
 
-      $tag_id   = $_GET[tag_id];
+      $tag_name  = $_GET[tag];
 
       $query    = "SELECT owner_id FROM \"Tags\" " .
-                  "WHERE tag_id = '$tag_id'";
+                  "WHERE tag = '$tag_name'";
       $result   = pg_query($db, $query);
       $user_id  = pg_fetch_all($result);
       
