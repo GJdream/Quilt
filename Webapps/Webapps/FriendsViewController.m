@@ -91,7 +91,12 @@ NSArray *tableData;
     [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
     cell.layer.shouldRasterize = YES;
     cell.layer.opaque = YES;
-    cell.backgroundColor = [UIColor whiteColor];
+    //cell.backgroundColor = [UIColor whiteColor];
+    
+    if (self.shareEnabled) {
+        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Gray.png"]];
+    }
+    
     
     return cell;
 }

@@ -118,7 +118,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="AJq-3S-Xd6">
-                                        <rect key="frame" x="0.0" y="603" width="768" height="51"/>
+                                        <rect key="frame" x="0.0" y="603" width="768" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="49"/>
@@ -326,7 +326,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4BB-IG-fOu">
-                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
+                                        <rect key="frame" x="0.0" y="647" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="43"/>
@@ -475,7 +475,7 @@
                         <barButtonItem title="Edit" id="R12-4x-Bzu"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Quilt" id="TmH-sn-WmV">
-                        <barButtonItem key="leftBarButtonItem" title="Toolbar" id="aXP-rA-zDU">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="aXP-rA-zDU">
                             <connections>
                                 <action selector="menuButtonClicked:" destination="fX2-UC-hl8" id="GWV-s0-Ndl"/>
                             </connections>
@@ -1047,30 +1047,39 @@
                         <collectionViewLayout key="collectionViewLayout" id="Ozs-bQ-yM8" customClass="FriendsViewFlowLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="ncH-2e-BRp" customClass="Friend">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
+                                <rect key="frame" x="0.0" y="0.0" width="178" height="177"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="170"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="178" height="177"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4E-5X-zOG"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4E-5X-zOG">
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="AEr-FF-J4B"/>
+                                                <constraint firstAttribute="width" constant="150" id="WRM-as-zde"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="friendName" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkk-gs-n11">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="SRY-r4-l4Y"/>
+                                                <constraint firstAttribute="width" constant="46" id="nDf-xK-yFE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="l4E-5X-zOG" secondAttribute="bottom" constant="20" type="default" id="4x6-df-mzd"/>
-                                    <constraint firstItem="Xkk-gs-n11" firstAttribute="bottom" secondItem="ncH-2e-BRp" secondAttribute="bottom" type="default" id="8wk-oH-smF"/>
-                                    <constraint firstItem="Xkk-gs-n11" firstAttribute="centerX" secondItem="l4E-5X-zOG" secondAttribute="centerX" type="default" id="Eh4-RC-FqM"/>
-                                    <constraint firstItem="l4E-5X-zOG" firstAttribute="leading" secondItem="ncH-2e-BRp" secondAttribute="leading" type="default" id="Y4a-dg-qvn"/>
-                                    <constraint firstItem="l4E-5X-zOG" firstAttribute="top" secondItem="ncH-2e-BRp" secondAttribute="top" type="default" id="dqG-UW-p9W"/>
-                                    <constraint firstItem="l4E-5X-zOG" firstAttribute="trailing" secondItem="ncH-2e-BRp" secondAttribute="trailing" type="default" id="tRm-dk-Clt"/>
+                                    <constraint firstItem="Xkk-gs-n11" firstAttribute="bottom" secondItem="ncH-2e-BRp" secondAttribute="bottom" type="default" id="34b-Vf-FJj"/>
+                                    <constraint firstItem="l4E-5X-zOG" firstAttribute="centerX" secondItem="ncH-2e-BRp" secondAttribute="centerX" type="default" id="MP3-EQ-RME"/>
+                                    <constraint firstItem="l4E-5X-zOG" firstAttribute="centerX" secondItem="Xkk-gs-n11" secondAttribute="centerX" type="default" id="n5s-rW-wnG"/>
+                                    <constraint firstAttribute="bottom" secondItem="l4E-5X-zOG" secondAttribute="bottom" constant="20" type="default" id="yZg-h5-IVk"/>
                                 </constraints>
-                                <size key="customSize" width="150" height="170"/>
+                                <size key="customSize" width="178" height="177"/>
                                 <connections>
                                     <outlet property="friendName" destination="Xkk-gs-n11" id="jqG-bd-ZU7"/>
                                     <outlet property="friendPhoto" destination="l4E-5X-zOG" id="oML-ZX-47D"/>
@@ -1343,7 +1352,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="yyR-Dq-LtK">
-                                        <rect key="frame" x="0.0" y="560" width="768" height="66"/>
+                                        <rect key="frame" x="0.0" y="560" width="768" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="64"/>
@@ -1454,15 +1463,180 @@
         <image name="Quilt_blue_trans.png" width="620" height="417"/>
         <image name="Quilt_trans_mini.png" width="200" height="134"/>
     </resources>
+    <classes>
+        <class className="AccountViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addFriend:"/>
+                <relationship kind="action" name="saveChangesClicked:"/>
+                <relationship kind="action" name="takeCameraPhotoClicked:"/>
+                <relationship kind="action" name="uploadPictureClicked:"/>
+                <relationship kind="outlet" name="addFriendButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addFriendUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="friendAddedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="friendUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveChanges" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="takeCameraPhoto" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="uploadPicture" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AddBookmarkViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBookmarkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="infoButtonClicked:"/>
+                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tagsInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="urlInput" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="BookmarkViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pinchDetected:"/>
+                <relationship kind="action" name="shareButtonClicked:"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="pinchGestureRecogniser" candidateClass="UIPinchGestureRecognizer"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="Friend" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Friend.h"/>
+            <relationships>
+                <relationship kind="outlet" name="friendName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="friendPhoto" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="FriendsViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
+        </class>
+        <class className="FriendsViewFlowLayout" superclassName="UICollectionViewFlowLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewFlowLayout.h"/>
+        </class>
+        <class className="IIViewDeckController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="centerController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="leftController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="panningView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rightController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="topController" candidateClass="UIViewController"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginClicked:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NavigationBarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NavigationBarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="RFQuiltLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RFQuiltLayout.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate" candidateClass="NSObject"/>
+            </relationships>
+        </class>
+        <class className="RegisterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="registerClicked:"/>
+                <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="validPasswordLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="validUsernameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ShareViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShareViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="shareButtonClick:"/>
+                <relationship kind="outlet" name="friendViewContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="UIBookmark" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIBookmark.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteClicked:"/>
+                <relationship kind="action" name="tagClicked:"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+        <class className="ViewDeckController" superclassName="IIViewDeckController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewDeckController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bookmarkView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="WebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back"/>
+                <relationship kind="action" name="cancel:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="done:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="forward"/>
+                <relationship kind="action" name="reload"/>
+                <relationship kind="action" name="search"/>
+                <relationship kind="action" name="stop"/>
+                <relationship kind="outlet" name="addBookmarkButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="viewWeb" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9Qo-do-rs0"/>
-        <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
+        <segue reference="GNh-Ti-tqT"/>
         <segue reference="MIp-dG-Jry"/>
+        <segue reference="fod-x0-re8"/>
     </inferredMetricsTieBreakers>
 </document>
