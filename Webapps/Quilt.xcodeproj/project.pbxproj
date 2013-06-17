@@ -29,6 +29,7 @@
 		64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */; };
 		64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */; };
 		64EFE2FB176F2B37001AD248 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2FA176F2B37001AD248 /* delete_button.png */; };
+		64EFE2FF176F2D7F001AD248 /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2FE176F2D7F001AD248 /* RFQuiltLayout.m */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
 		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
 		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
@@ -97,6 +98,8 @@
 		64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
 		64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		64EFE2FA176F2B37001AD248 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_button.png; sourceTree = "<group>"; };
+		64EFE2FD176F2D7F001AD248 /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
+		64EFE2FE176F2D7F001AD248 /* RFQuiltLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFQuiltLayout.m; sourceTree = "<group>"; };
 		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		791051FA1765F55200CC4555 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -166,6 +169,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */ = {
+			isa = PBXGroup;
+			children = (
+				64EFE2FD176F2D7F001AD248 /* RFQuiltLayout.h */,
+				64EFE2FE176F2D7F001AD248 /* RFQuiltLayout.m */,
+			);
+			path = RFQuiltLayout;
+			sourceTree = "<group>";
+		};
 		791051F71765F55200CC4555 /* ViewDeck */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +271,7 @@
 				791052041765FD9F00CC4555 /* ViewDeckController.m */,
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
+				64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 			);
@@ -408,6 +421,7 @@
 				79516306176D0CED000F7B10 /* bookmark_layout.c in Sources */,
 				7951630A176E2C27000F7B10 /* ShareViewController.m in Sources */,
 				64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */,
+				64EFE2FF176F2D7F001AD248 /* RFQuiltLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
