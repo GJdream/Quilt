@@ -99,17 +99,19 @@
       else if($_GET['action'] === "check_username")
         checkUsername();
       else if($_GET['action'] === "get_user_picture")
-      {
-      	$will_return_json = false;
-        getUserPicture();
-      }
+        {
+      	  $will_return_json = false;
+          getUserPicture();
+        }
       else if($_GET['action'] === "get_bookmark_picture")
-      {
-        $will_return_json = false;
-        getBookmarkPicture();
-      }
+        {
+          $will_return_json = false;
+          getBookmarkPicture();
+        }
+      else if($_GET['action'] === "get_tag_owner_id")
+      	getTagOwnerID();
     }
     
-    if($will_return_json)
-    	echo json_encode($json_return);
+  if($will_return_json)
+  echo json_encode($json_return);
 ?>
