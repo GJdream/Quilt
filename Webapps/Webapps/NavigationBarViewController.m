@@ -153,7 +153,7 @@ NSArray *tableData;
         if (cellNum == 2)
             customTableCellHeight = 44;
         if (cellNum == 3)
-            customTableCellHeight = 44;
+            customTableCellHeight = 60;
     }
     return customTableCellHeight;
 }

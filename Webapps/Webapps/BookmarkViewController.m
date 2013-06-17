@@ -16,6 +16,7 @@
 #import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
 #import "NetworkClient.h"
+#import "RFQuiltLayout.h"
 #import "ShareViewController.h"
 
 @implementation BookmarkViewController
@@ -34,7 +35,15 @@
 {
     [super viewDidLoad];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
-    
+    RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
+    layout.direction = UICollectionViewScrollDirectionVertical;
+    layout.blockPixels = CGSizeMake(150, 150);
+    layout.delegate = (id)self;
+}
+
+- (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
+    return CGSizeMake(bookmarkAtIndex.width, bookmarkAtIndex.height);
 }
 
 - (void)didReceiveMemoryWarning
