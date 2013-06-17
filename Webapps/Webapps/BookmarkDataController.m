@@ -38,11 +38,6 @@ static BookmarkViewController *staticVC = nil;
     return instance;
 }
 
-+ (void)deleteInstance
-{
-    instance = nil;
-}
-
 - (void)registerUpdate:(void (^)(void))updateMethod
 {
     [self.watchingMethods addObject:updateMethod];

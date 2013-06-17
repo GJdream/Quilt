@@ -33,6 +33,8 @@
 
 @property BOOL validPassword;
 
+@property (weak, nonatomic) IBOutlet UILabel *friendAddedLabel;
+@property (weak, nonatomic) IBOutlet UITextField *friendUsername;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 @property (weak, nonatomic) IBOutlet UITextField *addFriendUsername;
 

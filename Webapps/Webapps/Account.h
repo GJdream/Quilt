@@ -30,4 +30,6 @@
 + (void)changePhoto:(UIImage *)image AccountView:(AccountViewController *)avc;
 - (void)setPhoto:(AccountViewController *)avc;
 
++ (NSString *)getTagOwner;
+
 @end

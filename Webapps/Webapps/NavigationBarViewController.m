@@ -93,7 +93,6 @@ NSArray *tableData;
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:staticCellID];
-           
         }
     } else {
         NSString *dynamicCellID = @"TableItem";
@@ -105,6 +104,7 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
+        //[Account getTagOwner];
         cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
         cell.indentationWidth = 10;
         
@@ -159,6 +159,7 @@ NSArray *tableData;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.view endEditing:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *selectedCell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     
