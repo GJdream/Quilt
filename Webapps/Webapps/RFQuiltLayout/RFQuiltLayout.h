@@ -19,6 +19,7 @@
 
 @property (nonatomic, assign) CGSize blockPixels; // defaults to 100x100
 @property (nonatomic, assign) UICollectionViewScrollDirection direction; // defaults to vertical
+- (NSIndexPath*)indexPathForPosition:(CGPoint)point;
 
 // only use this if you don't have more than 1000ish items.
 // this will give you the correct size from the start and

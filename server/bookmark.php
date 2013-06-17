@@ -264,7 +264,7 @@
       global $db;
       global $json_return;
 
-      $tag_name = $_GET[tag];
+      $tag_name  = $_GET[tag];
 
       $query    = "SELECT owner_id FROM \"Tags\" " .
                   "WHERE tag = '$tag_name'";
@@ -277,7 +277,7 @@
       $username = pg_fetch_result($result, 0);
 
       if($username)
-        $json_return = array_marge($json_return, array("get_tag_owner_id" => $username));
+        $json_return = array_merge($json_return, array("get_tag_owner_id" => $username));
     }
 
   function updateBookmarkPicture()

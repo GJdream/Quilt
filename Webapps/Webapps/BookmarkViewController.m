@@ -13,11 +13,18 @@
 #import "NavigationBarViewController.h"
 #import "UIBookmark.h"
 #import <QuartzCore/QuartzCore.h>
-#import "BookmarkViewFlowLayout.h"
 #import "AccountViewController.h"
 #import "NetworkClient.h"
 #import "RFQuiltLayout.h"
 #import "ShareViewController.h"
+
+@interface BookmarkViewController ()
+
+@property UIBookmark *pinchBookmark;
+@property NSUInteger initialPinchWidth;
+@property NSUInteger initialPinchHeight;
+
+@end
 
 @implementation BookmarkViewController
 
@@ -40,7 +47,7 @@
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionVertical;
     layout.blockPixels = CGSizeMake(150, 150);
-    layout.delegate = (id)self;
+    layout.delegate = (id)self;    
 }
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,6 +146,41 @@
 }
 
 - (IBAction)pinchDetected:(id)sender {
-//    self.pinchGestureRecogniser.
+    if(!self.pinchBookmark)
+    {
+        CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
+        NSIndexPath *ip = [((RFQuiltLayout*)self.collectionView.collectionViewLayout) indexPathForPosition:point];
+        self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:ip.row];
+        self.initialPinchWidth = self.pinchBookmark.width;
+        self.initialPinchHeight = self.pinchBookmark.height;
+    }
+    
+    self.pinchBookmark.width = self.initialPinchWidth * self.pinchGestureRecogniser.scale;
+    self.pinchBookmark.height = self.initialPinchHeight * self.pinchGestureRecogniser.scale;
+    
+    if(self.pinchBookmark.width < 1)
+        self.pinchBookmark.width = 1;
+    else if(self.pinchBookmark.width > 4)
+        self.pinchBookmark.width = 4;
+    
+    if(self.pinchBookmark.height < 1)
+        self.pinchBookmark.height = 1;
+    else if(self.pinchBookmark.height > 4)
+        self.pinchBookmark.height = 4;
+    
+    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state]){
+        [self.view setNeedsDisplay];
+        NSLog(@"Ended");
+    }
+    
+    NSLog(@"%u, %u", self.pinchBookmark.width, self.pinchBookmark.height);
+}
+
+- (IBAction)shareButtonClicked:(id)sender {
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = bookmarkDC.bookmarkVC.navigationItem.title;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+
 }
 @end
