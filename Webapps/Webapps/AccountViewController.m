@@ -37,6 +37,7 @@
     self.username.text = [Account current].username;
     [[Account current] setPhoto:self];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
+    self.friendAddedLabel.text = @"";
 	// Do any additional setup after loading the view.
 }
 
@@ -79,7 +80,10 @@
 
 - (IBAction)addFriend:(id)sender {
     NSString *name = self.addFriendUsername.text;
-    [NetworkClient addFriend:name];
+    [NetworkClient addFriend:name AccountVC:self];
+    self.friendUsername.text = @"";
+    //self.friendAddedLabel.text = @"Friend added successfully";
+    [self.view endEditing:YES];
 }
 
 - (IBAction)takeCameraPhotoClicked:(id)sender
@@ -154,6 +158,11 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 @end

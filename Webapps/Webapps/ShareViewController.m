@@ -51,6 +51,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self.view endEditing:YES];
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"friendEmbedSegue"]) {
         self.friendsViewController = (FriendsViewController*)[segue destinationViewController];
@@ -63,4 +64,5 @@
     [NetworkClient shareTag:[BookmarkDataController instantiate].sharingTag WithFriends:selectedFriends];
     [self performSegueWithIdentifier:@"shareSegue" sender:self];
 }
+
 @end

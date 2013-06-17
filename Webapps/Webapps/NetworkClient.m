@@ -372,7 +372,7 @@ NSString *boundary;
     }];
 }
 
-+(void)addFriend:(NSString*)friendName
++(void)addFriend:(NSString*)friendName AccountVC:(AccountViewController *)avc
 {
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
                                     [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"new_friend", friendName,nil]
@@ -383,6 +383,7 @@ NSString *boundary;
         dispatch_async(dispatch_get_main_queue(),
                        ^(void){
                            [[FriendsDataController instantiate] addFriend:friendName];
+                           avc.friendAddedLabel.text = @"Friend added successfully";
                        });
         
         if (error != nil)

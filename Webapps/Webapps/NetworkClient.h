@@ -23,7 +23,7 @@
 +(void)getBookmarkPicture:(UIBookmark*)bookmark;
 +(void)getFriendPhoto:(Friend *)friend;
 
-+(void)addFriend:(NSString*)friendName;
++(void)addFriend:(NSString*)friendName AccountVC:(AccountViewController *)avc;
 +(void)removeFriend:(NSString*)friendName;
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController*)rvc;
 +(void)createBookmark:(UIBookmark*)bookmark;
