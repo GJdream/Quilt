@@ -48,11 +48,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)shareButtonClick:(id)sender {
-    NSArray *selectedFriends = (NSArray*)self.friendsViewController.selectedItems;
-    [NetworkClient shareTag:[BookmarkDataController instantiate].sharingTag WithFriends:selectedFriends];
-}
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
@@ -61,4 +56,10 @@
     }
 }
 
+- (IBAction)shareButtonClick:(id)sender {
+    NSArray *selectedFriends = (NSArray*)self.friendsViewController.selectedItems;
+    NSLog(@"selectedFriends: %@", selectedFriends);
+    [NetworkClient shareTag:[BookmarkDataController instantiate].sharingTag WithFriends:selectedFriends];
+    [self performSegueWithIdentifier:@"shareSegue" sender:self];
+}
 @end
