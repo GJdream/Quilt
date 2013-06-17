@@ -90,60 +90,61 @@
 
       $owner = $_SESSION[user_id];
 
-      // discover user's id
+      // fetch the user's id
       $query    = "SELECT user_id FROM \"Users\" " .
                   "WHERE user_name = '$owner'";
       $result   = pg_query($db, $query);
-      $user_id = pg_fetch_result($result, 0);
+      $user_id  = pg_fetch_result($result, 0);
 
-      $query    = "SELECT friend_id FROM \"Friends\" " .
-                  "WHERE user_id = '$user_id'";
-      $result   = pg_query($db, $query);
-      $friend_ids  = pg_fetch_all_columns($result, 0);
+      $query      = "SELECT friend_id FROM \"Friends\" " .
+                    "WHERE user_id = '$user_id'";
+      $result     = pg_query($db, $query);
+      $friend_ids = pg_fetch_all_columns($result, 0);
 
-	  $json_return = array_merge_recursive($json_return, array("friends" => array()));
+  	  $json_return = array_merge_recursive($json_return, array("friends" => array()));
 
-	  foreach($friend_ids as $id)
-	  {
-	  	$query	= "SELECT user_name FROM \"Users\" " .
-	  			  "WHERE user_id = '$id'";
-	  	$result	 = pg_query($db, $query);
-	  	$name = pg_fetch_result($result, 0);
-	  	
-	  	$json_return = array_merge_recursive($json_return, array("friends" => (string)$name));
-	  }
+      foreach($friend_ids as $id)
+        {
+          $query  = "SELECT user_name FROM \"Users\" " .
+                    "WHERE user_id = '$id'";
+          $result	= pg_query($db, $query);
+          $name   = pg_fetch_result($result, 0);
+
+          $json_return = array_merge_recursive($json_return, array("friends" => (string)$name));
+        }
     }
     
   function shareTag()
     {
       global $db;
-    	
-      $owner  	= $_SESSION[user_id];
-      $tag		= $_POST[tag];
-    	
-	  $query    = "SELECT user_id FROM \"Users\" " .
-                  "WHERE user_name = '$owner'";
-      $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
+    
+      $owner = $_SESSION[user_id];
+      $tag   = $_POST[tag];
+      $users = $_POST[users];
 
-      $query    = "SELECT tag_id FROM \"Tags\" " .
-                  "WHERE owner_id = '$user_id' AND tag = '$tag'";
-      $result   = pg_query($db, $query);
+      $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$owner'";
+      $result  = pg_query($db, $query);
+      $user_id = pg_fetch_result($result, 0);
+
+      $query   = "SELECT tag_id FROM \"Tags\" " .
+                 "WHERE owner_id = '$user_id' AND tag = '$tag'";
+      $result  = pg_query($db, $query);
       $tag_id  = pg_fetch_result($result, 0);
       
       echo $tag;
       
-      foreach($_POST[users] as $share_uname)
-      {
-		$query    = "SELECT user_id FROM \"Users\" " .
-                    "WHERE user_name = '$share_uname'";
-      	$result   = pg_query($db, $query);
-      	$share_id  = pg_fetch_result($result, 0);
+      foreach($users] as $share_uname)
+        {
+          $query    = "SELECT user_id FROM \"Users\" " .
+                      "WHERE user_name = '$share_uname'";
+          $result   = pg_query($db, $query);
+          $share_id = pg_fetch_result($result, 0);
 
-	    $query    = "INSERT INTO \"Tag_Visibility\" (tag_id, visible_to) " .
-	                "VALUES ('$tag_id', '$share_id')";
-	    $result   = pg_query($db, $query);
-      }
+          $query    = "INSERT INTO \"Tag_Visibility\" (tag_id, visible_to) " .
+                      "VALUES ('$tag_id', '$share_id')";
+          $result   = pg_query($db, $query);
+        }
     }
 
   function createGroup()
@@ -179,7 +180,6 @@
 
       // building array of members
       $members   = implode("','", $_POST[members]);
-      $memberarr = "ARRAY['" . $members . "']"; // not used?
 
       foreach($members as $member)
         {
