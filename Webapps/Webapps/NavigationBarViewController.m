@@ -188,8 +188,12 @@ NSArray *tableData;
     else {
         BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
         [bookmarkDC showTag:selectedCell.textLabel.text];
-        NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
-        bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];
+        NSString *title = selectedCell.textLabel.text;
+        bookmarkDC.bookmarkVC.navigationItem.title = title;
+
+        
+        //NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
+        //bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];
         //[self tableView: self.tableView accessoryButtonTappedForRowWithIndexPath: indexPath];
     }
 }

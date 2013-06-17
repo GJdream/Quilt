@@ -141,4 +141,12 @@
 - (IBAction)pinchDetected:(id)sender {
 //    self.pinchGestureRecogniser.
 }
+
+- (IBAction)shareButtonClicked:(id)sender {
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = bookmarkDC.bookmarkVC.navigationItem.title;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+
+}
 @end
