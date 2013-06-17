@@ -107,4 +107,9 @@ Account *currentAccount;
     return self;
 }
 
++ (NSString *)getTagOwner
+{
+    //[NetworkClient getTagOwner];
+}
+
 @end
