@@ -35,6 +35,8 @@ Account *currentAccount;
     [bookmarkDC emptyBookmarkArray];
     [bookmarkDC.bookmarksArray removeAllObjects];
     [bookmarkDC emptyTagTrie];
+    
+    [BookmarkDataController deleteInstance];
     currentAccount = nil;
 }
 

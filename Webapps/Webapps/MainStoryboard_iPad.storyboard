@@ -978,7 +978,7 @@
                     <navigationItem key="navigationItem" title="Select Friends To Share With" id="d5D-M6-KaU">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="zOv-go-pD4">
                             <connections>
-                                <segue destination="sbq-hn-L3T" kind="modal" modalTransitionStyle="flipHorizontal" id="HO3-Ri-1hV"/>
+                                <segue destination="sbq-hn-L3T" kind="modal" identifier="shareSegue" modalTransitionStyle="flipHorizontal" id="HO3-Ri-1hV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Share" id="zJL-r5-PU1">
@@ -992,7 +992,7 @@
                         <outlet property="friendViewContainer" destination="tHb-Qg-5o9" id="Qsf-R2-tCB"/>
                         <outlet property="searchBar" destination="Boc-Ik-jma" id="j8Y-fN-9oY"/>
                         <outlet property="searchDisplayController" destination="g5P-d7-t5q" id="6b4-Q7-D6G"/>
-                        <segue destination="YF0-55-1ip" kind="modal" identifier="shareSegue" id="El8-jk-MuS"/>
+                        <segue destination="sbq-hn-L3T" kind="modal" id="wFO-p3-259"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1482,9 +1482,6 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="menuButtonClicked:"/>
-            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
@@ -1573,9 +1570,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
@@ -1611,7 +1605,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
         <segue reference="MIp-dG-Jry"/>
         <segue reference="El8-jk-MuS"/>
