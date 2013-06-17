@@ -23,7 +23,6 @@
 		2EDC2996176DD09B00F0C6B6 /* Quilt_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */; };
 		2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */; };
 		2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */; };
-		6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */; };
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
@@ -88,7 +87,6 @@
 		2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_blue.png; sourceTree = "<group>"; };
 		2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_blue_trans.png; sourceTree = "<group>"; };
 		2EDC2999176DD44400F0C6B6 /* Quilt_trans_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt_trans_mini.png; sourceTree = "<group>"; };
-		6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		6420CBE2175F3B2300411E5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		64279590176E1483008A0C44 /* QuiltTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuiltTexture.png; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
-				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
 				79516308176E2C27000F7B10 /* ShareViewController.h */,
 				79516309176E2C27000F7B10 /* ShareViewController.m */,
 				2E4136F11768C2E1000DA87E /* navBarTexture.png */,
@@ -348,7 +345,6 @@
 				79BEAD3D1754FCAC0056DFBD /* Default.png in Resources */,
 				79BEAD3F1754FCAC0056DFBD /* Default@2x.png in Resources */,
 				79BEAD411754FCAC0056DFBD /* Default-568h@2x.png in Resources */,
-				6420CBDA175F381B00411E5F /* MainStoryboard_iPad.storyboard in Resources */,
 				2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */,
 				2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */,
 				2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */,
