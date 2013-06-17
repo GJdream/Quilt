@@ -7,19 +7,6 @@
       $user_name   = $_SESSION[user_id];
       $friend_name = $_POST[friend_name];
 
-      // first check if the friend exists
-      $query  = "SELECT user_name FROM \"Users\" " .
-                "WHERE user_name = '$friend_name'";
-      $result = pg_query($db, $query);
-      $exists = pg_fetch_all($result);
-
-      if(!$exist)
-        {
-          $json_return = array_merge($json_return, array("create_friend" => $exists));
-          return;
-        }
-        
-      // all is fine, create the friend as normal
       $query   = "SELECT user_id FROM \"Users\" " .
                  "WHERE user_name = '$user_name'";
       $result  = pg_query($db, $query);

@@ -24,7 +24,7 @@
 @property NSUInteger initialPinchWidth;
 @property NSUInteger initialPinchHeight;
 @property RFQuiltLayout *layout;
-@property UIBookmark *pinchDisplayBookmark;
+@property NSIndexPath *pinchIndexPath;
 
 @end
 
@@ -32,6 +32,10 @@
 
 - (IBAction)menuButtonClicked:(id)sender {
     [self.viewDeckController openLeftViewAnimated:YES];
+}
+
+- (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
 - (void)awakeFromNib
@@ -48,7 +52,7 @@
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
     self.layout = (id)[self.collectionView collectionViewLayout];
     self.layout.direction = UICollectionViewScrollDirectionVertical;
-    self.layout.blockPixels = CGSizeMake(150, 150);
+    self.layout.blockPixels = CGSizeMake(170, 170);
     self.layout.delegate = (id)self;
 }
 
@@ -134,14 +138,29 @@
     if(!self.pinchBookmark)
     {
         CGPoint point = [self.pinchGestureRecogniser locationInView:self.view];
-        NSIndexPath *ip = [self.layout indexPathForPosition:point];
-        self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:ip.row];
+        self.pinchIndexPath = [self.collectionView indexPathForItemAtPoint:point];
+        self.pinchBookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:self.pinchIndexPath.row];
         self.initialPinchWidth = self.pinchBookmark.width;
         self.initialPinchHeight = self.pinchBookmark.height;
     }
     
-    self.pinchBookmark.width = self.initialPinchWidth * self.pinchGestureRecogniser.scale;
-    self.pinchBookmark.height = self.initialPinchHeight * self.pinchGestureRecogniser.scale;
+    CGPoint point0 = [self.pinchGestureRecogniser locationOfTouch:0 inView:self.collectionView];
+    CGPoint point1 = [self.pinchGestureRecogniser locationOfTouch:1 inView:self.collectionView];
+    CGFloat distance = sqrt((point1.x - point0.x) * (point1.x - point0.x) + (point1.y - point0.y) * (point1.y - point0.y));
+    
+    CGFloat xPortion = fabsf(point1.x - point0.x);
+    CGFloat yPortion = fabsf(point1.y - point0.y);
+    
+    CGFloat xScale = self.pinchGestureRecogniser.scale * xPortion / distance;
+    CGFloat yScale = self.pinchGestureRecogniser.scale * yPortion / distance;
+    
+    NSLog(@"scale: %f, xscale: %f, yscale: %f, distance: %f", self.pinchGestureRecogniser.scale, xScale, yScale, distance);
+    
+    NSUInteger prevWidth = self.pinchBookmark.width;
+    NSUInteger prevHeight = self.pinchBookmark.height;
+    
+    self.pinchBookmark.width = self.initialPinchWidth * xScale;
+    self.pinchBookmark.height = self.initialPinchHeight * yScale;
     
     if(self.pinchBookmark.width < 1)
         self.pinchBookmark.width = 1;
@@ -153,11 +172,13 @@
     else if(self.pinchBookmark.height > 4)
         self.pinchBookmark.height = 4;
     
-    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state])
+    if(!(prevWidth == self.pinchBookmark.width && prevHeight == self.pinchBookmark.height))
     {
-        [self.view setNeedsDisplay];
-        NSLog(@"Ended");
+        [self.collectionView reloadItemsAtIndexPaths:[[NSArray alloc] initWithObjects:self.pinchIndexPath, nil]];
     }
+    
+    if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state])
+        self.pinchBookmark = nil;
     
     NSLog(@"%u, %u", self.pinchBookmark.width, self.pinchBookmark.height);
 }
