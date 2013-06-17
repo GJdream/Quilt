@@ -82,23 +82,6 @@
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
     cell.titleLabel.text = bookmarkAtIndex.title;
-    /*
-    for (NSString *tag in bookmarkAtIndex.tags) {
-        [cell.firstTag setTitle:tag forState:UIControlStateNormal];
-         cell.tagLabel.text = [bookmarkAtIndex.tags componentsJoinedByString:@", "];
-    }*/
-    
-    /*
-    if(!cell.imageView)
-        cell.imageView = [[UIImageView alloc] init];
-    
-    
-    
-    cell.imageView.frame = cell.contentView.bounds;
-     
-     
-    [cell addSubview:cell.imageView];
-     */
     
     if(bookmarkAtIndex.image == nil)
         [NetworkClient getBookmarkPicture:bookmarkAtIndex];

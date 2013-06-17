@@ -332,8 +332,8 @@ NSString *boundary;
 +(void)createBookmark:(UIBookmark*)bookmark
 {
     NSMutableDictionary *paramDict = [[NSMutableDictionary alloc]
-                        initWithObjects: [[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
-                        forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"url",@"p_height",@"p_width", nil]];
+                                      initWithObjects: [[NSArray alloc] initWithObjects:@"new_bookmark", [[Account current] username], [bookmark title], [bookmark url], [[NSNumber alloc] initWithUnsignedInteger:[bookmark height]], [[NSNumber alloc] initWithUnsignedInteger:[bookmark width]],nil]
+                        forKeys:[[NSArray alloc] initWithObjects:@"action",@"owner",@"title",@"url",@"p_height",@"p_width", nil]];
     
     for(NSUInteger i = 0; i < bookmark.tags.count; ++i)
         [paramDict setObject:bookmark.tags[i] forKey:[[NSString alloc] initWithFormat:@"tags[%u]", i]];

@@ -22,6 +22,7 @@
 
 + (void)setViewController:(FriendsViewController *)newVC;
 + (FriendsDataController *)instantiate;
++ (void)deleteInstance;
 
 - (FriendsDataController *)initWithViewController:(FriendsViewController *)friendsVC;
 - (void)registerUpdate:(void (^)(void))updateMethod;

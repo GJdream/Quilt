@@ -9,7 +9,7 @@
 #import "Account.h"
 #import "NetworkClient.h"
 #import "BookmarkDataController.h"
-
+#import "FriendsDataController.h"
 
 @interface Account ()
     @property (readwrite) NSString *username;
@@ -32,11 +32,12 @@ Account *currentAccount;
 {
     [NetworkClient logoutUser:currentAccount];
     BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
-    [bookmarkDC emptyBookmarkArray];
-    [bookmarkDC.bookmarksArray removeAllObjects];
-    [bookmarkDC emptyTagTrie];
+    //[bookmarkDC emptyBookmarkArray];
+    //[bookmarkDC.bookmarksArray removeAllObjects];
+    //[bookmarkDC emptyTagTrie];
     [BookmarkDataController deleteInstance];
     currentAccount = nil;
+    [FriendsDataController deleteInstance];
 }
 
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc
