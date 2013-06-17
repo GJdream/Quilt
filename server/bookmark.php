@@ -264,12 +264,12 @@
       global $db;
       global $json_return;
 
-      $tag_name  = $_GET[tag];
+      $tag_name = $_GET[tag];
 
       $query    = "SELECT owner_id FROM \"Tags\" " .
                   "WHERE tag = '$tag_name'";
       $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_all($result);
+      $user_id  = pg_fetch_result($result, 0);
       
       echo "Returned User_ID:: \n";
       echo $user_id;
@@ -277,7 +277,7 @@
       $query    = "SELECT user_name FROM \"Users\" " .
                   "WHERE user_id = '$user_id'";
       $result   = pg_query($db, $query);
-      $username = pg_fetch_all($result);
+      $username = pg_fetch_result($result, 0);
 
       if($username)
         $json_return = array_marge($json_return, array("get_tag_owner_id" => $username));
