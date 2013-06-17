@@ -127,12 +127,13 @@
     for(NSDictionary *bookmarkDict in bookmarksArray)
     {
         NSString *url = (NSString*)[bookmarkDict objectForKey:@"url"];
+        NSString *title = (NSString*)[bookmarkDict objectForKey:@"title"];
         NSInteger p_height = [(NSNumber*)[bookmarkDict valueForKey:@"p_height"] integerValue];
         NSInteger p_width = [(NSNumber*)[bookmarkDict valueForKey:@"p_width"] integerValue];
         uint64_t b_id = [(NSNumber*)[bookmarkDict valueForKey:@"post_id"] longLongValue];
         NSMutableArray *tags = (NSMutableArray*)[tagsDict objectForKey:[[NSString alloc] initWithFormat:@"%lld", b_id]];	
 
-        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:url URL:url Tags:tags Width:p_width Height:p_height ID:b_id Image:nil];
+        UIBookmark *bookmark = [[UIBookmark alloc] initWithTitle:title URL:url Tags:tags Width:p_width Height:p_height ID:b_id Image:nil];
         [bookmarkDC addBookmark:bookmark];
     }
     [bookmarkDC updateOnBookmarkInsertion];
@@ -174,7 +175,6 @@
     
     NSString *owner = (NSString *)[json objectForKey:@"get_tag_owner_id"];
     
-    NSLog(@"%@,%@",username, owner);
     if (![username isEqualToString:owner])
     {
         cell.detailTextLabel.text = owner;
