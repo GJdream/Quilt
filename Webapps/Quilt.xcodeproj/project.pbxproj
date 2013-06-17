@@ -13,7 +13,7 @@
 		2E4136F01768B3D6000DA87E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4136EF1768B3D5000DA87E /* RegisterViewController.m */; };
 		2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4136F11768C2E1000DA87E /* navBarTexture.png */; };
 		2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD42176B9003006138D6 /* Quilt Logo.png */; };
-		2E6CAD45176B9679006138D6 /* Quilt72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD44176B9679006138D6 /* Quilt72.png */; };
+		2E6CAD45176B9679006138D6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6CAD44176B9679006138D6 /* Icon-72.png */; };
 		2E7DE7161769E5A200CEF93B /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DE7151769E5A200CEF93B /* AccountViewController.m */; };
 		2E8BEBBA176B5D300011DA3D /* FriendsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */; };
 		2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BEBBC176B5FBF0011DA3D /* Friend.m */; };
@@ -75,7 +75,7 @@
 		2E4136EF1768B3D5000DA87E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2E4136F11768C2E1000DA87E /* navBarTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarTexture.png; sourceTree = "<group>"; };
 		2E6CAD42176B9003006138D6 /* Quilt Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quilt Logo.png"; sourceTree = "<group>"; };
-		2E6CAD44176B9679006138D6 /* Quilt72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quilt72.png; sourceTree = "<group>"; };
+		2E6CAD44176B9679006138D6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		2E7DE7141769E5A200CEF93B /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		2E7DE7151769E5A200CEF93B /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDataController.h; sourceTree = "<group>"; };
@@ -169,6 +169,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EADAA57176F459600286628 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2E6CAD44176B9679006138D6 /* Icon-72.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +280,7 @@
 				2EB5C3311760CDAC0084BCD7 /* WebViewController.h */,
 				2EB5C3321760CDAC0084BCD7 /* WebViewController.m */,
 				64EFE2FC176F2D7F001AD248 /* RFQuiltLayout */,
+				2EADAA57176F459600286628 /* Resources */,
 				79BEAD311754FCAC0056DFBD /* Supporting Files */,
 				791051F71765F55200CC4555 /* ViewDeck */,
 			);
@@ -297,7 +306,6 @@
 				2EDC2997176DD0B800F0C6B6 /* Quilt_blue_trans.png */,
 				2EDC2995176DD09B00F0C6B6 /* Quilt_blue.png */,
 				7910521717673D2900CC4555 /* Quilt-Info.plist */,
-				2E6CAD44176B9679006138D6 /* Quilt72.png */,
 				79BEAD331754FCAC0056DFBD /* InfoPlist.strings */,
 				2E6CAD42176B9003006138D6 /* Quilt Logo.png */,
 				79BEAD361754FCAC0056DFBD /* main.m */,
@@ -367,7 +375,7 @@
 				2E4136ED1768AF26000DA87E /* Quilt144.png in Resources */,
 				2E4136F21768C2E1000DA87E /* navBarTexture.png in Resources */,
 				2E6CAD43176B9003006138D6 /* Quilt Logo.png in Resources */,
-				2E6CAD45176B9679006138D6 /* Quilt72.png in Resources */,
+				2E6CAD45176B9679006138D6 /* Icon-72.png in Resources */,
 				2EDC2996176DD09B00F0C6B6 /* Quilt_blue.png in Resources */,
 				2EDC2998176DD0B800F0C6B6 /* Quilt_blue_trans.png in Resources */,
 				2EDC299A176DD44400F0C6B6 /* Quilt_trans_mini.png in Resources */,
