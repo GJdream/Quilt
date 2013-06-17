@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Rjb-i9-vBv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1212,9 +1212,9 @@
                                             <constraint firstItem="4GD-0q-Fh4" firstAttribute="centerX" secondItem="HZU-FJ-aXV" secondAttribute="centerX" type="default" id="1Lz-jG-puO"/>
                                             <constraint firstItem="Sgv-XN-StP" firstAttribute="top" secondItem="2ZI-xl-hb7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JUH-pe-S6h"/>
                                             <constraint firstItem="2ZI-xl-hb7" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="VQh-ZK-kt5"/>
+                                            <constraint firstAttribute="bottom" secondItem="Sgv-XN-StP" secondAttribute="bottom" constant="2" id="bfj-3U-937"/>
                                             <constraint firstItem="Sgv-XN-StP" firstAttribute="leading" secondItem="4GD-0q-Fh4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="mYq-Jh-Fce"/>
                                             <constraint firstItem="Sgv-XN-StP" firstAttribute="trailing" secondItem="2ZI-xl-hb7" secondAttribute="trailing" type="default" id="mqK-nc-Fhe"/>
-                                            <constraint firstItem="4GD-0q-Fh4" firstAttribute="bottom" secondItem="Sgv-XN-StP" secondAttribute="bottom" type="default" id="r6e-LU-DD4"/>
                                             <constraint firstItem="4GD-0q-Fh4" firstAttribute="top" secondItem="HZU-FJ-aXV" secondAttribute="top" constant="-1" id="zhM-Nk-tRg"/>
                                         </constraints>
                                     </tableViewCell>
@@ -1372,7 +1372,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="65" id="yyR-Dq-LtK">
-                                        <rect key="frame" x="0.0" y="560" width="768" height="65"/>
+                                        <rect key="frame" x="0.0" y="560" width="768" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="45" y="0.0" width="678" height="64"/>
@@ -1400,6 +1400,15 @@
                                                         <action selector="addFriend:" destination="4hB-Au-gUq" eventType="touchUpInside" id="UG4-6E-s58"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Friend added successfully" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLo-Tw-hdt">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="205" id="kA1-ao-yiS"/>
+                                                        <constraint firstAttribute="height" constant="21" id="pPr-gg-kwE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1409,7 +1418,9 @@
                                             <constraint firstItem="mlB-5R-DPZ" firstAttribute="centerX" secondItem="yyR-Dq-LtK" secondAttribute="centerX" type="default" id="8dv-82-xWQ"/>
                                             <constraint firstItem="mlB-5R-DPZ" firstAttribute="top" secondItem="yyR-Dq-LtK" secondAttribute="top" constant="10" id="Bld-zB-1Bj"/>
                                             <constraint firstItem="Bx0-qC-jlf" firstAttribute="leading" secondItem="yyR-Dq-LtK" secondAttribute="leading" constant="117" id="OiG-Pg-1GD"/>
-                                            <constraint firstItem="p92-gi-z6c" firstAttribute="centerY" secondItem="Bx0-qC-jlf" secondAttribute="centerY" type="default" id="aDW-FD-FgF"/>
+                                            <constraint firstItem="p92-gi-z6c" firstAttribute="centerY" secondItem="Bx0-qC-jlf" secondAttribute="centerY" type="default" id="PpS-JF-zb3"/>
+                                            <constraint firstItem="JLo-Tw-hdt" firstAttribute="top" secondItem="mlB-5R-DPZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="T6I-2g-kGp"/>
+                                            <constraint firstItem="JLo-Tw-hdt" firstAttribute="leading" secondItem="mlB-5R-DPZ" secondAttribute="leading" type="default" id="tPQ-T5-tjf"/>
                                             <constraint firstItem="p92-gi-z6c" firstAttribute="top" secondItem="yyR-Dq-LtK" secondAttribute="top" constant="13" id="v0z-ST-9s8"/>
                                         </constraints>
                                     </tableViewCell>
@@ -1424,7 +1435,7 @@
                     <navigationItem key="navigationItem" title="My Account" id="eSN-dm-CgO">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="dEg-ft-BWA">
                             <connections>
-                                <segue destination="sbq-hn-L3T" kind="modal" modalTransitionStyle="flipHorizontal" id="9Qo-do-rs0"/>
+                                <segue destination="sbq-hn-L3T" kind="modal" identifier="backFromAccountSegue" modalTransitionStyle="flipHorizontal" id="9Qo-do-rs0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1432,6 +1443,8 @@
                         <outlet property="addFriendButton" destination="p92-gi-z6c" id="LcV-49-gXq"/>
                         <outlet property="addFriendUsername" destination="mlB-5R-DPZ" id="gcb-Zn-FYm"/>
                         <outlet property="confirmPassword" destination="WxR-8e-Ojo" id="Tdu-2n-DyP"/>
+                        <outlet property="friendAddedLabel" destination="JLo-Tw-hdt" id="rfi-ue-Y0d"/>
+                        <outlet property="friendUsername" destination="mlB-5R-DPZ" id="VI5-pD-GXo"/>
                         <outlet property="imageView" destination="4GD-0q-Fh4" id="3Lm-ty-d17"/>
                         <outlet property="oldPassword" destination="cVo-Z3-OzT" id="0d9-dv-M4n"/>
                         <outlet property="password" destination="dcN-py-EvJ" id="ZgD-qf-BTi"/>
@@ -1482,6 +1495,8 @@
                 <relationship kind="outlet" name="addFriendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="addFriendUsername" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="confirmPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="friendAddedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="friendUsername" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="oldPassword" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
@@ -1506,6 +1521,9 @@
         </class>
         <class className="BookmarkViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="menuButtonClicked:"/>
+            </relationships>
         </class>
         <class className="BookmarkViewFlowLayout" superclassName="UICollectionViewFlowLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookmarkViewFlowLayout.h"/>
@@ -1591,6 +1609,9 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="UIStoryboardSegue" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
         </class>
@@ -1626,9 +1647,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xwG-He-zBw"/>
         <segue reference="GNh-Ti-tqT"/>
-        <segue reference="HO3-Ri-1hV"/>
+        <segue reference="xwG-He-zBw"/>
+        <segue reference="9Qo-do-rs0"/>
         <segue reference="MIp-dG-Jry"/>
     </inferredMetricsTieBreakers>
 </document>
