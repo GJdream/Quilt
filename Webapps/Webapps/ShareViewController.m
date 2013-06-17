@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     self.friendsViewController.collectionView.allowsMultipleSelection = YES;
+    self.friendsViewController.collectionView.allowsSelection = YES;
     self.friendsViewController.shareEnabled = YES;
     self.searchBar.delegate = (id)[FriendsDataController instantiate];
     self.tag = @"web";
@@ -42,6 +43,7 @@
     [super viewWillDisappear:animated];
     self.friendsViewController.collectionView.allowsMultipleSelection = NO;
     self.friendsViewController.shareEnabled = NO;
+    self.friendsViewController.collectionView.allowsSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning

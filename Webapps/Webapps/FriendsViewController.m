@@ -42,6 +42,8 @@ NSArray *tableData;
     [super viewDidLoad];
     self.selectedItems = [[NSMutableArray alloc] init];
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
+    if(!(self.shareEnabled || self.editEnabled))
+        self.collectionView.allowsSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,45 +83,83 @@ NSArray *tableData;
         [NetworkClient getFriendPhoto:friendAtIndex];
     else
         cell.friendPhoto.image = friendAtIndex.image;
-
+    
+    CGRect frame = cell.friendPhoto.frame;
+    
+    cell.friendPhoto.frame = CGRectMake(5.0f, 5.0f, frame.size.width, frame.size.height);
+    
     cell.friendName.text = friendAtIndex.name;
-    cell.friendPhoto.frame = cell.contentView.bounds;
-    [cell addSubview:cell.friendPhoto];
+    //cell.friendPhoto.frame = cell.contentView.bounds;
+    //[cell addSubview:cell.friendPhoto];
     
-    [cell.layer setMasksToBounds:YES];
-    [cell.layer setCornerRadius:15];
-    [cell.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
-    cell.layer.shouldRasterize = YES;
-    cell.layer.opaque = YES;
-    //cell.backgroundColor = [UIColor whiteColor];
+    [cell.friendPhoto.layer setMasksToBounds:YES];
+    [cell.friendPhoto.layer setCornerRadius:15];
+    [cell.friendPhoto.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.friendPhoto.layer.shouldRasterize = YES;
+    cell.friendPhoto.layer.opaque = YES;
+    cell.friendPhoto.backgroundColor = [UIColor whiteColor];
+
+    if(!cell.selectedBackgroundView)
+        cell.selectedBackgroundView = [[UIView alloc] init];
     
-    if (self.shareEnabled) {
-        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Gray.png"]];
-    }
-    
+    [cell.selectedBackgroundView.layer setMasksToBounds:YES];
+    [cell.selectedBackgroundView.layer setCornerRadius:15];
+    [cell.selectedBackgroundView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+    cell.selectedBackgroundView.layer.shouldRasterize = YES;
+    cell.selectedBackgroundView.layer.opaque = YES;
+    cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.shareEnabled) {
-        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
-        UIView *overlay = [[UIView alloc] initWithFrame:friendAtIndex.contentView.bounds];
-        overlay.backgroundColor = [UIColor blackColor];
-        overlay.alpha = 0.5f;
-        [friendAtIndex addSubview:overlay];
+    Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+    friendAtIndex.viewFriend.selectedBackgroundView.layer.opaque = YES;
+    
+    if (self.shareEnabled)
         [self.selectedItems addObject:friendAtIndex];
-    }
+    else if(self.editEnabled)
+        [self.selectedItems addObject:friendAtIndex];
+    else
+        friendAtIndex.viewFriend.selectedBackgroundView.layer.opaque = NO;
+
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
+    
     if(self.shareEnabled)
-    {
-        Friend *friendAtIndex = [[FriendsDataController instantiate] friendInListAtIndex:indexPath.row];
         [self.selectedItems removeObject:friendAtIndex];
+    else if(self.editEnabled)
+        [self.selectedItems removeObject:friendAtIndex];
+
+}
+
+- (IBAction)editFriendsClicked:(id)sender{
+    if (self.editEnabled) {
+        self.editEnabled = NO;
+        self.deleteFriendsButton.enabled = NO;
+        self.collectionView.allowsSelection = NO;
     }
+    else
+    {
+        self.editEnabled = YES;
+        self.deleteFriendsButton.enabled = YES;
+        self.collectionView.allowsMultipleSelection = YES;
+        self.collectionView.allowsSelection = YES;
+    }
+}
+
+- (IBAction)deleteFriendsClicked:(id)sender {
+    NSArray *selectedFriends = (NSArray*)self.selectedItems;
+    NSLog(@"selectedFriends: %@", selectedFriends);
+    for (NSString *badFriend in selectedFriends) {
+        [NetworkClient removeFriend:badFriend];
+    }
+    self.deleteFriendsButton.enabled = NO;
+    //self.collectionView.allowsSelection = NO;
 }
 
 @end

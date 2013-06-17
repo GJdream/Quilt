@@ -428,6 +428,7 @@ NSString *boundary;
                                                                   forKeys:[[NSArray alloc] initWithObjects:@"action",@"friend_name", nil]]];
     
     [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         if (error != nil)
             NSLog(@"Connection failed! Error - %@ %@",
                   [error localizedDescription],

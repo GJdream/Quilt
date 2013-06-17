@@ -177,9 +177,8 @@
     if (![username isEqualToString:owner])
     {
         cell.detailTextLabel.text = owner;
-    } else {
-        cell.detailTextLabel.text = @"";
-    }
+        cell.detailTextLabel.textColor = [UIColor grayColor];
+    } 
 }
 
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
