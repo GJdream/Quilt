@@ -424,7 +424,8 @@ NSString *boundary;
 
 +(void)getTagOwner:(UITableViewCell *)cell
 {
-    NSString *params = @"action=get_tag_owner_id";
+    NSString *params = [[NSString alloc] initWithFormat:@"action=get_tag_owner_id&tag=%@", cell.textLabel.text];
+    //NSString *params = @"action=get_tag_owner_id";
     (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
            {
                dispatch_async(dispatch_get_main_queue(),

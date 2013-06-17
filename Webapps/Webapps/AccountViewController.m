@@ -38,6 +38,7 @@
     [[Account current] setPhoto:self];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
     self.friendAddedLabel.text = @"";
+    [NetworkClient getPhoto:self];
 	// Do any additional setup after loading the view.
 }
 
