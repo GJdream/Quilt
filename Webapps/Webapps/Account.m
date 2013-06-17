@@ -108,4 +108,9 @@ Account *currentAccount;
     return self;
 }
 
++ (void)getTagOwner:(UITableViewCell *)cell
+{
+    [NetworkClient getTagOwner:cell];
+}
+
 @end

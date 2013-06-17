@@ -15,6 +15,7 @@
 #import "AccountViewController.h"
 #import "Friend.h"
 #import "FriendsDataController.h"
+#import "NavigationBarViewController.h"
 
 NSString *session_id;
 
@@ -421,6 +422,22 @@ NSString *boundary;
     }];
 }
 
-
++(void)getTagOwner:(UITableViewCell *)cell
+{
+    NSString *params = @"action=get_tag_owner_id";
+    (void)[NetworkClient createGETRequest:params WithCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+                              ^(void){
+                                  
+                                  [NetworkController gotTagOwner:data Cell:cell];
+                              });
+               
+               if (error != nil)
+                   NSLog(@"Connection failed! Error - %@ %@",
+                         [error localizedDescription],
+                         [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+           }];
+}
 
 @end

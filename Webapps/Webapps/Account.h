@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "AccountViewController.h"
+#import "NavigationBarViewController.h"
 
 @interface Account : NSObject
 
@@ -29,5 +30,7 @@
 + (void)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc;
 + (void)changePhoto:(UIImage *)image AccountView:(AccountViewController *)avc;
 - (void)setPhoto:(AccountViewController *)avc;
+
++ (void)getTagOwner:(UITableViewCell *)cell;
 
 @end

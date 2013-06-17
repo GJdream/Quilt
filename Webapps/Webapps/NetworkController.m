@@ -165,6 +165,15 @@
     avc.imageView.image = [[UIImage alloc] initWithData:data];
 }
 
++ (void)gotTagOwner:(NSData *)data Cell:(UITableViewCell *)cell
+{
+    NSString *username =[Account current].username;
+    NSString *owner = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@,%@",username, owner);
+    if ([username isEqualToString:owner])
+        cell.detailTextLabel.text = owner;
+}
+
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
 {
     UIImage *retImage = [[UIImage alloc] initWithData:data];
