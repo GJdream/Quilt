@@ -12,7 +12,6 @@
 #import "NDTrie.h"
 #import "Friend.h"
 #import "NetworkClient.h"
-#import "FriendsViewFlowLayout.h"
 
 @interface FriendsViewController ()
 

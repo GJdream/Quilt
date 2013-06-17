@@ -26,7 +26,6 @@
 		6420CBE5175F3B2300411E5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6420CBE3175F3B2300411E5F /* LoginViewController.m */; };
 		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
-		64EFE2F4176F1A96001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F3176F1A96001AD248 /* FriendsViewFlowLayout.m */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
 		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
 		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
@@ -91,8 +90,6 @@
 		6420CBE3175F3B2300411E5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		64279590176E1483008A0C44 /* QuiltTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuiltTexture.png; sourceTree = "<group>"; };
 		64B250EA176DE9F300E08BA3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		64EFE2F2176F1A96001AD248 /* FriendsViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewFlowLayout.h; sourceTree = "<group>"; };
-		64EFE2F3176F1A96001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
 		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		791051FA1765F55200CC4555 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -228,8 +225,6 @@
 				2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */,
 				2EC21DC2176A120000366098 /* FriendsViewController.h */,
 				2EC21DC3176A120000366098 /* FriendsViewController.m */,
-				64EFE2F2176F1A96001AD248 /* FriendsViewFlowLayout.h */,
-				64EFE2F3176F1A96001AD248 /* FriendsViewFlowLayout.m */,
 				6420CBE2175F3B2300411E5F /* LoginViewController.h */,
 				6420CBE3175F3B2300411E5F /* LoginViewController.m */,
 				6420CBD9175F381B00411E5F /* MainStoryboard_iPad.storyboard */,
@@ -399,7 +394,6 @@
 				2E8BEBBD176B5FBF0011DA3D /* Friend.m in Sources */,
 				79516306176D0CED000F7B10 /* bookmark_layout.c in Sources */,
 				7951630A176E2C27000F7B10 /* ShareViewController.m in Sources */,
-				64EFE2F4176F1A96001AD248 /* FriendsViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
