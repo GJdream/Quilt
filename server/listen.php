@@ -109,7 +109,10 @@
           getBookmarkPicture();
         }
       else if($_GET['action'] === "get_tag_owner_id")
-      	getTagOwnerID();
+      {
+      	echo "TagOwner";
+        getTagOwnerID();
+      }
     }
     
   if($will_return_json)
