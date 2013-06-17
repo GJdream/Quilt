@@ -40,6 +40,7 @@ NSArray *tableData;
 {
     [super viewDidLoad];
     self.selectedItems = [[NSMutableArray alloc] init];
+    self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)didReceiveMemoryWarning

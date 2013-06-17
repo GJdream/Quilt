@@ -34,6 +34,7 @@
     self.friendsViewController.shareEnabled = YES;
     self.searchBar.delegate = (id)[FriendsDataController instantiate];
     self.tag = @"web";
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
