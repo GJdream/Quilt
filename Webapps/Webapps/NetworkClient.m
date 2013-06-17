@@ -223,6 +223,28 @@ NSString *boundary;
     }];
 }
 
++(void)logoutUser:(Account*)logoutAccount
+{
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"logout_user",nil] forKeys:[[NSArray alloc] initWithObjects:@"action", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+        //NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+        loginCookie = nil;
+        
+        dispatch_async(dispatch_get_main_queue(),
+                       ^(void){
+                           [NetworkController logoutComplete:data];
+                       });
+        
+        if (error != nil)
+            NSLog(@"Connection failed! Error - %@ %@",
+                  [error localizedDescription],
+                  [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    }];
+
+}
+
 +(void)changePassword:(NSString *)password AccountVC:(AccountViewController *)avc
 {
     NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:

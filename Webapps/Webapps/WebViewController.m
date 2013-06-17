@@ -95,6 +95,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     searchBar.text = [request.mainDocumentURL absoluteString];
+    self.url = searchBar.text;
     return YES;
 }
 

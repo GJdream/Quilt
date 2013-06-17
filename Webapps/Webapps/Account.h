@@ -20,7 +20,10 @@
 //-(void)addBookmark:(NSString*)url WithTags:(NSArray*)tags Width:(NSInteger)width Height:(NSInteger)height;
 + (Account *)current;
 + (void)setCurrent:(Account *)newCurrent;
+
 + (void)loginUser:(NSString *)username Password:(NSString *)password LoginView:(LoginViewController *)lvc;
++ (void)logoutUser;
+
 + (void)registerUser:(NSString *)username Password:(NSString *)password ConfirmPassword:(NSString *)confirmPassword RegisterView:(RegisterViewController *)rvc;
 + (BOOL)validPassword:(NSString *)password ConfirmPassword:(NSString *)confirmPassword;
 + (void)changePasswordWithOldPassword:(NSString *)oldPassword NewPassword:(NSString *)newPassword ConfirmPassword:(NSString *)confirmPassword AccountView:(AccountViewController *)avc;
