@@ -30,6 +30,7 @@
 +(void)createBookmark:(UIBookmark*)bookmark;
 +(void)shareTag:(NSString*)tag WithFriends:(NSArray*)users;
 +(void)deleteBookmark:(UIBookmark*)bookmark;
++(void)updateBookmarkSize:(UIBookmark *)bookmark;
 
 +(void)loginUser:(Account*)loginAccount LoginView:(LoginViewController*)lvc;
 +(void)logoutUser:(Account*)logoutAccount;

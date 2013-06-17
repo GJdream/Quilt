@@ -35,7 +35,7 @@
 }
 
 - (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 - (void)awakeFromNib
@@ -52,7 +52,7 @@
     self.collectionView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"QuiltTexture.png"]];
     self.layout = (id)[self.collectionView collectionViewLayout];
     self.layout.direction = UICollectionViewScrollDirectionVertical;
-    self.layout.blockPixels = CGSizeMake(170, 170);
+    self.layout.blockPixels = CGSizeMake(180, 200);
     self.layout.delegate = (id)self;
 }
 
@@ -154,8 +154,6 @@
     CGFloat xScale = self.pinchGestureRecogniser.scale * xPortion / distance;
     CGFloat yScale = self.pinchGestureRecogniser.scale * yPortion / distance;
     
-    NSLog(@"scale: %f, xscale: %f, yscale: %f, distance: %f", self.pinchGestureRecogniser.scale, xScale, yScale, distance);
-    
     NSUInteger prevWidth = self.pinchBookmark.width;
     NSUInteger prevHeight = self.pinchBookmark.height;
     
@@ -172,6 +170,8 @@
     else if(self.pinchBookmark.height > 4)
         self.pinchBookmark.height = 4;
     
+    [NetworkClient updateBookmarkSize:self.pinchBookmark];
+    
     if(!(prevWidth == self.pinchBookmark.width && prevHeight == self.pinchBookmark.height))
     {
         [self.collectionView reloadItemsAtIndexPaths:[[NSArray alloc] initWithObjects:self.pinchIndexPath, nil]];
@@ -179,8 +179,6 @@
     
     if(UIGestureRecognizerStateEnded == [self.pinchGestureRecogniser state])
         self.pinchBookmark = nil;
-    
-    NSLog(@"%u, %u", self.pinchBookmark.width, self.pinchBookmark.height);
 }
 
 - (IBAction)shareButtonClicked:(id)sender {

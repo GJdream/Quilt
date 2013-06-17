@@ -82,6 +82,8 @@
         updateBookmarkPicture();
       else if($_POST['action'] === "share_tag")
       	shareTag();
+      else if($_POST['action'] === "resize_bookmark")
+      	resizeBookmark();
     }
   else if($_SERVER[REQUEST_METHOD] === "GET")
     {

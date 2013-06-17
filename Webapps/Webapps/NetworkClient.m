@@ -288,6 +288,22 @@ NSString *boundary;
 
 }
 
++(void)updateBookmarkSize:(UIBookmark *)bookmark
+{
+    NSMutableURLRequest *request = [NetworkClient createPOSTRequestWithDictionary:
+                                    [[NSDictionary alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"resize_bookmark", [[NSNumber alloc] initWithUnsignedLongLong:bookmark.b_id], [[NSNumber alloc] initWithInteger:bookmark.height], [[NSNumber alloc] initWithInteger:bookmark.width],nil]
+                                        forKeys:[[NSArray alloc] initWithObjects:@"action", @"post_id", @"p_height", @"p_width", nil]]];
+    
+    [NetworkClient SendRequest:request WithHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (error != nil)
+             NSLog(@"Connection failed! Error - %@ %@",
+                   [error localizedDescription],
+                   [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+     }];
+    
+}
+
 +(void)createAccount:(Account*)account RegisterVC:(RegisterViewController *)rvc
 {
     NSString *params = [NSString stringWithFormat:@"action=new_account&username=%@&password=%@", [account username], [account password]];
