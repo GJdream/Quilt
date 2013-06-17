@@ -944,15 +944,6 @@
         <!--Share View Controller - Select Friends To Share With-->
         <scene sceneID="Vpd-fZ-DOY">
             <objects>
-                <searchDisplayController id="g5P-d7-t5q">
-                    <connections>
-                        <outlet property="delegate" destination="OJp-oH-vFC" id="S83-9I-0rh"/>
-                        <outlet property="searchContentsController" destination="OJp-oH-vFC" id="Rag-Qz-nJQ"/>
-                        <outlet property="searchResultsDataSource" destination="OJp-oH-vFC" id="biC-QF-MO9"/>
-                        <outlet property="searchResultsDelegate" destination="OJp-oH-vFC" id="zlr-wj-DcJ"/>
-                    </connections>
-                </searchDisplayController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="shareViewController" id="OJp-oH-vFC" customClass="ShareViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CgV-G9-bvL">
                         <rect key="frame" x="0.0" y="64" width="768" height="916"/>
@@ -1000,6 +991,15 @@
                         <segue destination="sbq-hn-L3T" kind="modal" id="sZ8-R4-aMQ"/>
                     </connections>
                 </viewController>
+                <searchDisplayController id="g5P-d7-t5q">
+                    <connections>
+                        <outlet property="delegate" destination="OJp-oH-vFC" id="S83-9I-0rh"/>
+                        <outlet property="searchContentsController" destination="OJp-oH-vFC" id="Rag-Qz-nJQ"/>
+                        <outlet property="searchResultsDataSource" destination="OJp-oH-vFC" id="biC-QF-MO9"/>
+                        <outlet property="searchResultsDelegate" destination="OJp-oH-vFC" id="zlr-wj-DcJ"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duW-im-z74" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1254" y="470"/>
         </scene>
@@ -1497,9 +1497,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GNh-Ti-tqT"/>
         <segue reference="xwG-He-zBw"/>
-        <segue reference="sZ8-R4-aMQ"/>
         <segue reference="MIp-dG-Jry"/>
+        <segue reference="sZ8-R4-aMQ"/>
+        <segue reference="nbe-SD-eWm"/>
     </inferredMetricsTieBreakers>
 </document>

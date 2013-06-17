@@ -143,10 +143,9 @@ UIImageView *ghostView;
         [self.collectionView reloadItemsAtIndexPaths:[[NSArray alloc] initWithObjects:self.pinchIndexPath, nil]];
         self.pinchBookmark = nil;
         [ghostView removeFromSuperview];
+        [self.collectionView scrollToItemAtIndexPath:self.pinchIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         return;
     }
-    
-    CGPoint prevOffsetPoint = self.collectionView.contentOffset;
     
     CGPoint point = [self.pinchGestureRecogniser locationInView:self.collectionView];
     
@@ -217,8 +216,6 @@ UIImageView *ghostView;
     ghostHeight *= self.layout.blockPixels.height;
 
     ghostView.frame = CGRectMake(point.x - ghostWidth / 2, point.y - ghostHeight / 2, ghostWidth, ghostHeight);
-    
-    self.collectionView.contentOffset = prevOffsetPoint;
 }
 
 - (IBAction)shareButtonClicked:(id)sender {

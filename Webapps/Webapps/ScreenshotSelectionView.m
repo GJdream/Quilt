@@ -40,7 +40,9 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect innerRect = CGRectMake(self.originalTouch.x, self.originalTouch.y, self.currentTouch.x - self.originalTouch.x, self.currentTouch.y - self.originalTouch.y);
+    CGFloat minX = self.originalTouch.x > self.currentTouch.x ? self.currentTouch.x : self.originalTouch.x;
+    CGFloat minY = self.originalTouch.y > self.currentTouch.y ? self.currentTouch.y : self.originalTouch.y;
+    CGRect innerRect = CGRectMake(minX, minY, fabsf(self.currentTouch.x - self.originalTouch.x), fabsf(self.currentTouch.y - self.originalTouch.y));
     CGContextSetStrokeColorWithColor(context, [[UIColor redColor] CGColor]);
     CGContextSetLineWidth(context, 2);
     CGContextMoveToPoint(context, CGRectGetMinX(innerRect), CGRectGetMinY(innerRect));
