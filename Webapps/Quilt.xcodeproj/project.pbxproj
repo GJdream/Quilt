@@ -27,6 +27,7 @@
 		64279591176E1483008A0C44 /* QuiltTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = 64279590176E1483008A0C44 /* QuiltTexture.png */; };
 		64B250EB176DE9F300E08BA3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B250EA176DE9F300E08BA3 /* arrow.png */; };
 		64EFE2F7176F22CB001AD248 /* FriendsViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */; };
+		64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */; };
 		791051FE1765F55200CC4555 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051F91765F55200CC4555 /* IISideController.m */; };
 		791051FF1765F55200CC4555 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FB1765F55200CC4555 /* IIViewDeckController.m */; };
 		791052001765F55200CC4555 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791051FD1765F55200CC4555 /* IIWrapController.m */; };
@@ -93,6 +94,7 @@
 		64B250EA176DE9F300E08BA3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		64EFE2F5176F22CB001AD248 /* FriendsViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewFlowLayout.h; sourceTree = "<group>"; };
 		64EFE2F6176F22CB001AD248 /* FriendsViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewFlowLayout.m; sourceTree = "<group>"; };
+		64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		791051F81765F55200CC4555 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		791051F91765F55200CC4555 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		791051FA1765F55200CC4555 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				79516305176D0CED000F7B10 /* bookmark_layout.c */,
 				79516307176D0D03000F7B10 /* bookmark_layout.h */,
 				2E8BEBB8176B5D2F0011DA3D /* FriendsDataController.h */,
+				64EFE2F8176F254B001AD248 /* MainStoryboard_iPad.storyboard */,
 				2E8BEBB9176B5D300011DA3D /* FriendsDataController.m */,
 				2EC21DC2176A120000366098 /* FriendsViewController.h */,
 				2EC21DC3176A120000366098 /* FriendsViewController.m */,
@@ -363,6 +366,7 @@
 				798C41C7176E7515003215F3 /* red.png in Resources */,
 				798C41C8176E7515003215F3 /* Yellow.png in Resources */,
 				2EADAA55176F175500286628 /* DefaultUserPicture.png in Resources */,
+				64EFE2F9176F254B001AD248 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
