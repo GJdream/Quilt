@@ -32,8 +32,8 @@ Account *currentAccount;
 {
     [NetworkClient logoutUser:currentAccount];
     BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
-    [bookmarkDC.bookmarksArray removeAllObjects];
     [bookmarkDC emptyBookmarkArray];
+    [bookmarkDC.bookmarksArray removeAllObjects];
     [bookmarkDC emptyTagTrie];
     currentAccount = nil;
 }

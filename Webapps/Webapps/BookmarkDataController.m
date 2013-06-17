@@ -163,11 +163,13 @@ static BookmarkViewController *staticVC = nil;
 {
     NSArray *indexArray = [[NSArray alloc] initWithObjects:indexPath, nil];
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:indexArray];
+    [self.updatedBookmarks removeAllObjects];
 }
 
 - (void)emptyBookmarkArray
 {
     NSUInteger prevCount = self.bookmarkDisplayArray.count;
+    
     [self.updatedBookmarks removeAllObjects];
     for (NSUInteger i = 0; i < prevCount; ++i) {
         [self.updatedBookmarks addObject:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -178,6 +180,7 @@ static BookmarkViewController *staticVC = nil;
     [self.bookmarkVC.collectionView deleteItemsAtIndexPaths:self.updatedBookmarks];
     
     [self.updatedBookmarks removeAllObjects];
+    
     self.bookmarkDisplayArray = self.bookmarksArray;
 }
 
