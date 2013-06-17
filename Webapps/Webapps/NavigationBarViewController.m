@@ -104,25 +104,8 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
-        //cell.detailTextLabel.text = @"test";
         [Account getTagOwner:cell];
-        //cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
         cell.indentationWidth = 10;
-        
-        UIImage *image = [UIImage imageNamed:@"share_arrow.png"] ;
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        CGRect frame = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
-        button.frame = frame;	// match the button's size with the image size
-        
-        [button setBackgroundImage:image forState:UIControlStateNormal];
-        
-        // set the button's target to this table view controller so we can interpret touch events and map that to a NSIndexSet
-        [button addTarget:self action:@selector(arrowButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
-        button.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = button;
-    
-
-                
     }
     return cell;
 }
