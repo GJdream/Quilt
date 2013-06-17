@@ -40,7 +40,7 @@
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionVertical;
     layout.blockPixels = CGSizeMake(150, 150);
-    layout.delegate = (id)self;
+    layout.delegate = (id)self;    
 }
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,5 +140,13 @@
 
 - (IBAction)pinchDetected:(id)sender {
 //    self.pinchGestureRecogniser.
+}
+
+- (IBAction)shareButtonClicked:(id)sender {
+    BookmarkDataController *bookmarkDC = [BookmarkDataController instantiate];
+    bookmarkDC.sharingTag = bookmarkDC.bookmarkVC.navigationItem.title;
+    NSLog(@"%@", bookmarkDC.sharingTag);
+	[bookmarkDC.bookmarkVC performSegueWithIdentifier:@"shareSegue" sender:self];
+
 }
 @end
