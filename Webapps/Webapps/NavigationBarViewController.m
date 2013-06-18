@@ -120,9 +120,8 @@ NSArray *tableData;
         [button addTarget:self action:@selector(arrowButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
         button.backgroundColor = [UIColor clearColor];
         cell.accessoryView = button;
-    
-
-                
+        
+        cell.detailTextLabel.text = @" ";
     }
     return cell;
 }

@@ -264,19 +264,31 @@
       global $json_return;
 
       $tag_name  = $_GET[tag];
+      $username	 = $_SESSION[user_id];
 
-      $query    = "SELECT owner_id FROM \"Tags\" " .
-                  "WHERE tag = '$tag_name'";
+	  $query   = "SELECT user_id FROM \"Users\" " .
+                 "WHERE user_name = '$username'";
+      $result  = pg_query($db, $query);
+      $my_user_id = pg_fetch_result($result, 0);
+
+      $query    = "SELECT \"Tags\".owner_id, \"Tags\".tag_id FROM \"Tags\" " .
+      			  "JOIN \"Tag_Visibility\" ON \"Tags\".tag_id=\"Tag_Visibility\".tag_id " .
+                  "WHERE \"Tags\".tag = '$tag_name' AND \"Tag_Visibility\".visible_to = '$my_user_id'";
       $result   = pg_query($db, $query);
-      $user_id  = pg_fetch_result($result, 0);
+      $user_ids  = pg_fetch_all_columns($result, 0);
       
-      $query    = "SELECT user_name FROM \"Users\" " .
-                  "WHERE user_id = '$user_id'";
-      $result   = pg_query($db, $query);
-      $username = pg_fetch_result($result, 0);
+      $usernames = array();
+      
+      foreach($user_ids as $user_id)
+      {
+      	$query     = "SELECT user_name FROM \"Users\" " .
+                   	 "WHERE user_id = '$user_id'";
+      	$result	 = pg_query($db, $query);
+      	$usernames = array_merge($usernames, pg_fetch_all_columns($result, 0));
+      }
 
-      if($username)
-        $json_return = array_merge($json_return, array("get_tag_owner_id" => $username));
+      if($usernames)
+        $json_return = array_merge($json_return, array("get_tag_owner_id" => $usernames));
     }
 
   function updateBookmarkPicture()

@@ -168,17 +168,27 @@
 
 + (void)gotTagOwner:(NSData *)data Cell:(UITableViewCell *)cell
 {
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     NSString *username =[Account current].username;
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    BOOL ownedByMe = NO;
     
-    NSString *owner = (NSString *)[json objectForKey:@"get_tag_owner_id"];
+    NSArray *owners = (NSArray *)[json objectForKey:@"get_tag_owner_id"];
     
-    if (![username isEqualToString:owner])
+    for(NSString *owner in owners)
     {
-        cell.detailTextLabel.text = owner;
-        cell.detailTextLabel.textColor = [UIColor grayColor];
-    } 
+        if (![username isEqualToString:owner])
+        {
+            if([cell.detailTextLabel.text isEqualToString:@" "])
+                cell.detailTextLabel.text = owner;
+            else
+                cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", owner, cell.detailTextLabel.text];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+        }
+        else
+            ownedByMe = YES;
+    }
 }
 
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
