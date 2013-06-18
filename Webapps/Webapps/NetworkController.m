@@ -172,7 +172,6 @@
     NSString *username =[Account current].username;
     NSError* error;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    BOOL ownedByMe = NO;
     
     NSArray *owners = (NSArray *)[json objectForKey:@"get_tag_owner_id"];
     
