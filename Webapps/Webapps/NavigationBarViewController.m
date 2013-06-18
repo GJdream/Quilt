@@ -104,9 +104,7 @@ NSArray *tableData;
         }
     
         cell.textLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
-        //cell.detailTextLabel.text = @"test";
         [Account getTagOwner:cell];
-        //cell.detailTextLabel.text = [tableData objectAtIndex:cellNum - NUMBER_OF_STATIC_CELLS];
         cell.indentationWidth = 10;
         
         UIImage *image = [UIImage imageNamed:@"share_arrow.png"] ;
@@ -191,7 +189,6 @@ NSArray *tableData;
         NSString *title = selectedCell.textLabel.text;
         bookmarkDC.bookmarkVC.navigationItem.title = title;
         bookmarkDC.bookmarkVC.shareButton.enabled = YES;
-
         
         //NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
         //bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];
