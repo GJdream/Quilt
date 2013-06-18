@@ -186,8 +186,6 @@
                 cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", owner, cell.detailTextLabel.text];
             cell.detailTextLabel.textColor = [UIColor grayColor];
         }
-        else
-            ownedByMe = YES;
     }
 }
 
