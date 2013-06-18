@@ -109,15 +109,7 @@ UIImageView *ghostView;
     
     cell.contentView.backgroundColor = [UIColor clearColor];
     
-    if(!cell.selectedBackgroundView)
-        cell.selectedBackgroundView = [[UIView alloc] init];
     
-    [cell.selectedBackgroundView.layer setMasksToBounds:YES];
-    [cell.selectedBackgroundView.layer setCornerRadius:15];
-    [cell.selectedBackgroundView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
-    cell.selectedBackgroundView.layer.shouldRasterize = YES;
-    cell.selectedBackgroundView.layer.opaque = YES;
-    cell.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
     
     return cell;
 }
@@ -127,11 +119,23 @@ UIImageView *ghostView;
     UIBookmark *bookmarkAtIndex = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
     
     if(self.editEnabled)
+    {
+        if(!bookmarkAtIndex.viewBookmark.selectedBackgroundView)
+            bookmarkAtIndex.viewBookmark.selectedBackgroundView = [[UIView alloc] init];
+        
+        [bookmarkAtIndex.viewBookmark.selectedBackgroundView.layer setMasksToBounds:YES];
+        [bookmarkAtIndex.viewBookmark.selectedBackgroundView.layer setCornerRadius:15];
+        [bookmarkAtIndex.viewBookmark.selectedBackgroundView.layer setRasterizationScale:[[UIScreen mainScreen] scale]];
+        bookmarkAtIndex.viewBookmark.selectedBackgroundView.layer.shouldRasterize = YES;
+        bookmarkAtIndex.viewBookmark.selectedBackgroundView.layer.opaque = YES;
+        bookmarkAtIndex.viewBookmark.selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
+        
         [self.selectedItems addObject:bookmarkAtIndex];
+    }
     else
     {
-        UIBookmark *bookmark = [[BookmarkDataController instantiate] bookmarkInListAtIndex:indexPath.row];
-        NSString *url = bookmark.url;
+        bookmarkAtIndex.viewBookmark.selectedBackgroundView = nil;
+        NSString *url = bookmarkAtIndex.url;
         [self performSegueWithIdentifier:@"webSegue" sender:url];
     }
 }
@@ -255,6 +259,7 @@ UIImageView *ghostView;
         self.editEnabled = NO;
         self.deleteButton.enabled = NO;
         self.collectionView.allowsSelection = NO;
+        self.collectionView.allowsSelection = YES;
     }
     else
     {

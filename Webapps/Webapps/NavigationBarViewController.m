@@ -175,7 +175,6 @@ NSArray *tableData;
         NSString *title = selectedCell.textLabel.text;
         bookmarkDC.bookmarkVC.navigationItem.title = title;
         bookmarkDC.bookmarkVC.shareButton.enabled = YES;
-
         
         //NSArray *title = [[NSArray alloc] initWithObjects:@"Quilt - ", selectedCell.textLabel.text, nil];
         //bookmarkDC.bookmarkVC.navigationItem.title = [title componentsJoinedByString:@""];

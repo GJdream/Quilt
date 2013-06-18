@@ -178,7 +178,10 @@
     {
         cell.detailTextLabel.text = owner;
         cell.detailTextLabel.textColor = [UIColor grayColor];
-    } 
+    } else
+    {
+        cell.detailTextLabel.text = @".";
+    }
 }
 
 +(void)gotBookmarkPicture:(NSData*)data ForBookmark:(UIBookmark*)bookmark
