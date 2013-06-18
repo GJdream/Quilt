@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 - (IBAction)pinchDetected:(id)sender;
 - (IBAction)shareButtonClicked:(id)sender;
+- (IBAction)editButtonClicked:(id)sender;
+- (IBAction)deleteButtonClicked:(id)sender;
 
 @end

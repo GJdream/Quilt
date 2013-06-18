@@ -134,7 +134,6 @@ NSArray *tableData;
         [self.selectedItems removeObject:friendAtIndex];
     else if(self.editEnabled)
         [self.selectedItems removeObject:friendAtIndex];
-
 }
 
 - (IBAction)editFriendsClicked:(id)sender{
@@ -154,10 +153,10 @@ NSArray *tableData;
 
 - (IBAction)deleteFriendsClicked:(id)sender {
     NSArray *selectedFriends = (NSArray*)self.selectedItems;
-    NSLog(@"selectedFriends: %@", selectedFriends);
-    for (NSString *badFriend in selectedFriends) {
-        [NetworkClient removeFriend:badFriend];
+    for (Friend *badFriend in selectedFriends) {
+        [[FriendsDataController instantiate] deleteFriend:badFriend];
     }
+    [[FriendsDataController instantiate] updateOnFriendDeletion];
     self.deleteFriendsButton.enabled = NO;
     //self.collectionView.allowsSelection = NO;
 }
